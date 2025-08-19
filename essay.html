@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.ico" sizes="180x180">
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 全局样式初始化 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #f9ead2;
+      font-family: "KaiTi", serif;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    /* 导航样式 */
+   .nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+   .nav a {
+      color: #5d4037;
+      text-decoration: none;
+      font-size: 22px; 
+      padding: 8px 16px;
+      border: 2px solid #5d4037;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .nav a:hover {
+      background-color: #5d4037;
+      color: #f9ead2;
+    }
+    .card {
+      display: flex;
+      width: 80%;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background-color: rgba(255, 255, 255, 0.6);
+      margin: 80px auto 60px; 
+    }
+    .left-part {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .topic {
+      background-color: rgba(255,255,255,0.8);
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .topic h2 {
+      font-size: 32px; 
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .topic p {
+      font-size: 22px; 
+      line-height: 1.8;
+    }
+    .right-part {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      margin-left: 40px;
+    }
+    .right-part p {
+      font-size: 24px; 
+      line-height: 2.2;
+      text-align: right;
+      margin-bottom: 8px;
+    }
+    /* 评论区样式 */
+    .comments-section {
+      width: 80%;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .comments-section h2 {
+      font-size: 32px;
+      margin-bottom: 25px;
+      color: #5d4037;
+      border-bottom: 2px solid #5d4037;
+      padding-bottom: 10px;
+    }
+    .comment-form {
+      margin-bottom: 40px;
+    }
+    .comment-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: "KaiTi", serif;
+      font-size: 20px;
+      min-height: 150px;
+      resize: vertical;
+      margin-bottom: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .comment-form button {
+      background-color: transparent;
+      color: #5d4037;
+      border: 2px solid #5d4037;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-family: "KaiTi", serif;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .comment-form button:hover {
+      background-color: #5d4037;
+      color: #f9ead2;
+    }
+    .comments-container {
+      margin-top: 30px;
+      min-height: 200px; /* 避免内容过短时按钮位置跳动 */
+    }
+    .comment {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .comment p {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    .comment.timestamp {
+      font-size: 16px;
+      color: #777;
+      margin-top: 10px;
+      text-align: right;
+    }
+    /* 分页控制样式 */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .pagination-btn {
+      background-color: transparent;
+      color: #5d4037;
+      border: 2px solid #5d4037;
+      padding: 8px 16px;
+      font-size: 18px;
+      font-family: "KaiTi", serif;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .pagination-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #999;
+      color: #999;
+    }
+    .pagination-btn:not(:disabled):hover {
+      background-color: #5d4037;
+      color: #f9ead2;
+    }
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        width: 95%;
+        padding: 20px;
+      }
+      .left-part, .right-part {
+        width: 100%;
+        margin-left: 0;
+      }
+      .right-part {
+        margin-top: 30px;
+        align-items: flex-start;
+      }
+      .right-part p {
+        text-align: left;
+      }
+      .comments-section {
+        width: 95%;
+        padding: 20px;
+      }
+      .nav {
+        position: static;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .pagination {
+        gap: 10px;
+      }
+      .pagination-btn {
+        padding: 6px 12px;
+        font-size: 16px;
+      }
+    }
+  </style>
+  <title>在于春，在于墙头马上</title>
+</head>
+<body>
+  <!-- 导航链接 -->
+  <div class="nav">
+    <a href="index.html">返回首页</a>
+  </div>
+  <div class="card">
+    <div class="left-part">
+      <div class="topic" id="math" onclick="window.location.href='math-resources.html'">
+        <h2>关于数学</h2>
+        <p>我希望做一些代數與數論上的工作</p>
+        <p style="color: #5d4037; margin-top: 10px;">写过的一些 →</p>
+      </div>
+      <div class="topic" id="useless">
+        <h2>关于无用</h2>
+        <p>無關緊要的最寒秋，和枕邊花月夢</p>
+      </div>
+    </div>
+    <div class="right-part">
+      <p>爾突然發現四年里</p>
+      <p>什麼都沒有學會</p>
+      <p>只學會了</p>
+      <p>為他人</p>
+      <p>淚流滿面</p>
+      <p>—— 《致中文系》 白寅</p>
+    </div>
+  </div>
+  <!-- 留言区 HTML 结构（新增分页按钮） -->
+  <div class="comments-section">
+    <h2>关于语言</h2>
+    <div class="comment-form">
+      <textarea id="comment-input" placeholder="欢迎在这说点什么..."></textarea>
+      <button id="submit-btn">提交留言</button>
+    </div>
+    <div class="comments-container" id="comments-container"></div>
+    <!-- 分页控制按钮 -->
+    <div class="pagination">
+      <button class="pagination-btn" id="prev-page">上一页</button>
+      <button class="pagination-btn" id="next-page">下一页</button>
+    </div>
+  </div>
+  <!-- Firebase 核心逻辑（含分页） -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, addDoc, collection, getDocs, serverTimestamp, query, orderBy, limit, startAfter, startAt } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    
+    // 初始化 Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCghDAIty_WJnlUKg1fP480SK8aCKHqQ-Y",
+      authDomain: "aboutlanguage-13fd8.firebaseapp.com",
+      projectId: "aboutlanguage-13fd8",
+      storageBucket: "aboutlanguage-13fd8.firebasestorage.app",
+      messagingSenderId: "1096507807886",
+      appId: "1:1096507807886:web:74d8dd42903bda5bd051df",
+      measurementId: "G-0F2FFLFZ6G"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    // 分页配置
+    const PAGE_SIZE = 5; // 每页显示5条评论（可调整）
+    let currentPage = 1; // 当前页码
+    let lastVisibleDoc = null; // 记录当前页最后一条评论的快照（用于下一页查询）
+    let firstVisibleDoc = null; // 记录当前页第一条评论的快照（用于上一页查询）
+    let hasMore = true; // 是否还有更多评论
+    
+    // 提交留言逻辑
+    document.getElementById('submit-btn').addEventListener('click', submitComment);
+    document.getElementById('comment-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitComment();
+      }
+    });
+    
+    async function submitComment() {
+      const input = document.getElementById('comment-input');
+      const text = input.value.trim();
+      if (!text) {
+        alert('请输入留言内容后再提交~');
+        return;
+      }
+      try {
+        await addDoc(collection(db, "comments"), {
+          text: text,
+          createdAt: serverTimestamp()
+        });
+        input.value = '';
+        // 提交后重置分页，回到第一页
+        resetPagination();
+        await loadComments(); 
+      } catch (error) {
+        console.error('提交失败:', error);
+        alert('提交失败：' + error.message);
+      }
+    }
+    
+    // 重置分页状态（提交新评论后回到第一页）
+    function resetPagination() {
+      currentPage = 1;
+      lastVisibleDoc = null;
+      firstVisibleDoc = null;
+      hasMore = true;
+    }
+    
+    // 加载评论逻辑（支持分页）
+    async function loadComments() {
+      const container = document.getElementById('comments-container');
+      container.innerHTML = '加载中...';
+      
+      try {
+        // 基础查询：按时间倒序（最新在前）
+        let q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
+        
+        // 分页查询逻辑
+        if (currentPage > 1 && firstVisibleDoc) {
+          // 上一页查询：从当前页第一条评论的前一条开始
+          q = query(q, startAt(firstVisibleDoc), limit(PAGE_SIZE));
+        } else if (currentPage === 1) {
+          // 第一页查询：直接限制数量
+          q = query(q, limit(PAGE_SIZE));
+        } else {
+          // 下一页查询：从当前页最后一条评论的后一条开始
+          q = query(q, startAfter(lastVisibleDoc), limit(PAGE_SIZE));
+        }
+        
+        const querySnapshot = await getDocs(q);
+        container.innerHTML = '';
+        
+        // 记录当前页的评论快照（用于分页控制）
+        const docs = querySnapshot.docs;
+        if (docs.length > 0) {
+          firstVisibleDoc = docs[0]; // 当前页第一条评论
+          lastVisibleDoc = docs[docs.length - 1]; // 当前页最后一条评论
+          hasMore = docs.length === PAGE_SIZE; // 如果返回数量等于每页大小，可能还有更多
+        } else {
+          // 没有数据
+          hasMore = false;
+          container.innerHTML = currentPage === 1 ? '暂无留言，快来添加第一条吧~' : '没有更多评论了';
+        }
+        
+        // 渲染评论
+        docs.forEach(doc => {
+          const data = doc.data();
+          let time = '未知时间';
+          if (data.createdAt) {
+            const date = new Date(
+              data.createdAt.seconds * 1000 + 
+              Math.floor(data.createdAt.nanoseconds / 1000000)
+            );
+            time = date.toLocaleString();
+          }
+          
+          const div = document.createElement('div');
+          div.className = 'comment';
+          div.innerHTML = `
+            <p>${data.text}</p>
+            <div class="timestamp">${time}</div>
+          `;
+          container.appendChild(div);
+        });
+        
+        // 更新分页按钮状态
+        updatePaginationButtons();
+        
+      } catch (error) {
+        container.innerHTML = '加载失败：' + error.message;
+      }
+    }
+    
+    // 更新分页按钮状态（禁用/启用）
+    function updatePaginationButtons() {
+      const prevBtn = document.getElementById('prev-page');
+      const nextBtn = document.getElementById('next-page');
+      
+      // 第一页禁用上一页按钮
+      prevBtn.disabled = currentPage === 1;
+      // 没有更多评论时禁用下一页按钮
+      nextBtn.disabled = !hasMore;
+    }
+    
+    // 上一页按钮点击事件
+    document.getElementById('prev-page').addEventListener('click', async () => {
+      if (currentPage > 1) {
+        currentPage--;
+        await loadComments();
+      }
+    });
+    
+    // 下一页按钮点击事件
+    document.getElementById('next-page').addEventListener('click', async () => {
+      if (hasMore) {
+        currentPage++;
+        await loadComments();
+      }
+    });
+    
+    // 页面加载后初始化第一页评论
+    window.onload = () => {
+      loadComments();
+    };
+  </script>
+</body>
+</html>

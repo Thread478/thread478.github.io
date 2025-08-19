@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.ico" sizes="180x180">
+  <!-- 引入文艺字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于无用 | 线，从来</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#5d4037',
+            secondary: '#64748b',
+            accent: '#f1c40f',
+            dark: '#2f2b26',
+            light: '#f8fafc'
+          },
+          fontFamily: {
+            sans: ['Noto Serif SC', 'system-ui', 'sans-serif'],
+            serif: ['Georgia', 'serif'],
+            mono: ['MathJax_Main', 'monospace'],
+            cursive: ['"Ma Shan Zheng"', 'cursive']
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+      .math-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      .image-frame {
+        position: relative;
+        display: inline-block;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        transition: all 0.5s ease;
+      }
+      .image-frame::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba(93, 64, 55, 0.1);
+        pointer-events: none;
+      }
+      .gallery-item {
+        transition: all 0.4s ease;
+        cursor: pointer;
+      }
+      .gallery-item:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+      .literature-card {
+        transition: all 0.3s ease;
+      }
+      .literature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(93, 64, 55, 0.12);
+      }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    /* 作品卡片悬停效果 */
+    .art-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .art-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+  </style>
+  <!-- 引入数学公式渲染库（如需） -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #f9f2e8;
+      font-family: "Noto Serif SC", serif;
+      color: #333;
+      padding: 0;
+      transition: all 0.5s ease;
+    }
+    /* 背景渐变效果 */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #f9f2e8 0%, #fdf6eb 100%);
+      z-index: -1;
+      opacity: 0.95;
+      transition: all 0.7s ease;
+    }
+    /* 动画效果 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .section-animate {
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+    .bg-gradient {
+      opacity: 0;
+      animation: fadeIn 1.5s forwards 0.2s;
+    }
+    /* 夜间模式 */
+    body.dark-mode {
+      background-color: #2f2b26;
+      color: #f9f2e8;
+    }
+    body.dark-mode .bg-gradient {
+      background: linear-gradient(120deg, #2f2b26 0%, #3a332e 100%);
+    }
+    body.dark-mode .text-primary {
+      color: #f1c40f !important;
+    }
+    body.dark-mode .bg-white {
+      background-color: #3a332e !important;
+    }
+    body.dark-mode .bg-gray-50 {
+      background-color: rgba(50, 45, 40, 0.5) !important;
+    }
+    body.dark-mode .border-gray-100 {
+      border-color: rgba(241, 196, 15, 0.1) !important;
+    }
+    body.dark-mode .text-gray-600,
+    body.dark-mode .text-gray-500 {
+      color: #e0e0e0 !important;
+    }
+    body.dark-mode .image-frame {
+      background-color: #3a332e;
+    }
+    body.dark-mode .image-frame::after {
+      border-color: rgba(241, 196, 15, 0.1);
+    }
+    body.dark-mode .bg-gray-200 {
+      background-color: #4a443e !important;
+    }
+    /* 模式切换按钮 */
+    .mode-toggle {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 100;
+    }
+    .mode-toggle:hover {
+      transform: rotate(30deg);
+    }
+    .mode-toggle i {
+      font-size: 1.5rem;
+      color: #5d4037;
+      transition: all 0.4s ease;
+    }
+    body.dark-mode .mode-toggle i {
+      color: #f1c40f;
+    }
+    /* 音乐播放器样式 */
+    .music-player {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode .music-player {
+      background: rgba(58, 51, 46, 0.8);
+    }
+    audio::-webkit-media-controls-panel {
+      background-color: rgba(255,255,255,0.9);
+      border-radius: 8px;
+    }
+    body.dark-mode audio::-webkit-media-controls-panel {
+      background-color: rgba(58, 51, 46, 0.9);
+      color: #f1c40f;
+    }
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .mode-toggle {
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        right: 20px;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+      .art-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 背景渐变层 -->
+  <div class="bg-gradient"></div>
+  
+  <!-- 夜间模式切换按钮 -->
+  <button class="mode-toggle" id="modeToggle">
+    <i class="fa fa-moon-o"></i>
+  </button>
+  
+  <!-- 导航栏 -->
+  <nav class="fixed w-full bg-white/90 bg-blur shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html#about" class="hover:text-primary transition-colors">从来</a>
+        <a href="index.html#mathanduseless" class="hover:text-primary transition-colors">一些工作</a>
+        <a href="useless.html" class="text-primary font-medium">关于无用</a>
+        <a href="index.html#contact" class="hover:text-primary transition-colors">联系</a>
+      </div>
+      <button class="md:hidden text-gray-600" id="menuToggle">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md absolute w-full">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="index.html#about" class="py-2 hover:text-primary transition-colors">从来</a>
+        <a href="index.html#mathanduseless" class="py-2 hover:text-primary transition-colors">一些工作</a>
+        <a href="useless.html" class="py-2 text-primary font-medium">关于无用</a>
+        <a href="index.html#contact" class="py-2 hover:text-primary transition-colors">联系</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主要内容 -->
+  <div class="container mx-auto px-4 pt-24 pb-16">
+    <!-- 页面标题区 -->
+    <section class="text-center mb-16 section-animate" style="animation-delay: 0.3s">
+      <h1 class="text-4xl md:text-5xl font-cursive text-primary mb-4">关于无用</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">无关紧要的最寒秋，与枕边花月梦</p>
+      <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
+    </section>
+
+    <!-- 摄影作品板块 -->
+    <section id="photography" class="mb-20 section-animate" style="animation-delay: 0.5s">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-camera text-3xl text-primary mr-4"></i>
+        <h2 class="text-3xl font-bold">光影</h2>
+      </div>
+      
+      <div class="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 摄影作品1 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo1.jpg" alt="火车站" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">火车站</h3>
+            <p class="text-gray-600 text-sm">2025.08 于双辽市火车站</p>
+            <p class="mt-2 text-gray-500 text-sm">最上边是天，然后云，再往下来还有草地，最后我看见了铁路。</p>
+          </div>
+        </div>
+        
+        <!-- 摄影作品2 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo2.jpg" alt="红色的灯" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">红色的灯</h3>
+            <p class="text-gray-600 text-sm">2025.01 于东南大学</p>
+            <p class="mt-2 text-gray-500 text-sm">忘了那天晚上去干啥了，应该是吃饭，回来路上随手。</p>
+          </div>
+        </div>
+        
+        <!-- 摄影作品3 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo3.jpg" alt="十月是好的" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">十月是好的</h3>
+            <p class="text-gray-600 text-sm">2024.10 于东南大学</p>
+            <p class="mt-2 text-gray-500 text-sm">当时我在楼上，往下看的时候感觉很暖和，而且好像所有人都在忙。</p>
+          </div>
+        </div>
+        
+        <!-- 摄影作品4 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo4.jpg" alt="很多花" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">很多花</h3>
+            <p class="text-gray-600 text-sm">2024.08 于南京市地铁站</p>
+            <p class="mt-2 text-gray-500 text-sm">坐地铁时候看见一男的，身边很多花，我喜欢花。</p>
+          </div>
+        </div>
+        
+        <!-- 摄影作品5 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo5.jpg" alt="入秋" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">入秋</h3>
+            <p class="text-gray-600 text-sm">2022.09 于东南大学</p>
+            <p class="mt-2 text-gray-500 text-sm">当时我刚上大学，还不会拍照，现在也不太熟练。前一天晚上有风雨，翌日如此。</p>
+          </div>
+        </div>
+        
+        <!-- 摄影作品6 -->
+        <div class="gallery-item rounded-xl overflow-hidden shadow-md bg-white">
+          <div class="h-64 overflow-hidden">
+            <img src="image/photo6.jpg" alt="暗杠" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">暗杠</h3>
+            <p class="text-gray-600 text-sm">2023.06 于南京奥体中心</p>
+            <p class="mt-2 text-gray-500 text-sm">当时是我第一回听这人演唱会，也是我人生中第一次听演唱会。时至今日也只听过他的。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 绘画作品板块 -->
+    <section id="painting" class="mb-20 section-animate" style="animation-delay: 0.6s">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-paint-brush text-3xl text-primary mr-4"></i>
+        <h2 class="text-3xl font-bold">颜色</h2>
+      </div>
+      
+      <div class="art-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 绘画作品1 -->
+        <div class="art-card bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-6">
+            <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+              <img src="image/painting1.jpg" alt="我做梦了" class="w-full h-auto object-cover">
+            </div>
+            <h3 class="font-bold text-xl mb-2">我做梦了</h3>
+            <p class="text-gray-600">这个是做梦梦到的，很符合欧西气质，挺空洞一人，像太空垃圾</p>
+          </div>
+        </div>
+        
+        <!-- 绘画作品2 -->
+        <div class="art-card bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-6">
+            <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+              <img src="image/painting2.png" alt="赛里木湖边的Helel" class="w-full h-auto object-cover">
+            </div>
+            <h3 class="font-bold text-xl mb-2">赛里木湖边的Helel</h3>
+            <p class="text-gray-600">这个只是记录我去赛里木湖，阴天，但我挺喜欢阴天的，画了个游客照。</p>
+          </div>
+        </div>
+        
+        <!-- 绘画作品3 -->
+        <div class="art-card bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-6">
+            <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+              <img src="image/painting3.png" alt="做事" class="w-full h-auto object-cover">
+            </div>
+            <h3 class="font-bold text-xl mb-2">做事</h3>
+            <p class="text-gray-600">这蒜了，欧西入职公司证件照，没啥内涵，只是展示技艺。</p>
+          </div>
+        </div>
+        
+        <!-- 绘画作品4 -->
+        <div class="art-card bg-white rounded-xl shadow-md overflow-hidden">
+          <div class="p-6">
+            <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+              <img src="image/painting4.jpg" alt="我要看见血流成河" class="w-full h-auto object-cover">
+            </div>
+            <h3 class="font-bold text-xl mb-2">我要看见血流成河</h3>
+            <p class="text-gray-600">中式恐怖背景跑团欧西，造化弄人，你可以理解成先要被冥婚后来变成鬼但鬼头子死了所以最后也死了。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 平面设计板块 -->
+    <section id="design" class="mb-20 section-animate" style="animation-delay: 0.7s">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-desktop text-3xl text-primary mr-4"></i>
+        <h2 class="text-3xl font-bold">网络</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 设计作品1 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden group transition-all duration-300 hover:shadow-lg">
+          <div class="h-48 overflow-hidden">
+            <img src="image/笔锋.png" alt="笔锋" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">笔锋</h3>
+            <p class="text-gray-500 text-sm mb-2">2022.09 军训编辑部</p>
+            <p class="text-gray-600 text-sm">当时参与做完了觉得挺不错的，后来回去看的时候觉得还有很多东西没做好。</p>
+          </div>
+        </div>
+        
+        <!-- 设计作品2 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden group transition-all duration-300 hover:shadow-lg">
+          <div class="h-48 overflow-hidden">
+            <img src="image/24国庆.jpg" alt="国庆" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">国庆节</h3>
+            <p class="text-gray-500 text-sm mb-2">2024.10 24-25新宣</p>
+            <p class="text-gray-600 text-sm">我觉得是本科参加学生组织做得最好的一次拼贴画了，差点没发出来。</p>
+          </div>
+        </div>
+        
+        <!-- 设计作品3 -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden group transition-all duration-300 hover:shadow-lg">
+          <div class="h-48 overflow-hidden">
+            <img src="image/除夕.jpg" alt="除夕" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-lg mb-1">除夕</h3>
+            <p class="text-gray-500 text-sm mb-2">2025.01 除夕</p>
+            <p class="text-gray-600 text-sm">排得相似，个人觉得最后成果很一般，但是周围人说挺酷炫的，svg受众还是太多了。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 文学板块 -->
+    <section id="literature" class="mb-20 section-animate" style="animation-delay: 0.8s">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-book text-3xl text-primary mr-4"></i>
+        <h2 class="text-3xl font-bold">汉字</h2>
+      </div>
+      
+      <div class="space-y-6">
+        <!-- 文学作品1 -->
+        <div class="literature-card bg-white rounded-xl shadow-md p-6 md:p-8">
+          <h3 class="font-bold text-2xl mb-4 text-primary">我一事无成</h3>
+          <p class="text-gray-600 mb-4">我也曾以为依照才情和天分，还有每日的蹈厉可以做成任一件我认为有意义的事。然后会发现一切也抵不过时间的快与慢。抛弃我的怒愤与无常而言，只能说，也只能说明，我不幸。</p>
+          <p class="text-gray-600 mb-4">所希望的如地铁进站时吹过脸旁发梢的风一样，就那么消散去了，而我也不像刚出走家乡那般，而是更加呆苶了。在身边多数人眼里我也没能成为所谓挺好的人，这本也不是应当拘泥的事情，只是恳愿之后不要嘲笑就行了。</p>
+          <p class="text-gray-600 mb-4">如果有人问究竟是怎样的伟大前程需要把四季都错过，我也扪心过到底有多大的执念要付出这么大的疲劳。我的春菁打散在九龙湖的柏油马路，也吊死在树上。</p>
+          <p class="text-gray-600 mb-4">但我在地铁到站时又想起，假若无此，我的生命将真一事无成。</p>
+          <p class="text-gray-500 text-sm mt-4">于 2025.04.28 </p>
+        </div>
+        
+        <!-- 文学作品2 -->
+        <div class="literature-card bg-white rounded-xl shadow-md p-6 md:p-8">
+          <h3 class="font-bold text-2xl mb-4 text-primary">溯回</h3>
+          <p class="text-gray-600 mb-4">倘我回溯到两年或者一年之前的任何一天里和我对面，无不自是不绝的哀默。印证了人的长大就是无休止地接受个人的萧条与无能为力，虽然这是早年的我所鄙夷。</p>
+          <p class="text-gray-600 mb-4">小时候不需要在意力所能及与否，因为可以说但少闲人如我者尔。中学时代也将落寞归结于时运不齐，于是在回到县城的年月里告慰旁人你我生似游萍，大抵再也不见。纵是再无畏的年少不知愁滋味为赋新词强说愁，也应该承认我的中学是风花雪月的。有人常向我议论十三四五岁的余音某某，或喜极或惊诧或是义愤或轻浮，我听过之后也同样觉着，这终究还是风花雪月。</p>
+          <p class="text-gray-600 mb-4">相对应的，近一个月以来才逐渐认识到生命里不止松花酿酒春水煎茶，也有苦难像铁一般坚强，这是我们魂血受秋风所摧的叶落琤然。尽管少见那些精骨于面前呼啸悲号，但始终永远有人在面临每一日的死生劬劳。</p>
+          <p class="text-gray-600 mb-4">我感到无比的遗憾，遗憾我竟也有一天否定往事，虽非孤注一掷，倒也算一种对于时空之外的霸凌。恰恰仿佛诗文一边，朦胧间鬼灯一线露出的桃花粉面，那人从县城里走来，也模糊地走去了。多光鲜多靓丽，多憔悴的清明。</p>
+          <p class="text-gray-600 mb-4">秋水相送，十载流云。</p>
+          <p class="text-gray-600 mb-4">我也想做一场只有自己的梦。</p>
+          <p class="text-gray-500 text-sm mt-4">于 2024.11.26 </p>
+        </div>
+        
+        <!-- 文学作品3 -->
+  
+      </div>
+    </section>
+
+    <!-- 音乐分享板块 -->
+    <section id="music" class="mb-16 section-animate" style="animation-delay: 0.9s">
+      <div class="flex items-center mb-8">
+        <i class="fa fa-music text-3xl text-primary mr-4"></i>
+        <h2 class="text-3xl font-bold">声音</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 音乐1 -->
+        <div class="music-player p-6 rounded-xl shadow-md">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/3">
+              <div class="rounded-lg overflow-hidden shadow-md">
+                <img src="image/music1.jpg" alt="惘闻 - 21世纪不适症" class="w-full h-auto">
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="font-bold text-xl mb-1">21世纪不适症</h3>
+              <p class="text-gray-500 text-sm mb-3">纯音乐 | 惘闻 | 2016.04</p>
+              <p class="text-gray-600 mb-4">没有什么好的时代，我就是一直在想自己正处于一个什么样的时代而已。划分时代的并不是时间，而是人类自己。</p>
+              <audio controls class="w-full">
+                <source src="music/惘闻 - 21世纪不适症.mp3" type="audio/mpeg">
+                您的浏览器不支持音频播放
+            </audio>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 音乐2 -->
+        <div class="music-player p-6 rounded-xl shadow-md">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-1/3">
+              <div class="rounded-lg overflow-hidden shadow-md">
+                <img src="image/music2.jpg" alt="向阳花" class="w-full h-auto">
+              </div>
+            </div>
+            <div class="md:w-2/3">
+              <h3 class="font-bold text-xl mb-1">向阳花</h3>
+              <p class="text-gray-500 text-sm mb-3">摇滚 | 谢天笑 | 2005.03</p>
+              <p class="text-gray-600 mb-4">接下来唱的这首《向阳花》，是我曾经献给中国摇滚的一首歌。但是今天，我不再献给中国摇滚，因为中国摇滚让我非常失望。</p>
+              <audio controls class="w-full">
+                <source src="music/谢天笑 - 向阳花.mp3" type="audio/mpeg">
+                您的浏览器不支持音频播放
+            </audio>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="text-center text-gray-500 text-sm mt-8 pt-4 border-t border-gray-200">
+    <p>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次 | 访客数：<span id="busuanzi_value_site_uv"></span> 人</p>
+  </div>
+  <!-- 引入不蒜子统计脚本 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <footer class="container mx-auto px-4 py-8 border-t border-gray-200 mt-12">
+    <div class="text-center text-gray-600 text-sm">
+      <p>© 2025 Thread478. 希望我们都有光明的未来</p>
+      <p class="mt-2">最后更新：2025年8月</p>
+      <div class="mt-3 flex justify-center space-x-4">
+        <a href="index.html#about" class="hover:text-primary transition-colors">从来</a>
+        <a href="index.html#mathanduseless" class="hover:text-primary transition-colors">一些工作</a>
+        <a href="useless.html" class="text-primary">关于无用</a>
+        <a href="index.html#contact" class="hover:text-primary transition-colors">联系</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 夜间模式切换功能
+    const modeToggle = document.getElementById('modeToggle');
+    const modeIcon = modeToggle.querySelector('i');
+    let isDarkMode = false;
+    
+    // 检查本地存储的模式设置
+    if (localStorage.getItem('darkMode') === 'true') {
+      isDarkMode = true;
+      document.body.classList.add('dark-mode');
+      modeIcon.classList.remove('fa-moon-o');
+      modeIcon.classList.add('fa-sun-o');
+    }
+    
+    modeToggle.addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      
+      // 保存模式设置到本地存储
+      localStorage.setItem('darkMode', isDarkMode);
+      
+      // 切换图标
+      if (isDarkMode) {
+        modeIcon.classList.remove('fa-moon-o');
+        modeIcon.classList.add('fa-sun-o');
+      } else {
+        modeIcon.classList.remove('fa-sun-o');
+        modeIcon.classList.add('fa-moon-o');
+      }
+    });
+    
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 滚动时导航栏样式变化
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-2', 'shadow');
+        nav.classList.remove('py-3');
+      } else {
+        nav.classList.add('py-3');
+        nav.classList.remove('py-2', 'shadow');
+      }
+    });
+    
+    // 滚动动画触发
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.section-animate').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>

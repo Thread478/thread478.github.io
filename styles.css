@@ -1,0 +1,67 @@
+/* 全局样式初始化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9ead2; /* 模拟浅米色背景，贴近原图氛围 */
+  font-family: "KaiTi", serif; /* 选用类似楷体的字体，适配文艺风格 */
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 让内容垂直居中 */
+}
+
+.card {
+  display: flex;
+  width: 70%; /* 控制卡片整体宽度，可按需调整 */
+  background: url('flower-bg.png') no-repeat left center; /* 替换为实际花朵背景图路径，若没有合适图可去掉这行，用纯色或其他方式 */
+  background-size: auto 100%; /* 让背景图垂直方向铺满 */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.left-part {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topic {
+  background-color: rgba(255,255,255,0.8); /* 半透明白色背景，让文字更清晰 */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.topic h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.topic p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.right-part {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 30px;
+}
+
+.right-part p {
+  font-size: 18px;
+  line-height: 2;
+  text-align: right;
+}
