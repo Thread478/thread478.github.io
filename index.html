@@ -563,17 +563,37 @@ body.dark-mode #dynamic-bg {
 
 <!-- 引入不蒜子统计脚本 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <footer class="container mx-auto px-4 py-8 border-t border-gray-200 mt-12">
-  <div class="text-center text-black-600 text-sm">
-    <p>© 2025 Thread478. 希望我们都有光明的未来</p>
-    <p class="mt-2">最后更新：2025年8月</p>
-    <div class="mt-3 flex justify-center space-x-4">
-      <a href="#about" class="hover:text-primary transition-colors">从来</a>
-      <a href="#mathanduseless" class="hover:text-primary transition-colors">一些工作</a>
-      <a href="#contact" class="hover:text-primary transition-colors">联系</a>
+<footer class="container mx-auto px-4 py-10 border-t border-gray-200 mt-16 bg-gray-50 dark:bg-gray-900/50">
+  <div class="max-w-4xl mx-auto">
+    <!-- 站点信息 -->
+    <div class="text-center mb-8">
+      <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Thread478</h3>
+      <p class="text-gray-600 dark:text-gray-400">© 2025 Thread478 · 希望我们都有光明的未来</p>
+    </div>
+    
+    <!-- 访问统计 -->
+    <div class="text-center text-sm text-gray-500 dark:text-gray-500 mb-6">
+      <p>最后更新：2025年8月</p>
+      <p class="mt-1">
+        <span id="busuanzi_container_site_pv">总访问量: <span id="busuanzi_value_site_pv"></span> 次</span>
+        <span class="mx-2">|</span>
+        <span id="busuanzi_container_site_uv">访客数: <span id="busuanzi_value_site_uv"></span> 人</span>
+      </p>
+    </div>
+    
+    <!-- 导航链接 -->
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 mt-6 pb-4">
+      <a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-300 hover:translate-y-[-2px]">从来</a>
+      <a href="#mathanduseless" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-300 hover:translate-y-[-2px]">一些工作</a>
+      <a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-all duration-300 hover:translate-y-[-2px]">联系</a>
+    </div>
+    
+    <!-- 分隔线和版权信息 -->
+    <div class="border-t border-gray-200 dark:border-gray-800 mt-6 pt-6 text-center text-xs text-gray-500 dark:text-gray-500">
+      <p>本网站内容仅供参考，转载请注明出处</p>
     </div>
   </div>
 </footer>
-  <script src="dynamic-bg.js"></script>
+<script src="dynamic-bg.js"></script>
 </body>
 </html>
