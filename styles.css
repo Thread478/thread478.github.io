@@ -65,3 +65,15 @@ body {
   line-height: 2;
   text-align: right;
 }
+#dynamic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+body.dark-mode #dynamic-bg {
+  opacity: 0.9;
+}
