@@ -232,6 +232,21 @@
         right: 20px;
       }
     }
+
+
+    
+    #dynamic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.85;
+  transition: opacity 0.5s ease;
+}
+
+body.dark-mode #dynamic-bg {
+  opacity: 0.9;
+}
   </style>
 </head>
 <body>
@@ -559,5 +574,6 @@
     </div>
   </div>
 </footer>
+  <script src="dynamic-bg.js"></script>
 </body>
 </html>
