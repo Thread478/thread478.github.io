@@ -41,7 +41,9 @@
   const file = path.split("/").filter(Boolean).pop() || "index.html";
   let pageKey = "home";
 
-  if (file === "math-resources.html") pageKey = "math";
+  if (path.includes("/essays/")) pageKey = "essays";
+  else if (path.includes("/hartshorne/")) pageKey = "hartshorne";
+  else if (file === "math-resources.html") pageKey = "math";
   else if (file === "errata.html") pageKey = "errata";
   else if (path.includes("inter_th")) pageKey = "intersection";
   else if (file === "photography.html") pageKey = "photography";
@@ -55,6 +57,8 @@
   const pageSignals = {
     home: { code: "00", word: "BETWEEN DREAM AND WAKING / 梦与清醒之间" },
     math: { code: "M01", word: "PROOF, THEN A PAUSE / 证明之后" },
+    essays: { code: "M02", word: "SMALL THEOREMS, OPEN ROOMS / 小定理与敞开的房间" },
+    hartshorne: { code: "H03", word: "AN EXERCISE LEAVES A TRACE / 习题留下痕迹" },
     errata: { code: "E04", word: "THE TRACE REMAINS / 痕迹仍在" },
     intersection: { code: "I01", word: "WHERE LINES QUIETLY MEET" },
     along: { code: "B05", word: "ROOMS WE ALMOST REMEMBER" },

@@ -1,0 +1,5 @@
+{
+  "latex_source": "/ABSOLUTE/PATH/TO/algebraic_geometry",
+  "site_root": "/ABSOLUTE/PATH/TO/your-website",
+  "output": "notes/ag"
+}

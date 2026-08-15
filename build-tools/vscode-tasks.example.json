@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "更新代数几何网页札记",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "/ABSOLUTE/PATH/TO/build-tools/sync_notes.py"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
+}

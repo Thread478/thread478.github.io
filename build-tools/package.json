@@ -1,0 +1,12 @@
+{
+  "name": "thread478-algebraic-geometry-web-builder",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "python tools/build_notes.py",
+    "sync": "python sync_notes.py"
+  },
+  "devDependencies": {
+    "katex": "0.16.22"
+  }
+}

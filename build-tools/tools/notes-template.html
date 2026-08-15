@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="$if(top)$Thread478 的代数几何网页$else$Thread478 的代数几何网页札记$endif$" />
+  <title>$if(top)$关于代数几何$else$$if(pagetitle)$$pagetitle$ · $endif$代数几何札记$endif$</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  $if(math)$$math$$endif$
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="$if(top)$关于代数几何$else$代数几何札记首页$endif$">
+      <span class="brand-mark">线</span>
+      $if(top)$
+      <span><strong>关于代数几何</strong><small>ABOUT ALGEBRAIC GEOMETRY</small></span>
+      $else$
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+      $endif$
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">$if(top)$普通的笔记$else$数学札记$endif$</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+  $if(top)$
+  <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">$if(up.title)$$up.title$$else$代数几何札记$endif$</p>
+        <h1>$pagetitle$</h1>
+      </header>
+      $body$
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+        $if(previous.url)$
+        <a class="turn-prev" href="$previous.url$" rel="prev">
+          <span>PREVIOUS</span><strong>← $previous.title$</strong>
+        </a>
+        $else$
+        <span></span>
+        $endif$
+        $if(next.url)$
+        <a class="turn-next" href="$next.url$" rel="next">
+          <span>NEXT</span><strong>$next.title$ →</strong>
+        </a>
+        $endif$
+      </nav>
+    </main>
+  </div>
+  $else$
+  <main class="archive-page" id="main-content">
+    <section class="archive-hero">
+      <div class="hero-index" aria-hidden="true">AG<br />/01</div>
+      <div class="hero-copy">
+        <h1>代数几何<br /><em>札记</em></h1>
+        <p class="archive-deck">主要关于概形的几何理论与凝聚层上同调。网页版本用于检索、穿行和勘误；LaTeX 仍是唯一内容源。</p>
+        <div class="archive-meta">
+          <span><b data-published-count>16</b> 章已公开</span>
+          <button type="button" data-search-open>在全文中搜索 →</button>
+        </div>
+      </div>
+      <div class="hero-object" aria-hidden="true">
+        <span class="object-ring"></span>
+        <span class="object-core">∅</span>
+      </div>
+    </section>
+
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <header class="section-heading">
+        <h2 id="catalog-title">阅读目录</h2>
+        <span>这里只显示已经有正文、可以直接阅读的章节。</span>
+      </header>
+      <div class="catalog-grid" data-notes-catalog>
+        <noscript>
+          <div class="catalog-fallback">
+            <p>以下是已经生成的章节：</p>
+            $if(toc)$$table-of-contents$$endif$
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+  </main>
+  $endif$
+
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

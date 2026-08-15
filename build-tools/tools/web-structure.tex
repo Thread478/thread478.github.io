@@ -1,0 +1,63 @@
+% Minimal semantic preamble for the web build. The print preamble in
+% structure.tex contains page-header and tcolorbox code that should not leak
+% into HTML; this file keeps only meaning-bearing environments and macros.
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+\newcounter{dummy}
+\numberwithin{dummy}{section}
+\newtheorem{theorem}[dummy]{Theorem}
+\newtheorem{lemma}[dummy]{Lemma}
+\newtheorem{corollary}[dummy]{Corollary}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{example}[dummy]{Example}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{outcome}{Learning outcomes}[chapter]
+\newtheorem{sidenote}{Sidebar}[chapter]
+\newtheorem{notation}{Notation}[chapter]
+
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+\newcommand{\cc}{\operatorname{c}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\chow}{\operatorname{CH}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\QCoh}{\mathsf{QCoh}}
+\newcommand{\Ch}{\mathsf{Ch}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\RHom}{\mathbf{R}\operatorname{Hom}}
+\newcommand{\RGam}{\mathbf{R}\Gamma}
+\newcommand{\RcHom}{\mathbf{R}\mathcal{H}om}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\lb}{\left(}
+\newcommand{\rb}{\right)}
+\newcommand{\lc}{\left[}
+\newcommand{\rc}{\right]}
+\newcommand{\ld}{\left\{}
+\newcommand{\rd}{\right\}}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\pr}{\operatorname{pr}}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\Dbcoh}{\mathbf D^b_{\mathrm{coh}}}
+\newcommand{\Dqc}{\mathbf D_{\mathrm{qc}}}
+\newcommand{\Perf}{\operatorname{Perf}}
+\newcommand{\Coh}{\operatorname{Coh}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\Lotimes}{\mathbin{\otimes^{\mathbf L}}}
+\newcommand{\Lf}{\mathbf Lf^*}
+\newcommand{\Rf}{\mathbf Rf_*}
+\newcommand{\Kzero}{K_0}
+\newcommand{\Gzero}{G_0}
+\newcommand{\Z}{\mathbf Z}
+\DeclareMathOperator{\rk}{rk}

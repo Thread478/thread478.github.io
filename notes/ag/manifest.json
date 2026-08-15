@@ -11,19 +11,19 @@
           "title": "Category Theory",
           "source": "chapters/Part_I/Category_Theory.tex",
           "status": "published",
-          "href": null
+          "href": "1.1-Basic_Concepts_of_Category_Theory.html"
         },
         {
           "title": "Derived Category",
           "source": "chapters/Part_I/Derived_Category.tex",
           "status": "published",
-          "href": null
+          "href": "1.2-derived-category.html"
         },
         {
           "title": "Presheaves and Sheaves",
           "source": "chapters/Part_I/Presheaves_and_Sheaves.tex",
           "status": "published",
-          "href": null
+          "href": "1.3-Presheaves_and_Sheaves.html"
         },
         {
           "title": "Homological Algebra",
@@ -41,19 +41,19 @@
           "title": "Affine Schemes",
           "source": "chapters/Part_II/Affine_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "2.1-affine-schemes.html"
         },
         {
           "title": "General Schemes",
           "source": "chapters/Part_II/General_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "2.2-general-schemes.html"
         },
         {
           "title": "Standard Schemes",
           "source": "chapters/Part_II/Standard_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "2.3-standard-schemes.html"
         }
       ]
     },
@@ -66,19 +66,19 @@
           "title": "Global Properties of Morphisms of Schemes",
           "source": "chapters/Part_III/Global_Properties_of_Morphisms_of_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "3.1-global-properties-of-morphisms.html"
         },
         {
           "title": "Flat Morphism",
           "source": "chapters/Part_III/Flat_Morphism.tex",
           "status": "published",
-          "href": null
+          "href": "3.2-flat-morphism.html"
         },
         {
           "title": "Differential Geometry of Standard Schemes",
           "source": "chapters/Part_III/Differential_Geometry_of_Standard_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "3.3-differential-geometry-of-standard-schemes.html"
         },
         {
           "title": "Cycles and Divisors",
@@ -96,19 +96,19 @@
           "title": "Projective Schemes",
           "source": "chapters/Part_IV/Projective_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "4.1-projective-scheme.html"
         },
         {
           "title": "Cohomology of Projective Schemes",
           "source": "chapters/Part_IV/Cohomology_of_Projective_Schemes.tex",
           "status": "published",
-          "href": null
+          "href": "4.2-cohomology-of-projective-schemes.html"
         },
         {
           "title": "Intersection Theory over Smooth Varieties",
           "source": "chapters/Part_IV/Intersection_Theory_over_Smooth_Varieties.tex",
           "status": "published",
-          "href": null
+          "href": "4.3-intersection-theory-over-smooth-varieties.html"
         }
       ]
     },
@@ -121,7 +121,7 @@
           "title": "The Concept and Basic Theory of Curves and Surfaces",
           "source": "chapters/Part_V/The_Concept_and_Basic_Theory_of_Curves_and_Surfaces.tex",
           "status": "published",
-          "href": null
+          "href": "5.1-the-concept-and-basic-theory-of-curves.html"
         },
         {
           "title": "Classification of Low-Genus Curves",
@@ -132,13 +132,13 @@
           "title": "Plane Geometry",
           "source": "chapters/Part_V/Plane Geometry.tex",
           "status": "published",
-          "href": null
+          "href": "5.2-plane-geometry.html"
         },
         {
           "title": "Weil Conjectures on Curves",
           "source": "chapters/Part_V/Weil_Conjectures_on_Curves.tex",
           "status": "published",
-          "href": null
+          "href": "5.3-weil-conjectures-on-curves.html"
         }
       ]
     },
@@ -173,7 +173,7 @@
           "title": "Grothendieck Topology",
           "source": "chapters/Part_VII/Grothendieck_Topology.tex",
           "status": "published",
-          "href": null
+          "href": "6.1-grothendieck-topology.html"
         },
         {
           "title": "Sheaves of Grothendieck Topology",
@@ -232,7 +232,7 @@
       ]
     }
   ],
-  "generated": "2026-08-15T08:15:16+00:00",
+  "generated": "2026-08-15T12:09:36+00:00",
   "published_count": 16,
   "planned_count": 14
 }
