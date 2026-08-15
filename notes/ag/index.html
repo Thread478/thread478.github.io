@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>代数几何札记 · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <main class="archive-page" id="main-content">
+    <section class="archive-hero">
+      <div class="hero-index" aria-hidden="true">AG<br />/01</div>
+      <div class="hero-copy">
+        <p class="archive-kicker">A LIVING NOTEBOOK · 持续生长的档案</p>
+        <h1>代数几何<br /><em>札记</em></h1>
+        <p class="archive-deck">从范畴、概形到上同调与经典几何。网页版本用于检索、穿行和勘误；LaTeX 仍是唯一内容源。</p>
+        <div class="archive-meta">
+          <span><b data-published-count>16</b> 章已公开</span>
+          <button type="button" data-search-open>在全文中搜索 →</button>
+        </div>
+      </div>
+      <div class="hero-object" aria-hidden="true">
+        <span class="object-ring"></span>
+        <span class="object-core">∅</span>
+        <span class="object-label">SCHEME<br />DREAM</span>
+      </div>
+    </section>
+
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <header class="section-heading">
+        <p>01 / READING MAP</p>
+        <h2 id="catalog-title">阅读地图</h2>
+        <span>这里只显示已经有正文、可以直接阅读的章节。</span>
+      </header>
+      <div class="catalog-grid" data-notes-catalog>
+        <noscript>
+          <div class="catalog-fallback">
+            <p>以下是已经生成的章节：</p>
+            <ul>
+<li><a href="1-preliminary.html#preliminary"
+id="toc-preliminary">Preliminary</a>
+<ul>
+<li><a
+href="1.1-Basic_Concepts_of_Category_Theory.html#Basic_Concepts_of_Category_Theory"
+id="toc-Basic_Concepts_of_Category_Theory">Basic Concepts of Category
+Theory</a>
+<ul>
+<li><a href="1.1-Basic_Concepts_of_Category_Theory.html#categories"
+id="toc-categories">Categories</a></li>
+<li><a
+href="1.1-Basic_Concepts_of_Category_Theory.html#abelian-category-and-adjoint-functor"
+id="toc-abelian-category-and-adjoint-functor">Abelian Category and
+Adjoint Functor</a></li>
+<li><a
+href="1.1-Basic_Concepts_of_Category_Theory.html#fundamental-lemmas-of-homological-algebra"
+id="toc-fundamental-lemmas-of-homological-algebra">Fundamental Lemmas of
+Homological Algebra</a></li>
+<li><a
+href="1.1-Basic_Concepts_of_Category_Theory.html#kan-extension-and-representable-functor"
+id="toc-kan-extension-and-representable-functor">Kan Extension and
+Representable Functor</a></li>
+</ul></li>
+<li><a href="1.2-derived-category.html#derived-category"
+id="toc-derived-category">Derived Category</a>
+<ul>
+<li><a
+href="1.2-derived-category.html#homological-algebra-and-derived-category"
+id="toc-homological-algebra-and-derived-category">Homological Algebra
+and Derived Category</a></li>
+</ul></li>
+<li><a href="1.3-Presheaves_and_Sheaves.html#Presheaves_and_Sheaves"
+id="toc-Presheaves_and_Sheaves">Presheaves and Sheaves</a>
+<ul>
+<li><a href="1.3-Presheaves_and_Sheaves.html#presheaves"
+id="toc-presheaves">Presheaves</a></li>
+<li><a href="1.3-Presheaves_and_Sheaves.html#sheaves"
+id="toc-sheaves">Sheaves</a></li>
+<li><a
+href="1.3-Presheaves_and_Sheaves.html#algebraic-operations-for-sheaves-of-abelian-categories"
+id="toc-algebraic-operations-for-sheaves-of-abelian-categories">Algebraic
+Operations for Sheaves of Abelian Categories</a></li>
+<li><a href="1.3-Presheaves_and_Sheaves.html#morphisms-of-sheaves"
+id="toc-morphisms-of-sheaves">Morphisms of Sheaves</a></li>
+<li><a
+href="1.3-Presheaves_and_Sheaves.html#category-of-modules-over-a-sheaf"
+id="toc-category-of-modules-over-a-sheaf">Category of Modules over a
+Sheaf</a></li>
+<li><a
+href="1.3-Presheaves_and_Sheaves.html#derived-category-of-sheaves"
+id="toc-derived-category-of-sheaves">Derived Category of
+Sheaves</a></li>
+</ul></li>
+</ul></li>
+<li><a href="2-scheme-theory.html#scheme-theory"
+id="toc-scheme-theory">Scheme Theory</a>
+<ul>
+<li><a href="2.1-affine-schemes.html#affine-schemes"
+id="toc-affine-schemes">Affine Schemes</a>
+<ul>
+<li><a href="2.1-affine-schemes.html#the-topology-of-affine-schemes"
+id="toc-the-topology-of-affine-schemes">The Topology of Affine
+Schemes</a></li>
+<li><a
+href="2.1-affine-schemes.html#topological-properties-of-affine-schemes"
+id="toc-topological-properties-of-affine-schemes">Topological Properties
+of Affine Schemes</a></li>
+<li><a href="2.1-affine-schemes.html#affine-schemes-1"
+id="toc-affine-schemes-1">Affine Schemes</a></li>
+<li><a href="2.1-affine-schemes.html#category-of-affine-schemes"
+id="toc-category-of-affine-schemes">Category of Affine Schemes</a></li>
+<li><a
+href="2.1-affine-schemes.html#cohomology-of-sheaves-on-affine-schemes"
+id="toc-cohomology-of-sheaves-on-affine-schemes">Cohomology of Sheaves
+on Affine Schemes</a></li>
+</ul></li>
+<li><a href="2.2-general-schemes.html#general-schemes"
+id="toc-general-schemes">General Schemes</a>
+<ul>
+<li><a href="2.2-general-schemes.html#basic-definition-of-schemes"
+id="toc-basic-definition-of-schemes">Basic Definition of
+Schemes</a></li>
+<li><a
+href="2.2-general-schemes.html#open-immersion-closed-immersion-and-immersion"
+id="toc-open-immersion-closed-immersion-and-immersion">Open Immersion,
+Closed Immersion and Immersion</a></li>
+<li><a href="2.2-general-schemes.html#fiber-product-and-base-change"
+id="toc-fiber-product-and-base-change">Fiber Product and Base
+Change</a></li>
+<li><a href="2.2-general-schemes.html#integral-schemes"
+id="toc-integral-schemes">Integral Schemes</a></li>
+<li><a href="2.2-general-schemes.html#the-projective-space"
+id="toc-the-projective-space">The Projective Space</a></li>
+<li><a
+href="2.2-general-schemes.html#preliminary-properties-of-morphisms"
+id="toc-preliminary-properties-of-morphisms">Preliminary Properties of
+Morphisms</a></li>
+</ul></li>
+<li><a href="2.3-standard-schemes.html#standard-schemes"
+id="toc-standard-schemes">Standard Schemes</a>
+<ul>
+<li><a
+href="2.3-standard-schemes.html#dimension-theory-of-standard-schemes"
+id="toc-dimension-theory-of-standard-schemes">Dimension Theory of
+Standard Schemes</a></li>
+<li><a
+href="2.3-standard-schemes.html#geometric-properties-of-standard-varieties"
+id="toc-geometric-properties-of-standard-varieties">Geometric Properties
+of Standard Varieties</a></li>
+<li><a
+href="2.3-standard-schemes.html#birational-geometry-of-standard-schemes"
+id="toc-birational-geometry-of-standard-schemes">Birational Geometry of
+Standard Schemes</a></li>
+</ul></li>
+</ul></li>
+<li><a href="3-morphisms-of-schemes.html#morphisms-of-schemes"
+id="toc-morphisms-of-schemes">Morphisms of Schemes</a>
+<ul>
+<li><a
+href="3.1-global-properties-of-morphisms.html#global-properties-of-morphisms"
+id="toc-global-properties-of-morphisms">Global Properties of
+Morphisms</a>
+<ul>
+<li><a
+href="3.1-global-properties-of-morphisms.html#morphisms-of-finite-type"
+id="toc-morphisms-of-finite-type">Morphisms of Finite Type</a></li>
+<li><a href="3.1-global-properties-of-morphisms.html#affine-morphisms"
+id="toc-affine-morphisms">Affine Morphisms</a></li>
+<li><a
+href="3.1-global-properties-of-morphisms.html#finite-and-quasi-finite-morphisms"
+id="toc-finite-and-quasi-finite-morphisms">Finite and Quasi-finite
+Morphisms</a></li>
+<li><a href="3.1-global-properties-of-morphisms.html#proper-morphisms"
+id="toc-proper-morphisms">Proper Morphisms</a></li>
+<li><a
+href="3.1-global-properties-of-morphisms.html#global-projective-morphisms"
+id="toc-global-projective-morphisms">Global Projective
+Morphisms</a></li>
+</ul></li>
+<li><a href="3.2-flat-morphism.html#flat-morphism"
+id="toc-flat-morphism">Flat Morphism</a>
+<ul>
+<li><a href="3.2-flat-morphism.html#flat-morphism-1"
+id="toc-flat-morphism-1">Flat Morphism</a></li>
+<li><a
+href="3.2-flat-morphism.html#topological-properties-of-flat-morphism"
+id="toc-topological-properties-of-flat-morphism">Topological Properties
+of Flat Morphism</a></li>
+<li><a
+href="3.2-flat-morphism.html#relative-dimension-of-flat-morphisms"
+id="toc-relative-dimension-of-flat-morphisms">Relative Dimension of Flat
+Morphisms</a></li>
+<li><a href="3.2-flat-morphism.html#künneth-formulae"
+id="toc-künneth-formulae">Künneth Formulae</a></li>
+<li><a href="3.2-flat-morphism.html#faithfully-flat-descent"
+id="toc-faithfully-flat-descent">Faithfully Flat Descent</a></li>
+</ul></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#differential-geometry-of-standard-schemes"
+id="toc-differential-geometry-of-standard-schemes">Differential Geometry
+of Standard Schemes</a>
+<ul>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#relative-differential"
+id="toc-relative-differential">Relative Differential</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#tangent-spaces"
+id="toc-tangent-spaces">Tangent Spaces</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#infinitesimal-thickenings-and-formal-lifting-properties"
+id="toc-infinitesimal-thickenings-and-formal-lifting-properties">Infinitesimal
+Thickenings and Formal Lifting Properties</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#unramified-morphisms"
+id="toc-unramified-morphisms">Unramified Morphisms</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#smooth-morphisms"
+id="toc-smooth-morphisms">Smooth Morphisms</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#étale-morphisms"
+id="toc-étale-morphisms">Étale Morphisms</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#further-consequences-and-practical-polynomial-tests"
+id="toc-further-consequences-and-practical-polynomial-tests">Further
+Consequences and Practical Polynomial Tests</a></li>
+<li><a
+href="3.3-differential-geometry-of-standard-schemes.html#structural-summary"
+id="toc-structural-summary">Structural Summary</a></li>
+</ul></li>
+</ul></li>
+<li><a
+href="4-cohomology-of-proper-and-projective-schemes.html#cohomology-of-proper-and-projective-schemes"
+id="toc-cohomology-of-proper-and-projective-schemes">Cohomology of
+Proper and Projective Schemes</a>
+<ul>
+<li><a href="4.1-projective-scheme.html#projective-scheme"
+id="toc-projective-scheme">Projective Scheme</a>
+<ul>
+<li><a
+href="4.1-projective-scheme.html#graded-ideals-and-the-projective-spectrum"
+id="toc-graded-ideals-and-the-projective-spectrum">Graded Ideals and the
+Projective Spectrum</a></li>
+<li><a
+href="4.1-projective-scheme.html#the-scheme-structure-on-operatornameprojs"
+id="toc-the-scheme-structure-on-operatornameprojs">The Scheme Structure
+on <span class="math inline">\operatorname{Proj}S</span></a></li>
+<li><a
+href="4.1-projective-scheme.html#twisting-sheaves-and-the-serre-correspondence"
+id="toc-twisting-sheaves-and-the-serre-correspondence">Twisting Sheaves
+and the Serre Correspondence</a></li>
+<li><a href="4.1-projective-scheme.html#ample-sheaf"
+id="toc-ample-sheaf">Ample Sheaf</a></li>
+<li><a
+href="4.1-projective-scheme.html#projective-bundles-and-relative-very-ampleness"
+id="toc-projective-bundles-and-relative-very-ampleness">Projective
+Bundles and Relative Very Ampleness</a></li>
+<li><a href="4.1-projective-scheme.html#blow-ups"
+id="toc-blow-ups">Blow-Ups</a></li>
+</ul></li>
+<li><a
+href="4.2-cohomology-of-projective-schemes.html#cohomology-of-projective-schemes"
+id="toc-cohomology-of-projective-schemes">Cohomology of Projective
+Schemes</a>
+<ul>
+<li><a
+href="4.2-cohomology-of-projective-schemes.html#cohomology-of-projective-space"
+id="toc-cohomology-of-projective-space">Cohomology of Projective
+Space</a></li>
+<li><a
+href="4.2-cohomology-of-projective-schemes.html#euler-characteristic-and-arithmetic-genus"
+id="toc-euler-characteristic-and-arithmetic-genus">Euler Characteristic
+and Arithmetic Genus</a></li>
+</ul></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#intersection-theory-over-smooth-varieties"
+id="toc-intersection-theory-over-smooth-varieties">Intersection Theory
+over Smooth Varieties</a>
+<ul>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#grothendieck-groups"
+id="toc-grothendieck-groups">Grothendieck Groups</a></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#construction-of-intersection-numbers"
+id="toc-construction-of-intersection-numbers">Construction of
+Intersection Numbers</a></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#sec:cycles-chow-groups"
+id="toc-sec:cycles-chow-groups">Cycles and Chow groups</a></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#chern-roots-the-chern-character-and-the-todd-class"
+id="toc-chern-roots-the-chern-character-and-the-todd-class">Chern roots,
+the Chern character, and the Todd class</a></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#sec:grothendieck-riemann-roch"
+id="toc-sec:grothendieck-riemann-roch">The Grothendieck–Riemann–Roch
+theorem</a></li>
+<li><a
+href="4.3-intersection-theory-over-smooth-varieties.html#sec:corollaries-grr"
+id="toc-sec:corollaries-grr">Corollaries of the
+Grothendieck–Riemann–Roch Theorem</a></li>
+</ul></li>
+</ul></li>
+<li><a href="5-classical-geometry.html#classical-geometry"
+id="toc-classical-geometry">Classical Geometry</a>
+<ul>
+<li><a
+href="5.1-the-concept-and-basic-theory-of-curves.html#the-concept-and-basic-theory-of-curves"
+id="toc-the-concept-and-basic-theory-of-curves">The Concept and Basic
+Theory of Curves</a>
+<ul>
+<li><a
+href="5.1-the-concept-and-basic-theory-of-curves.html#what-are-curves"
+id="toc-what-are-curves">What are Curves?</a></li>
+<li><a
+href="5.1-the-concept-and-basic-theory-of-curves.html#divisors-over-a-curve"
+id="toc-divisors-over-a-curve">Divisors over a Curve</a></li>
+<li><a
+href="5.1-the-concept-and-basic-theory-of-curves.html#riemann-roch-theorem-over-curves"
+id="toc-riemann-roch-theorem-over-curves">Riemann-Roch Theorem over
+Curves</a></li>
+<li><a
+href="5.1-the-concept-and-basic-theory-of-curves.html#hurwitzs-theorem"
+id="toc-hurwitzs-theorem">Hurwitz’s Theorem</a></li>
+</ul></li>
+<li><a href="5.2-plane-geometry.html#plane-geometry"
+id="toc-plane-geometry">Plane Geometry</a>
+<ul>
+<li><a href="5.2-plane-geometry.html#intersection-numbers"
+id="toc-intersection-numbers">Intersection Numbers</a></li>
+</ul></li>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#weil-conjectures-on-curves"
+id="toc-weil-conjectures-on-curves">Weil Conjectures on Curves</a>
+<ul>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#what-are-weil-conjectures"
+id="toc-what-are-weil-conjectures">What are Weil Conjectures?</a></li>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#the-proof-of-the-first-part"
+id="toc-the-proof-of-the-first-part">The proof of the First
+Part</a></li>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#the-proof-of-the-second-part"
+id="toc-the-proof-of-the-second-part">The proof of the Second
+Part</a></li>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#non-geometrically-irreducible-case"
+id="toc-non-geometrically-irreducible-case">Non-geometrically
+irreducible case</a></li>
+<li><a
+href="5.3-weil-conjectures-on-curves.html#the-case-with-singularities"
+id="toc-the-case-with-singularities">The case with
+singularities</a></li>
+</ul></li>
+</ul></li>
+<li><a
+href="6-topology-and-sheaves-of-grothendieck.html#topology-and-sheaves-of-grothendieck"
+id="toc-topology-and-sheaves-of-grothendieck">Topology and Sheaves of
+Grothendieck</a>
+<ul>
+<li><a href="6.1-grothendieck-topology.html#grothendieck-topology"
+id="toc-grothendieck-topology">Grothendieck Topology</a>
+<ul>
+<li><a
+href="6.1-grothendieck-topology.html#grothendieck-topology-and-sieves"
+id="toc-grothendieck-topology-and-sieves">Grothendieck Topology and
+Sieves</a></li>
+<li><a
+href="6.1-grothendieck-topology.html#sheaves-on-grothendieck-topologies"
+id="toc-sheaves-on-grothendieck-topologies">Sheaves on Grothendieck
+Topologies</a></li>
+</ul></li>
+</ul></li>
+</ul>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <section class="archive-method" aria-labelledby="method-title">
+      <div>
+        <p>02 / HOW IT LIVES</p>
+        <h2 id="method-title">写作仍在 LaTeX，阅读发生在网页。</h2>
+      </div>
+      <ol>
+        <li><span>01</span><strong>继续写</strong><p>章节、公式、定理和交叉引用保持原来的 LaTeX 习惯。</p></li>
+        <li><span>02</span><strong>一键生成</strong><p>构建脚本拆分章节、渲染交换图并重建全文索引。</p></li>
+        <li><span>03</span><strong>覆盖发布</strong><p>把生成的 notes/ag 文件夹放回站点，无需维护两套正文。</p></li>
+      </ol>
+    </section>
+  </main>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

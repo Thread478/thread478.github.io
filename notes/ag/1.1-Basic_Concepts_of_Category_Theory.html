@@ -1,0 +1,2270 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Basic Concepts of Category Theory · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Preliminary</p>
+        <h1>Basic Concepts of Category Theory</h1>
+      </header>
+      <h2 data-number="1.1" id="Basic_Concepts_of_Category_Theory">Basic
+      Concepts of Category Theory</h2>
+      <h3 data-number="1.1.1" id="categories">Categories</h3>
+      <h4 data-number="1.1.1.1"
+      id="definition-and-examples-of-category">Definition and Examples
+      of Category</h4>
+      <div class="definition">
+      <p><strong>Definition 1.1</strong> (Category). <em> A
+      <strong>category</strong> <span
+      class="math inline">\mathcal{C}</span> consists of the following
+      data:</em></p>
+      <ol>
+      <li><p><em>A class of <strong>objects</strong>, denoted by <span
+      class="math inline">\operatorname{Ob}(\mathcal{C})</span>.</em></p></li>
+      <li><p><em>For any pair of objects <span class="math inline">X, Y
+      \in \operatorname{Ob}(\mathcal{C})</span>, a set of
+      <strong>morphisms</strong> (or arrows), denoted by <span
+      class="math inline">\operatorname{Hom}_{\mathcal{C}}(X,
+      Y)</span>.</em></p></li>
+      <li><p><em>For any three objects <span class="math inline">X, Y,
+      Z</span>, a <strong>composition law</strong>: <span
+      class="math display">\circ: \operatorname{Hom}_{\mathcal{C}}(Y, Z)
+      \times \operatorname{Hom}_{\mathcal{C}}(X, Y) \longrightarrow
+      \operatorname{Hom}_{\mathcal{C}}(X, Z), \quad (g, f) \longmapsto g
+      \circ f.</span></em></p></li>
+      </ol>
+      <p><em>These data must satisfy the following axioms:</em></p>
+      <ol>
+      <li><p><em><strong>Associativity:</strong> For <span
+      class="math inline">f \in \operatorname{Hom}(X, Y)</span>, <span
+      class="math inline">g \in \operatorname{Hom}(Y, Z)</span>, and
+      <span class="math inline">h \in \operatorname{Hom}(Z, W)</span>,
+      we have <span class="math inline">h \circ (g \circ f) = (h \circ
+      g) \circ f</span>.</em></p></li>
+      <li><p><em><strong>Identity:</strong> For every object <span
+      class="math inline">X</span>, there exists a unique morphism <span
+      class="math inline">\operatorname{id}_X \in \operatorname{Hom}(X,
+      X)</span> such that for all <span class="math inline">f: W \to
+      X</span> and <span class="math inline">g: X \to Y</span>, <span
+      class="math display">\operatorname{id}_X \circ f = f \quad
+      \text{and} \quad g \circ \operatorname{id}_X =
+      g.</span></em></p></li>
+      </ol>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Key Categories in this Book).
+      <em></em></p>
+      <p><em>Presented here are some of the fundamental categories
+      frequently used in this book. They are not exhaustive, but they
+      constitute the most basic elements.</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\mathsf{Set}</span>: The
+      category of sets and functions.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Ab}</span>: The
+      category of Abelian groups and group homomorphisms.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Ring}</span>: The
+      category of commutative rings with unity and ring
+      homomorphisms.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Mod}_A</span>: The
+      category of modules over a ring <span
+      class="math inline">A</span>.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Top}</span>: The
+      category of topological spaces and continuous maps.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Sch}</span>: The
+      category of schemes and morphisms of schemes (to be
+      defined).</em></p></li>
+      </ol>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.2</strong> (Opposite Category). <em> For
+      any category <span class="math inline">\mathcal{C}</span>, the
+      <strong>opposite category</strong> <span
+      class="math inline">\mathcal{C}^{\mathrm{op}}</span> has the same
+      objects as <span class="math inline">\mathcal{C}</span>, but
+      arrows are reversed: <span
+      class="math display">\operatorname{Hom}_{\mathcal{C}^{\mathrm{op}}}(X,
+      Y) := \operatorname{Hom}_{\mathcal{C}}(Y, X).</span> This concept
+      is crucial for algebraic geometry, as geometry often behaves
+      "oppositely" to algebra (e.g., larger ideals define smaller closed
+      sets).</em></p>
+      </div>
+      <h4 data-number="1.1.1.2"
+      id="small-and-locally-small-category">Small and Locally Small
+      Category</h4>
+      <div class="definition">
+      <p><strong>Definition 1.3</strong> (Small and Locally Small
+      Categories). <em> Let <span class="math inline">\mathcal{C}</span>
+      be a category. We denote the collection of all objects in <span
+      class="math inline">\mathcal{C}</span> by <span
+      class="math inline">\operatorname{Ob}(\mathcal{C})</span>, and for
+      any two objects <span class="math inline">x, y \in
+      \mathcal{C}</span>, the collection of all morphisms from <span
+      class="math inline">x</span> to <span class="math inline">y</span>
+      by <span class="math inline">\operatorname{Hom}_\mathcal{C}(x,
+      y)</span>.</em></p>
+      <p><em>To ensure foundational soundness within set theory
+      (avoiding Russell-like paradoxes), we classify categories based on
+      the size of these collections:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\mathcal{C}</span> is a
+      <strong>small category</strong> if both the collection of objects
+      <span class="math inline">\operatorname{Ob}(\mathcal{C})</span>
+      and the total collection of all morphisms are
+      <strong>sets</strong> (as opposed to proper
+      classes).</em></p></li>
+      <li><p><em><span class="math inline">\mathcal{C}</span> is a
+      <strong>locally small category</strong> if for every pair of
+      objects <span class="math inline">x, y \in
+      \operatorname{Ob}(\mathcal{C})</span>, the collection <span
+      class="math inline">\operatorname{Hom}_\mathcal{C}(x, y)</span> is
+      a <strong>set</strong> (called a hom-set), while the collection of
+      objects <span
+      class="math inline">\operatorname{Ob}(\mathcal{C})</span> may be a
+      proper class.</em></p></li>
+      </ol>
+      <p><em>Every small category is trivially locally small, but the
+      converse does not hold.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Examples of Small and Locally
+      Small Categories). <em> We can understand these distinctions
+      through several classical examples:</em></p>
+      <ol>
+      <li><p><em><strong>Locally Small (but Large)
+      Categories:</strong></em></p>
+      <ul>
+      <li><p><em><span class="math inline">\mathsf{Set}</span>: The
+      category of all sets and functions. The collection of all sets is
+      a proper class (by Cantor’s/Russell’s paradox), so it is a large
+      category. However, given any two sets <span
+      class="math inline">A</span> and <span
+      class="math inline">B</span>, the collection of all functions
+      <span class="math inline">{\operatorname{B}}^A</span> forms a
+      legitimate set, so <span class="math inline">\mathsf{Set}</span>
+      is locally small.</em></p></li>
+      <li><p><em><span class="math inline">\mathsf{Grp}</span>, <span
+      class="math inline">\mathsf{Top}</span>, <span
+      class="math inline">\mathsf{Mod}_R</span>: The categories of all
+      groups, topological spaces, and <span
+      class="math inline">R</span>-modules, respectively, are all large
+      but locally small categories for the same reason.</em></p></li>
+      </ul></li>
+      <li><p><em><strong>Small Categories:</strong></em></p>
+      <ul>
+      <li><p><em><strong>Finite Categories:</strong> Any category with a
+      finite number of objects and arrows, such as the terminal category
+      <span class="math inline">\mathbf{1}</span> (one object, one
+      identity arrow), or the discrete category <span
+      class="math inline">\mathbf{2}</span> (two objects, only identity
+      arrows).</em></p></li>
+      <li><p><em><strong>Monoids as Categories:</strong> Any monoid
+      <span class="math inline">(M, \cdot, e)</span> can be viewed as a
+      small category with exactly one object <span
+      class="math inline">*</span>. The elements of the monoid <span
+      class="math inline">m \in M</span> act as the morphisms in <span
+      class="math inline">\operatorname{Hom}(*, *)</span>, and monoid
+      multiplication acts as morphism composition. Since <span
+      class="math inline">M</span> is a set, this category is
+      small.</em></p></li>
+      <li><p><em><strong>Posets as Categories:</strong> Any partially
+      ordeUniBlue set <span class="math inline">(P, \le)</span> can be
+      viewed as a small category where the objects are the elements of
+      <span class="math inline">P</span>. For any <span
+      class="math inline">x, y \in P</span>, the hom-set <span
+      class="math inline">\operatorname{Hom}(x, y)</span> has exactly
+      one unique element if <span class="math inline">x \le y</span>,
+      and is empty otherwise. Since <span class="math inline">P</span>
+      is a set, the category is small.</em></p></li>
+      </ul></li>
+      </ol>
+      </div>
+      <h4 data-number="1.1.1.3" id="functor">Functor</h4>
+      <p>Functors are the structure-preserving maps between
+      categories.</p>
+      <div class="definition">
+      <p><strong>Definition 1.4</strong> (Functor). <em> Let <span
+      class="math inline">\mathcal{C}</span> and <span
+      class="math inline">\mathbf{D}</span> be categories.</em></p>
+      <ol>
+      <li><p><em>A <strong>covariant functor</strong> <span
+      class="math inline">F: \mathcal{C} \to \mathbf{D}</span> assigns
+      to each object <span class="math inline">X \in \mathcal{C}</span>
+      an object <span class="math inline">F(X) \in \mathbf{D}</span>,
+      and to each morphism <span class="math inline">f: X \to Y</span> a
+      morphism <span class="math inline">F(f): F(X) \to F(Y)</span> in
+      <span class="math inline">\mathbf{D}</span>, preserving identity
+      and composition: <span class="math display">F(\operatorname{id}_X)
+      = \operatorname{id}_{F(X)}, \quad F(g \circ f) = F(g) \circ
+      F(f).</span></em></p></li>
+      <li><p><em>A <strong>contravariant functor</strong> from <span
+      class="math inline">\mathcal{C}</span> to <span
+      class="math inline">\mathbf{D}</span> is a covariant functor <span
+      class="math inline">F: \mathcal{C}^{\mathrm{op}} \to
+      \mathbf{D}</span>. Explicitly, it reverses arrows: if <span
+      class="math inline">f: X \to Y</span>, then <span
+      class="math inline">F(f): F(Y) \to F(X)</span>, satisfying <span
+      class="math inline">F(g \circ f) = F(f) \circ
+      F(g)</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Presheaves as Functors).
+      <em></em></p>
+      <p><em>Similarly, the definition of a presheaf is itself a
+      classical contravariant functor. We will revisit this concept in
+      the next section.</em></p>
+      <p><em>Let <span class="math inline">X</span> be a topological
+      space. The open sets of <span class="math inline">X</span> form a
+      category <span class="math inline">\mathsf{Open}(X)</span> where
+      morphisms are inclusions. A <strong>presheaf</strong> <span
+      class="math inline">\mathcal{F}</span> on <span
+      class="math inline">X</span> is simply a contravariant functor:
+      <span class="math display">\mathcal{F}:
+      \mathsf{Open}(X)^{\mathrm{op}} \longrightarrow \mathsf{Set} \quad
+      (\text{or } \mathsf{Ab}, \mathsf{Ring}, \mathsf{Mod}_A \text{
+      where } A \text{ is a ring}).</span></em></p>
+      </div>
+      <h4 data-number="1.1.1.4" id="natural-transformation">Natural
+      Transformation</h4>
+      <p>If categories are mathematical structures and functors are maps
+      between them, then natural transformations are maps between
+      functors.</p>
+      <div class="definition">
+      <p><strong>Definition 1.5</strong> (Natural Transformation). <em>
+      Let <span class="math inline">F, G: \mathcal{C} \to
+      \mathbf{D}</span> be two functors. A <strong>natural
+      transformation</strong> <span class="math inline">\eta: F \to
+      G</span> consists of a family of morphisms in <span
+      class="math inline">\mathbf{D}</span>, <span
+      class="math display">\{ \eta_X: F(X) \to G(X) \}_{X \in
+      \operatorname{Ob}(\mathcal{C})},</span> such that for every
+      morphism <span class="math inline">f: X \to Y</span> in <span
+      class="math inline">\mathcal{C}</span>, the following diagram
+      commutes:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/6a59f64e93105e0388aae119eec9bea770d7f46a.svg" target="_blank" rel="noopener"><img src="assets/diagrams/6a59f64e93105e0388aae119eec9bea770d7f46a.svg" alt="交换图" loading="lazy" /></a></span>
+      If every component <span class="math inline">\eta_X</span> is an
+      isomorphism in <span class="math inline">\mathbf{D}</span>, then
+      <span class="math inline">\eta</span> is called a <strong>natural
+      isomorphism</strong>, denoted <span class="math inline">F \cong
+      G</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Why is this important?). <em> The
+      importance of these categories in algebraic geometry lies in the
+      fact that they provide us with a structuUniBlue framework for
+      research.</em></p>
+      <ol>
+      <li><p><em><strong>Morphisms of Presheaves:</strong> As we shall
+      see in Chapter 1, a morphism between presheaves <span
+      class="math inline">\phi: \mathcal{F} \to \mathcal{G}</span> is
+      precisely a natural transformation between the functors <span
+      class="math inline">\mathcal{F}</span> and <span
+      class="math inline">\mathcal{G}</span>. The commutativity of the
+      diagram ensures compatibility with restriction maps.</em></p></li>
+      <li><p><em><strong>Equivalence of Categories:</strong> We say two
+      categories <span class="math inline">\mathcal{C}</span> and <span
+      class="math inline">\mathbf{D}</span> are
+      <strong>equivalent</strong> if there exist functors <span
+      class="math inline">F: \mathcal{C} \to \mathbf{D}</span> and <span
+      class="math inline">G: \mathbf{D} \to \mathcal{C}</span> such that
+      <span class="math inline">G \circ F \cong
+      \operatorname{id}_{\mathcal{C}}</span> and <span
+      class="math inline">F \circ G \cong
+      \operatorname{id}_{\mathbf{D}}</span> (natural isomorphisms). This
+      is the rigorous language behind our theorem <span
+      class="math inline">\mathsf{Mod}_A \simeq
+      \mathsf{QCoh}(\operatorname{Spec} A)</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.6</strong> (Functor Category). <em> Let
+      <span class="math inline">\mathcal{C}</span> and <span
+      class="math inline">\mathbf{D}</span> be two categories. The
+      <strong>functor category</strong> from <span
+      class="math inline">\mathcal{C}</span> to <span
+      class="math inline">\mathbf{D}</span>, denoted by <span
+      class="math inline">\mathsf{Fun}(\mathcal{C}, \mathbf{D})</span>
+      or <span class="math inline">\mathbf{D}^{\mathcal{C}}</span>, is
+      the category defined by the following data:</em></p>
+      <ul>
+      <li><p><em><strong>Objects:</strong> The objects are all covariant
+      functors <span class="math inline">F: \mathcal{C} \to
+      \mathbf{D}</span>.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> For any two functors <span
+      class="math inline">F, G \in \mathsf{Fun}(\mathcal{C},
+      \mathbf{D})</span>, a morphism <span class="math inline">\alpha: F
+      \to G</span> is a <strong>natural transformation</strong> between
+      them. That is, <span class="math inline">\alpha</span> consists of
+      a collection of morphisms in <span
+      class="math inline">\mathbf{D}</span>: <span
+      class="math display">\{ \alpha_X: F(X) \to G(X) \}_{X \in
+      \mathcal{C}}</span> such that for every morphism <span
+      class="math inline">f: X \to Y</span> in <span
+      class="math inline">\mathcal{C}</span>, the following diagram in
+      <span class="math inline">\mathbf{D}</span> commutes:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/e0dfe2862d05c6967978f11eb70119ae5b8f7a73.svg" target="_blank" rel="noopener"><img src="assets/diagrams/e0dfe2862d05c6967978f11eb70119ae5b8f7a73.svg" alt="交换图" loading="lazy" /></a></span></em></p></li>
+      <li><p><em><strong>Composition:</strong> The composition of
+      morphisms is given by the vertical composition of natural
+      transformations. For <span class="math inline">\alpha: F \to
+      G</span> and <span class="math inline">\beta: G \to H</span>,
+      their composition <span class="math inline">\beta \circ \alpha: F
+      \to H</span> is defined componentwise: <span
+      class="math display">(\beta \circ \alpha)_X := \beta_X \circ
+      \alpha_X \quad \forall X \in \mathcal{C}.</span></em></p></li>
+      <li><p><em><strong>Identity:</strong> For each functor <span
+      class="math inline">F</span>, the identity morphism <span
+      class="math inline">\mathrm{id}_F: F \to F</span> is given by the
+      identity components <span class="math inline">(\mathrm{id}_F)_X =
+      \mathrm{id}_{F(X)}</span> for all <span class="math inline">X \in
+      \mathcal{C}</span>.</em></p></li>
+      </ul>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (The Pointwise Principle). <em> A
+      defining philosophy of the functor category <span
+      class="math inline">\mathsf{Fun}(\mathcal{C}, \mathbf{D})</span>
+      is that limits, colimits, and algebraic structures are inherited
+      pointwise from <span
+      class="math inline">\mathbf{D}</span>.</em></p>
+      <p><em>If <span class="math inline">\mathbf{D}</span> is an
+      Abelian category (such as <span
+      class="math inline">\mathsf{Ab}</span> or <span
+      class="math inline">\mathsf{Mod}(R)</span>), then <span
+      class="math inline">\mathsf{Fun}(\mathcal{C}, \mathbf{D})</span>
+      automatically becomes an <strong>Abelian category</strong>. For
+      any natural transformation <span class="math inline">\alpha: F \to
+      G</span>, its kernel and cokernel functors are computed
+      object-by-object in the domain: <span class="math display">(\ker
+      \alpha)(X) := \ker(\alpha_X), \quad (\mathrm{coker}\, \alpha)(X)
+      := \mathrm{coker}(\alpha_X).</span> This is precisely why the
+      category of presheaves <span class="math inline">\mathsf{PSh}(X,
+      \mathcal{C}) := \mathsf{Fun}(\mathsf{Open}(X)^{\mathrm{op}},
+      \mathcal{C})</span> is Abelian whenever <span
+      class="math inline">\mathcal{C}</span> is abelian.</em></p>
+      </div>
+      <h4 data-number="1.1.1.5"
+      id="monomorphism-and-epimorphism">Monomorphism and
+      Epimorphism</h4>
+      <p>In category theory, we define properties of morphisms not by
+      looking at elements (which may not exist), but by their
+      interaction with other morphisms (cancellation properties).</p>
+      <div class="definition">
+      <p><strong>Definition 1.7</strong> (Monomorphism and Epimorphism).
+      <em> Let <span class="math inline">f: X \to Y</span> be a morphism
+      in a category <span
+      class="math inline">\mathcal{C}</span>.</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is a
+      <strong>monomorphism</strong> (or <strong>mono</strong>) if it is
+      left-cancellable. For any object <span
+      class="math inline">Z</span> and any morphisms <span
+      class="math inline">g_1, g_2: Z \to X</span>: <span
+      class="math display">f \circ g_1 = f \circ g_2 \implies g_1 =
+      g_2.</span> (Notation: <span class="math inline">X \hookrightarrow
+      Y</span>).</em></p></li>
+      <li><p><em><span class="math inline">f</span> is an
+      <strong>epimorphism</strong> (or <strong>epi</strong>) if it is
+      right-cancellable. For any object <span
+      class="math inline">Z</span> and any morphisms <span
+      class="math inline">h_1, h_2: Y \to Z</span>: <span
+      class="math display">h_1 \circ f = h_2 \circ f \implies h_1 =
+      h_2.</span> (Notation: <span class="math inline">X
+      \twoheadrightarrow Y</span>).</em></p></li>
+      </ol>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.8</strong> (Isomorphism). <em> A morphism
+      <span class="math inline">f: X \to Y</span> is an
+      <strong>isomorphism</strong> if there exists a morphism <span
+      class="math inline">g: Y \to X</span> (called the inverse) such
+      that: <span class="math display">g \circ f = \operatorname{id}_X
+      \quad \text{and} \quad f \circ g = \operatorname{id}_Y.</span> If
+      such an <span class="math inline">f</span> exists, we say <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span> are <strong>isomorphic</strong>
+      (<span class="math inline">X \cong Y</span>).</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Bimorphisms are not Isomorphisms).
+      <em> A morphism that is both mono and epi is called a
+      <strong>bimorphism</strong>.</em></p>
+      <p><em><strong>Warning:</strong> A bimorphism is NOT necessarily
+      an isomorphism!</em></p>
+      <ol>
+      <li><p><em>In <span class="math inline">\mathsf{Set}</span> and
+      <span class="math inline">\mathsf{Mod}_A</span> where <span
+      class="math inline">A</span> is a ring, Bimorphism <span
+      class="math inline">\iff</span> Isomorphism.</em></p></li>
+      <li><p><em>In <span class="math inline">\mathsf{Ring}</span>, the
+      inclusion <span class="math inline">\mathbb{Z} \hookrightarrow
+      \mathbb{Q}</span> is both mono and epi, but clearly not an
+      isomorphism.</em></p></li>
+      <li><p><em>In <span class="math inline">\mathsf{Top}</span>, a
+      continuous bijection is both mono and epi, but not necessarily a
+      homeomorphism (the inverse might not be continuous).</em></p></li>
+      </ol>
+      <p><em>In algebraic geometry, checking isomorphism requires
+      constructing the inverse explicitly.</em></p>
+      </div>
+      <h4 data-number="1.1.1.6" id="limit-and-colimit">Limit and
+      Colimit</h4>
+      <p>Limits and colimits generalize constructions like products,
+      intersections, kernels, and direct sums. They are defined via
+      <strong>Universal Properties</strong>. Let <span
+      class="math inline">\mathcal{C}</span> and <span
+      class="math inline">\mathcal{J}</span> be categories, and let
+      <span class="math inline">F: \mathcal{J} \to \mathcal{C}</span> be
+      a functor (often called a diagram of shape <span
+      class="math inline">\mathcal{J}</span> in <span
+      class="math inline">\mathcal{C}</span>).</p>
+      <div class="definition">
+      <p><strong>Definition 1.9</strong> (Cone and Limit). <em> A
+      <strong>cone</strong> to the diagram <span
+      class="math inline">F</span> consists of an object <span
+      class="math inline">N \in \mathcal{C}</span> together with a
+      family of morphisms <span class="math inline">\psi_j: N \to
+      F(j)</span> for each object <span class="math inline">j \in
+      \mathcal{J}</span>, such that for every morphism <span
+      class="math inline">f: j \to k</span> in <span
+      class="math inline">\mathcal{J}</span>, the condition <span
+      class="math inline">F(f) \circ \psi_j = \psi_k</span>
+      holds.</em></p>
+      <p><em>The <strong>limit</strong> of <span
+      class="math inline">F</span> is a universal cone <span
+      class="math inline">(L, \phi)</span>. That is, it is a cone with
+      an object <span class="math inline">L \in \mathcal{C}</span> and
+      morphisms <span class="math inline">\phi_j: L \to F(j)</span>,
+      such that for any other cone <span class="math inline">(N,
+      \psi)</span> to <span class="math inline">F</span>, there exists a
+      unique morphism <span class="math inline">u: N \to L</span> making
+      the following diagram commute for all morphisms <span
+      class="math inline">f: j \to k</span> in <span
+      class="math inline">\mathcal{J}</span>:</em></p>
+      <p><em><span class="commutative-diagram-inline"><a href="assets/diagrams/3bc74a98f552cee14c6e9f6475602fc92e35a34a.svg" target="_blank" rel="noopener"><img src="assets/diagrams/3bc74a98f552cee14c6e9f6475602fc92e35a34a.svg" alt="交换图" loading="lazy" /></a></span>
+      The limit is conventionally denoted as <span class="math inline">L
+      = \varprojlim F</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.10</strong> (Cocone and Colimit). <em> A
+      <strong>cocone</strong> from the diagram <span
+      class="math inline">F</span> consists of an object <span
+      class="math inline">N \in \mathcal{C}</span> together with a
+      family of morphisms <span class="math inline">\psi_j: F(j) \to
+      N</span> for each object <span class="math inline">j \in
+      \mathcal{J}</span>, such that for every morphism <span
+      class="math inline">f: j \to k</span> in <span
+      class="math inline">\mathcal{J}</span>, the condition <span
+      class="math inline">\psi_k \circ F(f) = \psi_j</span>
+      holds.</em></p>
+      <p><em>The <strong>colimit</strong> of <span
+      class="math inline">F</span> is a universal cocone <span
+      class="math inline">(C, \phi)</span>. That is, it is a cocone with
+      an object <span class="math inline">C \in \mathcal{C}</span> and
+      morphisms <span class="math inline">\phi_j: F(j) \to C</span>,
+      such that for any other cocone <span class="math inline">(N,
+      \psi)</span> from <span class="math inline">F</span>, there exists
+      a unique morphism <span class="math inline">u: C \to N</span>
+      making the following diagram commute for all morphisms <span
+      class="math inline">f: j \to k</span> in <span
+      class="math inline">\mathcal{J}</span>:</em></p>
+      <p><em><span class="commutative-diagram-inline"><a href="assets/diagrams/9f0ce2224d9637661a106dc897637a0b3c338ac2.svg" target="_blank" rel="noopener"><img src="assets/diagrams/9f0ce2224d9637661a106dc897637a0b3c338ac2.svg" alt="交换图" loading="lazy" /></a></span>
+      The colimit is conventionally denoted as <span
+      class="math inline">C = \varinjlim F</span>.</em></p>
+      </div>
+      <p>Many fundamental constructions in mathematics are just limits
+      or colimits evaluated over specific shapes of index categories
+      (diagrams). Let <span class="math inline">\mathcal{J}</span>
+      denote the index category.</p>
+      <dl>
+      <dt>1. Product</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Limit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> is a <strong>discrete
+      category</strong>. It consists of a set of objects (the index set)
+      with absolutely no morphisms between them other than the mandatory
+      identity morphisms.</p>
+      </dd>
+      <dt>2. Coproduct</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Colimit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> is a <strong>discrete
+      category</strong> (exactly the same shape as the product).</p>
+      </dd>
+      <dt>3. Fiber Product</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Limit<br />
+      <strong>Diagram Shape:</strong> In category theory, this is
+      completely synonymous with the <strong>Pullback</strong>.
+      Therefore, the index category <span
+      class="math inline">\mathcal{J}</span> is a <strong>three-object
+      category with two arrows pointing to a common target</strong>
+      (<span class="math inline">\bullet \rightarrow \bullet \leftarrow
+      \bullet</span>).</p>
+      </dd>
+      <dt>4. Fiber Coproduct</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Colimit<br />
+      <strong>Diagram Shape:</strong> This is categorically synonymous
+      with the <strong>Pushout</strong>. The index category <span
+      class="math inline">\mathcal{J}</span> is a <strong>three-object
+      category with two arrows originating from a common source</strong>
+      (<span class="math inline">\bullet \leftarrow \bullet \rightarrow
+      \bullet</span>).</p>
+      </dd>
+      <dt>5. Equalizer</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Limit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> consists of two objects and
+      two parallel morphisms between them.
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/66b0d4b3fe695971cc282dd6736c3bf39378cb77.svg" target="_blank" rel="noopener"><img src="assets/diagrams/66b0d4b3fe695971cc282dd6736c3bf39378cb77.svg" alt="交换图" loading="lazy" /></a></span></p>
+      </dd>
+      <dt>6. Coequalizer</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Colimit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> consists of two objects and
+      two parallel morphisms between them (exactly the same shape as the
+      equalizer).</p>
+      </dd>
+      <dt>7. Inverse Limit (Projective Limit)</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Limit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> is a <strong>directed
+      poset</strong> (partially ordeUniBlue set) treated as a category,
+      or more generally a <strong>cofiltered category</strong>.
+      Morphisms represent the ordering, and the arrows in the diagram
+      point "backwards" relative to the index ordering (i.e., if <span
+      class="math inline">i \leq j</span>, there is a transition map
+      <span class="math inline">F(j) \to F(i)</span>).</p>
+      </dd>
+      <dt>8. Direct Limit (Injective Limit)</dt>
+      <dd>
+      <p><br />
+      <strong>Type:</strong> Colimit<br />
+      <strong>Diagram Shape:</strong> <span
+      class="math inline">\mathcal{J}</span> is a <strong>directed
+      poset</strong>, or more generally a <strong>filtered
+      category</strong>. If <span class="math inline">i \leq j</span> in
+      the poset, there is a transition map <span
+      class="math inline">F(i) \to F(j)</span>.</p>
+      </dd>
+      </dl>
+      <h3 data-number="1.1.2"
+      id="abelian-category-and-adjoint-functor">Abelian Category and
+      Adjoint Functor</h3>
+      <h4 data-number="1.1.2.1" id="additive-category">Additive
+      Category</h4>
+      <p>To do homological algebra (kernels, exact sequences,
+      cohomology), we need categories with more structure than just sets
+      and maps. We build this structure in layers: from Additive to
+      Abelian.</p>
+      <div class="definition">
+      <p><strong>Definition 1.11</strong> (Zero Object). <em> An object
+      <span class="math inline">0</span> is a <strong>zero
+      object</strong> if it is both initial and terminal. That is, for
+      any object <span class="math inline">X</span>, there are unique
+      morphisms <span class="math inline">0 \to X</span> and <span
+      class="math inline">X \to 0</span>. If a category has a zero
+      object, we define the <strong>zero morphism</strong> <span
+      class="math inline">0_{XY}: X \to Y</span> as the unique composite
+      <span class="math inline">X \to 0 \to Y</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.12</strong> (Additive Category). <em> A
+      category <span class="math inline">\mathcal{C}</span> is
+      <strong>additive</strong> if:</em></p>
+      <ol>
+      <li><p><em>It has a zero object.</em></p></li>
+      <li><p><em>It has all finite binary products (and thus
+      coproducts). In fact, in this setting, products and coproducts
+      coincide: <span class="math inline">X \times Y \cong X \oplus
+      Y</span> (called <strong>biproducts</strong>).</em></p></li>
+      <li><p><em>Every set of morphisms <span
+      class="math inline">\operatorname{Hom}(X, Y)</span> has the
+      structure of an Abelian group, such that composition is
+      bilinear.</em></p></li>
+      </ol>
+      <p><em>Examples: <span class="math inline">\mathsf{Ab}</span>,
+      <span class="math inline">\mathsf{Mod}_R</span>, but
+      <strong>not</strong> <span
+      class="math inline">\mathsf{Ring}</span> or <span
+      class="math inline">\mathsf{Set}</span>.</em></p>
+      </div>
+      <h4 data-number="1.1.2.2" id="abelian-category">Abelian
+      Category</h4>
+      <p>An additive category is <strong>Abelian</strong> if it behaves
+      like the category of Abelian groups. The critical requirement is
+      the First Isomorphism Theorem.</p>
+      <div class="definition">
+      <p><strong>Definition 1.13</strong> (Abelian Category). <em> An
+      additive category <span class="math inline">\mathcal{A}</span> is
+      <strong>Abelian</strong> if:</em></p>
+      <ol>
+      <li><p><em>Every morphism has a kernel and a
+      cokernel.</em></p></li>
+      <li><p><em>Every monomorphism is the kernel of its
+      cokernel.</em></p></li>
+      <li><p><em>Every epimorphism is the cokernel of its
+      kernel.</em></p></li>
+      <li><p><em><strong>(The Isomorphism Theorem)</strong> For every
+      morphism <span class="math inline">f: X \to Y</span>, the
+      canonical induced morphism <span class="math inline">\bar{f}:
+      \operatorname{coim} f \to \operatorname{im} f</span> is an
+      <strong>isomorphism</strong>.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Canonical Factorization). <em> In
+      an Abelian category, every morphism <span class="math inline">f: X
+      \to Y</span> admits a unique canonical factorization:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/2b24405252d47a8e6f72c4adb8a5792c7501d7df.svg" target="_blank" rel="noopener"><img src="assets/diagrams/2b24405252d47a8e6f72c4adb8a5792c7501d7df.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">X \to I</span> is an epimorphism
+      (the coimage) and <span class="math inline">I \to Y</span> is a
+      monomorphism (the image). Because <span
+      class="math inline">\operatorname{coim} f \cong \operatorname{im}
+      f</span>, we identify them and call <span
+      class="math inline">I</span> "the image".</em></p>
+      </div>
+      <h4 data-number="1.1.2.3" id="exactness">Exactness</h4>
+      <p>With kernels and images defined via universal properties, we
+      can rigorously define exact sequences in any Abelian category
+      (including sheaves).</p>
+      <div class="definition">
+      <p><strong>Definition 1.14</strong> (Exact Sequence). <em> A
+      sequence of morphisms <span class="math inline">X \xrightarrow{f}
+      Y \xrightarrow{g} Z</span> is <strong>exact at <span
+      class="math inline">Y</span></strong> if: <span
+      class="math display">\operatorname{im} f = \ker g.</span> (More
+      precisely, the monomorphism <span
+      class="math inline">\operatorname{im} f \hookrightarrow Y</span>
+      is equivalent to the monomorphism <span class="math inline">\ker g
+      \hookrightarrow Y</span>). A sequence <span class="math inline">0
+      \to X \to Y \to Z \to 0</span> is a <strong>short exact
+      sequence</strong> if it is exact at <span
+      class="math inline">X</span>, <span class="math inline">Y</span>,
+      and <span class="math inline">Z</span>. This is equivalent to
+      saying <span class="math inline">X = \ker(Y \to Z)</span> and
+      <span class="math inline">Z = \operatorname{coker}(X \to
+      Y)</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.15</strong> (Exact and One-Sided Exact
+      Functors). <em> Let <span class="math inline">\mathcal{A}</span>
+      and <span class="math inline">\mathcal{B}</span> be Abelian
+      categories, and let <span class="math inline">F: \mathcal{A} \to
+      \mathcal{B}</span> be an additive covariant functor. Consider an
+      arbitrary short exact sequence in <span
+      class="math inline">\mathcal{A}</span>: <span
+      class="math display">0 \longrightarrow A \xrightarrow{\ f\ } B
+      \xrightarrow{\ g\ } C \longrightarrow 0</span> Applying the
+      functor <span class="math inline">F</span> yields a complex in
+      <span class="math inline">\mathcal{B}</span>: <span
+      class="math display">0 \longrightarrow F(A) \xrightarrow{\ F(f)\ }
+      F(B) \xrightarrow{\ F(g)\ } F(C) \longrightarrow 0</span></em></p>
+      <p><em>We classify the functor <span class="math inline">F</span>
+      based on the degree to which it preserves the exactness of this
+      sequence:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">F</span> is called
+      <strong>left exact</strong> if the following sequence in <span
+      class="math inline">\mathcal{B}</span> is exact: <span
+      class="math display">0 \longrightarrow F(A) \xrightarrow{\ F(f)\ }
+      F(B) \xrightarrow{\ F(g)\ } F(C)</span> Equivalently, <span
+      class="math inline">F</span> preserves kernels.</em></p></li>
+      <li><p><em><span class="math inline">F</span> is called
+      <strong>right exact</strong> if the following sequence in <span
+      class="math inline">\mathcal{B}</span> is exact: <span
+      class="math display">F(A) \xrightarrow{\ F(f)\ } F(B)
+      \xrightarrow{\ F(g)\ } F(C) \longrightarrow 0</span> Equivalently,
+      <span class="math inline">F</span> preserves
+      cokernels.</em></p></li>
+      <li><p><em><span class="math inline">F</span> is called
+      <strong>exact</strong> if it is both left exact and right exact.
+      That is, the full sequence remains short exact in <span
+      class="math inline">\mathcal{B}</span>: <span
+      class="math display">0 \longrightarrow F(A) \xrightarrow{\ F(f)\ }
+      F(B) \xrightarrow{\ F(g)\ } F(C) \longrightarrow 0</span>
+      Equivalently, <span class="math inline">F</span> preserves all
+      finite limits and finite colimits.</em></p></li>
+      </ol>
+      <p><em>Dually, if <span class="math inline">G: \mathcal{A} \to
+      \mathcal{B}</span> is an additive <strong>contravariant</strong>
+      functor, the arrows reverse. In this case, <span
+      class="math inline">G</span> is called:</em></p>
+      <ul>
+      <li><p><em><strong>Left exact</strong> if <span
+      class="math inline">0 \to G(C) \to G(B) \to G(A)</span> is exact.
+      (e.g., the hom-functor <span
+      class="math inline">\operatorname{Hom}_{\mathcal{A}}(-,
+      M)</span>).</em></p></li>
+      <li><p><em><strong>Right exact</strong> if <span
+      class="math inline">G(C) \to G(B) \to G(A) \to 0</span> is
+      exact.</em></p></li>
+      <li><p><em><strong>Exact</strong> if <span class="math inline">0
+      \to G(C) \to G(B) \to G(A) \to 0</span> is exact.</em></p></li>
+      </ul>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Examples of Exactness in
+      Algebra). <em> Let <span class="math inline">R</span> be a
+      commutative ring, and let <span class="math inline">\mathcal{A} =
+      \mathcal{B} = \mathsf{Mod}_R</span> be the Abelian category of
+      <span class="math inline">R</span>-modules. We illustrate
+      different exactness behaviors using classical algebraic
+      constructions:</em></p>
+      <ol>
+      <li><p><em><strong>Left Exact (but not Right Exact) Covariant
+      Functors:</strong> For a fixed <span
+      class="math inline">R</span>-module <span
+      class="math inline">M</span>, the hom-functor <span
+      class="math inline">F = \operatorname{Hom}_R(M, -): \mathsf{Mod}_R
+      \to \mathsf{Mod}_R</span> is always left exact. As a concrete
+      example, take <span class="math inline">R = \mathbb{Z}</span>,
+      <span class="math inline">M = \mathbb{Z}/2\mathbb{Z}</span>.
+      Consider the standard short exact sequence of <span
+      class="math inline">\mathbb{Z}</span>-modules (Abelian groups):
+      <span class="math display">0 \longrightarrow \mathbb{Z}
+      \xrightarrow{\ \times 2\ } \mathbb{Z} \xrightarrow{\ \pi\ }
+      \mathbb{Z}/2\mathbb{Z} \longrightarrow 0</span> Applying <span
+      class="math inline">\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/2\mathbb{Z},
+      -)</span> yields the sequence: <span class="math display">0
+      \longrightarrow 0 \longrightarrow 0 \longrightarrow
+      \mathbb{Z}/2\mathbb{Z}</span> The rightmost map is forced to be a
+      zero map, which fails to be surjective onto <span
+      class="math inline">\mathbb{Z}/2\mathbb{Z}</span>. Thus, it is
+      left exact but not right exact. The failure of right exactness
+      here leads directly to the definition of the extension groups
+      <span
+      class="math inline">\operatorname{Ext}^n_\mathbb{Z}(\mathbb{Z}/2\mathbb{Z},
+      -)</span>.</em></p></li>
+      <li><p><em><strong>Left Exact (but not Right Exact) Contravariant
+      Functors:</strong> Dually, the contravariant hom-functor <span
+      class="math inline">G = \operatorname{Hom}_R(-, M):
+      \mathsf{Mod}_R^{\operatorname{op}} \to \mathsf{Mod}_R</span> is
+      left exact. Using <span class="math inline">R = \mathbb{Z}</span>
+      and <span class="math inline">M = \mathbb{Z}</span>, apply <span
+      class="math inline">\operatorname{Hom}_\mathbb{Z}(-,
+      \mathbb{Z})</span> to the same sequence above. It yields: <span
+      class="math display">0 \longrightarrow
+      \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/2\mathbb{Z}, \mathbb{Z})
+      \longrightarrow \operatorname{Hom}_\mathbb{Z}(\mathbb{Z},
+      \mathbb{Z}) \longrightarrow
+      \operatorname{Hom}_\mathbb{Z}(\mathbb{Z}, \mathbb{Z})</span> Since
+      <span
+      class="math inline">\operatorname{Hom}_\mathbb{Z}(\mathbb{Z}/2\mathbb{Z},
+      \mathbb{Z}) = 0</span> and <span
+      class="math inline">\operatorname{Hom}_\mathbb{Z}(\mathbb{Z},
+      \mathbb{Z}) \cong \mathbb{Z}</span>, this becomes: <span
+      class="math display">0 \longrightarrow 0 \longrightarrow
+      \mathbb{Z} \xrightarrow{\ \times 2\ } \mathbb{Z}</span> This
+      sequence is short exact on the left, but the multiplication by 2
+      map is not surjective, so the sequence breaks on the
+      right.</em></p></li>
+      <li><p><em><strong>Right Exact (but not Left Exact) Covariant
+      Functors:</strong> For a fixed <span
+      class="math inline">R</span>-module <span
+      class="math inline">M</span>, the tensor product functor <span
+      class="math inline">T = (- \otimes_R M): \mathsf{Mod}_R \to
+      \mathsf{Mod}_R</span> is always right exact. Take <span
+      class="math inline">R = \mathbb{Z}</span> and <span
+      class="math inline">M = \mathbb{Z}/2\mathbb{Z}</span>. Apply <span
+      class="math inline">(- \otimes_\mathbb{Z}
+      \mathbb{Z}/2\mathbb{Z})</span> to the sequence <span
+      class="math inline">0 \to \mathbb{Z} \xrightarrow{\times 2}
+      \mathbb{Z} \to \mathbb{Z}/2\mathbb{Z} \to 0</span>. Utilizing the
+      standard isomorphism <span class="math inline">X
+      \otimes_\mathbb{Z} \mathbb{Z}/2\mathbb{Z} \cong X/2X</span>, the
+      resulting sequence is: <span
+      class="math display">\mathbb{Z}/2\mathbb{Z} \xrightarrow{\ \times
+      2\ } \mathbb{Z}/2\mathbb{Z} \xrightarrow{\ \cong\ }
+      \mathbb{Z}/2\mathbb{Z} \longrightarrow 0</span> Since the first
+      map is multiplication by 2 on <span
+      class="math inline">\mathbb{Z}/2\mathbb{Z}</span>, it is the zero
+      map. Thus, its kernel is the entire space <span
+      class="math inline">\mathbb{Z}/2\mathbb{Z}</span>, meaning the
+      sequence is not exact on the left (<span class="math inline">0 \to
+      \mathbb{Z}/2\mathbb{Z}</span> is lost). This failure of left
+      exactness is precisely what the torsion groups <span
+      class="math inline">\operatorname{Tor}_n^\mathbb{Z}(-,
+      \mathbb{Z}/2\mathbb{Z})</span> measure.</em></p></li>
+      <li><p><em><strong>Completely Exact Functors:</strong></em></p>
+      <ul>
+      <li><p><em><strong>Localization:</strong> Let <span
+      class="math inline">S \subset R</span> be a multiplicatively
+      closed subset. The localization functor <span
+      class="math inline">S^{-1}(-): \mathsf{Mod}_R \to
+      \mathsf{Mod}_{S^{-1}R}</span> is a completely exact covariant
+      functor. It preserves both kernels and cokernels
+      simultaneously.</em></p></li>
+      <li><p><em><strong>Flat and Projective Modules:</strong> If a
+      module <span class="math inline">M</span> is <strong>flat</strong>
+      (e.g., <span class="math inline">M = \mathbb{Q}</span> as a <span
+      class="math inline">\mathbb{Z}</span>-module), then the
+      right-exact functor <span class="math inline">(- \otimes_R
+      M)</span> becomes completely exact. Similarly, if <span
+      class="math inline">M</span> is <strong>projective</strong> (or
+      free, like <span class="math inline">\mathbb{Z}^n</span>), then
+      the left-exact functor <span
+      class="math inline">\operatorname{Hom}_R(M, -)</span> becomes
+      completely exact.</em></p></li>
+      </ul></li>
+      </ol>
+      </div>
+      <h4 data-number="1.1.2.4" id="adjoint-functor">Adjoint
+      Functor</h4>
+      <p>"Adjoint functors arise everywhere." This slogan captures the
+      essence of modern mathematics. Most canonical constructions (free
+      objects, completions, spectra, sheafification) are instances of
+      adjoint functors.</p>
+      <p>The most intuitive definition of adjunction is through a
+      natural bijection of Hom-sets. It expresses a duality between two
+      functors.</p>
+      <div class="definition">
+      <p><strong>Definition 1.16</strong> (Adjunction). <em> Let <span
+      class="math inline">F: \mathcal{C} \to \mathbf{D}</span> and <span
+      class="math inline">G: \mathbf{D} \to \mathcal{C}</span> be two
+      functors. We say that <span class="math inline">F</span> is the
+      <strong>left adjoint</strong> to <span
+      class="math inline">G</span> (and <span
+      class="math inline">G</span> is the <strong>right adjoint</strong>
+      to <span class="math inline">F</span>), denoted <span
+      class="math inline">F \dashv G</span>, if there exists a bijection
+      of sets: <span class="math display">\Phi_{X,Y}:
+      \operatorname{Hom}_{\mathbf{D}}(F(X), Y) \xrightarrow{\sim}
+      \operatorname{Hom}_{\mathcal{C}}(X, G(Y))</span> which is
+      <strong>natural</strong> in both <span class="math inline">X \in
+      \mathcal{C}</span> and <span class="math inline">Y \in
+      \mathbf{D}</span>.</em></p>
+      </div>
+      <p>Naturality means that for any morphisms <span
+      class="math inline">f: X&#39; \to X</span> in <span
+      class="math inline">\mathcal{C}</span> and <span
+      class="math inline">g: Y \to Y&#39;</span> in <span
+      class="math inline">\mathbf{D}</span>, the following diagrams
+      commute (compatible with pre-composition and
+      post-composition).</p>
+      <p>By analyzing the identity morphisms under the bijection <span
+      class="math inline">\Phi</span>, we extract two fundamental
+      natural transformations that characterize the adjunction.</p>
+      <div class="definition">
+      <p><strong>Definition 1.17</strong> (Unit and Counit of an
+      Adjunction). <em> Let <span class="math inline">F \dashv
+      G</span>.</em></p>
+      <ol>
+      <li><p><em><strong>Unit:</strong> By setting <span
+      class="math inline">Y = F(X)</span>, the identity <span
+      class="math inline">\operatorname{id}_{F(X)}</span> corresponds to
+      a morphism <span class="math inline">\eta_X: X \to G(F(X))</span>.
+      This defines a natural transformation: <span
+      class="math display">\eta: \operatorname{id}_{\mathcal{C}}
+      \longrightarrow G \circ F</span> called the <strong>unit</strong>
+      of the adjunction.</em></p></li>
+      <li><p><em><strong>Counit:</strong> By setting <span
+      class="math inline">X = G(Y)</span>, the identity <span
+      class="math inline">\operatorname{id}_{G(Y)}</span> corresponds to
+      a morphism <span class="math inline">\varepsilon_Y: F(G(Y)) \to
+      Y</span>. This defines a natural transformation: <span
+      class="math display">\varepsilon: F \circ G \longrightarrow
+      \operatorname{id}_{\mathbf{D}}</span> called the
+      <strong>counit</strong> of the adjunction.</em></p></li>
+      </ol>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Triangle Identities). <em> Two
+      functors <span class="math inline">F, G</span> form an adjunction
+      <span class="math inline">(F, G, \eta, \varepsilon)</span> if and
+      only if they satisfy the <strong>Triangle
+      Identities</strong>:</em></p>
+      <ol>
+      <li><p><em>The composition <span class="math inline">F
+      \xrightarrow{F\eta} F G F \xrightarrow{\varepsilon F} F</span> is
+      the identity <span
+      class="math inline">\operatorname{id}_F</span>.</em></p></li>
+      <li><p><em>The composition <span class="math inline">G
+      \xrightarrow{\eta G} G F G \xrightarrow{G\varepsilon} G</span> is
+      the identity <span
+      class="math inline">\operatorname{id}_G</span>.</em></p></li>
+      </ol>
+      <p><em><span class="commutative-diagram-inline"><a href="assets/diagrams/d5c11e1bbd00cae926da97db5e800082cd47f934.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d5c11e1bbd00cae926da97db5e800082cd47f934.svg" alt="交换图" loading="lazy" /></a></span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> See Theorem <span class="citation"
+      data-cites="maclane1998categories">(Mac Lane 1998, Chapter IV:
+      Adjoints, Theorem IV.1)</span> of Mac Lane (1998) for the full
+      characterization via triangle identities. ◻</p>
+      </div>
+      <h4 data-number="1.1.2.5" id="rapl-and-lapc">RAPL and LAPC</h4>
+      <p>This is the most practically useful theorem for algebraic
+      geometry. It tells us "for free" whether a functor is exact (or
+      half-exact).</p>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (RAPL and LAPC). <em> Let <span
+      class="math inline">F: \mathcal{C} \to \mathbf{D}</span> be a left
+      adjoint and <span class="math inline">G: \mathbf{D} \to
+      \mathcal{C}</span> be a right adjoint (<span class="math inline">F
+      \dashv G</span>).</em></p>
+      <ol>
+      <li><p><em><strong>Right Adjoints Preserve Limits (RAPL):</strong>
+      <span class="math inline">G</span> preserves all limits that exist
+      in <span class="math inline">\mathbf{D}</span>. <span
+      class="math display">G(\varprojlim Y_i) \cong \varprojlim
+      G(Y_i).</span> In particular, <span class="math inline">G</span>
+      preserves kernels and products. Thus, a right adjoint between
+      Abelian categories is always <strong>left
+      exact</strong>.</em></p></li>
+      <li><p><em><strong>Left Adjoints Preserve Colimits
+      (LAPC):</strong> <span class="math inline">F</span> preserves all
+      colimits that exist in <span
+      class="math inline">\mathcal{C}</span>. <span
+      class="math display">F(\varinjlim X_i) \cong \varinjlim
+      F(X_i).</span> In particular, <span class="math inline">F</span>
+      preserves cokernels and direct sums. Thus, a left adjoint between
+      Abelian categories is always <strong>right
+      exact</strong>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove statement 1 (RAPL) using the standard
+      hom-set characterization of limits combined with the Yoneda Lemma.
+      Statement 2 (LAPC) follows by a strictly dual argument on the
+      opposite categories <span
+      class="math inline">\mathcal{C}^{\operatorname{op}}</span> and
+      <span
+      class="math inline">\mathbf{D}^{\operatorname{op}}</span>.</p>
+      <p>Let <span class="math inline">J</span> be a small index
+      category, and let <span class="math inline">D: J \to
+      \mathbf{D}</span> be a diagram (mapping <span
+      class="math inline">j \mapsto Y_j</span>) whose limit <span
+      class="math inline">\varprojlim Y_j</span> exists in <span
+      class="math inline">\mathbf{D}</span>. To show that <span
+      class="math inline">G(\varprojlim Y_j)</span> is the limit of the
+      composed diagram <span class="math inline">G \circ D: J \to
+      \mathcal{C}</span> (mapping <span class="math inline">j \mapsto
+      G(Y_j)</span>), it suffices to show that <span
+      class="math inline">G(\varprojlim Y_j)</span> satisfies the same
+      universal property.</p>
+      <p>Let <span class="math inline">X</span> be any arbitrary object
+      in <span class="math inline">\mathcal{C}</span>. We compute the
+      hom-set <span
+      class="math inline">\operatorname{Hom}_{\mathcal{C}}(X,
+      G(\varprojlim Y_j))</span> by chain of canonical bijections:</p>
+      <p><span class="math display">\begin{align*}
+              \operatorname{Hom}_{\mathcal{C}}\left(X,
+      G\left(\varprojlim Y_j\right)\right)
+              &amp;\cong \operatorname{Hom}_{\mathbf{D}}\left(FX,
+      \varprojlim Y_j\right) &amp;&amp; \text{(by Adjunction } F \dashv
+      G\text{)} \\
+              &amp;\cong \varprojlim \operatorname{Hom}_{\mathbf{D}}(FX,
+      Y_j) &amp;&amp; \text{(by definition of limits in }
+      \mathsf{Set}\text{)} \\
+              &amp;\cong \varprojlim \operatorname{Hom}_{\mathcal{C}}(X,
+      G(Y_j)) &amp;&amp; \text{(by Adjunction } F \dashv G \text{
+      componentwise)} \\
+              &amp;\cong \operatorname{Hom}_{\mathcal{C}}\left(X,
+      \varprojlim G(Y_j)\right) &amp;&amp; \text{(by definition of
+      limits in } \mathsf{Set}\text{)}
+      \end{align*}</span></p>
+      <p>Since this chain of isomorphisms is natural in <span
+      class="math inline">X</span>, the Yoneda Lemma (specifically, the
+      fact that the Yoneda embedding is fully faithful) guarantees that
+      the objects representing these two isomorphic functors must be
+      canonically isomorphic in <span
+      class="math inline">\mathcal{C}</span>: <span
+      class="math display">G\left(\varprojlim Y_j\right) \cong
+      \varprojlim G(Y_j)</span> Hence, the right adjoint <span
+      class="math inline">G</span> preserves all limits.</p>
+      <p>Now, assume <span class="math inline">\mathcal{C}</span> and
+      <span class="math inline">\mathbf{D}</span> are Abelian
+      categories. A kernel is a specific finite limit (the equalizer of
+      a morphism and the zero morphism), and a product is a general
+      limit. Since <span class="math inline">G</span> preserves all
+      limits, it automatically preserves kernels and products. By the
+      definition established in Definition , an additive functor that
+      preserves kernels is precisely a <strong>left exact</strong>
+      functor. Thus, every right adjoint between Abelian categories is
+      left exact.</p>
+      <p>Dually, since a left adjoint <span class="math inline">F</span>
+      preserves all colimits, it preserves cokernels (which are
+      coequalizers) and direct sums (which are coproducts). Therefore,
+      <span class="math inline">F</span> is automatically a
+      <strong>right exact</strong> functor. ◻</p>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Free Modules). <em> Let <span
+      class="math inline">A</span> be a ring. The "free module functor"
+      <span class="math inline">S \mapsto A^{\oplus S}</span> (from Sets
+      to <span class="math inline">A</span>-Modules) is left adjoint to
+      the forgetful functor (taking the underlying set). <span
+      class="math display">\operatorname{Hom}_A(A^{\oplus S}, M) \cong
+      \operatorname{Hom}_{\mathsf{Set}}(S, M).</span></em></p>
+      </div>
+      <h3 data-number="1.1.3"
+      id="fundamental-lemmas-of-homological-algebra">Fundamental Lemmas
+      of Homological Algebra</h3>
+      <h4 data-number="1.1.3.1" id="the-snake-lemma">The Snake
+      Lemma</h4>
+      <p>Proving diagram lemmas (like the Snake Lemma or Five Lemma)
+      using only the universal properties of kernels and cokernels in an
+      arbitrary Abelian category is notoriously tedious. However, we can
+      bypass this complexity using a powerful "metatheorem" from
+      category theory.</p>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Freyd-Mitchell Embedding
+      Theorem). <em> Every small Abelian category admits an exact, fully
+      faithful embedding into the category of modules over some ring
+      <span class="math inline">R</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> See <span class="citation"
+      data-cites="freyd1964abelian">(Freyd 1964, 7: Embedding
+      Theorems)</span>. ◻</p>
+      </div>
+      <p>To prove a diagrammatic statement about exactness in any
+      Abelian category, it suffices to prove it for categories of
+      modules. This allows us to use the method of <strong>"diagram
+      chasing"</strong> with elements, which is far more intuitive. In
+      the proofs below, we treat objects as modules and morphisms as
+      linear maps.</p>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (The Snake Lemma). <em> Consider a
+      commutative diagram with exact rows:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/a47ae26eca094d2d491a4b9ba4732a200d593a10.svg" target="_blank" rel="noopener"><img src="assets/diagrams/a47ae26eca094d2d491a4b9ba4732a200d593a10.svg" alt="交换图" loading="lazy" /></a></span>
+      Then there exists a connecting homomorphism <span
+      class="math inline">\delta: \ker w \to \operatorname{coker}
+      u</span> such that the following sequence is exact: <span
+      class="math display">\ker u \to \ker v \to \ker w
+      \xrightarrow{\delta} \operatorname{coker} u \to
+      \operatorname{coker} v \to \operatorname{coker} w.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The exactness at <span class="math inline">\ker
+      u, \ker v</span> and <span
+      class="math inline">\operatorname{coker} v, \operatorname{coker}
+      w</span> is standard. The non-trivial part is the construction of
+      <span class="math inline">\delta</span> and exactness at the
+      "snake" turn.</p>
+      <p><strong>Step 1: Construction of <span
+      class="math inline">\delta</span> (The Switchback):</strong> Let
+      <span class="math inline">z \in \ker w \subseteq C</span>.</p>
+      <p>Since <span class="math inline">B \to C</span> is surjective,
+      lift <span class="math inline">z</span> to <span
+      class="math inline">y \in B</span>. Map <span
+      class="math inline">y</span> down to <span
+      class="math inline">B&#39;</span> to get <span
+      class="math inline">v(y)</span>. Commutativity implies the image
+      of <span class="math inline">v(y)</span> in <span
+      class="math inline">C&#39;</span> is <span
+      class="math inline">w(z) = 0</span>. By exactness of the bottom
+      row, <span class="math inline">v(y)</span> comes from a unique
+      element <span class="math inline">x&#39; \in A&#39;</span>. Define
+      <span class="math inline">\delta(z) := [x&#39;] \in
+      \operatorname{coker} u = A&#39; / \operatorname{im}(u)</span>.</p>
+      <p>One checks easily that <span class="math inline">\delta</span>
+      is well-defined (independent of the choice of lift <span
+      class="math inline">y</span>).</p>
+      <p><strong>Step 2: Exactness at <span class="math inline">\ker
+      w</span>:</strong> Let <span class="math inline">z \in \ker
+      w</span>. <span class="math inline">\delta(z) = 0 \iff x&#39; \in
+      \operatorname{im}(u) \iff x&#39; = u(x)</span> for some <span
+      class="math inline">x \in A</span>. By injectivity of <span
+      class="math inline">A&#39; \to B&#39;</span>, <span
+      class="math inline">v(y) = \text{image of } u(x)</span>. By
+      commutativity, <span class="math inline">v(y) = v(\text{image of }
+      x)</span>. Thus <span class="math inline">y - (\text{image of } x)
+      \in \ker v</span>. This means <span class="math inline">z</span>
+      (which is the image of <span class="math inline">y</span>) is the
+      image of an element in <span class="math inline">\ker
+      v</span>.</p>
+      <p><strong>Step 3: Exactness at <span
+      class="math inline">\operatorname{coker} u</span>:</strong> Let
+      <span class="math inline">\bar{x&#39;} \in \operatorname{coker}
+      u</span> be the class of <span class="math inline">x&#39; \in
+      A&#39;</span>. Maps to <span class="math inline">0</span> in <span
+      class="math inline">\operatorname{coker} v \iff</span> the image
+      of <span class="math inline">x&#39;</span> in <span
+      class="math inline">B&#39;</span> is in <span
+      class="math inline">\operatorname{im}(v)</span>. Let this image be
+      <span class="math inline">v(y)</span> for some <span
+      class="math inline">y \in B</span>. Let <span
+      class="math inline">z</span> be the image of <span
+      class="math inline">y</span> in <span
+      class="math inline">C</span>. Then <span class="math inline">w(z)
+      = \text{image of } v(y) = \text{image of } (\text{image of }
+      x&#39;) = 0</span>. So <span class="math inline">z \in \ker
+      w</span>. By construction, <span class="math inline">\delta(z) =
+      \bar{x&#39;}</span>. ◻</p>
+      </div>
+      <h4 data-number="1.1.3.2" id="the-five-lemma">The Five Lemma</h4>
+      <p>Instead of chasing the massive diagram of the Five Lemma
+      directly, we deduce it from the <strong>Short Five Lemma</strong>,
+      which is cleaner.</p>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (Short Five Lemma). <em> Consider a
+      commutative diagram with exact rows:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/d824ef5d021b12bd457bf49ca95fd14810265ba2.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d824ef5d021b12bd457bf49ca95fd14810265ba2.svg" alt="交换图" loading="lazy" /></a></span></em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">\alpha, \gamma</span> are
+      injective, then <span class="math inline">\beta</span> is
+      injective.</em></p></li>
+      <li><p><em>If <span class="math inline">\alpha, \gamma</span> are
+      surjective, then <span class="math inline">\beta</span> is
+      surjective.</em></p></li>
+      <li><p><em>If <span class="math inline">\alpha, \gamma</span> are
+      isomorphisms, then <span class="math inline">\beta</span> is an
+      isomorphism.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (i) Suppose <span class="math inline">\beta(b)
+      = 0</span>. The image in <span class="math inline">C&#39;</span>
+      is <span class="math inline">\gamma(\text{image of } b) =
+      0</span>. Since <span class="math inline">\gamma</span> is
+      injective, the image of <span class="math inline">b</span> in
+      <span class="math inline">C</span> is 0. By exactness, <span
+      class="math inline">b</span> comes from <span
+      class="math inline">a \in A</span>. Then <span
+      class="math inline">\alpha(a)</span> maps to <span
+      class="math inline">\beta(b)=0</span> in <span
+      class="math inline">B&#39;</span>. Since <span
+      class="math inline">A&#39; \to B&#39;</span> is injective, <span
+      class="math inline">\alpha(a)=0</span>. Since <span
+      class="math inline">\alpha</span> is injective, <span
+      class="math inline">a=0</span>, so <span
+      class="math inline">b=0</span>. (ii) Similar diagram chasing (or
+      duality). (iii) follows from (i) and (ii). ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong>. <em><span>The Five Lemma</span>
+      Consider the commutative diagram with exact rows:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/3631fb6b8b3553ec16b2c6b99e01044201b48d93.svg" target="_blank" rel="noopener"><img src="assets/diagrams/3631fb6b8b3553ec16b2c6b99e01044201b48d93.svg" alt="交换图" loading="lazy" /></a></span>
+      If <span class="math inline">f_1, f_2, f_4, f_5</span> are
+      isomorphisms, then <span class="math inline">f_3</span> is an
+      isomorphism.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We break the diagram into two "short" pieces.
+      Let <span class="math inline">K_i = \ker(A_i \to A_{i+1}) =
+      \operatorname{im}(A_{i-1} \to A_i)</span> (and similarly <span
+      class="math inline">L_i</span> for <span
+      class="math inline">B</span>’s). The diagram induces maps on these
+      kernels/images.</p>
+      <ol>
+      <li><p><strong>Right side:</strong> The map <span
+      class="math inline">f_4</span> restricts to an isomorphism between
+      <span class="math inline">\operatorname{im}(A_3 \to A_4)</span>
+      and <span class="math inline">\operatorname{im}(B_3 \to
+      B_4)</span> (injectivity uses <span
+      class="math inline">f_5</span>, surjectivity uses <span
+      class="math inline">f_4</span>). Let’s call these images <span
+      class="math inline">I_3</span> and <span
+      class="math inline">J_3</span>.</p></li>
+      <li><p><strong>Left side:</strong> Similarly, <span
+      class="math inline">f_2</span> induces an isomorphism between
+      <span class="math inline">\operatorname{coker}(A_1 \to A_2)</span>
+      and <span class="math inline">\operatorname{coker}(B_1 \to
+      B_2)</span>. Let’s call these <span class="math inline">K_3</span>
+      and <span class="math inline">L_3</span>.</p></li>
+      <li><p><strong>Middle:</strong> We now have a short exact sequence
+      diagram:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/5f017518bb772121f3a2fbc912064f71a0070549.svg" target="_blank" rel="noopener"><img src="assets/diagrams/5f017518bb772121f3a2fbc912064f71a0070549.svg" alt="交换图" loading="lazy" /></a></span>
+      By the Short Five Lemma, <span class="math inline">f_3</span> is
+      an isomorphism.</p></li>
+      </ol>
+      <p> ◻</p>
+      </div>
+      <h4 data-number="1.1.3.3" id="the-9-lemma">The 9-Lemma</h4>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (The 9-Lemma (<span
+      class="math inline">3 \times 3</span> Lemma)). <em> Let <span
+      class="math inline">\mathcal{A}</span> be an Abelian category.
+      Consider the following commutative diagram in <span
+      class="math inline">\mathcal{A}</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/395d00a475cdb8f4f278410037794c5c3463750c.svg" target="_blank" rel="noopener"><img src="assets/diagrams/395d00a475cdb8f4f278410037794c5c3463750c.svg" alt="交换图" loading="lazy" /></a></span>
+      Assume that <strong>all three columns are exact</strong>, and the
+      <strong>bottom two rows (rows 2 and 3) are exact</strong>. Then,
+      the <strong>top row (row 1) is automatically
+      exact</strong>.</em></p>
+      <p><em><em>Dually, if all columns are exact and the top two rows
+      are exact, then the bottom row is exact.</em></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove the main statement by view the columns
+      as short exact sequences and applying the Snake Lemma to the maps
+      between the rows.</p>
+      <p>Consider rows 2 and 3 as vertical short exact sequences mapping
+      down, but let us re-frame the setup. Notice that the columns are
+      exact, which means: <span class="math display">A_1 \cong
+      \operatorname{Ker}(d), \quad B_1 \cong \operatorname{Ker}(e),
+      \quad C_1 \cong \operatorname{Ker}(s)</span> <span
+      class="math display">A_3 \cong \operatorname{coker}(a), \quad B_3
+      \cong \operatorname{coker}(b), \quad C_3 \cong
+      \operatorname{coker}(c)</span></p>
+      <p>Now, focus entirely on the commutative diagram formed by
+      <strong>Row 2</strong> and <strong>Row 3</strong>. We can view the
+      vertical maps <span class="math inline">d: A_2 \to A_3</span>,
+      <span class="math inline">e: B_2 \to B_3</span>, and <span
+      class="math inline">s: C_2 \to C_3</span> as a chain map between
+      two short exact sequences. This gives us the perfect setup to
+      apply the Snake Lemma to the following rows:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/6f1c90bcf703ca6c642fa7a4860a4adfcb269303.svg" target="_blank" rel="noopener"><img src="assets/diagrams/6f1c90bcf703ca6c642fa7a4860a4adfcb269303.svg" alt="交换图" loading="lazy" /></a></span>
+      By the hypothesis, both rows in this sub-diagram are short exact.
+      Applying the <strong>Snake Lemma</strong> to this pair of rows
+      yields a 6-term exact sequence connecting their kernels and
+      cokernels: <span class="math display">0 \longrightarrow
+      \operatorname{Ker}(d) \longrightarrow \operatorname{Ker}(e)
+      \longrightarrow \operatorname{Ker}(s) \xrightarrow{\ \delta\ }
+      \operatorname{coker}(d) \longrightarrow \operatorname{coker}(e)
+      \longrightarrow \operatorname{coker}(s) \longrightarrow
+      0</span></p>
+      <p>Now, we substitute the known kernels and cokernels from the
+      exact columns back into this 6-term sequence:</p>
+      <ul>
+      <li><p>Replace <span class="math inline">\operatorname{Ker}(d),
+      \operatorname{Ker}(e), \operatorname{Ker}(s)</span> with <span
+      class="math inline">A_1, B_1, C_1</span>.</p></li>
+      <li><p>Replace <span class="math inline">\operatorname{coker}(d),
+      \operatorname{coker}(e), \operatorname{coker}(s)</span> with <span
+      class="math inline">A_3, B_3, C_3</span>.</p></li>
+      </ul>
+      <p>Under these canonical identifications, the induced maps between
+      the kernels are precisely the maps from Row 1 (<span
+      class="math inline">f_1</span> and <span
+      class="math inline">g_1</span>). The sequence becomes: <span
+      class="math display">0 \longrightarrow A_1 \xrightarrow{\ f_1\ }
+      B_1 \xrightarrow{\ g_1\ } C_1 \xrightarrow{\ \delta\ } A_3
+      \xrightarrow{\ f_3\ } B_3 \xrightarrow{\ g_3\ } C_3
+      \longrightarrow 0</span></p>
+      <p>Since this entire sequence is exact, we look at the first three
+      terms: <span class="math display">0 \longrightarrow A_1
+      \xrightarrow{\ f_1\ } B_1 \xrightarrow{\ g_1\ } C_1</span> This
+      gives us exactness at <span class="math inline">A_1</span> and
+      <span class="math inline">B_1</span>.</p>
+      <p>To complete the proof, we must show that <span
+      class="math inline">g_1: B_1 \to C_1</span> is an epimorphism
+      (exact at <span class="math inline">C_1</span>), which means we
+      need the connecting morphism <span class="math inline">\delta: C_1
+      \to A_3</span> to be the zero map. Look at the continuation of the
+      exact sequence right after <span
+      class="math inline">\delta</span>: the map following <span
+      class="math inline">\delta</span> is <span
+      class="math inline">f_3: A_3 \to B_3</span>. However, by the
+      explicit construction of the rows, <span
+      class="math inline">f_3</span> is a monomorphism (since Row 3 is
+      short exact, its left-most map <span
+      class="math inline">f_3</span> has a zero kernel).</p>
+      <p>By exactness of the 6-term sequence at <span
+      class="math inline">A_3</span>, we have: <span
+      class="math display">\operatorname{im}(\delta) =
+      \operatorname{Ker}(f_3)</span> Since <span
+      class="math inline">f_3</span> is a monomorphism, <span
+      class="math inline">\operatorname{Ker}(f_3) = 0</span>. Therefore,
+      <span class="math inline">\operatorname{im}(\delta) = 0</span>,
+      which forces the connecting morphism <span
+      class="math inline">\delta</span> to be the <strong>zero
+      map</strong>.</p>
+      <p>Because <span class="math inline">\delta = 0</span>, the
+      exactness at <span class="math inline">C_1</span> implies <span
+      class="math inline">\operatorname{Ker}(\delta) = C_1 =
+      \operatorname{im}(g_1)</span>, meaning <span
+      class="math inline">g_1</span> is a surjective map
+      (epimorphism).</p>
+      <p>Gathering these components together, the sequence <span
+      class="math inline">0 \to A_1 \xrightarrow{f_1} B_1
+      \xrightarrow{g_1} C_1 \to 0</span> is short exact. This completely
+      establishes the exactness of Row 1. ◻</p>
+      </div>
+      <h4 data-number="1.1.3.4" id="the-splitting-lemma">The Splitting
+      Lemma</h4>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (The Splitting Lemma). <em> Let
+      <span class="math inline">\mathcal{A}</span> be an Abelian
+      category. Given a short exact sequence in <span
+      class="math inline">\mathcal{A}</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/b12ada74f70e547288a846aa6e3ada017d4d43ed.svg" target="_blank" rel="noopener"><img src="assets/diagrams/b12ada74f70e547288a846aa6e3ada017d4d43ed.svg" alt="交换图" loading="lazy" /></a></span>
+      The following three statements are completely equivalent:</em></p>
+      <ol>
+      <li><p><em><strong>Left Split:</strong> There exists a morphism
+      <span class="math inline">p: B \to A</span> such that <span
+      class="math inline">p \circ f =
+      \operatorname{id}_A</span>.</em></p></li>
+      <li><p><em><strong>Right Split:</strong> There exists a morphism
+      <span class="math inline">s: C \to B</span> such that <span
+      class="math inline">g \circ s =
+      \operatorname{id}_C</span>.</em></p></li>
+      <li><p><em><strong>Direct Sum Decomposition:</strong> <span
+      class="math inline">B</span> is isomorphic to the direct sum <span
+      class="math inline">A \oplus C</span>. Under this isomorphism,
+      <span class="math inline">f</span> is the canonical inclusion
+      <span class="math inline">i_A: A \to A \oplus C</span> and <span
+      class="math inline">g</span> is the canonical projection <span
+      class="math inline">\pi_C: A \oplus C \to C</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We establish the equivalences by showing <span
+      class="math inline">(3) \implies (1)</span>, <span
+      class="math inline">(3) \implies (2)</span>, and finally
+      demonstrating that <span class="math inline">(1)</span> and <span
+      class="math inline">(2)</span> each independently reconstruct the
+      data of the biproduct structure <span
+      class="math inline">(3)</span>.</p>
+      <p><strong>Implies directions: <span class="math inline">(3)
+      \implies (1)</span> and <span class="math inline">(3) \implies
+      (2)</span></strong> Assume statement (3) holds, so <span
+      class="math inline">B \cong A \oplus C</span> via an isomorphism
+      <span class="math inline">\phi: B \to A \oplus C</span>. Let <span
+      class="math inline">i_A: A \to A \oplus C</span> and <span
+      class="math inline">\pi_A: A \oplus C \to A</span> be the
+      canonical inclusion and projection for <span
+      class="math inline">A</span>, and similarly define <span
+      class="math inline">i_C, \pi_C</span> for <span
+      class="math inline">C</span>. We are given <span
+      class="math inline">f = \phi^{-1} \circ i_A</span> and <span
+      class="math inline">g = \pi_C \circ \phi</span>.</p>
+      <ul>
+      <li><p>To satisfy (1), define <span class="math inline">p = \pi_A
+      \circ \phi</span>. Then <span class="math inline">p \circ f =
+      (\pi_A \circ \phi) \circ (\phi^{-1} \circ i_A) = \pi_A \circ i_A =
+      \operatorname{id}_A</span>.</p></li>
+      <li><p>To satisfy (2), define <span class="math inline">s =
+      \phi^{-1} \circ i_C</span>. Then <span class="math inline">g \circ
+      s = (\pi_C \circ \phi) \circ (\phi^{-1} \circ i_C) = \pi_C \circ
+      i_C = \operatorname{id}_C</span>.</p></li>
+      </ul>
+      <p><strong>Reconstruction from Left Split: <span
+      class="math inline">(1) \implies (3)</span></strong> Assume there
+      exists <span class="math inline">p: B \to A</span> such that <span
+      class="math inline">p \circ f = \operatorname{id}_A</span>.
+      Consider the morphism <span
+      class="math inline">\operatorname{id}_B - f \circ p: B \to
+      B</span>. Composing this with <span class="math inline">f</span>
+      from the right yields: <span
+      class="math display">(\operatorname{id}_B - f \circ p) \circ f = f
+      - f \circ (p \circ f) = f - f \circ \operatorname{id}_A = 0</span>
+      By the universal property of the cokernel, since <span
+      class="math inline">g: B \to C</span> is the cokernel of <span
+      class="math inline">f</span>, there exists a unique morphism <span
+      class="math inline">s: C \to B</span> such that: <span
+      class="math display">s \circ g = \operatorname{id}_B - f \circ p
+      \implies \operatorname{id}_B = f \circ p + s \circ g</span> Now,
+      compose <span class="math inline">s \circ g = \operatorname{id}_B
+      - f \circ p</span> with <span class="math inline">g</span> from
+      the left. Since <span class="math inline">g \circ f = 0</span>, we
+      get <span class="math inline">g \circ s \circ g = g</span>. Since
+      <span class="math inline">g</span> is an epimorphism, we can
+      cancel it from the right, yielding <span class="math inline">g
+      \circ s = \operatorname{id}_C</span>.</p>
+      <p>We now have four maps (<span class="math inline">f, g, p,
+      s</span>) satisfying: <span class="math display">p \circ f =
+      \operatorname{id}_A, \quad g \circ s = \operatorname{id}_C, \quad
+      p \circ s = 0, \quad g \circ f = 0, \quad f \circ p + s \circ g =
+      \operatorname{id}_B</span> (Note: <span class="math inline">p
+      \circ s = 0</span> follows by applying <span
+      class="math inline">p</span> to <span class="math inline">s \circ
+      g = \operatorname{id}_B - f \circ p</span>). These are precisely
+      the algebraic identities defining a <strong>biproduct</strong>
+      (direct sum) in an additive/Abelian category. Thus, <span
+      class="math inline">B \cong A \oplus C</span>, matching statement
+      (3).</p>
+      <p><strong>Reconstruction from Right Split: <span
+      class="math inline">(2) \implies (3)</span></strong> Assume there
+      exists <span class="math inline">s: C \to B</span> such that <span
+      class="math inline">g \circ s = \operatorname{id}_C</span>.
+      Dually, consider <span class="math inline">\operatorname{id}_B - s
+      \circ g: B \to B</span>. Composing with <span
+      class="math inline">g</span> from the left yields <span
+      class="math inline">g - g \circ s \circ g = 0</span>. By the
+      universal property of the kernel, since <span
+      class="math inline">f: A \to B</span> is the kernel of <span
+      class="math inline">g</span>, there exists a unique morphism <span
+      class="math inline">p: B \to A</span> such that <span
+      class="math inline">f \circ p = \operatorname{id}_B - s \circ
+      g</span>. By a strictly dual argument to the previous section,
+      this completes the biproduct identities, forcing <span
+      class="math inline">B \cong A \oplus C</span>. ◻</p>
+      </div>
+      <h3 data-number="1.1.4"
+      id="kan-extension-and-representable-functor">Kan Extension and
+      Representable Functor</h3>
+      <h4 data-number="1.1.4.1" id="comma-category">Comma Category</h4>
+      <div class="definition">
+      <p><strong>Definition 1.18</strong> (Comma Category <span
+      class="math inline">(S \downarrow T)</span>). <em> Let <span
+      class="math inline">\mathcal{A}</span>, <span
+      class="math inline">\mathcal{B}</span>, and <span
+      class="math inline">\mathcal{C}</span> be categories, and let
+      <span class="math inline">S: \mathcal{A} \to \mathcal{C}</span>
+      and <span class="math inline">T: \mathcal{B} \to
+      \mathcal{C}</span> be functors. The <strong>comma
+      category</strong> <span class="math inline">(S \downarrow
+      T)</span> is defined as follows:</em></p>
+      <ul>
+      <li><p><em><strong>Objects:</strong> Triples <span
+      class="math inline">(A, B, h)</span>, where <span
+      class="math inline">A</span> is an object in <span
+      class="math inline">\mathcal{A}</span>, <span
+      class="math inline">B</span> is an object in <span
+      class="math inline">\mathcal{B}</span>, and <span
+      class="math inline">h: S(A) \to T(B)</span> is a morphism in <span
+      class="math inline">\mathcal{C}</span>.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> A morphism from <span
+      class="math inline">(A, B, h)</span> to <span
+      class="math inline">(A&#39;, B&#39;, h&#39;)</span> is a pair
+      <span class="math inline">(f, g)</span> where <span
+      class="math inline">f: A \to A&#39;</span> is a morphism in <span
+      class="math inline">\mathcal{A}</span> and <span
+      class="math inline">g: B \to B&#39;</span> is a morphism in <span
+      class="math inline">\mathcal{B}</span>, such that the following
+      diagram commutes in <span
+      class="math inline">\mathcal{C}</span>:</em></p></li>
+      </ul>
+      <p><em><span class="commutative-diagram-inline"><a href="assets/diagrams/1b949958923b6694edae0876134126815e105eae.svg" target="_blank" rel="noopener"><img src="assets/diagrams/1b949958923b6694edae0876134126815e105eae.svg" alt="交换图" loading="lazy" /></a></span>
+      The composition of morphisms is defined component-wise: <span
+      class="math inline">(f&#39;, g&#39;) \circ (f, g) = (f&#39; \circ
+      f, g&#39; \circ g)</span>, and the identity morphism on <span
+      class="math inline">(A, B, h)</span> is <span
+      class="math inline">(\text{id}_A, \text{id}_B)</span>.</em></p>
+      </div>
+      <p>Important special cases of comma categories occur when one of
+      the categories is the trivial category <span
+      class="math inline">\mathbf{1}</span> (containing one object and
+      one identity morphism).</p>
+      <ul>
+      <li><p>If <span class="math inline">T: \mathbf{1} \to
+      \mathcal{C}</span> picks out an object <span class="math inline">c
+      \in \mathcal{C}</span> and <span class="math inline">S =
+      \text{Id}_{\mathcal{C}}</span>, we get the <strong>slice
+      category</strong> <span class="math inline">(\mathcal{C}
+      \downarrow c)</span>, often denoted <span
+      class="math inline">\mathcal{C}/c</span>. Objects are morphisms
+      <span class="math inline">x \to c</span>.</p></li>
+      <li><p>If <span class="math inline">S: \mathbf{1} \to
+      \mathcal{C}</span> picks out an object <span class="math inline">c
+      \in \mathcal{C}</span> and <span class="math inline">T =
+      \text{Id}_{\mathcal{C}}</span>, we get the <strong>coslice
+      category</strong> <span class="math inline">(c \downarrow
+      \mathcal{C})</span>, often denoted <span
+      class="math inline">c/\mathcal{C}</span>. Objects are morphisms
+      <span class="math inline">c \to x</span>.</p></li>
+      </ul>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (The Category of <span
+      class="math inline">R</span>-Algebras). <em> Let <span
+      class="math inline">\mathsf{CRing}</span> be the category of
+      commutative rings with unity. Let <span
+      class="math inline">R</span> be a fixed commutative ring.</em></p>
+      <p><em>The category of commutative <span
+      class="math inline">R</span>-algebras, denoted <span
+      class="math inline">R\mathsf{-Alg}</span>, is exactly the coslice
+      category <span class="math inline">(R \downarrow
+      \mathsf{CRing})</span>.</em></p>
+      <ul>
+      <li><p><em><strong>Objects:</strong> An object is a pair <span
+      class="math inline">(A, \phi_A)</span>, where <span
+      class="math inline">A</span> is a commutative ring and <span
+      class="math inline">\phi_A: R \to A</span> is a ring homomorphism
+      (the structural map). This precisely gives <span
+      class="math inline">A</span> the structure of an <span
+      class="math inline">R</span>-algebra.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> A morphism between <span
+      class="math inline">R</span>-algebras <span
+      class="math inline">(A, \phi_A)</span> and <span
+      class="math inline">(B, \phi_B)</span> is a ring homomorphism
+      <span class="math inline">f: A \to B</span> such that the
+      following triangle commutes in <span
+      class="math inline">\mathsf{CRing}</span>:</em></p></li>
+      </ul>
+      <p><em><span class="commutative-diagram-inline"><a href="assets/diagrams/0b4b5d93c90414fc1a516e08c87bf4b4da3f0a37.svg" target="_blank" rel="noopener"><img src="assets/diagrams/0b4b5d93c90414fc1a516e08c87bf4b4da3f0a37.svg" alt="交换图" loading="lazy" /></a></span>
+      The commutativity of this diagram (<span class="math inline">f
+      \circ \phi_A = \phi_B</span>) is exactly the condition that <span
+      class="math inline">f</span> is an <span
+      class="math inline">R</span>-algebra homomorphism (i.e., it
+      preserves the <span class="math inline">R</span>-scalar
+      multiplication).</em></p>
+      </div>
+      <h4 data-number="1.1.4.2"
+      id="kan-extension-and-representable-functor-1">Kan Extension and
+      Representable Functor</h4>
+      <div class="definition">
+      <p><strong>Definition 1.19</strong> (Kan Extensions). <em> Let
+      <span class="math inline">\mathcal{C}</span>, <span
+      class="math inline">\mathcal{C}&#39;</span>, and <span
+      class="math inline">\mathbf{D}</span> be categories, and let <span
+      class="math inline">F: \mathcal{C} \to \mathbf{D}</span> and <span
+      class="math inline">K: \mathcal{C} \to \mathcal{C}&#39;</span> be
+      functors.</em></p>
+      <ol>
+      <li><p><em>The <strong>Left Kan Extension</strong> of <span
+      class="math inline">F</span> along <span
+      class="math inline">K</span> consists of a functor <span
+      class="math inline">\operatorname{Lan}_K F: \mathcal{C}&#39; \to
+      \mathbf{D}</span> together with a natural transformation <span
+      class="math inline">\eta: F \Rightarrow \operatorname{Lan}_K F
+      \circ K</span> satisfying the following universal property: for
+      any functor <span class="math inline">G: \mathcal{C}&#39; \to
+      \mathbf{D}</span> and any natural transformation <span
+      class="math inline">\alpha: F \Rightarrow G \circ K</span>, there
+      exists a unique natural transformation <span
+      class="math inline">\beta: \operatorname{Lan}_K F \Rightarrow
+      G</span> such that <span class="math inline">\alpha = (\beta \circ
+      K) \circ \eta</span>.
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/a19d7d6b1175ed4751dc084438c62fa22b1b2f2c.svg" target="_blank" rel="noopener"><img src="assets/diagrams/a19d7d6b1175ed4751dc084438c62fa22b1b2f2c.svg" alt="交换图" loading="lazy" /></a></span></em></p></li>
+      <li><p><em>The <strong>Right Kan Extension</strong> of <span
+      class="math inline">F</span> along <span
+      class="math inline">K</span> consists of a functor <span
+      class="math inline">\operatorname{Ran}_K F: \mathcal{C}&#39; \to
+      \mathbf{D}</span> together with a natural transformation <span
+      class="math inline">\varepsilon: \operatorname{Ran}_K F \circ K
+      \Rightarrow F</span> satisfying the following universal property:
+      for any functor <span class="math inline">G: \mathcal{C}&#39; \to
+      \mathbf{D}</span> and any natural transformation <span
+      class="math inline">\gamma: G \circ K \Rightarrow F</span>, there
+      exists a unique natural transformation <span
+      class="math inline">\delta: G \Rightarrow \operatorname{Ran}_K
+      F</span> such that <span class="math inline">\gamma = \varepsilon
+      \circ (\delta \circ K)</span>.
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/b951825d1af2ec20b33907aee7db6f19b64f7fdf.svg" target="_blank" rel="noopener"><img src="assets/diagrams/b951825d1af2ec20b33907aee7db6f19b64f7fdf.svg" alt="交换图" loading="lazy" /></a></span></em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Representable Functors via Kan
+      Extensions). <em> By specifying the base and target categories, we
+      can elegantly recover representable functors purely as Kan
+      extensions.</em></p>
+      <p><em>Let <span class="math inline">\mathbf{1}</span> be the unit
+      category (consisting of a single object <span
+      class="math inline">*</span> and its identity morphism), and let
+      <span class="math inline">\mathsf{Set}</span> be the category of
+      sets. Define <span class="math inline">I: \mathbf{1} \to
+      \mathsf{Set}</span> as the terminal functor mapping <span
+      class="math inline">*</span> to a singleton set <span
+      class="math inline">\{*\}</span>. Given a locally small category
+      <span class="math inline">\mathcal{C}</span> and a fixed object
+      <span class="math inline">c \in
+      \operatorname{Ob}(\mathcal{C})</span>, let <span
+      class="math inline">K_c: \mathbf{1} \to \mathcal{C}</span> denote
+      the functor mapping <span class="math inline">*</span> to <span
+      class="math inline">c</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.20</strong> (Representable Functor (Via
+      Kan Extensions)). <em> Let <span
+      class="math inline">\mathcal{C}</span> be a locally small
+      category, <span class="math inline">c \in \mathcal{C}</span> an
+      object, and let <span class="math inline">K_c: \mathbf{1} \to
+      \mathcal{C}</span> be the functor from the terminal category
+      mapping the unique object <span class="math inline">*</span> to
+      <span class="math inline">c</span>. Let <span
+      class="math inline">I: \mathbf{1} \to \mathsf{Set}</span> be the
+      identity functor mapping <span class="math inline">*</span> to the
+      singleton set <span class="math inline">\{*\}</span>.</em></p>
+      <p><em>By considering the combinations of the base category (<span
+      class="math inline">\mathcal{C}</span> or <span
+      class="math inline">\mathcal{C}^{\operatorname{op}}</span>) and
+      the type of Kan extension (Left or Right), we obtain four
+      historical constructs that pairwise coincide:</em></p>
+      <ol>
+      <li><p><em><strong>The Covariant Case (Functors from <span
+      class="math inline">\mathcal{C}</span> to <span
+      class="math inline">\mathsf{Set}</span>):</strong></em></p>
+      <ul>
+      <li><p><em>The Left Kan extension of <span
+      class="math inline">I</span> along <span
+      class="math inline">K_c</span> yields a covariant functor: <span
+      class="math display">\operatorname{Lan}_{K_c} I : \mathcal{C} \to
+      \mathsf{Set}, \quad x \mapsto \operatorname{Hom}_{\mathcal{C}}(c,
+      x)</span></em></p></li>
+      <li><p><em>The Right Kan extension of <span
+      class="math inline">I</span> along the dual embedding <span
+      class="math inline">K_c^{\operatorname{op}}: \mathbf{1} \to
+      (\mathcal{C}^{\operatorname{op}})^{\operatorname{op}} \cong
+      \mathcal{C}</span> (viewing <span class="math inline">c</span>
+      from the contravariant perspective of <span
+      class="math inline">\mathcal{C}^{\operatorname{op}}</span>) yields
+      an isomorphic covariant functor: <span
+      class="math display">\operatorname{Ran}_{K_c^{\operatorname{op}}}
+      I : \mathcal{C} \to \mathsf{Set}, \quad x \mapsto
+      \operatorname{Hom}_{\mathcal{C}^{\operatorname{op}}}(x, c) \cong
+      \operatorname{Hom}_{\mathcal{C}}(c, x)</span></em></p></li>
+      </ul>
+      <p><em>We define the standard <strong>covariant representable
+      functor</strong> <span class="math inline">h^c: \mathcal{C} \to
+      \mathsf{Set}</span> as this canonical choice, uniquely
+      characterized up to natural isomorphism by either construction:
+      <span class="math display">h^c \coloneqq \operatorname{Lan}_{K_c}
+      I \cong \operatorname{Ran}_{K_c^{\operatorname{op}}}
+      I</span></em></p></li>
+      <li><p><em><strong>The Contravariant Case (Functors from <span
+      class="math inline">\mathcal{C}^{\operatorname{op}}</span> to
+      <span class="math inline">\mathsf{Set}</span>):</strong></em></p>
+      <ul>
+      <li><p><em>The Left Kan extension of <span
+      class="math inline">I</span> along the dual functor <span
+      class="math inline">K_c^{\operatorname{op}}: \mathbf{1} \to
+      \mathcal{C}^{\operatorname{op}}</span> yields a contravariant
+      functor: <span
+      class="math display">\operatorname{Lan}_{K_c^{\operatorname{op}}}
+      I : \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}, \quad x
+      \mapsto \operatorname{Hom}_{\mathcal{C}^{\operatorname{op}}}(c, x)
+      \cong \operatorname{Hom}_{\mathcal{C}}(x, c)</span></em></p></li>
+      <li><p><em>The Right Kan extension of <span
+      class="math inline">I</span> along <span class="math inline">K_c:
+      \mathbf{1} \to \mathcal{C}</span> (viewing the target as <span
+      class="math inline">\mathcal{C}^{\operatorname{op}}</span>) yields
+      an isomorphic contravariant functor: <span
+      class="math display">\operatorname{Ran}_{K_c} I :
+      \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}, \quad x \mapsto
+      \operatorname{Hom}_{\mathcal{C}}(x, c)</span></em></p></li>
+      </ul>
+      <p><em>We define the standard <strong>contravariant representable
+      functor</strong> <span class="math inline">h_c:
+      \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}</span> as this
+      canonical choice, uniquely characterized up to natural isomorphism
+      by either construction: <span class="math display">h_c \coloneqq
+      \operatorname{Lan}_{K_c^{\operatorname{op}}} I \cong
+      \operatorname{Ran}_{K_c} I</span></em></p></li>
+      </ol>
+      <p><em>In general:</em></p>
+      <ul>
+      <li><p><em>A covariant functor <span class="math inline">F:
+      \mathcal{C} \to \mathsf{Set}</span> is
+      <strong>representable</strong> if there exists <span
+      class="math inline">c \in \mathcal{C}</span> such that <span
+      class="math inline">F \cong h^c</span>.</em></p></li>
+      <li><p><em>A contravariant functor <span class="math inline">G:
+      \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}</span> is
+      <strong>representable</strong> if there exists <span
+      class="math inline">c \in \mathcal{C}</span> such that <span
+      class="math inline">G \cong h_c</span>.</em></p></li>
+      </ul>
+      </div>
+      <h4 data-number="1.1.4.3"
+      id="computation-of-kan-extension">Computation of Kan
+      Extension</h4>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Pointwise Kan Extension). <em>
+      Let <span class="math inline">F: \mathcal{C} \to \mathbf{D}</span>
+      and <span class="math inline">K: \mathcal{C} \to
+      \mathcal{C}&#39;</span> be functors. Assume <span
+      class="math inline">\mathcal{C}</span> is small and <span
+      class="math inline">\mathbf{D}</span> is cocomplete (respectively,
+      complete). Then the left (respectively, right) Kan extension of
+      <span class="math inline">F</span> along <span
+      class="math inline">K</span> exists and can be computed pointwise
+      via comma categories.</em></p>
+      <p><em>Specifically, for any object <span
+      class="math inline">c&#39; \in \mathcal{C}&#39;</span>, we
+      have:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\operatorname{Lan}_K
+      F(c&#39;) \cong \operatorname{colim} \left( (K \downarrow c&#39;)
+      \xrightarrow{\Pi} \mathcal{C} \xrightarrow{F} \mathbf{D}
+      \right)</span></em></p></li>
+      <li><p><em><span class="math inline">\operatorname{Ran}_K
+      F(c&#39;) \cong \lim \left( (c&#39; \downarrow K)
+      \xrightarrow{\Pi} \mathcal{C} \xrightarrow{F} \mathbf{D}
+      \right)</span></em></p></li>
+      </ol>
+      <p><em>where <span class="math inline">(K \downarrow
+      c&#39;)</span> and <span class="math inline">(c&#39; \downarrow
+      K)</span> denote the comma categories, and <span
+      class="math inline">\Pi</span> is the canonical projection functor
+      to <span class="math inline">\mathcal{C}</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove that the pointwise colimit assignment
+      defines the left Kan extension by verifying its universal
+      property. Assume <span class="math inline">\mathbf{D}</span> is
+      cocomplete, so for each <span class="math inline">c&#39; \in
+      \mathcal{C}&#39;</span>, the colimit exists. Define a functor
+      <span class="math inline">L: \mathcal{C}&#39; \to
+      \mathbf{D}</span> on objects by: <span
+      class="math display">L(c&#39;) = \operatorname{colim} \left( (K
+      \downarrow c&#39;) \xrightarrow{\Pi} \mathcal{C} \xrightarrow{F}
+      \mathbf{D} \right)</span> Let <span
+      class="math inline">\lambda^{c&#39;}: F \circ \Pi \Rightarrow
+      \Delta_{L(c&#39;)}</span> be the universal colimit cone, whose
+      components are <span class="math inline">\lambda^{c&#39;}_{(c, f:
+      Kc \to c&#39;)}: Fc \to L(c&#39;)</span>.</p>
+      <p>First, we construct the universal natural transformation <span
+      class="math inline">\eta: F \Rightarrow L \circ K</span>. For any
+      object <span class="math inline">c \in \mathcal{C}</span>,
+      consider the identity morphism <span
+      class="math inline">\operatorname{id}_{Kc}: Kc \to Kc</span>. This
+      gives a specific object <span class="math inline">(c,
+      \operatorname{id}_{Kc})</span> in the comma category <span
+      class="math inline">(K \downarrow Kc)</span>. We define the
+      component <span class="math inline">\eta_c: Fc \to L(Kc)</span> to
+      be the corresponding component of the colimit cone: <span
+      class="math display">\eta_c = \lambda^{Kc}_{(c,
+      \operatorname{id}_{Kc})}</span> The naturality of <span
+      class="math inline">\eta</span> follows directly from the
+      functoriality of the colimit assignment under morphisms in <span
+      class="math inline">\mathcal{C}</span>.</p>
+      <p>Next, we verify the universal property. Let <span
+      class="math inline">G: \mathcal{C}&#39; \to \mathbf{D}</span> be
+      any functor, and let <span class="math inline">\alpha: F
+      \Rightarrow G \circ K</span> be a natural transformation. We must
+      show there exists a unique natural transformation <span
+      class="math inline">\sigma: L \Rightarrow G</span> such that <span
+      class="math inline">\sigma_K \circ \eta = \alpha</span>.</p>
+      <p>Fix an object <span class="math inline">c&#39; \in
+      \mathcal{C}&#39;</span>. To define <span
+      class="math inline">\sigma_{c&#39;}: L(c&#39;) \to
+      G(c&#39;)</span>, we construct a competitor cone from the diagram
+      <span class="math inline">F \circ \Pi</span> to the vertex <span
+      class="math inline">G(c&#39;)</span>. For any object <span
+      class="math inline">(c, f: Kc \to c&#39;)</span> in <span
+      class="math inline">(K \downarrow c&#39;)</span>, we define the
+      component of this competitor cone as the composite: <span
+      class="math display">Fc \xrightarrow{\alpha_c} G(Kc)
+      \xrightarrow{G(f)} G(c&#39;)</span> By the naturality of <span
+      class="math inline">\alpha</span>, this collection of morphisms
+      forms a valid cone from <span class="math inline">F \circ
+      \Pi</span> to <span class="math inline">G(c&#39;)</span>. By the
+      universal property of the colimit <span
+      class="math inline">L(c&#39;)</span>, there exists a unique
+      morphism <span class="math inline">\sigma_{c&#39;}: L(c&#39;) \to
+      G(c&#39;)</span> such that for all <span class="math inline">(c,
+      f: Kc \to c&#39;)</span>, the following diagram commutes:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/f2917b34ccee854a3002ce16ad8f723569d74e4e.svg" target="_blank" rel="noopener"><img src="assets/diagrams/f2917b34ccee854a3002ce16ad8f723569d74e4e.svg" alt="交换图" loading="lazy" /></a></span>
+      Setting <span class="math inline">c&#39; = Kc</span> and <span
+      class="math inline">f = \operatorname{id}_{Kc}</span>, the diagram
+      yields <span class="math inline">\sigma_{Kc} \circ
+      \lambda^{Kc}_{(c, \operatorname{id}_{Kc})} =
+      G(\operatorname{id}_{Kc}) \circ \alpha_c</span>, which simplifies
+      precisely to: <span class="math display">\sigma_{Kc} \circ \eta_c
+      = \alpha_c</span> This establishes the factorization <span
+      class="math inline">\sigma_K \circ \eta = \alpha</span>. The
+      uniqueness of <span class="math inline">\sigma_{c&#39;}</span> is
+      guaranteed at each object <span class="math inline">c&#39;</span>
+      by the uniqueness of maps out of a colimit, and its naturality in
+      <span class="math inline">\mathcal{C}&#39;</span> follows by a
+      standard diagram-chase deploying the universal property. Hence,
+      <span class="math inline">L \cong \operatorname{Lan}_K
+      F</span>. ◻</p>
+      </div>
+      <h4 data-number="1.1.4.4"
+      id="property-of-representable-functor">Property of Representable
+      Functor</h4>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Evaluating the Representable
+      Functor). <em> Let <span class="math inline">h^c \coloneqq
+      \operatorname{Lan}_{K_c} I</span> be the covariant representable
+      functor associated to <span class="math inline">c \in
+      \mathcal{C}</span>, where <span class="math inline">K_c:
+      \mathbf{1} \to \mathcal{C}</span> and <span class="math inline">I:
+      \mathbf{1} \to \mathsf{Set}</span>. Then for any object <span
+      class="math inline">X \in \mathcal{C}</span>, there is a canonical
+      isomorphism: <span class="math display">h^c(X) \cong
+      \operatorname{Hom}_{\mathcal{C}}(c, X)</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Theorem , the evaluation of the left Kan
+      extension <span class="math inline">h^c</span> at <span
+      class="math inline">X \in \mathcal{C}</span> is given by the
+      colimit: <span class="math display">\operatorname{Lan}_{K_c} I(X)
+      \cong \operatorname{colim} \left( (K_c \downarrow X)
+      \xrightarrow{\Pi} \mathbf{1} \xrightarrow{I} \mathsf{Set}
+      \right)</span> The objects of the comma category <span
+      class="math inline">(K_c \downarrow X)</span> are pairs <span
+      class="math inline">(*, f)</span> where <span
+      class="math inline">*</span> is the unique object of <span
+      class="math inline">\mathbf{1}</span> and <span
+      class="math inline">f: K_c(*) \to X</span> is a morphism in <span
+      class="math inline">\mathcal{C}</span>. Since <span
+      class="math inline">K_c(*) = c</span>, the objects are exactly the
+      morphisms <span class="math inline">f \in
+      \operatorname{Hom}_{\mathcal{C}}(c, X)</span>.</p>
+      <p>Furthermore, because the unit category <span
+      class="math inline">\mathbf{1}</span> has only the identity
+      morphism, there are no non-trivial morphisms between objects in
+      <span class="math inline">(K_c \downarrow X)</span>. Thus, <span
+      class="math inline">(K_c \downarrow X)</span> is simply a discrete
+      category whose objects are indexed by the set <span
+      class="math inline">\operatorname{Hom}_{\mathcal{C}}(c,
+      X)</span>.</p>
+      <p>The composite functor <span class="math inline">I \circ
+      \Pi</span> maps every object in this discrete category to the
+      singleton set <span class="math inline">\{*\} \in
+      \mathsf{Set}</span>. The colimit of a constant functor mapping to
+      a singleton set over a discrete category is just the coproduct of
+      the singleton set with itself, indexed by the objects of the
+      category. Therefore: <span
+      class="math display">\operatorname{colim} \left( (K_c \downarrow
+      X) \to \mathsf{Set} \right) \cong \coprod_{f \in
+      \operatorname{Hom}_{\mathcal{C}}(c, X)} \{*\} \cong
+      \operatorname{Hom}_{\mathcal{C}}(c, X)</span> This concludes the
+      proof. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Universal Characterization of
+      the Representable Functor). <em> Let <span class="math inline">c
+      \in \mathcal{C}</span> be an object, and let <span
+      class="math inline">K_c: \mathbf{1} \to \mathcal{C}</span> and
+      <span class="math inline">I: \mathbf{1} \to \mathsf{Set}</span> be
+      defined as above. A covariant functor <span class="math inline">F:
+      \mathcal{C} \to \mathsf{Set}</span> is naturally isomorphic to the
+      left Kan extension <span
+      class="math inline">\operatorname{Lan}_{K_c} I</span> <strong>if
+      and only if</strong> for every covariant functor <span
+      class="math inline">G: \mathcal{C} \to \mathsf{Set}</span>, there
+      is a natural bijection: <span
+      class="math display">\operatorname{Nat}(F, G) \cong
+      G(c)</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the definition of the left Kan extension as
+      a universal arrow or a left adjoint to the pre-composition
+      functor, a functor <span class="math inline">F</span> is defined
+      to be <span class="math inline">\operatorname{Lan}_{K_c} I</span>
+      if and only if there exists a natural bijection: <span
+      class="math display">\operatorname{Nat}(F, G) \cong
+      \operatorname{Nat}(I, G \circ K_c)</span> for any target functor
+      <span class="math inline">G: \mathcal{C} \to
+      \mathsf{Set}</span>.</p>
+      <p>Let us evaluate the right-hand side of this equivalence. The
+      functor <span class="math inline">I: \mathbf{1} \to
+      \mathsf{Set}</span> maps the unique object <span
+      class="math inline">*</span> to <span
+      class="math inline">\{*\}</span>, and the composite functor <span
+      class="math inline">G \circ K_c: \mathbf{1} \to
+      \mathsf{Set}</span> maps <span class="math inline">*</span> to the
+      set <span class="math inline">G(c)</span>. A natural
+      transformation <span class="math inline">\alpha: I \Rightarrow G
+      \circ K_c</span> is entirely determined by its single component at
+      the unique object <span class="math inline">*</span>: <span
+      class="math display">\alpha_* : \{*\} \longrightarrow G(c)</span>
+      Giving a function from a singleton set <span
+      class="math inline">\{*\}</span> to a set <span
+      class="math inline">G(c)</span> is in bijective correspondence
+      with choosing a single element in <span
+      class="math inline">G(c)</span>. Therefore, there is a canonical
+      bijection: <span class="math display">\operatorname{Nat}(I, G
+      \circ K_c) \cong G(c)</span> Combining these two bijections, we
+      conclude that <span class="math inline">F \cong
+      \operatorname{Lan}_{K_c} I</span> if and only if <span
+      class="math inline">\operatorname{Nat}(F, G) \cong G(G)</span>,
+      which is precisely the statement of the Yoneda Lemma if <span
+      class="math inline">F</span> is replaced by the standard
+      hom-functor <span class="math inline">h^c</span>. ◻</p>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Advanced Examples of
+      Representable Functors). <em> We can rewrite many deep universal
+      properties in commutative algebra, algebraic topology, and general
+      category theory as instances of representable functors, or
+      equivalently, as canonical Kan extensions from the terminal
+      category <span class="math inline">\mathbf{1}</span>.</em></p>
+      <ol>
+      <li><p><em><strong>Polynomial Rings (Free Objects in Commutative
+      Algebra):</strong> Let <span
+      class="math inline">\mathsf{CRing}</span> be the category of
+      commutative rings. Consider the covariant forgetful functor <span
+      class="math inline">U: \mathsf{CRing} \to \mathsf{Set}</span>
+      which assigns each ring <span class="math inline">R</span> to its
+      underlying set of elements. This functor is representable. The
+      representing object is the polynomial ring over integers in one
+      variable, <span class="math inline">\mathbb{Z}[x]</span>. By the
+      universal property of polynomial rings, giving a ring homomorphism
+      <span class="math inline">\mathbb{Z}[x] \to R</span> is exactly
+      equivalent to choosing an element in <span
+      class="math inline">R</span>. Thus, we have a natural isomorphism:
+      <span class="math display">U(R) \cong
+      \operatorname{Hom}_{\mathsf{CRing}}(\mathbb{Z}[x], R) =
+      h^{\mathbb{Z}[x]}(R)</span> In our Kan extension framework, the
+      forgetful functor is the free-object growth: <span
+      class="math inline">U \cong \operatorname{Lan}_{K_{\mathbb{Z}[x]}}
+      I</span>.</em></p></li>
+      <li><p><em><strong>Localization of Rings and Modules:</strong> Let
+      <span class="math inline">R</span> be a commutative ring and <span
+      class="math inline">S \subset R</span> a multiplicatively closed
+      subset. Consider the category <span
+      class="math inline">\mathcal{C} = S^{-1}\mathsf{CRing}</span> of
+      <span class="math inline">R</span>-algebras under which the images
+      of elements in <span class="math inline">S</span> are invertible.
+      The functor <span class="math inline">F: R\text{-}\mathsf{Alg} \to
+      \mathsf{Set}</span> that sends an <span
+      class="math inline">R</span>-algebra <span
+      class="math inline">A</span> to a singleton <span
+      class="math inline">\{*\}</span> if <span
+      class="math inline">S</span> maps to units in <span
+      class="math inline">A</span> (and <span
+      class="math inline">\emptyset</span> otherwise) is representable
+      by the localized ring <span class="math inline">S^{-1}R</span>:
+      <span class="math display">F(A) \cong
+      \operatorname{Hom}_{R\text{-}\mathsf{Alg}}(S^{-1}R, A) =
+      h^{S^{-1}R}(A)</span> Similarly, for an <span
+      class="math inline">R</span>-module <span
+      class="math inline">M</span>, the localized module <span
+      class="math inline">S^{-1}M</span> represents the functor that
+      collects <span class="math inline">R</span>-bilinear maps from
+      <span class="math inline">M \times S^{-1}R</span> into other <span
+      class="math inline">S^{-1}R</span>-modules.</em></p></li>
+      <li><p><em><strong>Eilenberg-MacLane Spaces <span
+      class="math inline">K(G,n)</span> (Algebraic Topology):</strong>
+      Let <span class="math inline">\mathsf{Ho}(\mathsf{Top}_*)</span>
+      be the pointed homotopy category of topological spaces, and let
+      <span class="math inline">G</span> be an Abelian group (or just a
+      group for <span class="math inline">n=1</span>). Fix an integer
+      <span class="math inline">n \ge 1</span>. The <span
+      class="math inline">n</span>-th reduced cohomology functor <span
+      class="math inline">\widetilde{H}^n(-; G):
+      \mathsf{Ho}(\mathsf{Top}_*)^{\operatorname{op}} \to
+      \mathsf{Set}</span> is a <strong>contravariant</strong> functor.
+      By Brown’s Representability Theorem, this cohomology functor is
+      representable. The representing object is precisely the
+      Eilenberg-MacLane space <span class="math inline">K(G,n)</span>.
+      Thus, there is a natural isomorphism: <span
+      class="math display">\widetilde{H}^n(X; G) \cong [X, K(G,n)]_* =
+      h_{K(G,n)}(X)</span> where <span
+      class="math inline">[-,-]_*</span> denotes the set of pointed
+      homotopy classes of maps. For <span
+      class="math inline">n=1</span>, the space <span
+      class="math inline">K(G,1)</span> (the classifying space <span
+      class="math inline">BG</span>) completely represents the first
+      cohomology functor, demonstrating that topological invariants are
+      secretly represented by geometric spaces via <span
+      class="math inline">h_{K(G,1)} \cong
+      \operatorname{Lan}_{K_{K(G,1)}^{\operatorname{op}}}
+      I</span>.</em></p></li>
+      <li><p><em><strong>Limits and Colimits as Representable
+      Functors:</strong> Let <span class="math inline">J</span> be a
+      small index category, and let <span class="math inline">D: J \to
+      \mathcal{C}</span> be a diagram. Consider the constant diagram
+      functor <span class="math inline">\Delta: \mathcal{C} \to
+      \mathcal{C}^J</span>.</em></p>
+      <ul>
+      <li><p><em>The assignment that takes an object <span
+      class="math inline">X \in \mathcal{C}</span> to the set of cones
+      from <span class="math inline">X</span> to <span
+      class="math inline">D</span> defines a contravariant functor <span
+      class="math inline">\operatorname{Cone}(X, D):
+      \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}</span>. By
+      definition, the <strong>limit</strong> <span
+      class="math inline">\varprojlim D</span> is the object that
+      represents this functor: <span
+      class="math display">\operatorname{Cone}(X, D) \cong
+      \operatorname{Hom}_{\mathcal{C}}(X, \varprojlim D) =
+      h_{\varprojlim D}(X)</span></em></p></li>
+      <li><p><em>Dually, the assignment that takes an object <span
+      class="math inline">Y \in \mathcal{C}</span> to the set of cocones
+      from <span class="math inline">D</span> to <span
+      class="math inline">Y</span> defines a covariant functor <span
+      class="math inline">\operatorname{Cocone}(D, Y): \mathcal{C} \to
+      \mathsf{Set}</span>. The <strong>colimit</strong> <span
+      class="math inline">\varinjlim D</span> is the object that
+      represents this functor: <span
+      class="math display">\operatorname{Cocone}(D, Y) \cong
+      \operatorname{Hom}_{\mathcal{C}}(\varinjlim D, Y) = h^{\varinjlim
+      D}(Y)</span></em></p></li>
+      </ul>
+      <p><em>Thus, all limits and colimits in category theory are
+      fundamentally nothing but representing objects for specific
+      dress-up hom-functors.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Introduction to the Yoneda Lemma).
+      <em> Having established that the left Kan extension of the
+      terminal functor cleanly recovers the standard Hom-functor <span
+      class="math inline">X \mapsto \operatorname{Hom}_{\mathcal{C}}(c,
+      X)</span>, we can now introduce one of the most fundamental
+      results in category theory. The Yoneda lemma dictates exactly how
+      these representable functors interact with arbitrary set-valued
+      functors.</em></p>
+      </div>
+      <h4 data-number="1.1.4.5"
+      id="yoneda-lemma-and-yoneda-embedding">Yoneda Lemma and Yoneda
+      Embedding</h4>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (The Yoneda Lemma). <em> Let <span
+      class="math inline">\mathcal{C}</span> be a locally small
+      category, <span class="math inline">c \in \mathcal{C}</span> an
+      object, and <span class="math inline">F: \mathcal{C} \to
+      \mathsf{Set}</span> a covariant functor. Then there is a
+      bijection: <span class="math display">\operatorname{Nat}(h^c, F)
+      \cong F(c)</span> which is natural in both <span
+      class="math inline">F</span> and <span
+      class="math inline">c</span>.</em></p>
+      <p><em>Dually, for a contravariant functor <span
+      class="math inline">G: \mathcal{C}^{\operatorname{op}} \to
+      \mathsf{Set}</span>, there is a natural bijection: <span
+      class="math display">\operatorname{Nat}(h_c, G) \cong G(c)</span>
+      In both cases, the isomorphism is given by evaluating a natural
+      transformation <span class="math inline">\alpha</span> at the
+      identity morphism <span
+      class="math inline">\operatorname{id}_c</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove the covariant case. Define a mapping
+      <span class="math inline">\Phi: \operatorname{Nat}(h^c, F) \to
+      F(c)</span> by evaluating a natural transformation <span
+      class="math inline">\alpha</span> at the identity morphism <span
+      class="math inline">\operatorname{id}_c \in h^c(c) =
+      \operatorname{Hom}_\mathcal{C}(c, c)</span>: <span
+      class="math display">\Phi(\alpha) =
+      \alpha_c(\operatorname{id}_c)</span></p>
+      <p>To show <span class="math inline">\Phi</span> is a bijection,
+      we construct its inverse <span class="math inline">\Psi: F(c) \to
+      \operatorname{Nat}(h^c, F)</span>. For any element <span
+      class="math inline">u \in F(c)</span>, we define a natural
+      transformation <span class="math inline">\Psi(u): h^c \to
+      F</span>. For each object <span class="math inline">x \in
+      \mathcal{C}</span>, the component <span
+      class="math inline">(\Psi(u))_x: \operatorname{Hom}_\mathcal{C}(c,
+      x) \to F(x)</span> must map a morphism <span
+      class="math inline">f: c \to x</span> to an element in <span
+      class="math inline">F(x)</span>. Driven by the functoriality of
+      <span class="math inline">F</span>, we define: <span
+      class="math display">(\Psi(u))_x(f) = (F(f))(u)</span></p>
+      <p>We first check that <span class="math inline">\Psi(u)</span> is
+      indeed a natural transformation. For any morphism <span
+      class="math inline">g: x \to y</span> in <span
+      class="math inline">\mathcal{C}</span>, we need the following
+      diagram to commute:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/589c4c034484cd1e3ef1808528d1754a39499f11.svg" target="_blank" rel="noopener"><img src="assets/diagrams/589c4c034484cd1e3ef1808528d1754a39499f11.svg" alt="交换图" loading="lazy" /></a></span>
+      Starting with <span class="math inline">f \in
+      \operatorname{Hom}_\mathcal{C}(c, x)</span>, going down then right
+      gives: <span class="math display">(\Psi(u))_y(g \circ f) = (F(g
+      \circ f))(u) = (F(g) \circ F(f))(u)</span> Going right then down
+      gives: <span class="math display">F(g)\left( (\Psi(u))_x(f)
+      \right) = F(g)\left( (F(f))(u) \right) = (F(g) \circ
+      F(f))(u)</span> Thus, the diagram commutes, and <span
+      class="math inline">\Psi(u)</span> is natural.</p>
+      <p>Next, we verify that <span class="math inline">\Phi</span> and
+      <span class="math inline">\Psi</span> are mutually inverse:</p>
+      <ul>
+      <li><p>For any <span class="math inline">u \in F(c)</span>, we
+      have <span class="math inline">\Phi(\Psi(u)) =
+      (\Psi(u))_c(\operatorname{id}_c) = (F(\operatorname{id}_c))(u) =
+      \operatorname{id}_{F(c)}(u) = u</span>. Thus <span
+      class="math inline">\Phi \circ \Psi =
+      \operatorname{id}_{F(c)}</span>.</p></li>
+      <li><p>For any <span class="math inline">\alpha \in
+      \operatorname{Nat}(h^c, F)</span>, let <span class="math inline">u
+      = \alpha_c(\operatorname{id}_c)</span>. By the naturality of <span
+      class="math inline">\alpha</span> applied to a morphism <span
+      class="math inline">f: c \to x</span>, we have <span
+      class="math inline">F(f) \circ \alpha_c = \alpha_x \circ
+      h^c(f)</span>. Evaluating both sides at <span
+      class="math inline">\operatorname{id}_c</span>, we get: <span
+      class="math display">(F(f))(\alpha_c(\operatorname{id}_c)) =
+      \alpha_x(f \circ \operatorname{id}_c) \implies (F(f))(u) =
+      \alpha_x(f)</span> This precisely means <span
+      class="math inline">(\Psi(u))_x(f) = \alpha_x(f)</span>, so <span
+      class="math inline">\Psi(\Phi(\alpha)) = \alpha</span>. Thus <span
+      class="math inline">\Psi \circ \Phi =
+      \operatorname{id}_{\operatorname{Nat}(h^c, F)}</span>.</p></li>
+      </ul>
+      <p>Hence, <span class="math inline">\Phi</span> is a bijection.
+      The verification of naturality in both <span
+      class="math inline">F</span> and <span
+      class="math inline">c</span> follows standard diagram chasing by
+      applying the definitions of natural transformations and induced
+      maps. ◻</p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.21</strong> (Yoneda Embedding). <em> Let
+      <span class="math inline">\mathcal{C}</span> be a locally small
+      category. The assignments of representable functors specified in
+      Definition  naturally extend to functors from <span
+      class="math inline">\mathcal{C}</span> into its respective functor
+      categories (or presheaf categories):</em></p>
+      <ol>
+      <li><p><em>The <strong>contravariant Yoneda embedding</strong> is
+      the functor: <span class="math display">y: \mathcal{C}
+      \longrightarrow
+      \mathsf{Set}^{\mathcal{C}^{\operatorname{op}}}</span> which maps
+      an object <span class="math inline">c \in \mathcal{C}</span> to
+      the contravariant representable functor <span
+      class="math inline">h_c \in
+      \mathsf{Set}^{\mathcal{C}^{\operatorname{op}}}</span>, and maps a
+      morphism <span class="math inline">f: c \to d</span> in <span
+      class="math inline">\mathcal{C}</span> to the natural
+      transformation <span class="math inline">y(f) = f_*: h_c
+      \Rightarrow h_d</span> induced by post-composition.</em></p></li>
+      <li><p><em>The <strong>covariant Yoneda embedding</strong> is the
+      functor: <span class="math display">\tilde{y}:
+      \mathcal{C}^{\operatorname{op}} \longrightarrow
+      \mathsf{Set}^{\mathcal{C}}</span> which maps an object <span
+      class="math inline">c \in \mathcal{C}^{\operatorname{op}}</span>
+      to the covariant representable functor <span
+      class="math inline">h^c \in \mathsf{Set}^{\mathcal{C}}</span>, and
+      maps a morphism <span class="math inline">f: d \to c</span> in
+      <span class="math inline">\mathcal{C}</span> to the natural
+      transformation <span class="math inline">\tilde{y}(f) = f^*: h^c
+      \Rightarrow h^d</span> induced by pre-composition.</em></p></li>
+      </ol>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (The Yoneda Embedding Theorem).
+      <em> Let <span class="math inline">\mathcal{C}</span> be a locally
+      small category. Then both the contravariant Yoneda embedding <span
+      class="math inline">y: \mathcal{C} \to
+      \mathsf{Set}^{\mathcal{C}^{\operatorname{op}}}</span> and the
+      covariant Yoneda embedding <span class="math inline">\tilde{y}:
+      \mathcal{C}^{\operatorname{op}} \to
+      \mathsf{Set}^{\mathcal{C}}</span> are <strong>fully faithful
+      functors</strong>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove the theorem for the contravariant
+      Yoneda embedding <span class="math inline">y</span>; the covariant
+      case follows by a dual argument. To show that <span
+      class="math inline">y</span> is fully faithful, we must verify
+      that for any two objects <span class="math inline">c, d \in
+      \mathcal{C}</span>, the map induced by <span
+      class="math inline">y</span> on hom-sets: <span
+      class="math display">y_{c,d}: \operatorname{Hom}_{\mathcal{C}}(c,
+      d) \longrightarrow \operatorname{Nat}(h_c, h_d)</span> is a
+      bijection.</p>
+      <p>Recall from Theorem  (The Yoneda Lemma) that for any object
+      <span class="math inline">c \in \mathcal{C}</span> and any
+      contravariant functor <span class="math inline">G:
+      \mathcal{C}^{\operatorname{op}} \to \mathsf{Set}</span>, there is
+      a canonical bijection: <span class="math display">\Psi_G: G(c)
+      \xrightarrow{\ \cong\ } \operatorname{Nat}(h_c, G)</span> which
+      maps an element <span class="math inline">u \in G(c)</span> to the
+      natural transformation whose component at <span
+      class="math inline">x</span> maps <span class="math inline">g \in
+      h_c(x)</span> to <span class="math inline">(G(g))(u)</span>.</p>
+      <p>We apply the Yoneda Lemma by specializing the functor <span
+      class="math inline">G</span> to be the representable functor <span
+      class="math inline">h_d \equiv \operatorname{Hom}_{\mathcal{C}}(-,
+      d)</span>. This yields a specific canonical bijection: <span
+      class="math display">\Psi_{h_d}: h_d(c) \longrightarrow
+      \operatorname{Nat}(h_c, h_d)</span> Since <span
+      class="math inline">h_d(c) = \operatorname{Hom}_{\mathcal{C}}(c,
+      d)</span> by definition, <span
+      class="math inline">\Psi_{h_d}</span> is a bijection from <span
+      class="math inline">\operatorname{Hom}_{\mathcal{C}}(c, d)</span>
+      to <span class="math inline">\operatorname{Nat}(h_c,
+      h_d)</span>.</p>
+      <p>It remains only to check that the map <span
+      class="math inline">y_{c,d}</span> matches this canonical
+      bijection <span class="math inline">\Psi_{h_d}</span> identically.
+      Let <span class="math inline">f \in
+      \operatorname{Hom}_{\mathcal{C}}(c, d)</span>. By the explicit
+      evaluation rule of the Yoneda Lemma, <span
+      class="math inline">\Psi_{h_d}(f)</span> is the natural
+      transformation whose component at an object <span
+      class="math inline">x</span> maps a morphism <span
+      class="math inline">g \in h_c(x) =
+      \operatorname{Hom}_{\mathcal{C}}(x, c)</span> to: <span
+      class="math display">(h_d(g))(f) = f \circ g</span> On the other
+      hand, the functor <span class="math inline">y</span> maps the
+      morphism <span class="math inline">f: c \to d</span> to the
+      natural transformation <span class="math inline">y(f) =
+      f_*</span>, whose component at <span class="math inline">x</span>
+      is defined by post-composition with <span
+      class="math inline">f</span>: <span
+      class="math display">(f_*)_x(g) = f \circ g</span> Since <span
+      class="math inline">(f_*)_x(g) = (h_d(g))(f)</span> for all
+      objects <span class="math inline">x</span> and all arrows <span
+      class="math inline">g</span>, we have <span
+      class="math inline">y_{c,d}(f) = \Psi_{h_d}(f)</span> for every
+      <span class="math inline">f \in
+      \operatorname{Hom}_{\mathcal{C}}(c, d)</span>.</p>
+      <p>Because <span class="math inline">y_{c,d}</span> is identical
+      to the canonical bijection <span
+      class="math inline">\Psi_{h_d}</span> provided by the Yoneda
+      Lemma, <span class="math inline">y_{c,d}</span> is itself a
+      bijection. Hence, the Yoneda embedding <span
+      class="math inline">y</span> is fully faithful. ◻</p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="1-preliminary.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Preliminary</strong>
+        </a>
+                        <a class="turn-next" href="1.2-derived-category.html" rel="next">
+          <span>NEXT</span><strong>Derived Category →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

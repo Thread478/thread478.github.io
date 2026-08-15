@@ -1,0 +1,1734 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Plane Geometry · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Classical Geometry</p>
+        <h1>Plane Geometry</h1>
+      </header>
+      <h2 data-number="5.2" id="plane-geometry">Plane Geometry</h2>
+      <h3 data-number="5.2.1" id="intersection-numbers">Intersection
+      Numbers</h3>
+      <p>We first define intersection numbers analytically via the
+      Euler-Poincaré characteristic. This establishes a fundamentally
+      topological and homological foundation for the theory.</p>
+      <div class="definition">
+      <p><strong>Definition 2.1</strong> (Intersection Number via Euler
+      Characteristics). <em> Let <span class="math inline">X</span> be a
+      smooth projective variety of dimension <span
+      class="math inline">n</span>. Let <span
+      class="math inline">\mathcal{L}_1, \dots, \mathcal{L}_n</span> be
+      invertible sheaves on <span class="math inline">X</span>. The
+      <strong>intersection number</strong> of these sheaves is defined
+      as the alternating sum of the Euler characteristics of their
+      tensor products: <span class="math display">(\mathcal{L}_1 \cdot
+      \mathcal{L}_2 \cdots \mathcal{L}_n) \coloneqq \sum_{I \subseteq
+      \{1, \dots, n\}} (-1)^{n - |I|} \chi\Big(X, \bigotimes_{i \in I}
+      \mathcal{L}_i\Big).</span></em></p>
+      </div>
+      <p>To demonstrate that this definition is well-behaved, we must
+      understand the behavior of the Euler characteristic under tensor
+      operations. This brings us to a foundational theorem which asserts
+      that the Euler characteristic of a tensor product of powers of
+      invertible sheaves behaves polynomially.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Snapper’s Polynomial Theorem).
+      <em> Let <span class="math inline">X</span> be a smooth projective
+      variety, and let <span class="math inline">\mathcal{F}</span> be a
+      coherent sheaf on <span class="math inline">X</span> with <span
+      class="math inline">s = \dim
+      \operatorname{supp}\mathcal{F}</span>. Let <span
+      class="math inline">\mathcal{L}_1, \dots, \mathcal{L}_t</span> be
+      <span class="math inline">t</span> invertible sheaves on <span
+      class="math inline">X</span>. Then the Euler-Poincaré
+      characteristic <span class="math display">\chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}).</span> is a numerical polynomial in
+      <span class="math inline">n_1, \dots, n_t</span> of total degree
+      <span class="math inline">s</span>.</em></p>
+      <p><em>(By a numerical polynomial in <span
+      class="math inline">n_1, \dots, n_t</span>, we mean a polynomial
+      with rational coefficients which assumes integer values whenever
+      <span class="math inline">n_1, \dots, n_t</span> are
+      integers.)</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We proceed by induction on <span
+      class="math inline">s</span>, the dimension of the support of
+      <span class="math inline">\mathcal{F}</span>.</p>
+      <p><strong>Base Case:</strong> When <span class="math inline">s =
+      -1</span>, the support is empty, meaning <span
+      class="math inline">\mathcal{F} = 0</span>. The theorem holds
+      trivially since the Euler characteristic is uniformly <span
+      class="math inline">0</span>.</p>
+      <p><strong>Inductive Step:</strong> Assume <span
+      class="math inline">s \ge 0</span>. By standard <em>dévissage</em>
+      arguments for coherent sheaves on projective schemes, it suffices
+      to prove the theorem for <span class="math inline">\mathcal{F} =
+      \mathcal{O}_Y</span>, where <span class="math inline">Y</span> is
+      an irreducible closed subvariety. Since we are focusing on the
+      smooth projective case, we may smoothly reduce to assuming <span
+      class="math inline">\mathcal{F} = \mathcal{O}_X</span> (so <span
+      class="math inline">s = \dim X</span>), and we proceed by
+      induction on <span class="math inline">t</span>, the number of
+      invertible sheaves. When <span class="math inline">t = 0</span>,
+      the statement is trivial.</p>
+      <p>Because <span class="math inline">X</span> is smooth, its local
+      rings are UFDs, allowing us to find a Cartier divisor <span
+      class="math inline">D</span> such that <span
+      class="math inline">\mathcal{L}_1 \simeq \mathcal{O}_X(D)</span>.
+      We define two coherent sheaves of ideals: <span
+      class="math display">\mathcal{I} = \mathcal{O}_X(-D) \cap
+      \mathcal{O}_X \quad \text{and} \quad \mathcal{J} = \mathcal{I}
+      \cdot \mathcal{O}_X(D) \simeq \mathcal{I} \otimes
+      \mathcal{L}_1.</span> From these, we construct the torsion sheaves
+      <span class="math inline">\mathcal{S} = \mathcal{O}_X /
+      \mathcal{I}</span> and <span class="math inline">\mathcal{K} =
+      (\mathcal{O}_X / \mathcal{J}) \otimes \mathcal{L}_1</span>. Since
+      <span class="math inline">\mathcal{S}</span> and <span
+      class="math inline">\mathcal{K}</span> are supported on proper
+      closed subschemes of <span class="math inline">X</span>, their
+      support dimensions are strictly less than <span
+      class="math inline">s</span>. Thus, by our outer induction
+      hypothesis on <span class="math inline">s</span>, the theorem
+      already holds for <span class="math inline">\mathcal{S}</span> and
+      <span class="math inline">\mathcal{K}</span>.</p>
+      <p>Tensoring the short exact sequences associated with <span
+      class="math inline">\mathcal{S}</span> and <span
+      class="math inline">\mathcal{K}</span> by the appropriate powers
+      of our invertible sheaves yields two new exact sequences: <span
+      class="math display">0 \to \mathcal{I} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t} \to \mathcal{L}_1^{\otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\otimes n_t} \to \mathcal{S}
+      \otimes \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t} \to 0</span> and <span
+      class="math display">0 \to \mathcal{J} \otimes
+      \mathcal{L}_1^{\otimes (n_1-1)} \otimes \mathcal{L}_2^{\otimes
+      n_2} \cdots \otimes \mathcal{L}_t^{\otimes n_t} \to
+      \mathcal{L}_1^{\otimes (n_1-1)} \otimes \mathcal{L}_2^{\otimes
+      n_2} \cdots \otimes \mathcal{L}_t^{\otimes n_t} \to \mathcal{K}
+      \otimes \mathcal{L}_1^{\otimes (n_1-2)} \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t} \to 0.</span></p>
+      <p>Because <span class="math inline">\mathcal{J} \simeq
+      \mathcal{I} \otimes \mathcal{L}_1</span>, the first term of the
+      second sequence is isomorphic to the first term of the first
+      sequence. The Euler characteristic <span
+      class="math inline">\chi</span> is additive on short exact
+      sequences, so we subtract the Euler characteristic of the middle
+      term of the second sequence from that of the first sequence: <span
+      class="math display">\begin{align*}
+      &amp;\chi(\mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}) - \chi(\mathcal{L}_1^{\otimes
+      (n_1-1)} \otimes \mathcal{L}_2^{\otimes n_2} \otimes \cdots
+      \otimes \mathcal{L}_t^{\otimes n_t}) \\
+      &amp;= \chi(\mathcal{S} \otimes \mathcal{L}_1^{\otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\otimes n_t}) -
+      \chi(\mathcal{K} \otimes \mathcal{L}_1^{\otimes (n_1-2)} \otimes
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t}).
+      \end{align*}</span> By our induction hypothesis on <span
+      class="math inline">s</span>, both terms on the right-hand side
+      are numerical polynomials in <span class="math inline">n_1, \dots,
+      n_t</span> of total degree less than <span class="math inline">s =
+      \dim X</span>.</p>
+      <p>We have shown that the first difference of the function with
+      respect to <span class="math inline">n_1</span> is a polynomial of
+      degree strictly less than <span class="math inline">s</span>.
+      Furthermore, since <span
+      class="math inline">\chi(\mathcal{L}_2^{\otimes n_2} \otimes
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t})</span> is a numerical
+      polynomial in <span class="math inline">n_2, \dots, n_t</span> of
+      degree <span class="math inline">s</span> by induction on <span
+      class="math inline">t</span>, the theorem follows immediately from
+      the calculus of finite differences. ◻</p>
+      </div>
+      <p>We now introduce an alternative, highly useful perspective on
+      intersection numbers formulated by Snapper, which explicitly uses
+      the coefficients of the Euler characteristic polynomial.</p>
+      <div class="definition">
+      <p><strong>Definition 2.2</strong> (Intersection Number via
+      Polynomial Coefficients). <em> Let <span
+      class="math inline">X</span> be a smooth projective variety, and
+      let <span class="math inline">\mathcal{L}_1, \dots,
+      \mathcal{L}_t</span> be <span class="math inline">t</span>
+      invertible sheaves on <span class="math inline">X</span> (<span
+      class="math inline">t \ge 0</span>). Let <span
+      class="math inline">\mathcal{F}</span> be a coherent sheaf on
+      <span class="math inline">X</span> such that <span
+      class="math inline">\dim \operatorname{supp}\mathcal{F} \le
+      t</span>. The <strong>intersection number</strong> <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}) = (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})_X</span> is defined as the coefficient of the
+      monomial <span class="math inline">n_1 \cdots n_t</span> in the
+      polynomial <span class="math inline">\chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t})</span>.</em></p>
+      </div>
+      <p>Before proceeding, it is necessary to rigorously establish that
+      this coefficient definition is completely consistent with our
+      initial definition using the alternating sum of Euler
+      characteristics, specifically in the case where <span
+      class="math inline">t = n = \dim X</span> and <span
+      class="math inline">\mathcal{F} = \mathcal{O}_X</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Equivalence of Intersection
+      Number Definitions). <em> Let <span class="math inline">X</span>
+      be a smooth projective variety of dimension <span
+      class="math inline">n</span>, and let <span
+      class="math inline">\mathcal{L}_1, \dots, \mathcal{L}_n</span> be
+      invertible sheaves on <span class="math inline">X</span>. The
+      coefficient of <span class="math inline">n_1 \cdots n_n</span> in
+      the polynomial <span class="math inline">P(n_1, \dots, n_n) =
+      \chi(X, \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_n^{\otimes n_n})</span> is exactly the alternating
+      sum: <span class="math display">\sum_{I \subseteq \{1, \dots, n\}}
+      (-1)^{n - |I|} \chi\Big(X, \bigotimes_{i \in I}
+      \mathcal{L}_i\Big).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Snapper’s Polynomial Theorem, <span
+      class="math inline">P(n_1, \dots, n_n)</span> is a polynomial of
+      total degree at most <span class="math inline">n</span>. Thus, we
+      may write it as <span class="math inline">P(n_1, \dots, n_n) = C
+      n_1 n_2 \cdots n_n + Q(n_1, \dots, n_n)</span>, where <span
+      class="math inline">C</span> is the coefficient we wish to
+      extract, and <span class="math inline">Q</span> consists entirely
+      of monomials of total degree at most <span
+      class="math inline">n</span> that strictly miss at least one
+      variable <span class="math inline">n_k</span> (since any monomial
+      of degree <span class="math inline">n</span> involving all <span
+      class="math inline">n</span> variables must be exactly <span
+      class="math inline">n_1 \cdots n_n</span>).</p>
+      <p>Consider the evaluation of the alternating sum on a general
+      polynomial function <span class="math inline">F(n_1, \dots,
+      n_n)</span>. Let <span class="math inline">\mathbf{e}_I \in \{0,
+      1\}^n</span> be the indicator vector of the subset <span
+      class="math inline">I</span>, meaning its <span
+      class="math inline">i</span>-th coordinate is <span
+      class="math inline">1</span> if <span class="math inline">i \in
+      I</span> and <span class="math inline">0</span> otherwise. The
+      alternating sum is exactly <span class="math inline">\sum_{I}
+      (-1)^{n - |I|} F(\mathbf{e}_I)</span>. For the target monomial
+      <span class="math inline">F = n_1 \cdots n_n</span>, the
+      evaluation <span class="math inline">F(\mathbf{e}_I)</span> is
+      <span class="math inline">1</span> if and only if <span
+      class="math inline">I = \{1, \dots, n\}</span>, and <span
+      class="math inline">0</span> otherwise. Thus, the alternating sum
+      yields <span class="math inline">(-1)^0 \cdot 1 = 1</span>. For
+      any monomial in <span class="math inline">Q</span>, there is some
+      variable <span class="math inline">n_k</span> that does not
+      appear. The value of this monomial on <span
+      class="math inline">\mathbf{e}_I</span> depends only on the
+      coordinates in <span class="math inline">I \setminus \{k\}</span>.
+      We can partition the subsets of <span class="math inline">\{1,
+      \dots, n\}</span> into pairs <span class="math inline">(I, I \cup
+      \{k\})</span> where <span class="math inline">k \notin I</span>.
+      For each pair, the monomial evaluates to the same number, but the
+      signs <span class="math inline">(-1)^{n - |I|}</span> and <span
+      class="math inline">(-1)^{n - (|I|+1)}</span> are opposite,
+      causing exact cancellation. Therefore, the alternating sum
+      annihilates <span class="math inline">Q</span>. Applying the
+      alternating sum to <span class="math inline">P</span> isolates
+      exactly the coefficient <span class="math inline">C</span>,
+      proving the equivalence. ◻</p>
+      </div>
+      <p>With consistency established, we now explore the fundamental
+      properties of the intersection number, relying heavily on the
+      structure of numerical polynomials.</p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (Basis for Numerical Polynomials).
+      <em> A polynomial <span class="math inline">F(n_1, \dots,
+      n_t)</span> is numerical if and only if it can be written in the
+      form <span class="math display">F(n_1, \dots, n_t) = \sum a(i_1,
+      \dots, i_t) \binom{n_1 + i_1}{i_1} \cdots \binom{n_t +
+      i_t}{i_t}.</span> where the coefficients <span
+      class="math inline">a(i_1, \dots, i_t)</span> are integers, and
+      <span class="math inline">i_1 \ge 0, \dots, i_t \ge 0</span>.
+      Here, for all <span class="math inline">n</span>, <span
+      class="math inline">\binom{n+i}{i} =
+      \frac{(n+i)(n+i-1)\cdots(n+1)}{i(i-1)\cdots 1}</span> if <span
+      class="math inline">i &gt; 0</span>, <span class="math inline">=
+      1</span> if <span class="math inline">i = 0</span>, and <span
+      class="math inline">= 0</span> if <span class="math inline">i &lt;
+      0</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> This is a standard algebraic result. The
+      binomial coefficients <span
+      class="math inline">\binom{n+i}{i}</span> map integers to integers
+      and form a <span class="math inline">\mathbb{Q}</span>-basis for
+      polynomials in one variable. Taking tensor products of this basis
+      gives a basis for polynomials in <span
+      class="math inline">t</span> variables. The integrality of the
+      coefficients <span class="math inline">a(i_1, \dots, i_t)</span>
+      is both necessary and sufficient for the polynomial to be
+      numerical, which can be shown by straightforward induction on the
+      degree. ◻</p>
+      </div>
+      <p>An obvious but important fact is that the intersection number
+      should be an integer.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Integrality of Intersection
+      Numbers). <em> The intersection number <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})</span> is an integer.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Snapper’s Polynomial Theorem, <span
+      class="math inline">\chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t})</span> is a numerical polynomial in
+      <span class="math inline">n_1, \dots, n_t</span> of degree <span
+      class="math inline">s = \dim \operatorname{supp}\mathcal{F} \le
+      t</span>. By Lemma , it can be expanded with integer coefficients
+      <span class="math inline">a(i_1, \dots, i_t)</span>. The term
+      <span class="math inline">n_1 \cdots n_t</span> can only arise
+      from the basis elements where <span class="math inline">i_1 = 1,
+      \dots, i_t = 1</span>, since any higher index would increase the
+      total degree beyond <span class="math inline">t</span>, and any
+      lower index would omit a variable. For <span
+      class="math inline">i_j = 1</span>, <span
+      class="math inline">\binom{n_j+1}{1} = n_j + 1</span>. Thus, the
+      coefficient of <span class="math inline">n_1 \cdots n_t</span> is
+      exactly the integer <span class="math inline">a(1, \dots,
+      1)</span>. ◻</p>
+      </div>
+      <p>If a sheaf is supported only in very few parts, it is also easy
+      to imagine that the number of intersections with other sheaves
+      should be zero.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Vanishing for Small Support).
+      <em> <span class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot \mathcal{F}) = 0</span> if <span class="math inline">\dim
+      \operatorname{supp}\mathcal{F} &lt; t</span>, and <span
+      class="math inline">(\mathcal{F}) = h^0(\mathcal{F})</span> if
+      <span class="math inline">\dim \operatorname{supp}\mathcal{F} = t
+      = 0</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> If <span class="math inline">\dim
+      \operatorname{supp}\mathcal{F} &lt; t</span>, then <span
+      class="math inline">\chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t})</span> is a polynomial of total
+      degree strictly less than <span class="math inline">t</span>.
+      Consequently, it cannot contain a monomial of degree <span
+      class="math inline">t</span>, so the coefficient of <span
+      class="math inline">n_1 \cdots n_t</span> is identically <span
+      class="math inline">0</span>.</p>
+      <p>If <span class="math inline">\dim
+      \operatorname{supp}\mathcal{F} = t = 0</span>, the "empty"
+      intersection number <span class="math inline">(\mathcal{F})</span>
+      is simply the constant term of the polynomial, which is evaluated
+      at <span class="math inline">n_i = 0</span>. This gives <span
+      class="math inline">\chi(\mathcal{F})</span>. Since <span
+      class="math inline">\mathcal{F}</span> is supported on a
+      zero-dimensional scheme, its higher cohomology vanishes, yielding
+      <span class="math inline">\chi(\mathcal{F}) =
+      h^0(\mathcal{F})</span>. ◻</p>
+      </div>
+      <p>The most important and essential property of the intersection
+      number is that it is a bilinear form. This plays an important role
+      in algebraic geometry.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Linearity and Symmetry). <em>
+      <span class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot \mathcal{F})</span> is a symmetric <span
+      class="math inline">t</span>-linear form in the variables <span
+      class="math inline">\mathcal{L}_1, \dots,
+      \mathcal{L}_t</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Symmetry is immediate from the definition, as
+      the tensor product of invertible sheaves is commutative, rendering
+      the polynomial symmetric with respect to permutations of the index
+      set. To demonstrate linearity in the first variable (and thus all
+      variables by symmetry), let <span
+      class="math inline">\mathcal{M}</span> and <span
+      class="math inline">\mathcal{N}</span> be invertible sheaves. We
+      evaluate the intersection number involving <span
+      class="math inline">\mathcal{M} \otimes \mathcal{N}^{-1}</span>.
+      Consider the polynomial for the sheaves <span
+      class="math inline">\mathcal{M}, \mathcal{N}^{-1}, \mathcal{L}_2,
+      \dots, \mathcal{L}_t</span>: <span
+      class="math display">\begin{align*}
+      &amp;\chi(\mathcal{F} \otimes \mathcal{M}^{\otimes m} \otimes
+      (\mathcal{N}^{-1})^{\otimes n} \otimes \mathcal{L}_2^{\otimes n_2}
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t}) \\
+      &amp;= (\mathcal{M} \cdot \mathcal{L}_2 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}) m n_2 \cdots n_t - (\mathcal{N} \cdot \mathcal{L}_2
+      \cdots \mathcal{L}_t \cdot \mathcal{F}) n n_2 \cdots n_t + \cdots
+      \end{align*}</span> This expansion is justified by taking
+      successively <span class="math inline">n=0</span> and <span
+      class="math inline">m=0</span> to isolate the respective
+      coefficients.</p>
+      <p>Now, set <span class="math inline">m = n = n_1</span> to
+      represent the powers of the combined sheaf <span
+      class="math inline">\mathcal{M} \otimes \mathcal{N}^{-1}</span>.
+      Substituting this yields: <span
+      class="math display">\begin{align*}
+      &amp;\chi(\mathcal{F} \otimes (\mathcal{M} \otimes
+      \mathcal{N}^{-1})^{\otimes n_1} \otimes \mathcal{L}_2^{\otimes
+      n_2} \cdots \otimes \mathcal{L}_t^{\otimes n_t}) \\
+      &amp;= \big( (\mathcal{M} \cdot \mathcal{L}_2 \cdots \mathcal{L}_t
+      \cdot \mathcal{F}) - (\mathcal{N} \cdot \mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot \mathcal{F}) \big) n_1 n_2 \cdots n_t + \cdots
+      \end{align*}</span> The coefficient of <span
+      class="math inline">n_1 \cdots n_t</span> on the left side is by
+      definition <span class="math inline">((\mathcal{M} \otimes
+      \mathcal{N}^{-1}) \cdot \mathcal{L}_2 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})</span>, confirming the linearity. ◻</p>
+      </div>
+      <p>Finally, we address the behavior of intersection numbers with
+      respect to the sheaf argument <span
+      class="math inline">\mathcal{F}</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Additivity on Exact
+      Sequences). <em> If <span class="math inline">0 \to
+      \mathcal{F}&#39; \to \mathcal{F} \to \mathcal{F}&#39;&#39; \to
+      0</span> is an exact sequence of coherent sheaves, then <span
+      class="math display">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}) = (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}&#39;) + (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}&#39;&#39;).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because the functor <span class="math inline">-
+      \otimes \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}</span> is exact (as we are tensoring
+      with locally free sheaves), tensoring the given short exact
+      sequence maintains exactness. The Euler-Poincaré characteristic is
+      additive on short exact sequences, so we have the identity of
+      polynomials: <span class="math display">\chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}) = \chi(\mathcal{F}&#39; \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}) + \chi(\mathcal{F}&#39;&#39; \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}).</span> Extracting the coefficient of
+      <span class="math inline">n_1 \cdots n_t</span> from both sides of
+      this equation immediately yields the desiUniBlue additivity
+      formula. Note that exactness at stalks ensures that <span
+      class="math inline">\dim \operatorname{supp}\mathcal{F} \le
+      t</span> if and only if both <span class="math inline">\dim
+      \operatorname{supp}\mathcal{F}&#39; \le t</span> and <span
+      class="math inline">\dim \operatorname{supp}\mathcal{F}&#39;&#39;
+      \le t</span>, keeping the definition well-posed. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Notation Convention). <em> Let
+      <span class="math inline">W \subset X</span> be a closed subscheme
+      of dimension less than or equal to <span
+      class="math inline">t</span>, and take <span
+      class="math inline">\mathcal{F} = \mathcal{O}_W</span>. For
+      simplicity, it is common practice to write <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      W)</span> in place of <span class="math inline">(\mathcal{L}_1
+      \cdots \mathcal{L}_t \cdot \mathcal{O}_W)</span>. Furthermore, if
+      <span class="math inline">W = X</span>, the notation is
+      abbreviated simply to <span class="math inline">(\mathcal{L}_1
+      \cdots \mathcal{L}_t)</span> to mean <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      X)</span>.</em></p>
+      </div>
+      <p>An essential geometric computation relates the intersection
+      number involving an invertible sheaf to the intersection number on
+      an effective divisor linearly equivalent to that sheaf.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Intersection with an
+      Effective Divisor). <em> If <span class="math inline">\Delta \in
+      |\mathcal{L}_1|</span>, representing the set of all effective
+      divisors <span class="math inline">\Delta</span> such that <span
+      class="math inline">\mathcal{O}_X(\Delta) \simeq
+      \mathcal{L}_1</span>, and <span class="math inline">\Delta \cap
+      \operatorname{Ass} \mathcal{F} = \emptyset</span>, then <span
+      class="math display">(\mathcal{L}_1 \cdot \mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot \mathcal{F}) = (\mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot \mathcal{F}_\Delta).</span> where <span
+      class="math inline">\mathcal{F}_\Delta = \mathcal{F} \otimes
+      \mathcal{O}_\Delta</span>. In particular, if <span
+      class="math inline">\dim X \le t</span>, then <span
+      class="math inline">(\mathcal{L}_1 \cdot \mathcal{L}_2 \cdots
+      \mathcal{L}_t) = (\mathcal{L}_2 \cdots \mathcal{L}_t \cdot
+      \Delta)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because <span class="math inline">\Delta \cap
+      \operatorname{Ass} \mathcal{F} = \emptyset</span>, any local
+      equation of the effective divisor <span
+      class="math inline">\Delta</span> at a point <span
+      class="math inline">x \in X</span> is not a zero divisor in the
+      stalk <span class="math inline">\mathcal{F}_x</span>.
+      Consequently, tensoring the structural exact sequence of <span
+      class="math inline">\Delta</span> with <span
+      class="math inline">\mathcal{F}</span> and the invertible sheaves
+      yields an exact sequence: <span class="math display">0 \to
+      \mathcal{F} \otimes \mathcal{L}_1^{\otimes(n_1-1)} \otimes
+      \mathcal{L}_2^{\otimes n_2} \cdots \otimes \mathcal{L}_t^{\otimes
+      n_t} \to \mathcal{F} \otimes \mathcal{L}_1^{\otimes n_1} \otimes
+      \mathcal{L}_2^{\otimes n_2} \cdots \otimes \mathcal{L}_t^{\otimes
+      n_t} \to \mathcal{F}_\Delta \otimes \mathcal{L}_1^{\otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\otimes n_t} \to 0.</span>
+      Taking the Euler-Poincaré characteristics gives: <span
+      class="math display">\begin{align*}
+      \chi(\mathcal{F}_\Delta \otimes \mathcal{L}_1^{\otimes n_1} \cdots
+      \otimes \mathcal{L}_t^{\otimes n_t}) &amp;= \chi(\mathcal{F}
+      \otimes \mathcal{L}_1^{\otimes n_1} \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}) - \chi(\mathcal{F} \otimes
+      \mathcal{L}_1^{\otimes(n_1-1)} \otimes \mathcal{L}_2^{\otimes n_2}
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t}) \\
+      &amp;= (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot \mathcal{F})n_1
+      \cdots n_t + \cdots - (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})(n_1 - 1)n_2 \cdots n_t + \cdots \\
+      &amp;= (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot \mathcal{F})n_2
+      \cdots n_t + \cdots
+      \end{align*}</span>. On the other hand, evaluating the
+      characteristic of <span
+      class="math inline">\mathcal{F}_\Delta</span> explicitly at <span
+      class="math inline">n_1 = 0</span> provides: <span
+      class="math display">\chi(\mathcal{F}_\Delta \otimes
+      \mathcal{L}_1^{\otimes 0} \otimes \mathcal{L}_2^{\otimes n_2}
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t}) = (\mathcal{L}_2
+      \cdots \mathcal{L}_t \cdot \mathcal{F}_\Delta)n_2 \cdots n_t +
+      \cdots.</span> Comparing the coefficients of the monomial <span
+      class="math inline">n_2 \cdots n_t</span> from both approaches
+      confirms the proposition. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Restriction to Subschemes).
+      <em> Suppose we have the incidence of closed subschemes <span
+      class="math inline">Y \subset W \subset X</span>, where <span
+      class="math inline">Y = \operatorname{supp}\mathcal{F}</span>.
+      Then <span class="math display">(\mathcal{L}_1 \cdots
+      \mathcal{L}_t \cdot \mathcal{F})_X = (\mathcal{L}_{1|W} \cdots
+      \mathcal{L}_{t|W} \cdot \mathcal{F})_W.</span> In particular,
+      <span class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot W)_X = (\mathcal{L}_{1|W} \cdots
+      \mathcal{L}_{t|W})_W</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because <span class="math inline">Y</span> is
+      the support of <span class="math inline">\mathcal{F}</span>, <span
+      class="math inline">\mathcal{F}</span> may be consideUniBlue an
+      <span class="math inline">\mathcal{O}_W</span>-module for any
+      <span class="math inline">W</span> containing <span
+      class="math inline">Y</span>. For any invertible sheaf <span
+      class="math inline">\mathcal{L}</span> on <span
+      class="math inline">X</span>, we have the canonical isomorphism
+      <span class="math inline">\mathcal{F} \otimes_{\mathcal{O}_X}
+      \mathcal{L} \simeq \mathcal{F} \otimes_{\mathcal{O}_X}
+      \mathcal{O}_W \otimes_{\mathcal{O}_W} \mathcal{L} \simeq
+      \mathcal{F} \otimes_{\mathcal{O}_W} \mathcal{L}_{|W}</span>.
+      Setting <span class="math inline">\mathcal{L} =
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}</span> and taking Euler-Poincaré
+      characteristics yields identical polynomials. Extracting the
+      coefficient of <span class="math inline">n_1 \cdots n_t</span>
+      produces the desiUniBlue equality. ◻</p>
+      </div>
+      <p>Using the principles of additivity and restriction,
+      intersection numbers can be naturally decomposed over the
+      irreducible components of the support.</p>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Decomposition over Irreducible
+      Components). <em> Suppose <span class="math inline">X =
+      \operatorname{supp}\mathcal{F}</span>. Let <span
+      class="math inline">V_1, \dots, V_k</span> be its irreducible
+      components, and set <span class="math inline">\mathcal{F}_i =
+      \mathcal{F} \otimes \mathcal{O}_{V_i}</span> for <span
+      class="math inline">i = 1, \dots, k</span>. Then <span
+      class="math display">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}) = (\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F}_1) + \cdots + (\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot \mathcal{F}_k).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The canonical surjections <span
+      class="math inline">\mathcal{O}_X \to \mathcal{O}_{V_j}</span>
+      give rise to a natural homomorphism of sheaves <span
+      class="math inline">\mathcal{F} \to \coprod_{j}
+      \mathcal{F}_j</span>. Let <span
+      class="math inline">\mathcal{K}</span> be the kernel and <span
+      class="math inline">\mathcal{H}</span> be the cokernel, generating
+      the exact sequence <span class="math inline">0 \to \mathcal{K} \to
+      \mathcal{F} \to \coprod_{j} \mathcal{F}_j \to \mathcal{H} \to
+      0</span>. The supports of both <span
+      class="math inline">\mathcal{K}</span> and <span
+      class="math inline">\mathcal{H}</span> are strictly contained in
+      the intersections of the components, namely <span
+      class="math inline">\bigcup_{i \neq j} (V_i \cap V_j)</span>.
+      Since the dimension of these intersections is strictly less than
+      <span class="math inline">\dim X \le t</span>, their corresponding
+      intersection numbers vanish by Proposition . The result then
+      follows immediately from the additivity of intersection numbers on
+      exact sequences as established in Proposition . ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Multiplicity at the Generic
+      Point). <em> Suppose <span class="math inline">X</span> is
+      irreducible and <span class="math inline">\dim X \le t</span>. Let
+      <span class="math inline">x \in X</span> be the generic point, and
+      set the length <span class="math inline">l =
+      \operatorname{length}_{\mathcal{O}_x} \mathcal{F}_x</span>. Then
+      <span class="math display">(\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot \mathcal{F}) = l \cdot (\mathcal{L}_1 \cdots \mathcal{L}_t
+      \cdot \mathcal{O}_{X_{\operatorname{UniBlue}}}).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> At the generic point, <span
+      class="math inline">\mathcal{O}_x</span> is an Artin local ring,
+      and <span class="math inline">\mathcal{F}_x</span> is a finite
+      <span class="math inline">\mathcal{O}_x</span>-module, ensuring
+      the length <span class="math inline">l</span> is well-defined and
+      finite. The corollary is trivially true when <span
+      class="math inline">\mathcal{F} =
+      \mathcal{O}_{X_{\operatorname{UniBlue}}}</span> (where <span
+      class="math inline">l=1</span>) and when <span
+      class="math inline">\dim \operatorname{supp}\mathcal{F} &lt; \dim
+      X \le t</span> (where both the intersection number and the length
+      vanish). We complete the proof by <em>dévissage</em>. Let <span
+      class="math inline">K&#39;</span> be the category of coherent
+      sheaves <span class="math inline">\mathcal{F}</span> for which the
+      corollary holds. Because both the intersection number <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})</span> and the length <span
+      class="math inline">\operatorname{length}_{\mathcal{O}_x}
+      \mathcal{F}_x</span> are additive functions on exact sequences of
+      coherent sheaves, <span class="math inline">K&#39;</span> is
+      closed under extensions, making it an exact subcategory. Since it
+      contains the structure sheaves of all integral closed subschemes,
+      <span class="math inline">K&#39;</span> contains every coherent
+      sheaf <span class="math inline">\mathcal{F}</span> on <span
+      class="math inline">X</span>. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Divisor on Subscheme). <em> Let
+      <span class="math inline">W</span> be a <span
+      class="math inline">t</span>-dimensional closed subscheme. Suppose
+      <span class="math inline">d \in |\mathcal{L}_{1|W}|</span>. Then
+      <span class="math display">(\mathcal{L}_1 \cdot \mathcal{L}_2
+      \cdots \mathcal{L}_t \cdot W) = (\mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot d).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We sequentially apply Proposition and
+      Proposition : <span class="math display">(\mathcal{L}_1 \cdot
+      \mathcal{L}_2 \cdots \mathcal{L}_t \cdot W)_X = (\mathcal{L}_{1|W}
+      \cdot \mathcal{L}_{2|W} \cdots \mathcal{L}_{t|W})_W =
+      (\mathcal{L}_{2|W} \cdots \mathcal{L}_{t|W} \cdot d)_W =
+      (\mathcal{L}_2 \cdots \mathcal{L}_t \cdot d)_X.</span> This shows
+      that intersection numbers are intrinsically invariant under
+      restriction to the subscheme supporting the effective
+      divisor. ◻</p>
+      </div>
+      <p>Before stating the next proposition, a brief but rigorous
+      digression is requiUniBlue to construct and understand the concept
+      of the degree of a morphism <span class="math inline">f: V&#39;
+      \to V</span> between irreducible algebraic schemes.</p>
+      <p>Let <span class="math inline">x&#39; \in V&#39;</span> and
+      <span class="math inline">x \in V</span> be the generic points of
+      these irreducible schemes. Suppose that <span
+      class="math inline">f(x&#39;) = x</span>, meaning the morphism is
+      dominant. Under this assumption, the local ring <span
+      class="math inline">\mathcal{O}_x</span> maps to <span
+      class="math inline">\mathcal{O}_{x&#39;}</span> via the natural
+      pullback of functions, endowing <span
+      class="math inline">\mathcal{O}_{x&#39;}</span> with the structure
+      of an <span class="math inline">\mathcal{O}_x</span>-algebra.
+      Because of this algebra structure, any <span
+      class="math inline">\mathcal{O}_{x&#39;}</span>-module <span
+      class="math inline">M</span> can be consideUniBlue as an <span
+      class="math inline">\mathcal{O}_x</span>-module simply by
+      restriction of scalars.</p>
+      <p>The lengths of <span class="math inline">M</span> over these
+      two respective local rings are intimately related by the degree of
+      the residue field extension. Specifically, we have the length
+      formula: <span
+      class="math display">\operatorname{length}_{\mathcal{O}_x} M =
+      [k(x&#39;) : k(x)] \operatorname{length}_{\mathcal{O}_{x&#39;}}
+      M.</span> From this formula, it follows that if <span
+      class="math inline">M</span> is a finite, non-zero <span
+      class="math inline">\mathcal{O}_{x&#39;}</span>-module, then <span
+      class="math inline">M</span> is a finite <span
+      class="math inline">\mathcal{O}_x</span>-module if and only if the
+      dimensions of the schemes are equal, i.e., <span
+      class="math inline">\dim V&#39; = \dim V</span>. Finally, the
+      topological condition <span class="math inline">f(x&#39;) =
+      x</span> holds if and only if <span class="math inline">\dim
+      f(V&#39;) = \dim V</span>. This allows us to formally define the
+      mapping degree.</p>
+      <div class="definition">
+      <p><strong>Definition 2.3</strong> (Degree of a Morphism). <em>
+      Let <span class="math inline">f: V&#39; \to V</span> be a morphism
+      of irreducible algebraic schemes with generic points <span
+      class="math inline">x&#39;</span> and <span
+      class="math inline">x</span>, respectively. The
+      <strong>degree</strong> of <span class="math inline">f</span> is
+      defined as the following rational number: <span
+      class="math display">\deg f = \begin{cases}
+      \frac{\operatorname{length}_{\mathcal{O}_x}
+      \mathcal{O}_{x&#39;}}{\operatorname{length}_{\mathcal{O}_x}
+      \mathcal{O}_x} &amp; \text{if } \dim V&#39; = \dim V = \dim
+      f(V&#39;) \\ 0 &amp; \text{otherwise.}
+      \end{cases}.</span></em></p>
+      </div>
+      <p>To solidify this definition, consider the following three
+      canonical examples:</p>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (Typical Morphism Degrees).
+      <em></em></p>
+      <ol>
+      <li><p><em>Let <span class="math inline">f:
+      V_{\operatorname{UniBlue}} \hookrightarrow V</span> be the
+      canonical inclusion morphism of the reduced induced subscheme. The
+      generic points coincide, so <span class="math inline">k(x&#39;) =
+      k(x)</span> and <span class="math inline">\mathcal{O}_{x&#39;} =
+      \mathcal{O}_{x, \operatorname{UniBlue}}</span>. Let <span
+      class="math inline">l = \operatorname{length}_{\mathcal{O}_x}
+      \mathcal{O}_x</span>. The numerator evaluates to <span
+      class="math inline">1</span>, yielding <span
+      class="math inline">\deg f = 1/l</span>.</em></p></li>
+      <li><p><em>Let <span class="math inline">f: V&#39; \to V</span> be
+      a birational morphism; that is, the map induces an isomorphism on
+      the generic local rings, <span class="math inline">\mathcal{O}_x
+      \xrightarrow{\sim} \mathcal{O}_{x&#39;}</span>. In this case, the
+      lengths are identical, so <span class="math inline">\deg f =
+      1</span>. Conversely, if <span class="math inline">V</span> is
+      reduced (so the denominator is <span
+      class="math inline">1</span>), then <span class="math inline">\deg
+      f = 1</span> implies <span class="math inline">f</span> is
+      birational.</em></p></li>
+      <li><p><em>Let <span class="math inline">f: V&#39; \to V</span>
+      with <span class="math inline">\deg f &gt; 0</span>, and suppose
+      both <span class="math inline">V&#39;</span> and <span
+      class="math inline">V</span> are reduced schemes. Since they are
+      reduced, the local rings at the generic points are fields, making
+      <span
+      class="math inline">\operatorname{length}_{\mathcal{O}_{x&#39;}}
+      \mathcal{O}_{x&#39;} = 1</span> and <span
+      class="math inline">\operatorname{length}_{\mathcal{O}_x}
+      \mathcal{O}_x = 1</span>. By the length formula, the numerator
+      becomes <span class="math inline">[k(x&#39;) : k(x)] \cdot
+      1</span>, and thus <span class="math inline">\deg f = [k(x&#39;) :
+      k(x)]</span>.</em></p></li>
+      </ol>
+      </div>
+      <p>The degree is multiplicative under composition, provided we are
+      careful about dimensions.</p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (Multiplicativity of Degree). <em>
+      Let <span class="math inline">f: V&#39; \to V</span>, <span
+      class="math inline">g: V&#39;&#39; \to V&#39;</span>, and <span
+      class="math inline">h = f \circ g: V&#39;&#39; \to V</span> be
+      morphisms between irreducible algebraic schemes. Then <span
+      class="math inline">\deg h = (\deg f)(\deg g)</span> unless <span
+      class="math inline">\dim V&#39; &gt; \dim V&#39;&#39; = \dim V =
+      \dim h(V&#39;&#39;)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Suppose <span class="math inline">\deg h &gt;
+      0</span>. By definition, this requires <span
+      class="math inline">\dim V&#39;&#39; = \dim V = \dim
+      h(V&#39;&#39;)</span>. Because <span
+      class="math inline">h(V&#39;&#39;) = f(g(V&#39;&#39;)) \subseteq
+      f(V&#39;) \subseteq V</span>, we have the dimensional
+      inequalities: <span class="math display">\dim V&#39;&#39; = \dim V
+      = \dim h(V&#39;&#39;) \le \dim g(V&#39;&#39;), \dim f(V&#39;) \le
+      \dim V&#39;.</span> Consequently, both <span
+      class="math inline">\deg f</span> and <span
+      class="math inline">\deg g</span> must be strictly greater than
+      <span class="math inline">0</span> unless we fall into the
+      pathological case where <span class="math inline">\dim V&#39; &gt;
+      \dim V&#39;&#39; = \dim V = \dim h(V&#39;)</span>. Conversely,
+      suppose both <span class="math inline">\deg f &gt; 0</span> and
+      <span class="math inline">\deg g &gt; 0</span>. This immediately
+      implies <span class="math inline">\deg h &gt; 0</span>. Letting
+      <span class="math inline">x&#39;&#39;</span> be the generic point
+      of <span class="math inline">V&#39;&#39;</span>, we can expand the
+      length using the field extensions: <span
+      class="math display">\begin{align*}
+      \operatorname{length}_{\mathcal{O}_x} \mathcal{O}_{x&#39;&#39;}
+      &amp;= [k(x&#39;) : k(x)]
+      \operatorname{length}_{\mathcal{O}_{x&#39;}}
+      \mathcal{O}_{x&#39;&#39;} \\
+      &amp;= [k(x&#39;) : k(x)]
+      \operatorname{length}_{\mathcal{O}_{x&#39;}} \mathcal{O}_{x&#39;}
+      \cdot \deg g \\
+      &amp;= \operatorname{length}_{\mathcal{O}_x} \mathcal{O}_{x&#39;}
+      \cdot \deg g
+      \end{align*}</span>. Dividing both sides by <span
+      class="math inline">\operatorname{length}_{\mathcal{O}_x}
+      \mathcal{O}_x</span> yields <span class="math inline">\deg h =
+      (\deg f)(\deg g)</span>, completing the proof. ◻</p>
+      </div>
+      <p>We are now equipped to state and prove the fundamental
+      relationship between the pullback of invertible sheaves along a
+      morphism and the intersection number.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Intersection Number under
+      Morphisms). <em> Let <span class="math inline">f: V&#39; \to
+      V</span> be a morphism of irreducible algebraic schemes, and
+      assume <span class="math inline">t \ge \dim V&#39;, \dim V</span>.
+      Let <span class="math inline">\mathcal{L}_1, \dots,
+      \mathcal{L}_t</span> be <span class="math inline">t</span>
+      invertible sheaves on <span class="math inline">V</span>, and set
+      their pullbacks as <span class="math inline">\mathcal{L}_1&#39; =
+      f^* \mathcal{L}_1, \dots, \mathcal{L}_t&#39; = f^*
+      \mathcal{L}_t</span>. Then <span
+      class="math display">(\mathcal{L}_1&#39; \cdots
+      \mathcal{L}_t&#39;)_{V&#39;} = \deg f \cdot (\mathcal{L}_1 \cdots
+      \mathcal{L}_t)_V.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The proof proceeds rigorously in five steps.
+      The first three steps rely heavily on the Leray spectral sequence
+      for the morphism <span class="math inline">f</span>, which
+      provides a cohomological tool to compute the Euler characteristic
+      on <span class="math inline">V&#39;</span> via data pushed forward
+      to <span class="math inline">V</span>. Specifically, we use the
+      fact that: <span class="math display">\begin{align*}
+      \chi(\mathcal{L}_1^{\prime \otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\prime \otimes n_t}) &amp;= \sum_q (-1)^q
+      \chi\Big(R^q f_*(\mathcal{O}_{V&#39;} \otimes f^*
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes f^*
+      \mathcal{L}_t^{\otimes n_t})\Big) \\
+      &amp;= \sum_q (-1)^q \chi\Big((R^q f_* \mathcal{O}_{V&#39;})
+      \otimes \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t}\Big)
+      \end{align*}</span> where the second equality follows from the
+      projection formula. The intersection number <span
+      class="math inline">(\mathcal{L}_1&#39; \cdots
+      \mathcal{L}_t&#39;)_{V&#39;}</span> is exactly the coefficient of
+      <span class="math inline">n_1 \cdots n_t</span> in this
+      alternating sum of polynomials.</p>
+      <p><strong>Step 1. The case where <span class="math inline">\deg f
+      = 0</span>.</strong> By definition, if <span
+      class="math inline">\deg f = 0</span>, then <span
+      class="math inline">\dim f(V&#39;) &lt; t</span>. The higher
+      direct image sheaves <span class="math inline">R^q f_*
+      \mathcal{O}_{V&#39;}</span> are supported entirely within <span
+      class="math inline">f(V&#39;)</span>, meaning <span
+      class="math inline">\dim \operatorname{supp}R^q f_*
+      \mathcal{O}_{V&#39;} &lt; t</span> for all <span
+      class="math inline">q</span>. Consequently, each Euler
+      characteristic <span class="math inline">\chi((R^q f_*
+      \mathcal{O}_{V&#39;}) \otimes \mathcal{L}_1^{\otimes n_1} \otimes
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t})</span> is a polynomial
+      in <span class="math inline">n_1, \dots, n_t</span> of total
+      degree strictly less than <span class="math inline">t</span>.
+      Their alternating sum, <span
+      class="math inline">\chi(\mathcal{L}_1^{\prime \otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\prime \otimes n_t})</span>,
+      must also be of degree less than <span
+      class="math inline">t</span>. Therefore, its homogeneous component
+      of degree <span class="math inline">t</span> vanishes, yielding
+      <span class="math inline">(\mathcal{L}_1&#39; \cdots
+      \mathcal{L}_t&#39;)_{V&#39;} = 0 = \deg f \cdot (\mathcal{L}_1
+      \cdots \mathcal{L}_t)_V</span>.</p>
+      <p><strong>Step 2. The case where <span
+      class="math inline">f</span> is birational.</strong> Here, <span
+      class="math inline">f</span> induces an isomorphism between a
+      dense open set of <span class="math inline">V&#39;</span> and a
+      dense open set of <span class="math inline">V</span>. For any
+      higher derived functor (<span class="math inline">q \neq
+      0</span>), the support of <span class="math inline">R^q f_*
+      \mathcal{O}_{V&#39;}</span> must avoid this open set, meaning
+      <span class="math inline">\dim \operatorname{supp}R^q f_*
+      \mathcal{O}_{V&#39;} &lt; \dim V \le t</span>. Thus, the higher
+      terms in the Leray spectral sequence do not contribute to the
+      degree <span class="math inline">t</span> homogeneous component.
+      The homogeneous component of degree <span
+      class="math inline">t</span> of <span
+      class="math inline">\chi(\mathcal{L}_1^{\prime \otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\prime \otimes n_t})</span>
+      is identically the same as that of <span
+      class="math inline">\chi((f_* \mathcal{O}_{V&#39;}) \otimes
+      \mathcal{L}_1^{\otimes n_1} \otimes \cdots \otimes
+      \mathcal{L}_t^{\otimes n_t})</span>. Furthermore, considering the
+      canonical map <span class="math inline">\alpha: \mathcal{O}_V \to
+      f_* \mathcal{O}_{V&#39;}</span>, we obtain an exact sequence <span
+      class="math inline">0 \to \mathcal{K} \to \mathcal{O}_V
+      \xrightarrow{\alpha} f_* \mathcal{O}_{V&#39;} \to \mathcal{H} \to
+      0</span>. Because <span class="math inline">f</span> is
+      birational, <span class="math inline">\alpha</span> is bijective
+      on a dense open set, forcing both <span class="math inline">\dim
+      \operatorname{supp}\mathcal{K} &lt; t</span> and <span
+      class="math inline">\dim \operatorname{supp}\mathcal{H} &lt;
+      t</span>. Therefore, the degree <span class="math inline">t</span>
+      component of <span class="math inline">\chi((f_*
+      \mathcal{O}_{V&#39;}) \otimes \mathcal{L}_1^{\otimes n_1} \otimes
+      \cdots \otimes \mathcal{L}_t^{\otimes n_t})</span> is the same as
+      that of <span class="math inline">\chi(\mathcal{L}_1^{\otimes n_1}
+      \otimes \cdots \otimes \mathcal{L}_t^{\otimes n_t})</span>.
+      Putting these facts together, we obtain <span
+      class="math inline">(\mathcal{L}_1&#39; \cdots
+      \mathcal{L}_t&#39;)_{V&#39;} = (\mathcal{L}_1 \cdots
+      \mathcal{L}_t)_V</span>, matching <span class="math inline">\deg f
+      = 1</span>.</p>
+      <p><strong>Step 3. The case where <span
+      class="math inline">f</span> is finite, <span
+      class="math inline">\deg f &gt; 0</span>, and both <span
+      class="math inline">V&#39;</span> and <span
+      class="math inline">V</span> are reduced.</strong> Because <span
+      class="math inline">f</span> is a finite morphism, it is affine.
+      Affine morphisms have no higher cohomology for quasi-coherent
+      sheaves, meaning <span class="math inline">R^q f_*
+      \mathcal{O}_{V&#39;} = 0</span> for all <span
+      class="math inline">q \neq 0</span>. Thus, the Leray sequence
+      collapses to the single term <span class="math inline">q=0</span>,
+      giving precisely <span class="math inline">(\mathcal{L}_1&#39;
+      \cdots \mathcal{L}_t&#39;)_{V&#39;} = (\mathcal{L}_1 \cdots
+      \mathcal{L}_t \cdot f_* \mathcal{O}_{V&#39;})_V</span>. Since
+      <span class="math inline">V</span> is irreducible and reduced, we
+      apply the generic length evaluation (established in previous
+      corollaries) to the sheaf <span class="math inline">f_*
+      \mathcal{O}_{V&#39;}</span> at the generic point <span
+      class="math inline">x</span>. We compute the length multiplier
+      <span class="math inline">l =
+      \operatorname{length}_{\mathcal{O}_x} (f_* \mathcal{O}_{V&#39;})_x
+      = [k(x&#39;) : k(x)] = \deg f</span> (since <span
+      class="math inline">V&#39;</span> and <span
+      class="math inline">V</span> are reduced). Hence, the intersection
+      number becomes <span class="math inline">\deg f \cdot
+      (\mathcal{L}_1 \cdots \mathcal{L}_t)_V</span>.</p>
+      <p><strong>Step 4. The case where <span class="math inline">V&#39;
+      = V_{\operatorname{UniBlue}}</span> and <span
+      class="math inline">f: V_{\operatorname{UniBlue}} \hookrightarrow
+      V</span> is the natural inclusion.</strong> This follows directly
+      from the generic length computation on reduced structures. By our
+      previous examples and corollaries, <span
+      class="math inline">(\mathcal{L}_1&#39; \cdots
+      \mathcal{L}_t&#39;)_{V&#39;} = \deg f \cdot (\mathcal{L}_1 \cdots
+      \mathcal{L}_t)_V</span> holds intrinsically.</p>
+      <p><strong>Step 5. The general case where <span
+      class="math inline">f</span> is any morphism of non-zero
+      degree.</strong> We construct a commutative diagram that factors
+      the general morphism into instances of the previous steps:</p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/bcd4db01ee64aa27118760093705227e5be0ba65.svg" target="_blank" rel="noopener"><img src="assets/diagrams/bcd4db01ee64aa27118760093705227e5be0ba65.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p>In this diagram, <span class="math inline">X</span> is defined
+      as the normalization of <span
+      class="math inline">V_{\operatorname{UniBlue}}</span> in the
+      function field of <span
+      class="math inline">V&#39;_{\operatorname{UniBlue}}</span>, and
+      <span class="math inline">Y</span> is the join of <span
+      class="math inline">X</span> and <span
+      class="math inline">V&#39;_{\operatorname{UniBlue}}</span>. By
+      systematically traversing this diagram, the proposition follows
+      immediately from the successive application of Steps 4, 3, and 2,
+      combined with the multiplicativity established in Lemma to walk
+      around the loops. ◻</p>
+      </div>
+      <p>As an immediate geometric application of Proposition , we can
+      recover the classical result concerning the degree of a pullback
+      divisor under a finite morphism of curves.</p>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Degree of Pullback Divisor).
+      <em> Let <span class="math inline">f: X&#39; \to X</span> be a
+      surjective morphism between smooth projective curves. Let <span
+      class="math inline">D</span> be a divisor on <span
+      class="math inline">X</span>, and <span
+      class="math inline">f^*D</span> be its pullback to <span
+      class="math inline">X&#39;</span>. Then the degree of the pullback
+      divisor is the product of the mapping degree and the degree of the
+      original divisor: <span class="math display">\deg(f^* D) = \deg f
+      \cdot \deg D.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> For a smooth projective curve <span
+      class="math inline">X</span>, the degree of a divisor <span
+      class="math inline">D</span> is classically defined and equivalent
+      to the intersection number of its associated invertible sheaf
+      <span class="math inline">\mathcal{O}_X(D)</span> evaluated on the
+      fundamental class of the curve; that is, <span
+      class="math inline">\deg D = (\mathcal{O}_X(D) \cdot X)</span>.
+      Applying Proposition with <span class="math inline">t=1</span> and
+      <span class="math inline">\mathcal{L}_1 = \mathcal{O}_X(D)</span>,
+      the pullback sheaf is <span class="math inline">\mathcal{L}_1&#39;
+      = f^* \mathcal{O}_X(D) \simeq \mathcal{O}_{X&#39;}(f^* D)</span>.
+      The proposition immediately yields: <span
+      class="math display">\deg(f^* D) = (\mathcal{O}_{X&#39;}(f^* D)
+      \cdot X&#39;) = (f^* \mathcal{L}_1)_{X&#39;} = \deg f \cdot
+      (\mathcal{L}_1)_X = \deg f \cdot \deg D.</span> ◻</p>
+      </div>
+      <p>We conclude this section by establishing the universal property
+      of the intersection number. The explicit formula via Euler
+      characteristics is uniquely enforced by the geometric and
+      algebraic properties we have deduced.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Uniqueness of the
+      Intersection Symbol). <em> The intersection number symbol <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      \mathcal{F})_X</span> is uniquely determined by the properties
+      stated in Propositions 1 through 6.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">\langle
+      \mathcal{L}_1 \cdots \mathcal{L}_t \cdot \mathcal{F}
+      \rangle_X</span> be another arbitrary symbol satisfying the
+      properties of Propositions 1-6. Because our previous corollaries
+      (Decomposition, Generic Length, Divisor on Subscheme) were derived
+      as formal, logical consequences of Propositions 1-6 alone, this
+      new symbol <span class="math inline">\langle \cdots
+      \rangle_X</span> must also satisfy these corollaries.</p>
+      <p>We wish to prove that <span class="math inline">(\mathcal{L}_1
+      \cdots \mathcal{L}_t \cdot \mathcal{F})_X = \langle \mathcal{L}_1
+      \cdots \mathcal{L}_t \cdot \mathcal{F} \rangle_X</span>. To do so,
+      we systematically reduce the general case to a simpler one using
+      the shaUniBlue properties:</p>
+      <ol>
+      <li><p>Proposition (Restriction) implies that we may assume <span
+      class="math inline">X = \operatorname{supp}\mathcal{F}</span>
+      without loss of generality.</p></li>
+      <li><p>Corollary (Decomposition) implies that we may assume <span
+      class="math inline">X</span> is an irreducible scheme.</p></li>
+      <li><p>Corollary (Multiplicity at Generic Point) implies that we
+      may assume <span class="math inline">X</span> is reduced (and
+      therefore an integral variety), and that the sheaf is simply the
+      structure sheaf <span class="math inline">\mathcal{F} =
+      \mathcal{O}_X</span>.</p></li>
+      <li><p>Finally, an application of Chow’s Lemma combined with
+      Proposition (Pullback under Morphisms) implies that we may assume
+      <span class="math inline">X</span> is a projective variety. (Note
+      that in our global convention this is already assumed, but
+      structurally the uniqueness holds under this reduction).</p></li>
+      </ol>
+      <p>Thus, it suffices to show that <span
+      class="math inline">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot W)_X
+      = \langle \mathcal{L}_1 \cdots \mathcal{L}_t \cdot W
+      \rangle_X</span> where <span class="math inline">W</span> is a
+      reducible subvariety of <span class="math inline">X</span>, which
+      we prove by induction on <span class="math inline">t</span>.</p>
+      <p><strong>Base Case (<span class="math inline">t =
+      0</span>):</strong> When <span class="math inline">t = 0</span>,
+      both symbols must evaluate to the number of points in <span
+      class="math inline">W</span> (or <span
+      class="math inline">h^0(\mathcal{O}_W)</span>) by Proposition .
+      Thus they are equal.</p>
+      <p><strong>Inductive Step (<span class="math inline">t &gt;
+      0</span>):</strong> Suppose the equality holds for <span
+      class="math inline">t-1</span>. Because <span
+      class="math inline">X</span> is projective, any invertible sheaf
+      can be expressed as the difference of two very ample effective
+      divisors. We write <span class="math inline">\mathcal{L}_1 \simeq
+      \mathcal{O}_X(C - H)</span>, where <span
+      class="math inline">C</span> and <span
+      class="math inline">H</span> are suitable very ample effective
+      divisors. Set the corresponding sheaves as <span
+      class="math inline">\mathcal{C} = \mathcal{O}_X(C)</span> and
+      <span class="math inline">\mathcal{H} = \mathcal{O}_X(H)</span>.
+      We then compute: <span class="math display">\begin{align*}
+      (\mathcal{L}_1 \cdot \mathcal{L}_2 \cdots \mathcal{L}_t \cdot W)
+      &amp;= (\mathcal{C} \cdot \mathcal{L}_2 \cdots \mathcal{L}_t \cdot
+      W) - (\mathcal{H} \cdot \mathcal{L}_2 \cdots \mathcal{L}_t \cdot
+      W) &amp; \text{by Proposition \ref{prop:int_multilinear}} \\
+      &amp;= (\mathcal{L}_2 \cdots \mathcal{L}_t \cdot C \cap W) -
+      (\mathcal{L}_2 \cdots \mathcal{L}_t \cdot H \cap W) &amp; \text{by
+      Proposition \ref{prop:int_effective}} \\
+      &amp;= \langle \mathcal{L}_2 \cdots \mathcal{L}_t \cdot C \cap W
+      \rangle - \langle \mathcal{L}_2 \cdots \mathcal{L}_t \cdot H \cap
+      W \rangle &amp; \text{by the induction hypothesis} \\
+      &amp;= \langle \mathcal{C} \cdot \mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot W \rangle - \langle \mathcal{H} \cdot
+      \mathcal{L}_2 \cdots \mathcal{L}_t \cdot W \rangle &amp; \text{by
+      Proposition \ref{prop:int_effective} for } \langle \cdot \rangle
+      \\
+      &amp;= \langle \mathcal{L}_1 \cdot \mathcal{L}_2 \cdots
+      \mathcal{L}_t \cdot W \rangle &amp; \text{by Proposition
+      \ref{prop:int_multilinear} for } \langle \cdot \rangle.
+      \end{align*}</span> This completes the induction and the proof of
+      uniqueness. ◻</p>
+      </div>
+      <p>The <em>dévissage</em> argument utilized in the latter half of
+      the preceding proof, decomposing the sheaf computation into
+      successive intersections with effective divisors, provides a
+      direct link to the classical geometric formulation of intersection
+      theory.</p>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Agreement with Classical
+      Intersection). <em> Suppose that <span
+      class="math inline">X</span> is a non-singular projective variety,
+      that <span class="math inline">\mathcal{L}_1 = \mathcal{O}_X(D_1),
+      \dots, \mathcal{L}_t = \mathcal{O}_X(D_t)</span> where <span
+      class="math inline">D_1, \dots, D_t</span> are divisors, and that
+      <span class="math inline">W</span> is a reducible subvariety. Then
+      our Euler-characteristic based intersection number agrees with the
+      classical intersection symbol: <span
+      class="math display">(\mathcal{L}_1 \cdots \mathcal{L}_t \cdot
+      W)_X = i(D_1 \cdots D_t \cdot W; X)</span> the classical
+      intersection number when the latter is properly defined through
+      transversality.</em></p>
+      </div>
+      <p>To avoid the heavy homological algebra requiUniBlue for the
+      multiple intersections of arbitrary divisors (which necessitates
+      the full theory of Koszul complexes), this section focuses
+      explicitly on the intersection of two effective divisors. This
+      restricted case provides a foundational and geometrically
+      intuitive approach before advancing to higher dimensions.</p>
+      <p>First, it is essential to establish the conditions under which
+      the intersection of two divisors is well-behaved locally.</p>
+      <div class="definition">
+      <p><strong>Definition 2.4</strong> (Coprime Local Parameters and
+      Transversality). <em> Let <span class="math inline">X</span> be a
+      smooth projective variety. Let <span class="math inline">C</span>
+      and <span class="math inline">D</span> be two effective divisors
+      on <span class="math inline">X</span>. At any point <span
+      class="math inline">x \in X</span>, let <span
+      class="math inline">C</span> and <span
+      class="math inline">D</span> be defined by local equations <span
+      class="math inline">f \in \mathcal{O}_{X,x}</span> and <span
+      class="math inline">g \in \mathcal{O}_{X,x}</span>,
+      respectively.</em></p>
+      <ul>
+      <li><p><em><span class="math inline">C</span> and <span
+      class="math inline">D</span> are said to have <strong>no common
+      components</strong> if, for every point <span
+      class="math inline">x \in C \cap D</span>, the local parameters
+      <span class="math inline">f</span> and <span
+      class="math inline">g</span> are coprime in the unique
+      factorization domain <span
+      class="math inline">\mathcal{O}_{X,x}</span>.</em></p></li>
+      <li><p><em><span class="math inline">C</span> and <span
+      class="math inline">D</span> intersect
+      <strong>transversely</strong> at <span
+      class="math inline">x</span> if their local equations generate the
+      maximal ideal, i.e., <span class="math inline">(f, g) =
+      \mathfrak{m}_x</span>.</em></p></li>
+      </ul>
+      </div>
+      <p>When two divisors share no common components, their
+      intersection defines a subscheme <span class="math inline">C \cap
+      D</span> of codimension 2. In the specific case where <span
+      class="math inline">\dim X = 2</span> (a surface), or more
+      generally when the intersection is restricted to a
+      zero-dimensional locus, the global intersection number can be
+      computed by summing the lengths of local modules.</p>
+      <div class="definition">
+      <p><strong>Definition 2.5</strong> (Intersection Multiplicity and
+      Global Number). <em> Let <span class="math inline">X</span> be a
+      smooth projective variety over a field <span
+      class="math inline">k</span>. Let <span
+      class="math inline">C</span> and <span
+      class="math inline">D</span> be effective divisors intersecting in
+      a finite number of points. For a point <span class="math inline">x
+      \in C \cap D</span> with local equations <span
+      class="math inline">f, g \in \mathcal{O}_{X,x}</span>, the
+      <strong>intersection multiplicity</strong> at <span
+      class="math inline">x</span> is defined as the length of the
+      corresponding local quotient ring: <span
+      class="math display">m_x(C \cdot D) =
+      \operatorname{length}_{\mathcal{O}_{X,x}} (\mathcal{O}_{X,x} / (f,
+      g)) .</span> The <strong>global intersection number</strong> is
+      defined as the sum of these multiplicities, weighted by the degree
+      of the field extensions: <span class="math display">(C \cdot D) =
+      \sum_{x \in C \cap D} m_x(C \cdot D) [k(x) : k].</span></em></p>
+      </div>
+      <p>This ideal-theoretic definition translates seamlessly into
+      global sheaf-theoretic data.</p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (Length as Dimension of Global
+      Sections). <em> The global intersection number <span
+      class="math inline">(C \cdot D)</span> is identically the
+      dimension of the space of global sections of the structure sheaf
+      of the intersection subscheme: <span class="math display">(C \cdot
+      D) = \dim_k \operatorname{H}^0(X, \mathcal{O}_{C \cap D})
+      .</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the definition of the structure sheaf of the
+      intersection, the stalk at <span class="math inline">x</span> is
+      <span class="math inline">\mathcal{O}_{C \cap D, x} =
+      (\mathcal{O}_X / (\mathcal{O}_X(-C) +
+      \mathcal{O}_X(-D)))_x</span>. Thus, the local length evaluates
+      exactly to <span class="math inline">\operatorname{length}
+      (\mathcal{O}_{C \cap D, x})</span>. Because <span
+      class="math inline">C \cap D</span> is a zero-dimensional scheme,
+      its global sections decompose into the direct product of its
+      stalks. The sum of the lengths, scaled by the field extension
+      degrees <span class="math inline">[k(x) : k]</span>, directly
+      computes the total vector space dimension over <span
+      class="math inline">k</span>, yielding <span
+      class="math inline">\dim_k \operatorname{H}^0(X, \mathcal{O}_{C
+      \cap D})</span>. ◻</p>
+      </div>
+      <p>Finally, we demonstrate that this ideal-theoretic definition of
+      the intersection number is completely consistent with the
+      definition formulated in the previous section using the Euler
+      characteristics of invertible sheaves.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Consistency with
+      Sheaf-Theoretic Intersection). <em> For effective divisors <span
+      class="math inline">C</span> and <span
+      class="math inline">D</span> with no common components, the
+      divisor intersection number coincides with the invertible sheaf
+      intersection number: <span class="math display">(C \cdot D) =
+      (\mathcal{O}_X(C) \cdot \mathcal{O}_X(D)).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">s \in
+      \operatorname{H}^0(X, \mathcal{O}_X(C))</span> and <span
+      class="math inline">s&#39; \in \operatorname{H}^0(X,
+      \mathcal{O}_X(D))</span> be the canonical sections defining the
+      effective divisors <span class="math inline">C</span> and <span
+      class="math inline">D</span>. We construct the following sequence
+      of coherent sheaves: <span class="math display">0 \to
+      \mathcal{O}_X(-C-D) \to \mathcal{O}_X(-C) \oplus \mathcal{O}_X(-D)
+      \to \mathcal{O}_X \to \mathcal{O}_{C \cap D} \to 0 .</span> The
+      maps are defined locally as follows: the first non-trivial map
+      sends a section <span class="math inline">r</span> to <span
+      class="math inline">(rs&#39;, -rs)</span>, and the second map
+      sends <span class="math inline">(u, v)</span> to <span
+      class="math inline">us + vs&#39;</span>. The composition maps
+      <span class="math inline">r</span> to <span
+      class="math inline">rs&#39;s - rss&#39; = 0</span>.</p>
+      <p>We must verify the exactness of this sequence at the stalks.
+      Locally at a point <span class="math inline">x</span>, this
+      reduces to evaluating the sequence of free modules: <span
+      class="math display">0 \to \mathcal{O}_{X,x} \to
+      \mathcal{O}_{X,x}^2 \to \mathcal{O}_{X,x} \to \mathcal{O}_{C \cap
+      D, x} \to 0 .</span> The first map is given by <span
+      class="math inline">k \mapsto (kg, -kf)</span>, and the second by
+      <span class="math inline">(a, b) \mapsto af + bg</span>. The
+      composition is trivially zero because <span
+      class="math inline">kgf - kfg = 0</span>. To prove exactness in
+      the middle, suppose <span class="math inline">a, b \in
+      \mathcal{O}_{X,x}</span> are such that <span
+      class="math inline">af + bg = 0</span>. Because <span
+      class="math inline">C</span> and <span
+      class="math inline">D</span> have no common components, their
+      local equations <span class="math inline">f</span> and <span
+      class="math inline">g</span> are coprime. Since <span
+      class="math inline">\mathcal{O}_{X,x}</span> is a UFD (due to the
+      smoothness of <span class="math inline">X</span>), <span
+      class="math inline">f</span> dividing <span
+      class="math inline">bg</span> implies <span
+      class="math inline">f</span> must divide <span
+      class="math inline">b</span>. Thus, <span class="math inline">b =
+      -kf</span> and consequently <span class="math inline">a =
+      kg</span> for some <span class="math inline">k \in
+      \mathcal{O}_{X,x}</span>, proving that the kernel is exactly the
+      image of the preceding map.</p>
+      <p>With exactness established, we invoke the additivity of the
+      Euler characteristic across exact sequences. Because <span
+      class="math inline">\mathcal{O}_{C \cap D}</span> is supported on
+      a zero-dimensional scheme, its Euler characteristic is simply its
+      global dimension: <span class="math inline">\chi(\mathcal{O}_{C
+      \cap D}) = \dim_k \operatorname{H}^0(X, \mathcal{O}_{C \cap D}) =
+      (C \cdot D)</span>. Taking the alternating sum of the Euler
+      characteristics for the exact sequence yields: <span
+      class="math display">\chi(\mathcal{O}_{C \cap D}) =
+      \chi(\mathcal{O}_X) - \chi(\mathcal{O}_X(-C)) -
+      \chi(\mathcal{O}_X(-D)) + \chi(\mathcal{O}_X(-C-D)) .</span> By
+      the definition of the intersection number of invertible sheaves
+      formulated via the Euler-Poincaré characteristic, the right-hand
+      side is precisely the intersection number of the corresponding
+      line bundles. Therefore, we conclude <span class="math inline">(C
+      \cdot D) = (\mathcal{O}_X(C) \cdot \mathcal{O}_X(D))</span>,
+      confirming the consistency of the two approaches. ◻</p>
+      </div>
+      <h4 data-number="5.2.1.1"
+      id="bézouts-theorem-in-projective-space">Bézout’s Theorem in
+      Projective Space</h4>
+      <p>We now record the intersection-theoretic form of Bézout’s
+      theorem. Although it is not logically a consequence of
+      Grothendieck–Riemann–Roch, it follows very naturally from the Chow
+      ring of projective space and the degree map.</p>
+      <p>Let <span class="math inline">\mathbb{P}^n=\mathbb{P}^n_k,
+          \qquad
+          h=\operatorname{c}_1(\mathcal O_{\mathbb{P}^n}(1)).</span>
+      Recall that <span class="math display">\begin{equation}
+
+          \operatorname{CH}^*(\mathbb{P}^n)
+          \cong
+          \mathbb Z[h]/(h^{n+1}).
+      \end{equation}</span> In particular, <span
+      class="math inline">\operatorname{CH}^r(\mathbb{P}^n)
+          =
+          \mathbb Z h^r,
+          \qquad
+          0\leq r\leq n.</span></p>
+      <p>Geometrically, if <span
+      class="math inline">L\simeq\mathbb{P}^{n-r}\subset\mathbb{P}^n</span>
+      is a linear subspace of codimension <span
+      class="math inline">r</span>, then <span
+      class="math inline">[L]=h^r.</span></p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (Cycle class and degree in
+      projective space). <em> Let <span
+      class="math inline">Z\subset\mathbb{P}^n</span> be an integral
+      closed subscheme of dimension <span class="math inline">d</span>,
+      or equivalently of codimension <span
+      class="math inline">c=n-d.</span> Then <span
+      class="math display">\begin{equation}
+
+          [Z]
+          =
+          \deg(Z)\,h^c
+          \qquad
+          \text{in }
+          \operatorname{CH}^c(\mathbb{P}^n).
+      \end{equation}</span> More generally, if <span
+      class="math inline">\alpha\in\operatorname{CH}_d(\mathbb{P}^n)</span>
+      is any <span class="math inline">d</span>-dimensional cycle, then
+      <span class="math inline">\alpha
+          =
+          \deg(\alpha)\,h^{n-d}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span
+      class="math inline">\operatorname{CH}^c(\mathbb{P}^n)=\mathbb
+      Zh^c,</span> there exists an integer <span
+      class="math inline">m</span> such that <span
+      class="math inline">[Z]=mh^c.</span> It remains to identify <span
+      class="math inline">m</span>.</p>
+      <p>Multiply both sides by <span
+      class="math inline">h^d=h^{n-c}.</span> Then <span
+      class="math inline">[Z]\cdot h^d
+          =
+          mh^n.</span> Since <span
+      class="math inline">\deg(h^n)=1,</span> taking degrees gives <span
+      class="math inline">\deg([Z]\cdot h^d)=m.</span></p>
+      <p>But the degree of a <span
+      class="math inline">d</span>-dimensional projective scheme <span
+      class="math inline">Z</span> is intersection-theoretically
+      characterized by <span class="math inline">\deg Z
+          =
+          \deg
+          \left(
+              [Z]\cdot h^d
+          \right).</span> Equivalently, if <span
+      class="math inline">H_1,\dots,H_d</span> are sufficiently general
+      hyperplanes, then the proper intersection <span
+      class="math inline">Z\cap H_1\cap\cdots\cap H_d</span> is
+      zero-dimensional and <span class="math inline">\deg Z
+          =
+          \deg
+          \left(
+              [Z]\cdot[H_1]\cdots[H_d]
+          \right).</span> Since every hyperplane has class <span
+      class="math inline">h</span>, this is precisely <span
+      class="math inline">\deg([Z]h^d).</span> Hence <span
+      class="math inline">m=\deg Z,</span> and therefore <span
+      class="math inline">[Z]=\deg(Z)h^c.</span></p>
+      <p>The statement for arbitrary cycles follows by linearity. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Bézout’s theorem in <span
+      class="math inline">\mathbb{P}^n</span>). <em> Let <span
+      class="math inline">X,Y\subset\mathbb{P}^n_k</span> be
+      pure-dimensional closed subschemes of codimensions <span
+      class="math inline">p</span> and <span
+      class="math inline">q</span>, respectively. Assume <span
+      class="math inline">p+q\leq n</span> and that <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span> intersect properly, i.e. every
+      irreducible component <span class="math inline">W\subset X\cap
+      Y</span> has codimension <span
+      class="math inline">\operatorname{codim}_{\mathbb{P}^n}W=p+q.</span>
+      Then <span class="math display">\begin{equation}
+
+          \boxed{
+              \deg(X\cdot Y)
+              =
+              \deg(X)\deg(Y)
+          }.
+      \end{equation}</span></em></p>
+      <p><em>More explicitly, the proper intersection cycle is <span
+      class="math display">\begin{equation}
+
+          X\cdot Y
+          =
+          \sum_{W\in\mathrm{Irr}(X\cap Y)}
+          i(W;X,Y;\mathbb{P}^n)[W],
+      \end{equation}</span> and hence <span
+      class="math display">\begin{equation}
+
+          \boxed{
+          \sum_{W\in\mathrm{Irr}(X\cap Y)}
+              i(W;X,Y;\mathbb{P}^n)\deg W
+          =
+          \deg X\deg Y.
+          }
+      \end{equation}</span></em></p>
+      <p><em>Here <span class="math inline">i(W;X,Y;\mathbb{P}^n)</span>
+      denotes the local intersection multiplicity of <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span> along <span
+      class="math inline">W</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span
+      class="math inline">\mathbb{P}^n</span> is smooth, its Chow groups
+      carry an intersection product <span
+      class="math inline">\operatorname{CH}^p(\mathbb{P}^n)\times\operatorname{CH}^q(\mathbb{P}^n)
+          \longrightarrow
+          \operatorname{CH}^{p+q}(\mathbb{P}^n).</span></p>
+      <p>Put <span class="math inline">a=\deg X,
+          \qquad
+          b=\deg Y.</span> By Lemma , <span
+      class="math inline">[X]=ah^p</span> and <span
+      class="math inline">[Y]=bh^q.</span> Therefore <span
+      class="math display">\begin{align}
+          [X]\cdot[Y]
+          &amp;=
+          (ah^p)(bh^q)\notag\\
+          &amp;=
+          ab\,h^{p+q}.
+
+      \end{align}</span></p>
+      <p>Because <span class="math inline">X</span> and <span
+      class="math inline">Y</span> meet properly, the intersection
+      product is represented by the proper intersection cycle <span
+      class="math inline">X\cdot Y
+          =
+          \sum_W
+          i(W;X,Y;\mathbb{P}^n)[W],</span> where <span
+      class="math inline">W</span> runs through the irreducible
+      components of <span class="math inline">X\cap Y</span>.</p>
+      <p>Every such <span class="math inline">W</span> has dimension
+      <span class="math inline">\dim W
+          =
+          n-p-q.</span> Set <span class="math inline">d=n-p-q.</span> To
+      compute the degree of the intersection cycle, multiply by <span
+      class="math inline">h^d</span>. We obtain <span
+      class="math display">\begin{align*}
+          [X]\cdot[Y]\cdot h^d
+          &amp;=
+          ab\,h^{p+q+d}\\
+          &amp;=
+          ab\,h^n.
+      \end{align*}</span> Taking degrees and using <span
+      class="math inline">\deg(h^n)=1</span> gives <span
+      class="math inline">\deg(X\cdot Y)
+          =
+          ab
+          =
+          \deg X\deg Y.</span> This proves .</p>
+      <p>On the other hand, by linearity of the degree map, <span
+      class="math display">\begin{align*}
+          \deg(X\cdot Y)
+          &amp;=
+          \deg
+          \left(
+              \sum_W
+              i(W;X,Y;\mathbb{P}^n)[W]
+          \right)\\
+          &amp;=
+          \sum_W
+              i(W;X,Y;\mathbb{P}^n)\deg W.
+      \end{align*}</span> Combining this with <span
+      class="math inline">\deg(X\cdot Y)
+          =
+          \deg X\deg Y</span> gives <span class="math inline">\sum_W
+              i(W;X,Y;\mathbb{P}^n)\deg W
+          =
+          \deg X\deg Y.</span> This is . ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Local intersection multiplicity).
+      <em> Because <span class="math inline">\mathbb{P}^n</span> is
+      nonsingular, the local ring <span class="math inline">\mathcal
+      O_{\mathbb{P}^n,\eta_W}</span> at the generic point <span
+      class="math inline">\eta_W</span> of an irreducible component
+      <span class="math inline">W</span> is a regular local ring. Under
+      the proper-intersection hypothesis, the intersection multiplicity
+      may be expressed by Serre’s formula <span
+      class="math display">\begin{equation}
+
+          i(W;X,Y;\mathbb{P}^n)
+          =
+          \sum_{j\geq0}
+          (-1)^j
+          \mathrm{length}_{\mathcal O_{\mathbb{P}^n,\eta_W}}
+          \mathrm{Tor}_j^{\mathcal O_{\mathbb{P}^n,\eta_W}}
+          \left(
+              \mathcal O_{X,\eta_W},
+              \mathcal O_{Y,\eta_W}
+          \right).
+      \end{equation}</span> Thus Bézout’s theorem counts components with
+      their scheme-theoretic intersection multiplicities rather than
+      merely counting the underlying points or components.</em></p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Zero-dimensional Bézout
+      theorem). <em> Let <span
+      class="math inline">X,Y\subset\mathbb{P}^n_k</span> be
+      pure-dimensional closed subschemes such that <span
+      class="math inline">\dim X+\dim Y=n</span> and such that <span
+      class="math inline">X\cap Y</span> is zero-dimensional. Then <span
+      class="math display">\begin{equation}
+
+          \sum_{x\in X\cap Y}
+              i(x;X,Y;\mathbb{P}^n)
+              [\kappa(x):k]
+          =
+          \deg X\deg Y.
+      \end{equation}</span></em></p>
+      <p><em>If <span class="math inline">k</span> is algebraically
+      closed, then <span class="math inline">[\kappa(x):k]=1</span> for
+      every closed point <span class="math inline">x</span>, and
+      therefore <span class="math display">\begin{equation}
+
+          \boxed{
+          \sum_{x\in X\cap Y}
+              i(x;X,Y;\mathbb{P}^n)
+          =
+          \deg X\deg Y.
+          }
+      \end{equation}</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since the intersection is zero-dimensional, its
+      irreducible components are precisely its closed points. Hence
+      Theorem  gives <span class="math inline">X\cdot Y
+          =
+          \sum_{x\in X\cap Y}
+              i(x;X,Y;\mathbb{P}^n)[x].</span> The degree of a closed
+      point is <span class="math inline">\deg[x]=[\kappa(x):k],</span>
+      so <span class="math inline">\deg(X\cdot Y)
+          =
+          \sum_{x\in X\cap Y}
+              i(x;X,Y;\mathbb{P}^n)
+              [\kappa(x):k].</span> Bézout’s theorem gives <span
+      class="math inline">\deg(X\cdot Y)=\deg X\deg Y,</span> which
+      proves the result. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Bézout for hypersurfaces in
+      <span class="math inline">\mathbb{P}^n</span>). <em> Let <span
+      class="math inline">F_1,\dots,F_r
+          \in k[x_0,\dots,x_n]</span> be nonzero homogeneous polynomials
+      of degrees <span class="math inline">d_1,\dots,d_r,</span> and put
+      <span class="math inline">D_i=V(F_i)\subset\mathbb{P}^n.</span>
+      Assume that the hypersurfaces meet properly, so that <span
+      class="math inline">\operatorname{codim}_{\mathbb{P}^n}
+          (D_1\cap\cdots\cap D_r)
+          =
+          r.</span> Then their intersection cycle has degree <span
+      class="math display">\begin{equation}
+
+          \boxed{
+          \deg(D_1\cdots D_r)
+          =
+          d_1d_2\cdots d_r.
+          }
+      \end{equation}</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> A homogeneous polynomial <span
+      class="math inline">F_i</span> of degree <span
+      class="math inline">d_i</span> determines a section of the line
+      bundle <span class="math inline">\mathcal
+      O_{\mathbb{P}^n}(d_i).</span> Its zero divisor is <span
+      class="math inline">D_i</span>. Therefore <span
+      class="math inline">[D_i]
+          =
+          \operatorname{c}_1
+          \left(
+              \mathcal O_{\mathbb{P}^n}(d_i)
+          \right).</span> Since <span class="math inline">\mathcal
+      O_{\mathbb{P}^n}(d_i)
+          \simeq
+          \mathcal O_{\mathbb{P}^n}(1)^{\otimes d_i},</span> we have
+      <span class="math inline">\operatorname{c}_1
+          \left(
+              \mathcal O_{\mathbb{P}^n}(d_i)
+          \right)
+          =
+          d_i
+          \operatorname{c}_1
+          \left(
+              \mathcal O_{\mathbb{P}^n}(1)
+          \right)
+          =
+          d_ih.</span> Thus <span
+      class="math inline">[D_i]=d_ih.</span></p>
+      <p>Consequently <span class="math display">\begin{align*}
+          [D_1]\cdots[D_r]
+          &amp;=
+          (d_1h)\cdots(d_rh)\\
+          &amp;=
+          d_1\cdots d_r\,h^r.
+      \end{align*}</span> The intersection has dimension <span
+      class="math inline">n-r.</span> Multiplying by <span
+      class="math inline">h^{n-r}</span> gives <span
+      class="math inline">[D_1]\cdots[D_r]h^{n-r}
+          =
+          d_1\cdots d_r\,h^n.</span> Taking degrees yields <span
+      class="math inline">\deg(D_1\cdots D_r)
+          =
+          d_1\cdots d_r,</span> as claimed. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Classical Bézout theorem for
+      <span class="math inline">n</span> hypersurfaces). <em> Let <span
+      class="math inline">F_1,\dots,F_n
+          \in k[x_0,\dots,x_n]</span> be homogeneous polynomials of
+      degrees <span class="math inline">d_1,\dots,d_n.</span> Suppose
+      that <span
+      class="math inline">V(F_1,\dots,F_n)\subset\mathbb{P}^n</span> is
+      zero-dimensional. Then <span class="math display">\begin{equation}
+
+          \sum_{x\in V(F_1,\dots,F_n)}
+              i_x(F_1,\dots,F_n)
+              [\kappa(x):k]
+          =
+          d_1d_2\cdots d_n.
+      \end{equation}</span></em></p>
+      <p><em>If <span class="math inline">k</span> is algebraically
+      closed, then <span class="math display">\begin{equation}
+
+          \boxed{
+          \sum_{x\in V(F_1,\dots,F_n)}
+              i_x(F_1,\dots,F_n)
+          =
+          d_1d_2\cdots d_n.
+          }
+      \end{equation}</span></em></p>
+      <p><em>In particular, if all intersections are transverse, so that
+      every local intersection multiplicity equals <span
+      class="math inline">1</span>, then <span class="math inline">\#
+          V(F_1,\dots,F_n)
+          =
+          d_1d_2\cdots d_n.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Apply Corollary  with <span
+      class="math inline">r=n</span>. Since the intersection has
+      codimension <span class="math inline">n</span>, it is
+      zero-dimensional, and therefore <span
+      class="math inline">D_1\cdots D_n
+          =
+          \sum_x
+          i_x(F_1,\dots,F_n)[x].</span> Taking degrees gives <span
+      class="math inline">\sum_x
+              i_x(F_1,\dots,F_n)
+              [\kappa(x):k]
+          =
+          d_1\cdots d_n.</span> If <span class="math inline">k</span> is
+      algebraically closed, every residue field equals <span
+      class="math inline">k</span> and the residue-field factors
+      disappear.</p>
+      <p>Finally, if the hypersurfaces meet transversely at every
+      intersection point, then <span
+      class="math inline">i_x(F_1,\dots,F_n)=1</span> for every <span
+      class="math inline">x</span>, so the sum of the multiplicities is
+      simply the number of intersection points. ◻</p>
+      </div>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (The plane-curve form of Bézout).
+      <em> Let <span class="math inline">C=V(F),
+          \qquad
+          D=V(G)
+          \subset\mathbb{P}^2_k</span> be plane curves of degrees <span
+      class="math inline">d</span> and <span
+      class="math inline">e</span>, respectively. Assume that <span
+      class="math inline">C</span> and <span
+      class="math inline">D</span> have no common irreducible component.
+      Then their intersection is zero-dimensional and <span
+      class="math inline">[C]=dh,
+          \qquad
+          [D]=eh.</span> Hence <span class="math inline">[C]\cdot[D]
+          =
+          de\,h^2.</span> Since <span
+      class="math inline">\deg(h^2)=1,</span> we obtain <span
+      class="math inline">\sum_{x\in C\cap D}
+              i(x;C,D;\mathbb{P}^2)
+              [\kappa(x):k]
+          =
+          de.</span> Over an algebraically closed field this becomes the
+      familiar formula <span class="math inline">\boxed{
+          \sum_{x\in C\cap D}
+              i(x;C,D;\mathbb{P}^2)
+          =
+          de.
+          }</span> Thus the classical theorem for plane curves is
+      exactly the two-dimensional special case of Theorem .</em></p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="5.1-the-concept-and-basic-theory-of-curves.html" rel="prev">
+          <span>PREVIOUS</span><strong>← The Concept and Basic Theory of Curves</strong>
+        </a>
+                        <a class="turn-next" href="5.3-weil-conjectures-on-curves.html" rel="next">
+          <span>NEXT</span><strong>Weil Conjectures on Curves →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

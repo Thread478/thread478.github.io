@@ -1,0 +1,2614 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>The Concept and Basic Theory of Curves · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Classical Geometry</p>
+        <h1>The Concept and Basic Theory of Curves</h1>
+      </header>
+      <h2 data-number="5.1"
+      id="the-concept-and-basic-theory-of-curves">The Concept and Basic
+      Theory of Curves</h2>
+      <h3 data-number="5.1.1" id="what-are-curves">What are Curves?</h3>
+      <h4 data-number="5.1.1.1" id="definition-of-curves">Definition of
+      Curves</h4>
+      <p>First, let’s go over some ‘terms’ about algebraic varieties.
+      We’ve encountered them before when studying schemes, but in older
+      algebraic geometry, they were described differently.</p>
+      <div class="definition">
+      <p><strong>Definition 1.1</strong> (Algebraic Curve). <em> Let
+      <span class="math inline">k</span> be an field. An
+      <strong>algebraic curve</strong> (or simply a curve) is an
+      integral algebraic variety <span class="math inline">X</span> over
+      <span class="math inline">k</span> of dimension <span
+      class="math inline">1</span>. Typically, unless otherwise stated,
+      a curve is assumed to be integral, separated, and of finite type
+      over <span class="math inline">k</span>.</em></p>
+      <p><em>An algebraic variety <span class="math inline">X</span>
+      over <span class="math inline">k</span> is
+      <strong>complete</strong> if the unique morphism <span
+      class="math inline">X \to \operatorname{Spec}k</span> is
+      proper.</em></p>
+      <p><em>An algebraic variety <span class="math inline">X</span>
+      over <span class="math inline">k</span> is
+      <strong>nonsingular</strong> if the unique morphism <span
+      class="math inline">X \to \operatorname{Spec}k</span> is
+      smooth.</em></p>
+      </div>
+      <h4 data-number="5.1.1.2" id="examples-of-curves">Examples of
+      Curves</h4>
+      <p>The simplest examples of algebraic curves are the affine line
+      and its projective completion, the projective line.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (The Affine and Projective Line).
+      <em> The <strong>affine line</strong> <span
+      class="math inline">\mathbb{A}^1_k =
+      \operatorname{Spec}k[x]</span> is a nonsingular, integral curve of
+      dimension 1. It is not complete.</em></p>
+      <p><em>The <strong>projective line</strong> <span
+      class="math inline">\mathbb{P}^1_k = \operatorname{Proj}
+      k[x,y]</span> is the projective closure of <span
+      class="math inline">\mathbb{A}^1_k</span>, obtained by adding a
+      single point at infinity (<span class="math inline">[1:0]</span>).
+      It is both complete and nonsingular.</em></p>
+      </div>
+      <p>Below is a geometric visualization of <span
+      class="math inline">\mathbb{A}^1</span> and its compactification
+      into <span class="math inline">\mathbb{P}^1</span> via a
+      stereographic projection framework:</p>
+      <div class="center">
+
+      </div>
+      <p>Conics are curves defined by a single quadratic equation in two
+      or three variables.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Conics in the Projective Plane).
+      <em> Consider two curves in <span
+      class="math inline">\mathbb{P}^2_k</span>:</em></p>
+      <ol>
+      <li><p><em><strong>Smooth Conic:</strong> <span
+      class="math inline">X_1 = \operatorname{Proj} k[x,y,z]/(yx -
+      z^2)</span>, which is isomorphic to <span
+      class="math inline">\mathbb{P}^1_k</span> and thus nonsingular and
+      complete.</em></p></li>
+      <li><p><em><strong>Singular Conic (Saddled/Degenerate):</strong>
+      <span class="math inline">X_2 = \operatorname{Proj}
+      k[x,y,z]/(xy)</span>, representing two intersecting projective
+      lines. The intersection point <span
+      class="math inline">[0:0:1]</span> is a singular
+      point.</em></p></li>
+      </ol>
+      </div>
+      <p>The following diagrams illustrate the smooth locus of a
+      parabola/hyperbola counterpart vs. a singular crossing pair of
+      lines in an affine chart:</p>
+      <div class="center">
+
+      </div>
+      <p>The twisted cubic is the simplest example of a non-planar
+      projective curve that does not lie entirely in any hypersurface of
+      <span class="math inline">\mathbb{P}^2</span>.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (The Twisted Cubic). <em> The
+      <strong>twisted cubic</strong> <span class="math inline">C \subset
+      \mathbb{P}^3_k</span> is the image of the embedding <span
+      class="math inline">\mathbb{P}^1_k \to \mathbb{P}^3_k</span> given
+      by <span class="math inline">[s:t] \mapsto [s^3 : s^2t : st^2 :
+      t^3]</span>. In the affine chart <span class="math inline">x_0
+      \neq 0</span>, it is given by the parameterization <span
+      class="math inline">(t, t^2, t^3) \in \mathbb{A}^3_k</span>,
+      defined by the vanishing of the ideal <span class="math inline">(y
+      - x^2, z - x^3)</span>. It is an integral, nonsingular, complete
+      curve of degree 3.</em></p>
+      </div>
+      <p>The code below visualizes the spatial trajectory of the affine
+      part of the twisted cubic curve:</p>
+      <div class="center">
+
+      </div>
+      <p>Cubics in <span class="math inline">\mathbb{P}^2</span> can
+      showcase local singularities. Two famous examples are the node and
+      the cusp.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Nodal and Cusp Curves). <em> Let
+      <span class="math inline">X_{\text{node}}</span> be the affine
+      curve defined by <span class="math inline">y^2 = x^2(x+1)</span>.
+      The origin <span class="math inline">(0,0)</span> is a
+      <strong>node</strong> because there are two distinct tangent
+      directions.</em></p>
+      <p><em>Let <span class="math inline">X_{\text{cusp}}</span> be the
+      affine curve defined by <span class="math inline">y^2 =
+      x^3</span>. The origin <span class="math inline">(0,0)</span> is a
+      <strong>cusp</strong> because the tangent space degenerates along
+      a single direction, but the local ring is not regular.</em></p>
+      </div>
+      <p>Here are the representations of the configurations of these
+      standard affine plane singular cubics:</p>
+      <div class="center">
+
+      </div>
+      <p>An elliptic curve is one of the most structurally rich objects
+      in algebraic geometry, combining a smooth projective curve
+      configuration with an Abelian group structure.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Elliptic Curve). <em> An
+      <strong>elliptic curve</strong> <span class="math inline">E</span>
+      over a field <span class="math inline">k</span> is a nonsingular,
+      complete (projective) curve of genus <span
+      class="math inline">1</span>, equipped with a specified base point
+      <span class="math inline">O \in E(k)</span>.</em></p>
+      <p><em>If <span class="math inline">\operatorname{char}(k) \neq
+      2,3</span>, any such curve can be embedded in <span
+      class="math inline">\mathbb{P}^2_k</span> as a closed subscheme
+      defined by the homogeneous Weierstrass equation: <span
+      class="math display">y^2z = x^3 + axz^2 + bz^3</span> In the
+      standard affine patch <span class="math inline">z \neq 0</span>,
+      this becomes <span class="math inline">y^2 = x^3 + ax + b</span>.
+      The nonsingularity condition evaluates directly via the
+      discriminant to <span class="math inline">\Delta = -16(4a^3 +
+      27b^2) \neq 0</span>.</em></p>
+      </div>
+      <p>The real locus of a typical smooth elliptic curve displaying
+      its two distinct topological components (when <span
+      class="math inline">\Delta &gt; 0</span>) is illustrated
+      below:</p>
+      <div class="center">
+
+      </div>
+      <h3 data-number="5.1.2" id="divisors-over-a-curve">Divisors over a
+      Curve</h3>
+      <h4 data-number="5.1.2.1"
+      id="projectivity-and-completeness-of-nonsingular-curves">Projectivity
+      and Completeness of Nonsingular Curves</h4>
+      <p>Having established the foundational geometry of curves, we now
+      restrict our attention to the class of curves where the theory of
+      divisors behaves most beautifully: <strong>nonsingular
+      curves</strong>.</p>
+      <p>For general schemes, being projective is a strictly stronger
+      property than being complete (proper over <span
+      class="math inline">k</span>). However, a remarkable feature of
+      nonsingular algebraic curves is that these two notions
+      coincide.</p>
+      <p>Here, we state and prove this equivalence entirely within the
+      language of schemes, adapting the classic result from Hartshorne’s
+      text.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Projectivity and Completeness
+      for Curves). <em> Let <span class="math inline">X</span> be a
+      nonsingular curve over a field <span class="math inline">k</span>
+      with function field <span class="math inline">K</span>. Then the
+      following conditions are equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">X</span> is projective over
+      <span class="math inline">k</span>.</em></p></li>
+      <li><p><em><span class="math inline">X</span> is complete (proper
+      over <span class="math inline">k</span>).</em></p></li>
+      <li><p><em><span class="math inline">X \cong C_K</span>, where
+      <span class="math inline">C_K</span> is the abstract nonsingular
+      curve associated to the field extension <span
+      class="math inline">K/k</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We prove the cycle of implications <span
+      class="math inline">(1) \implies (2) \implies (3) \implies
+      (1)</span>.</p>
+      <h6 data-number="5.1.2.1.0.1" id="implies-2"><span
+      class="math inline">(1) \implies (2)</span>:</h6>
+      <p>This is a general property of schemes that does not depend on
+      the dimension. Every projective morphism is proper. Since <span
+      class="math inline">X</span> is projective over <span
+      class="math inline">k</span>, the structure morphism <span
+      class="math inline">X \to \operatorname{Spec}k</span> is proper,
+      which means <span class="math inline">X</span> is complete.</p>
+      <h6 data-number="5.1.2.1.0.2" id="implies-3"><span
+      class="math inline">(2) \implies (3)</span>:</h6>
+      <p>Assume <span class="math inline">X</span> is complete, meaning
+      <span class="math inline">X \to \operatorname{Spec}k</span> is a
+      proper morphism. By the valuative criterion for properness, for
+      every discrete valuation ring <span class="math inline">R</span>
+      of <span class="math inline">K/k</span> containing <span
+      class="math inline">k</span> with fraction field <span
+      class="math inline">K</span>, there exists a unique morphism <span
+      class="math inline">\operatorname{Spec}R \to X</span> making the
+      following diagram commute:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/f94d4742784f11b50f4de40ed57a740cf8ee1507.svg" target="_blank" rel="noopener"><img src="assets/diagrams/f94d4742784f11b50f4de40ed57a740cf8ee1507.svg" alt="交换图" loading="lazy" /></a></span>
+      The image of the closed point of <span
+      class="math inline">\operatorname{Spec}R</span> under this unique
+      dashed arrow is called the <em>center</em> of <span
+      class="math inline">R</span> on <span
+      class="math inline">X</span>. Thus, every DVR of <span
+      class="math inline">K/k</span> has a unique center on <span
+      class="math inline">X</span>.</p>
+      <p>Conversely, because <span class="math inline">X</span> is a
+      nonsingular curve, the local ring <span
+      class="math inline">\mathcal{O}_{X,x}</span> at any closed point
+      <span class="math inline">x \in X</span> is a regular local ring
+      of dimension 1, which is precisely a discrete valuation ring of
+      <span class="math inline">K/k</span>. Since <span
+      class="math inline">X</span> is separated, distinct closed points
+      give rise to distinct local rings.</p>
+      <p>This establishes a bijective correspondence between the closed
+      points of <span class="math inline">X</span> and the set of all
+      discrete valuation rings of <span class="math inline">K/k</span>.
+      By definition, the scheme <span class="math inline">C_K</span> has
+      precisely the discrete valuation rings of <span
+      class="math inline">K/k</span> as its underlying points, equipped
+      with the structure sheaf of local valuation rings. Therefore, the
+      scheme <span class="math inline">X</span> is naturally isomorphic
+      to the abstract nonsingular curve <span
+      class="math inline">C_K</span>.</p>
+      <h6 data-number="5.1.2.1.0.3" id="implies-1"><span
+      class="math inline">(3) \implies (1)</span>:</h6>
+      <p>By the structural theory of the abstract nonsingular curve,
+      <span class="math inline">C_K</span> can always be embedded as a
+      closed subscheme of some projective space <span
+      class="math inline">\mathbb{P}^n_k</span>. Since <span
+      class="math inline">X \cong C_K</span>, it follows that <span
+      class="math inline">X</span> is projective over <span
+      class="math inline">k</span>. ◻</p>
+      </div>
+      <h4 data-number="5.1.2.2"
+      id="morphisms-on-nonsingular-curves">Morphisms on Nonsingular
+      Curves</h4>
+      <p>A morphism from a complete nonsingular curve to any other curve
+      is highly constrained geometrically. It is either constant or
+      surjective. In the latter case, it naturally exhibits algebraic
+      properties analogous to covering spaces in topology.</p>
+      <p>Here we state and prove this fact using scheme-theoretic
+      language over a general base field <span
+      class="math inline">k</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Morphisms from Complete
+      Nonsingular Curves). <em> Let <span class="math inline">X</span>
+      be a complete, nonsingular curve over a field <span
+      class="math inline">k</span>, let <span
+      class="math inline">Y</span> be any curve over <span
+      class="math inline">k</span>, and let <span class="math inline">f:
+      X \to Y</span> be a morphism of <span
+      class="math inline">k</span>-schemes. Then either:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f(X) = \{y\}</span> is a
+      single closed point of <span class="math inline">Y</span>,
+      or</em></p></li>
+      <li><p><em><span class="math inline">f(X) =
+      Y</span>.</em></p></li>
+      </ol>
+      <p><em>In case (2), <span class="math inline">f</span> is a finite
+      dominant morphism, <span class="math inline">Y</span> is
+      necessarily complete, and the function field <span
+      class="math inline">K(X)</span> is a finite field extension of
+      <span class="math inline">K(Y)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because <span class="math inline">X</span> is
+      complete over <span class="math inline">k</span>, the structure
+      morphism <span class="math inline">X \to
+      \operatorname{Spec}k</span> is proper. Since properness is stable
+      under composition and base change, the image <span
+      class="math inline">f(X)</span> must be a closed subset of <span
+      class="math inline">Y</span>, and <span
+      class="math inline">f(X)</span> viewed as a reduced subscheme is
+      proper over <span
+      class="math inline">\operatorname{Spec}k</span>.</p>
+      <p>Additionally, <span class="math inline">X</span> is an integral
+      scheme, which implies it is irreducible. The continuous image of
+      an irreducible space is irreducible, so <span
+      class="math inline">f(X)</span> is an irreducible closed subset of
+      the <span class="math inline">1</span>-dimensional scheme <span
+      class="math inline">Y</span>. There are only two types of
+      irreducible closed subsets in a <span
+      class="math inline">1</span>-dimensional integral scheme:</p>
+      <ol>
+      <li><p>A single closed point <span class="math inline">y \in
+      Y</span>.</p></li>
+      <li><p>The entire space <span class="math inline">Y</span> (the
+      closure of the generic point).</p></li>
+      </ol>
+      <p>If <span class="math inline">f(X) = Y</span>, then <span
+      class="math inline">Y</span> is the image of a proper scheme, so
+      <span class="math inline">Y</span> must be proper over <span
+      class="math inline">\operatorname{Spec}k</span>, meaning <span
+      class="math inline">Y</span> is complete.</p>
+      <p>Since <span class="math inline">f(X) = Y</span>, the generic
+      point of <span class="math inline">X</span> maps to the generic
+      point of <span class="math inline">Y</span>, making <span
+      class="math inline">f</span> a dominant morphism. This induces an
+      injection of their function fields <span class="math inline">K(Y)
+      \hookrightarrow K(X)</span>. Because <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span> are both of finite type over <span
+      class="math inline">k</span> and have dimension <span
+      class="math inline">1</span>, their function fields <span
+      class="math inline">K(X)</span> and <span
+      class="math inline">K(Y)</span> are finitely generated extensions
+      of <span class="math inline">k</span> of transcendence degree
+      <span class="math inline">1</span>. Thus, the field extension
+      <span class="math inline">K(X)/K(Y)</span> must be an algebraic
+      extension of finite degree.</p>
+      <p>To show that <span class="math inline">f</span> is a finite
+      morphism, let <span class="math inline">V =
+      \operatorname{Spec}B</span> be any open affine subset of <span
+      class="math inline">Y</span>. Let <span
+      class="math inline">A</span> be the integral closure of <span
+      class="math inline">B</span> in the finite field extension <span
+      class="math inline">K(X)</span>. Since <span
+      class="math inline">B</span> is a finitely generated <span
+      class="math inline">k</span>-algebra and <span
+      class="math inline">K(X)/K(Y)</span> is a finite extension, <span
+      class="math inline">A</span> is a finite <span
+      class="math inline">B</span>-module. Because <span
+      class="math inline">X</span> is nonsingular, it is a normal
+      scheme, meaning all its local rings are integrally closed. Thus,
+      the open subscheme <span class="math inline">f^{-1}(V) \subset
+      X</span> is precisely isomorphic to <span
+      class="math inline">\operatorname{Spec}A</span>. Since <span
+      class="math inline">A</span> is a finite <span
+      class="math inline">B</span>-module, <span
+      class="math inline">f|_{f^{-1}(V)}: \operatorname{Spec}A \to
+      \operatorname{Spec}B</span> is a finite morphism. Since this holds
+      for any open affine <span class="math inline">V \subset Y</span>,
+      <span class="math inline">f</span> is a finite morphism. ◻</p>
+      </div>
+      <h4 data-number="5.1.2.3"
+      id="degree-of-a-morphism-and-divisors-on-curves">Degree of a
+      Morphism and Divisors on Curves</h4>
+      <div class="definition">
+      <p><strong>Definition 1.2</strong> (Degree of a Morphism). <em>
+      Let <span class="math inline">f: X \to Y</span> be a dominant
+      morphism of algebraic varieties. The <strong>degree</strong> of
+      <span class="math inline">f</span>, denoted <span
+      class="math inline">\deg f</span>, is defined to be the degree of
+      the finite field extension of their function fields: <span
+      class="math display">\deg f = [K(X) : K(Y)]</span></em></p>
+      </div>
+      <p>We can now define the divisor group on a nonsingular curve.
+      Over a non-algebraically closed field <span
+      class="math inline">k</span>, a prime divisor is a closed point,
+      but its residue field may be a finite extension of <span
+      class="math inline">k</span>. This affects how we define the
+      degree of a divisor.</p>
+      <div class="definition">
+      <p><strong>Definition 1.3</strong> (Divisors on a Curve). <em> Let
+      <span class="math inline">X</span> be a nonsingular curve over
+      <span class="math inline">k</span>. A <strong>prime
+      divisor</strong> on <span class="math inline">X</span> is a closed
+      point <span class="math inline">P \in X</span>. The
+      <strong>divisor group</strong> <span
+      class="math inline">\operatorname{Div} X</span> is the free
+      Abelian group generated by the closed points: <span
+      class="math display">D = \sum_{P \in X} n_P P</span> where <span
+      class="math inline">n_P \in \mathbb{Z}</span> and <span
+      class="math inline">n_P = 0</span> for all but finitely many
+      closed points <span class="math inline">P</span>.</em></p>
+      <p><em>The <strong>degree of a closed point</strong> <span
+      class="math inline">P</span>, denoted <span
+      class="math inline">\deg P</span>, is the dimension of its residue
+      field <span class="math inline">\kappa(P) =
+      \mathcal{O}_{X,P}/\mathfrak{m}_P</span> as a vector space over the
+      base field <span class="math inline">k</span>: <span
+      class="math display">\deg P = [\kappa(P) : k]</span> The
+      <strong>degree of an arbitrary divisor</strong> <span
+      class="math inline">D = \sum n_P P</span> is defined by linearity:
+      <span class="math display">\deg D = \sum_{P \in X} n_P \deg P =
+      \sum_{P \in X} n_P [\kappa(P) : k]</span></em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.4</strong> (Pullback of Divisors). <em>
+      Let <span class="math inline">f: X \to Y</span> be a finite
+      morphism of nonsingular curves over <span
+      class="math inline">k</span>. We define the group homomorphism
+      <span class="math inline">f^*: \operatorname{Div} Y \to
+      \operatorname{Div} X</span> by its action on prime
+      divisors.</em></p>
+      <p><em>For any closed point <span class="math inline">Q \in
+      Y</span>, let <span class="math inline">\mathcal{O}_{Y,Q}</span>
+      be its local ring, which is a discrete valuation ring with generic
+      field <span class="math inline">K(Y)</span>. Let <span
+      class="math inline">t \in \mathcal{O}_{Y,Q}</span> be a
+      uniformizer at <span class="math inline">Q</span>, meaning the
+      valuation <span class="math inline">v_Q(t) = 1</span>. We view
+      <span class="math inline">t</span> as an element of <span
+      class="math inline">K(Y) \subset K(X)</span>. For any closed point
+      <span class="math inline">P \in X</span> mapping to <span
+      class="math inline">Q</span> (written <span
+      class="math inline">f(P) = Q</span>), the local ring <span
+      class="math inline">\mathcal{O}_{X,P}</span> is also a DVR with
+      valuation <span class="math inline">v_P</span>. We define the
+      pullback of the prime divisor <span class="math inline">Q</span>
+      to be: <span class="math display">f^*Q = \sum_{f(P)=Q} v_P(t)
+      P</span> The integer <span class="math inline">e_P = v_P(t)</span>
+      is called the <strong>ramification index</strong> of <span
+      class="math inline">f</span> at <span
+      class="math inline">P</span>. Since <span
+      class="math inline">f</span> is a finite morphism, the fiber <span
+      class="math inline">f^{-1}(Q)</span> is a finite set of points,
+      making this a finite sum.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Well-definedness of the Pullback).
+      <em> The definition of <span class="math inline">f^*Q</span> is
+      independent of the choice of the uniformizer <span
+      class="math inline">t</span>. Indeed, if <span
+      class="math inline">t&#39;</span> is another uniformizer at <span
+      class="math inline">Q</span>, then <span
+      class="math inline">t&#39; = ut</span> for some unit <span
+      class="math inline">u \in \mathcal{O}_{Y,Q}^\times</span>. Under
+      the pullback map, the induced ring homomorphism <span
+      class="math inline">\mathcal{O}_{Y,Q} \to \mathcal{O}_{X,P}</span>
+      maps units to units, meaning <span
+      class="math inline">f^*(u)</span> is a unit in <span
+      class="math inline">\mathcal{O}_{X,P}^\times</span>. Therefore,
+      <span class="math inline">v_P(t&#39;) = v_P(ut) = v_P(u) + v_P(t)
+      = 0 + v_P(t) = v_P(t)</span>.</em></p>
+      </div>
+      <p>We extend <span class="math inline">f^*</span> by linearity to
+      all elements in <span class="math inline">\operatorname{Div}
+      Y</span>. It can be verified that <span
+      class="math inline">f^*</span> maps principal divisors to
+      principal divisors, preserving linear equivalence. Consequently,
+      it induces a well-defined homomorphism on the divisor class
+      groups: <span class="math display">f^*: \operatorname{Cl} Y \to
+      \operatorname{Cl} X</span></p>
+      <p>We now arrive at one of the foundational theorems regarding the
+      interaction between finite morphisms and divisors on nonsingular
+      curves. Because our base field <span class="math inline">k</span>
+      is not assumed to be algebraically closed, we must carefully
+      handle the degrees of the residue fields of the closed points
+      involved.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (The Pullback Degree Formula).
+      <em> Let <span class="math inline">f: X \to Y</span> be a finite
+      morphism of nonsingular curves over <span
+      class="math inline">k</span>. Then for any divisor <span
+      class="math inline">D \in \operatorname{Div} Y</span>, we have:
+      <span class="math display">\deg f^*D = \deg f \cdot \deg
+      D</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the linearity of the degree function and the
+      pullback map <span class="math inline">f^*</span>, it is
+      sufficient to prove the statement for a prime divisor, i.e., a
+      single closed point <span class="math inline">Q \in Y</span>. That
+      is, we need to show: <span class="math display">\deg f^*Q = \deg f
+      \cdot \deg Q</span> Let <span class="math inline">V =
+      \operatorname{Spec}B</span> be an open affine subset of <span
+      class="math inline">Y</span> containing <span
+      class="math inline">Q</span>. Let <span
+      class="math inline">A</span> be the integral closure of <span
+      class="math inline">B</span> in the function field <span
+      class="math inline">K(X)</span>, so that <span
+      class="math inline">U = \operatorname{Spec}A = f^{-1}(V) \subset
+      X</span>.</p>
+      <p>Let <span class="math inline">\mathfrak{m}_Q \subset B</span>
+      be the maximal ideal corresponding to <span
+      class="math inline">Q</span>. We localize both <span
+      class="math inline">B</span> and <span
+      class="math inline">A</span> with respect to the multiplicative
+      system <span class="math inline">S = B - \mathfrak{m}_Q</span>.
+      This yields a ring extension <span
+      class="math inline">\mathcal{O}_{Y,Q} \hookrightarrow
+      A&#39;</span>, where <span class="math inline">A&#39; =
+      S^{-1}A</span> is a finitely generated <span
+      class="math inline">\mathcal{O}_{Y,Q}</span>-module. Since <span
+      class="math inline">A&#39;</span> is a subring of <span
+      class="math inline">K(X)</span>, it is torsion-free over the
+      principal ideal domain <span
+      class="math inline">\mathcal{O}_{Y,Q}</span>. Thus, by the
+      structure theorem for finitely generated modules over a PID, <span
+      class="math inline">A&#39;</span> is a free <span
+      class="math inline">\mathcal{O}_{Y,Q}</span>-module. Its rank is
+      equal to the dimension of <span class="math inline">A&#39;
+      \otimes_{\mathcal{O}_{Y,Q}} K(Y) \cong K(X)</span> over <span
+      class="math inline">K(Y)</span>, which is precisely <span
+      class="math inline">r = [K(X) : K(Y)] = \deg f</span>.</p>
+      <p>Let <span class="math inline">t \in \mathcal{O}_{Y,Q}</span> be
+      a local uniformizer at <span class="math inline">Q</span>. Since
+      <span class="math inline">A&#39;</span> is a free <span
+      class="math inline">\mathcal{O}_{Y,Q}</span>-module of rank <span
+      class="math inline">r</span>, the quotient <span
+      class="math inline">A&#39;/tA&#39;</span> is a free module over
+      <span class="math inline">\mathcal{O}_{Y,Q}/t\mathcal{O}_{Y,Q} =
+      \kappa(Q)</span> of rank <span class="math inline">r</span>.
+      Therefore, computing the dimension as a <span
+      class="math inline">k</span>-vector space, we have: <span
+      class="math display">\dim_k (A&#39;/tA&#39;) = r \cdot [\kappa(Q)
+      : k] = \deg f \cdot \deg Q</span> On the other hand, the closed
+      points <span class="math inline">P_i \in X</span> that map to
+      <span class="math inline">Q</span> correspond bijectively to the
+      maximal ideals <span class="math inline">\mathfrak{m}_i</span> of
+      <span class="math inline">A&#39;</span>. The localization of <span
+      class="math inline">A&#39;</span> at <span
+      class="math inline">\mathfrak{m}_i</span> is the local ring <span
+      class="math inline">\mathcal{O}_{X,P_i}</span>. In <span
+      class="math inline">A&#39;</span>, the ideal <span
+      class="math inline">tA&#39;</span> has a radical equal to <span
+      class="math inline">\bigcap_i \mathfrak{m}_i</span>. By the
+      Chinese Remainder Theorem for rings, we have an isomorphism: <span
+      class="math display">A&#39;/tA&#39; \cong \bigoplus_{f(P_i)=Q}
+      A&#39;_{\mathfrak{m}_i} / tA&#39;_{\mathfrak{m}_i} =
+      \bigoplus_{f(P_i)=Q} \mathcal{O}_{X,P_i} /
+      t\mathcal{O}_{X,P_i}</span> Taking the dimension as a <span
+      class="math inline">k</span>-vector space on both sides yields:
+      <span class="math display">\dim_k (A&#39;/tA&#39;) =
+      \sum_{f(P_i)=Q} \dim_k (\mathcal{O}_{X,P_i} /
+      t\mathcal{O}_{X,P_i})</span> For each <span
+      class="math inline">P_i</span>, <span
+      class="math inline">\mathcal{O}_{X,P_i}</span> is a discrete
+      valuation ring with valuation <span
+      class="math inline">v_{P_i}</span>, and <span
+      class="math inline">t</span> has valuation <span
+      class="math inline">v_{P_i}(t) = e_{P_i}</span>. Thus, the
+      quotient <span class="math inline">\mathcal{O}_{X,P_i} /
+      t\mathcal{O}_{X,P_i}</span> is a <span
+      class="math inline">\kappa(P_i)</span>-vector space of dimension
+      <span class="math inline">e_{P_i}</span>. It follows that: <span
+      class="math display">\dim_k (\mathcal{O}_{X,P_i} /
+      t\mathcal{O}_{X,P_i}) = e_{P_i} \cdot [\kappa(P_i) : k] =
+      v_{P_i}(t) \cdot \deg P_i</span> Combining these equations, we
+      get: <span class="math display">\deg f \cdot \deg Q =
+      \sum_{f(P_i)=Q} v_{P_i}(t) \cdot \deg P_i</span> By definition,
+      <span class="math inline">f^*Q = \sum v_{P_i}(t) P_i</span>, so
+      the right-hand side is exactly <span class="math inline">\deg
+      f^*Q</span>. Thus, <span class="math inline">\deg f^*Q = \deg f
+      \cdot \deg Q</span>. ◻</p>
+      </div>
+      <p>An immediate and profoundly important consequence of this
+      formula is that principal divisors on complete curves always have
+      total degree zero.</p>
+      <div class="corollary">
+      <p><strong>Corollary 1.1</strong> (Degree of Principal Divisors).
+      <em> Let <span class="math inline">X</span> be a complete,
+      nonsingular curve over a field <span class="math inline">k</span>.
+      If <span class="math inline">g \in K(X)^\times</span> is a
+      non-zero rational function on <span class="math inline">X</span>,
+      then its associated principal divisor has degree zero: <span
+      class="math display">\deg(g) = 0</span> Consequently, the degree
+      function induces a group homomorphism: <span
+      class="math display">\deg: \operatorname{Cl} X \to
+      \mathbb{Z}</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> If <span class="math inline">g \in
+      k^\times</span>, then <span class="math inline">(g) = 0</span>, so
+      <span class="math inline">\deg(g) = 0</span>.</p>
+      <p>Now suppose <span class="math inline">g \in K(X) \setminus
+      k</span>. The inclusion of fields <span class="math inline">k(g)
+      \hookrightarrow K(X)</span> corresponds to a dominant morphism of
+      <span class="math inline">k</span>-schemes <span
+      class="math inline">\varphi: X \to \mathbb{P}^1_k</span>. Since
+      <span class="math inline">X</span> is complete and nonsingular,
+      <span class="math inline">\varphi</span> is a finite morphism of
+      curves by Proposition .</p>
+      <p>We can view <span class="math inline">g</span> as a rational
+      function on <span class="math inline">\mathbb{P}^1_k</span>. On
+      <span class="math inline">\mathbb{P}^1_k</span>, the principal
+      divisor of the coordinate function <span
+      class="math inline">g</span> is given by the difference between
+      its zero and its pole at infinity: <span
+      class="math display">(g)_{\mathbb{P}^1} = \{0\} -
+      \{\infty\}</span> The closed points <span
+      class="math inline">\{0\}</span> and <span
+      class="math inline">\{\infty\}</span> are rational points over
+      <span class="math inline">k</span>, so <span
+      class="math inline">\deg(\{0\}) = \deg(\{\infty\}) = 1</span>.
+      Thus, <span class="math inline">\deg (g)_{\mathbb{P}^1} = 1 - 1 =
+      0</span>.</p>
+      <p>Since <span class="math inline">\varphi^*(g)_{\mathbb{P}^1} =
+      (g)_X</span>, we can apply Proposition : <span
+      class="math display">\deg (g)_X = \deg \varphi^*
+      (g)_{\mathbb{P}^1} = \deg \varphi \cdot \deg (g)_{\mathbb{P}^1} =
+      \deg \varphi \cdot 0 = 0</span> Because every principal divisor
+      has degree zero, the degree map factors through the linear
+      equivalence relation, yielding a well-defined group homomorphism
+      <span class="math inline">\deg: \operatorname{Cl} X \to
+      \mathbb{Z}</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Comparison with the Algebraically
+      Closed Case). <em> When <span class="math inline">k</span> is
+      algebraically closed, every closed point <span
+      class="math inline">P \in X</span> satisfies <span
+      class="math inline">\kappa(P) \cong k</span>, so <span
+      class="math inline">\deg P = 1</span>. This implies that the image
+      of any single point under the degree map is <span
+      class="math inline">1</span>, making <span
+      class="math inline">\deg: \operatorname{Cl} X \to
+      \mathbb{Z}</span> surjective.</em></p>
+      <p><em>When <span class="math inline">k</span> is
+      <strong>not</strong> algebraically closed, <span
+      class="math inline">\deg: \operatorname{Cl} X \to
+      \mathbb{Z}</span> remains a homomorphism, but it is <em>not</em>
+      necessarily surjective onto <span
+      class="math inline">\mathbb{Z}</span>. Instead, its image is <span
+      class="math inline">d\mathbb{Z}</span>, where <span
+      class="math inline">d = \gcd \{\deg P \mid P \in X \text{ is a
+      closed point}\}</span>. This integer <span
+      class="math inline">d</span> is known as the
+      <strong>index</strong> of the curve <span
+      class="math inline">X</span>. For example, if a curve has no <span
+      class="math inline">k</span>-rational points, it is entirely
+      possible that no divisor has degree 1, meaning the map is not
+      surjective to <span
+      class="math inline">\mathbb{Z}</span>.</em></p>
+      </div>
+      <h3 data-number="5.1.3"
+      id="riemann-roch-theorem-over-curves">Riemann-Roch Theorem over
+      Curves</h3>
+      <p>We now begin our study of the Riemann-Roch theorem, which is
+      the central tool for computing dimensions of spaces of rational
+      functions with prescribed zeroes and poles on a complete
+      nonsingular curve. Before stating the theorem, we must establish
+      the structural definitions of the genus of a curve and complete
+      linear systems.</p>
+      <h4 data-number="5.1.3.1" id="genus-of-a-curve">Genus of a
+      Curve</h4>
+      <p>The most important single invariant of an algebraic curve is
+      its genus. For a complete nonsingular curve, the geometric,
+      arithmetic, and cohomological formulations of the genus
+      coincide.</p>
+      <div class="definition">
+      <p><strong>Definition 1.5</strong> (Arithmetic and Geometric
+      Genus). <em> Let <span class="math inline">X</span> be a complete
+      nonsingular curve over a field <span
+      class="math inline">k</span>.</em></p>
+      <ol>
+      <li><p><em>The <strong>arithmetic genus</strong> <span
+      class="math inline">p_a(X)</span> is defined by <span
+      class="math inline">1 - P_X(0)</span>, where <span
+      class="math inline">P_X</span> is the Hilbert polynomial of <span
+      class="math inline">X</span> when embedded in a projective
+      space.</em></p></li>
+      <li><p><em>The <strong>geometric genus</strong> <span
+      class="math inline">p_g(X)</span> is defined as the dimension of
+      the space of global regular differential forms: <span
+      class="math display">p_g(X) = \dim_k \Gamma(X, \omega_X)</span>
+      where <span class="math inline">\omega_X</span> is the canonical
+      sheaf of <span class="math inline">X</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Equivalence of Genus
+      Definitions). <em> If <span class="math inline">X</span> is a
+      complete nonsingular curve over a field <span
+      class="math inline">k</span>, then its arithmetic genus, geometric
+      genus, and the dimension of its first cohomology group are equal:
+      <span class="math display">p_a(X) = p_g(X) = \dim_k
+      \operatorname{H}^1(X, \mathcal{O}_X)</span> We denote this common
+      integer simply as the <strong>genus</strong> <span
+      class="math inline">g</span> of the curve <span
+      class="math inline">X</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The equality <span class="math inline">p_a(X) =
+      \dim_k \operatorname{H}^1(X, \mathcal{O}_X)</span> is established
+      via the Euler characteristic analysis of the structure sheaf,
+      where <span class="math inline">\chi(\mathcal{O}_X) = \dim_k
+      \operatorname{H}^0(X, \mathcal{O}_X) - \dim_k
+      \operatorname{H}^1(X, \mathcal{O}_X)</span>. Since <span
+      class="math inline">X</span> is complete and integral, <span
+      class="math inline">\dim_k \operatorname{H}^0(X, \mathcal{O}_X) =
+      1</span>, yielding <span class="math inline">P_X(0) =
+      \chi(\mathcal{O}_X) = 1 - \dim_k \operatorname{H}^1(X,
+      \mathcal{O}_X)</span>, which matches <span class="math inline">1 -
+      p_a(X)</span>.</p>
+      <p>The equality <span class="math inline">p_g(X) = \dim_k
+      \operatorname{H}^1(X, \mathcal{O}_X)</span> follows directly from
+      Serre duality, which provides a canonical perfect pairing of <span
+      class="math inline">k</span>-vector spaces: <span
+      class="math display">\operatorname{H}^0(X, \omega_X) \times
+      \operatorname{H}^1(X, \mathcal{O}_X) \to k</span> Consequently,
+      <span class="math inline">\Gamma(X, \omega_X) \cong
+      \operatorname{H}^0(X, \omega_X) \cong \operatorname{H}^1(X,
+      \mathcal{O}_X)^\vee</span>, so their dimensions are
+      identical. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Non-negativity and Existence).
+      <em> From the definition <span class="math inline">g = \dim_k
+      \operatorname{H}^1(X, \mathcal{O}_X)</span>, it is immediate that
+      the genus of a curve is always non-negative (<span
+      class="math inline">g \ge 0</span>). Conversely, for any integer
+      <span class="math inline">g \ge 0</span>, there exist curves of
+      genus <span class="math inline">g</span>. For instance, one can
+      construct an irreducible nonsingular curve of type <span
+      class="math inline">(g+1, 2)</span> on a nonsingular quadric
+      surface <span class="math inline">\mathbb{P}^1 \times
+      \mathbb{P}^1</span>, whose arithmetic genus evaluates precisely to
+      <span class="math inline">g</span>.</em></p>
+      </div>
+      <h4 data-number="5.1.3.2"
+      id="divisor-spaces-and-complete-linear-systems">Divisor Spaces and
+      Complete Linear Systems</h4>
+      <p>Recall that for a nonsingular curve <span
+      class="math inline">X</span>, every divisor <span
+      class="math inline">D \in \operatorname{Div} X</span> corresponds
+      uniquely to an invertible sheaf (or line bundle) <span
+      class="math inline">\mathcal{L}(D)</span>. The sections of this
+      sheaf correspond to rational functions whose poles are bounded by
+      <span class="math inline">D</span>.</p>
+      <div class="definition">
+      <p><strong>Definition 1.6</strong> (The Vector Space <span
+      class="math inline">L(D)</span> and its Dimension <span
+      class="math inline">l(D)</span>). <em> Let <span
+      class="math inline">D</span> be a divisor on a nonsingular curve
+      <span class="math inline">X</span>. We define <span
+      class="math inline">L(D)</span> to be the vector space of global
+      sections of the invertible sheaf <span
+      class="math inline">\mathcal{L}(D)</span>: <span
+      class="math display">L(D) = \Gamma(X, \mathcal{L}(D)) =
+      \operatorname{H}^0(X, \mathcal{L}(D))</span> Explicitly, <span
+      class="math inline">L(D)</span> consists of the zero function
+      along with all rational functions <span class="math inline">f \in
+      K(X)^\times</span> such that <span class="math inline">(f) + D \ge
+      0</span>. We denote the dimension of this space over <span
+      class="math inline">k</span> as <span
+      class="math inline">l(D)</span>: <span class="math display">l(D) =
+      \dim_k \operatorname{H}^0(X, \mathcal{L}(D))</span> This dimension
+      <span class="math inline">l(D)</span> is always finite because
+      <span class="math inline">X</span> is complete and <span
+      class="math inline">\mathcal{L}(D)</span> is a coherent
+      sheaf.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.7</strong> (Complete Linear Systems). <em>
+      A divisor <span class="math inline">D</span> is called
+      <strong>effective</strong> (denoted <span class="math inline">D
+      \ge 0</span>) if all its coefficients are non-negative (<span
+      class="math inline">n_P \ge 0</span> for all <span
+      class="math inline">P</span>).</em></p>
+      <p><em>The set of all effective divisors linearly equivalent to a
+      given divisor <span class="math inline">D</span> is called the
+      <strong>complete linear system</strong> associated to <span
+      class="math inline">D</span>, denoted by <span
+      class="math inline">\operatorname{Supp}D</span>: <span
+      class="math display">\operatorname{Supp}D = \{ D&#39; \in
+      \operatorname{Div} X \mid D&#39; \sim D \text{ and } D&#39; \ge 0
+      \}</span> There is a natural bijective correspondence between the
+      elements of the complete linear system <span
+      class="math inline">\operatorname{Supp}D</span> and the
+      projectivization of the vector space <span
+      class="math inline">L(D)</span>: <span
+      class="math display">\operatorname{Supp}D \cong \left(
+      \operatorname{H}^0(X, \mathcal{L}(D)) \setminus \{0\} \right) /
+      k^\times</span> Thus, <span
+      class="math inline">\operatorname{Supp}D</span> carries the
+      structure of a projective space over <span
+      class="math inline">k</span>, and the geometric dimension of <span
+      class="math inline">\operatorname{Supp}D</span> as a projective
+      space is given by <span class="math inline">l(D) -
+      1</span>.</em></p>
+      </div>
+      <p>We conclude this preparation section with an elementary but
+      critical lemma relating the dimension <span
+      class="math inline">l(D)</span> to the degree of the divisor.</p>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (Degree Bounds on <span
+      class="math inline">l(D)</span>). <em> Let <span
+      class="math inline">D</span> be a divisor on a complete
+      nonsingular curve <span class="math inline">X</span>.</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">l(D) \neq 0</span>, then
+      <span class="math inline">\deg D \ge 0</span>.</em></p></li>
+      <li><p><em>If <span class="math inline">l(D) \neq 0</span> and
+      <span class="math inline">\deg D = 0</span>, then <span
+      class="math inline">D \sim 0</span> (meaning <span
+      class="math inline">D</span> is a principal divisor, so <span
+      class="math inline">\mathcal{L}(D) \cong
+      \mathcal{O}_X</span>).</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) If <span class="math inline">l(D) \neq
+      0</span>, then the space <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{L}(D))</span>
+      contains a non-zero element, which means the complete linear
+      system <span class="math inline">\operatorname{Supp}D</span> is
+      non-empty. Thus, there exists an effective divisor <span
+      class="math inline">D&#39; \in \operatorname{Supp}D</span> such
+      that <span class="math inline">D&#39; \sim D</span>. Since <span
+      class="math inline">D&#39;</span> is effective, its coefficients
+      are non-negative, and since the degree of any closed point is a
+      positive integer (<span class="math inline">[\kappa(P):k] \ge
+      1</span>), it follows that <span class="math inline">\deg D&#39;
+      \ge 0</span>. Because linear equivalence preserves degrees
+      (Corollary ), we conclude that <span class="math inline">\deg D =
+      \deg D&#39; \ge 0</span>.</p>
+      <p>(2) Suppose <span class="math inline">l(D) \neq 0</span> and
+      <span class="math inline">\deg D = 0</span>. By the argument
+      above, <span class="math inline">D</span> is linearly equivalent
+      to an effective divisor <span class="math inline">D&#39; = \sum
+      n_P P</span> such that <span class="math inline">\deg D&#39; =
+      0</span>. The degree is computed as <span class="math inline">\sum
+      n_P [\kappa(P):k] = 0</span>. Since <span
+      class="math inline">[\kappa(P):k] \ge 1</span> and <span
+      class="math inline">n_P \ge 0</span> for all points, this sum can
+      only be zero if all coefficients <span
+      class="math inline">n_P</span> are identically zero. Therefore,
+      <span class="math inline">D&#39;</span> must be the zero divisor.
+      Since <span class="math inline">D \sim D&#39; = 0</span>, it
+      follows that <span class="math inline">D \sim 0</span>, which
+      implies <span class="math inline">\mathcal{L}(D) \cong
+      \mathcal{O}_X</span>. ◻</p>
+      </div>
+      <h4 data-number="5.1.3.3"
+      id="proof-of-the-riemann-roch-theorem-over-a-curve">Proof of the
+      Riemann-Roch Theorem over a Curve</h4>
+      <p>We now state and prove the Riemann-Roch theorem for a complete
+      nonsingular curve over a general field <span
+      class="math inline">k</span>. The proof leverages the additive
+      properties of the Euler characteristic on coherent sheaves and
+      relies on Serre duality to interpret the higher cohomology
+      term.</p>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (The Riemann-Roch Theorem). <em>
+      Let <span class="math inline">X</span> be a complete nonsingular
+      curve of genus <span class="math inline">g</span> over a field
+      <span class="math inline">k</span>. Let <span
+      class="math inline">K</span> be a canonical divisor on <span
+      class="math inline">X</span>, corresponding to the canonical sheaf
+      <span class="math inline">\omega_X = \Omega_{X/k}</span>. Then for
+      any divisor <span class="math inline">D \in \operatorname{Div}
+      X</span>, we have: <span class="math display">l(D) - l(K - D) =
+      \deg D + 1 - g</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The divisor <span class="math inline">K -
+      D</span> corresponds to the invertible sheaf <span
+      class="math inline">\omega_X \otimes \mathcal{L}(D)^\vee</span>.
+      Since <span class="math inline">X</span> is a complete nonsingular
+      curve, it is projective over <span class="math inline">k</span> by
+      Proposition . We can therefore apply Serre duality to the coherent
+      sheaf <span class="math inline">\mathcal{L}(D)</span>, which
+      yields a canonical isomorphism of finite-dimensional <span
+      class="math inline">k</span>-vector spaces: <span
+      class="math display">\operatorname{H}^1(X, \mathcal{L}(D)) \cong
+      \operatorname{H}^0(X, \omega_X \otimes
+      \mathcal{L}(D)^\vee)^\vee</span> Taking dimensions over <span
+      class="math inline">k</span>, this implies: <span
+      class="math display">\dim_k \operatorname{H}^1(X, \mathcal{L}(D))
+      = \dim_k \operatorname{H}^0(X, \omega_X \otimes
+      \mathcal{L}(D)^\vee) = l(K - D)</span> Thus, the expression on the
+      left-hand side of the Riemann-Roch formula is exactly the Euler
+      characteristic of the sheaf <span
+      class="math inline">\mathcal{L}(D)</span>: <span
+      class="math display">\chi(\mathcal{L}(D)) = \dim_k
+      \operatorname{H}^0(X, \mathcal{L}(D)) - \dim_k
+      \operatorname{H}^1(X, \mathcal{L}(D)) = l(D) - l(K - D)</span> We
+      must show that for any divisor <span class="math inline">D</span>,
+      we have <span class="math inline">\chi(\mathcal{L}(D)) = \deg D +
+      1 - g</span>. We proceed in two steps.</p>
+      <h6 data-number="5.1.3.3.0.1" id="step-1-the-base-case-d-0.">Step
+      1: The Base Case <span class="math inline">D = 0</span>.</h6>
+      <p>When <span class="math inline">D = 0</span>, the sheaf <span
+      class="math inline">\mathcal{L}(0)</span> is simply the structure
+      sheaf <span class="math inline">\mathcal{O}_X</span>. The formula
+      predicts: <span class="math display">\chi(\mathcal{O}_X) = \dim_k
+      \operatorname{H}^0(X, \mathcal{O}_X) - \dim_k
+      \operatorname{H}^1(X, \mathcal{O}_X) = 0 + 1 - g = 1 - g</span>
+      This is true because <span class="math inline">X</span> is an
+      integral, complete scheme over <span class="math inline">k</span>,
+      so its global regular functions consist only of scalars, giving
+      <span class="math inline">\dim_k \operatorname{H}^0(X,
+      \mathcal{O}_X) = [k : k] = 1</span>. Furthermore, by Proposition ,
+      <span class="math inline">\dim_k \operatorname{H}^1(X,
+      \mathcal{O}_X) = g</span>. Thus <span
+      class="math inline">\chi(\mathcal{O}_X) = 1 - g</span>.</p>
+      <h6 data-number="5.1.3.3.0.2"
+      id="step-2-inductive-step-via-point-addition.">Step 2: Inductive
+      Step via Point Addition.</h6>
+      <p>Let <span class="math inline">D</span> be any divisor and let
+      <span class="math inline">P \in X</span> be any closed point. We
+      will show that the Riemann-Roch formula holds for <span
+      class="math inline">D</span> if and only if it holds for <span
+      class="math inline">D + P</span>. Since any divisor can be reached
+      from <span class="math inline">0</span> in a finite number of
+      steps by adding or subtracting a closed point at each step, this
+      will establish the theorem for all divisors.</p>
+      <p>Consider <span class="math inline">P</span> as a closed
+      subscheme of <span class="math inline">X</span>. Its structure
+      sheaf is the skyscraper sheaf <span
+      class="math inline">\kappa(P)</span> supported at the point <span
+      class="math inline">P</span>, and its ideal sheaf is <span
+      class="math inline">\mathcal{L}(-P)</span>. This gives rise to the
+      canonical short exact sequence of coherent sheaves on <span
+      class="math inline">X</span>: <span class="math display">0 \to
+      \mathcal{L}(-P) \to \mathcal{O}_X \to \kappa(P) \to 0</span> Since
+      <span class="math inline">\mathcal{L}(D + P)</span> is a locally
+      free sheaf of rank 1, tensoring with it preserves exactness. Doing
+      so yields: <span class="math display">0 \to \mathcal{L}(D) \to
+      \mathcal{L}(D + P) \to \kappa(P) \otimes \mathcal{L}(D + P) \to
+      0</span> Because <span class="math inline">\kappa(P)</span> is
+      supported only at <span class="math inline">P</span>, the tensor
+      product <span class="math inline">\kappa(P) \otimes \mathcal{L}(D
+      + P)</span> is isomorphic to <span
+      class="math inline">\kappa(P)</span> itself. Thus, the sequence
+      reads: <span class="math display">0 \to \mathcal{L}(D) \to
+      \mathcal{L}(D + P) \to \kappa(P) \to 0</span> The Euler
+      characteristic is additive on short exact sequences of coherent
+      sheaves, so we have: <span class="math display">\chi(\mathcal{L}(D
+      + P)) = \chi(\mathcal{L}(D)) + \chi(\kappa(P))</span> The
+      cohomology groups of the skyscraper sheaf <span
+      class="math inline">\kappa(P)</span> are <span
+      class="math inline">\operatorname{H}^0(X, \kappa(P)) =
+      \kappa(P)</span> and <span
+      class="math inline">\operatorname{H}^i(X, \kappa(P)) = 0</span>
+      for <span class="math inline">i &gt; 0</span>. Therefore, its
+      Euler characteristic is its dimension as a <span
+      class="math inline">k</span>-vector space: <span
+      class="math display">\chi(\kappa(P)) = \dim_k \kappa(P) =
+      [\kappa(P) : k] = \deg P</span> This implies: <span
+      class="math display">\chi(\mathcal{L}(D + P)) =
+      \chi(\mathcal{L}(D)) + \deg P</span> On the other hand, looking at
+      the right-hand side of our target formula, we see that: <span
+      class="math display">\left( \deg(D + P) + 1 - g \right) = \left(
+      \deg D + \deg P + 1 - g \right) = \left( \deg D + 1 - g \right) +
+      \deg P</span> Consequently, the error between the actual Euler
+      characteristic and the expression <span class="math inline">\deg D
+      + 1 - g</span> changes by exactly the same amount (<span
+      class="math inline">\deg P</span>) when replacing <span
+      class="math inline">D</span> with <span class="math inline">D +
+      P</span>. Since the formula holds for <span class="math inline">D
+      = 0</span>, it holds for all divisors <span
+      class="math inline">D</span>. ◻</p>
+      </div>
+      <p>The Riemann-Roch theorem yields immediate, powerful
+      consequences regarding the geometry of curves and their canonical
+      divisors.</p>
+      <p>We can use the theorem to compute the exact degree of the
+      canonical sheaf for any curve of genus <span
+      class="math inline">g</span>.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Degree of the Canonical Divisor).
+      <em> Let <span class="math inline">X</span> be a complete
+      nonsingular curve of genus <span class="math inline">g</span> over
+      <span class="math inline">k</span>. The canonical divisor <span
+      class="math inline">K</span> has degree: <span
+      class="math display">\deg K = 2g - 2</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We apply the Riemann-Roch theorem by
+      substituting <span class="math inline">D = K</span>: <span
+      class="math display">l(K) - l(K - K) = \deg K + 1 - g</span>
+      Simplifying the terms, we know <span class="math inline">l(K) =
+      p_g(X) = g</span> by definition. Furthermore, <span
+      class="math inline">l(K - K) = l(0) = \dim_k \operatorname{H}^0(X,
+      \mathcal{O}_X) = 1</span>. Substituting these values into the
+      equation gives: <span class="math display">g - 1 = \deg K + 1 - g
+      \implies \deg K = 2g - 2</span> ◻</p>
+      </div>
+      <h4 data-number="5.1.3.4"
+      id="special-and-nonspecial-divisors">Special and Nonspecial
+      Divisors</h4>
+      <p>The Riemann-Roch theorem simplifies drastically when the
+      correction term <span class="math inline">l(K-D)</span>
+      vanishes.</p>
+      <div class="definition">
+      <p><strong>Definition 1.8</strong> (Special and Nonspecial
+      Divisors). <em> A divisor <span class="math inline">D</span> on a
+      curve <span class="math inline">X</span> is said to be
+      <strong>special</strong> if <span class="math inline">l(K - D)
+      &gt; 0</span>. The integer <span class="math inline">l(K -
+      D)</span> is called its <em>index of speciality</em>. Otherwise,
+      if <span class="math inline">l(K - D) = 0</span>, the divisor is
+      called <strong>nonspecial</strong>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Criterion for Nonspecialty).
+      <em> Let <span class="math inline">X</span> be a complete
+      nonsingular curve of genus <span class="math inline">g</span>. If
+      <span class="math inline">D</span> is a divisor such that <span
+      class="math inline">\deg D &gt; 2g - 2</span>, then <span
+      class="math inline">D</span> is nonspecial, and its dimension is
+      given explicitly by: <span class="math display">l(D) = \deg D + 1
+      - g</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> If <span class="math inline">\deg D &gt; 2g -
+      2</span>, then since <span class="math inline">\deg K = 2g -
+      2</span>, the degree of the divisor <span class="math inline">K -
+      D</span> satisfies: <span class="math display">\deg(K - D) = \deg
+      K - \deg D &lt; (2g - 2) - (2g - 2) = 0</span> By Lemma , any
+      divisor with a strictly negative degree cannot have any non-zero
+      global sections, meaning <span class="math inline">l(K - D) =
+      0</span>. Substituting this into the Riemann-Roch formula
+      immediately produces <span class="math inline">l(D) = \deg D + 1 -
+      g</span>. ◻</p>
+      </div>
+      <p>For large entries, the dimension of complete linear systems
+      stabilizes to a linear growth function. If <span
+      class="math inline">D</span> is a divisor with <span
+      class="math inline">\deg D &gt; 0</span>, then for all
+      sufficiently large integers <span class="math inline">n \gg
+      0</span>, we have <span class="math inline">\deg(nD) = n \cdot
+      \deg D &gt; 2g - 2</span>. Applying the nonspecialty criterion,
+      the dimension of the complete linear system <span
+      class="math inline">|nD|</span> becomes exactly: <span
+      class="math display">\dim |nD| = l(nD) - 1 = n \cdot \deg D -
+      g</span> This allows for the systematic construction of embeddings
+      of curves into projective spaces using high multiples of effective
+      divisors.</p>
+      <h4 data-number="5.1.3.5"
+      id="affineness-and-properness-of-curves">Affineness and Properness
+      of Curves</h4>
+      <p>Using the Riemann-Roch theorem, we can now establish the
+      existence of rational functions with strictly controlled poles. As
+      a profound geometric consequence, we can completely characterize
+      affine curves as those which lack proper (complete) irreducible
+      components.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Rational Functions with
+      Prescribed Poles). <em> Let <span class="math inline">X</span> be
+      a complete, nonsingular curve over a field <span
+      class="math inline">k</span>.</em></p>
+      <ol>
+      <li><p><em>Given any closed point <span class="math inline">P \in
+      X</span>, there exists a nonconstant rational function <span
+      class="math inline">f \in K(X)</span> which is regular everywhere
+      on <span class="math inline">X</span> except at <span
+      class="math inline">P</span>.</em></p></li>
+      <li><p><em>Given a finite set of distinct closed points <span
+      class="math inline">P_1, \dots, P_r \in X</span>, there exists a
+      rational function <span class="math inline">f \in K(X)</span>
+      having poles of some positive order at each of the points <span
+      class="math inline">P_i</span>, and regular everywhere
+      else.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) Consider the divisor <span
+      class="math inline">nD</span> for a positive integer <span
+      class="math inline">n</span>, where <span class="math inline">D =
+      P</span>. By Proposition , if we choose <span
+      class="math inline">n</span> large enough such that <span
+      class="math inline">\deg(nP) = n \cdot \deg P &gt; 2g - 2</span>,
+      the divisor <span class="math inline">nP</span> becomes
+      nonspecial. Then by the Riemann-Roch theorem: <span
+      class="math display">l(nP) = n \cdot \deg P + 1 - g</span> As
+      <span class="math inline">n</span> increases, <span
+      class="math inline">l(nP)</span> grows linearly. In particular, we
+      can choose a sufficiently large <span class="math inline">n</span>
+      such that <span class="math inline">l(nP) &gt; l(0) = 1</span>.
+      This implies that the vector space <span class="math inline">L(nP)
+      = \operatorname{H}^0(X, \mathcal{L}(nP))</span> contains a
+      rational function <span class="math inline">f</span> that is not a
+      constant scalar. Since <span class="math inline">f \in
+      L(nP)</span>, its only possible poles are at <span
+      class="math inline">P</span>. If <span
+      class="math inline">f</span> were regular at <span
+      class="math inline">P</span>, it would be regular everywhere on
+      the complete integral curve <span class="math inline">X</span>,
+      which forces <span class="math inline">f \in k</span>, a
+      contradiction. Thus <span class="math inline">f</span> has a pole
+      of some order <span class="math inline">\le n</span> at <span
+      class="math inline">P</span> and is regular elsewhere.</p>
+      <p>(2) Consider the effective divisor <span class="math inline">D
+      = \sum_{i=1}^r P_i</span>. Choose a large integer <span
+      class="math inline">n</span> such that for every <span
+      class="math inline">j = 1, \dots, r</span>, we have: <span
+      class="math display">\deg(nD - P_j) &gt; 2g - 2</span> By the
+      Riemann-Roch theorem, both <span class="math inline">nD</span> and
+      <span class="math inline">nD - P_j</span> are nonspecial divisors.
+      Thus, we can compute their dimensions exactly: <span
+      class="math display">l(nD) = n \left( \sum_{i=1}^r \deg P_i
+      \right) + 1 - g</span> <span class="math display">l(nD - P_j) = n
+      \left( \sum_{i=1}^r \deg P_i \right) - \deg P_j + 1 - g</span>
+      Subtracting the two equations gives: <span
+      class="math display">l(nD) - l(nD - P_j) = \deg P_j &gt; 0</span>
+      This means that <span class="math inline">L(nD - P_j)</span> is a
+      strictly proper <span class="math inline">k</span>-subspace of
+      <span class="math inline">L(nD)</span> for every <span
+      class="math inline">j</span>. Over an infinite field <span
+      class="math inline">k</span>, a vector space cannot be written as
+      a finite union of proper subspaces. Even if <span
+      class="math inline">k</span> is a finite field, because the
+      dimension difference grows with <span
+      class="math inline">n</span>, we can scale <span
+      class="math inline">n</span> large enough so that the size of
+      <span class="math inline">L(nD)</span> strictly exceeds the size
+      of <span class="math inline">\bigcup_{j=1}^r L(nD -
+      P_j)</span>.</p>
+      <p>Therefore, there exists a rational function <span
+      class="math inline">f \in L(nD)</span> such that <span
+      class="math inline">f \notin L(nD - P_j)</span> for all <span
+      class="math inline">j = 1, \dots, r</span>. Such a function <span
+      class="math inline">f</span> belongs to <span
+      class="math inline">L(nD)</span>, so it is regular outside <span
+      class="math inline">\{P_1, \dots, P_r\}</span>. Furthermore,
+      because <span class="math inline">f \notin L(nD - P_j)</span>, the
+      pole order of <span class="math inline">f</span> at each <span
+      class="math inline">P_j</span> must be exactly <span
+      class="math inline">n</span>, ensuring it has a pole at every
+      designated point. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Affineness Criterion for
+      Curves). <em> Let <span class="math inline">X</span> be a
+      separated, one-dimensional scheme of finite type over a field
+      <span class="math inline">k</span>.</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">X</span> is integral,
+      regular (nonsingular), and not proper (complete) over <span
+      class="math inline">k</span>, then <span
+      class="math inline">X</span> is affine.</em></p></li>
+      <li><p><em>If none of the irreducible components of <span
+      class="math inline">X</span> are proper over <span
+      class="math inline">k</span>, then <span
+      class="math inline">X</span> is affine.</em></p></li>
+      </ol>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 1.1</strong> (Affine complements of finite
+      subschemes). <em> Let <span class="math inline">X</span> be a
+      proper, separated, one-dimensional scheme of finite type over a
+      field <span class="math inline">k</span>, and let <span
+      class="math inline">Z\subseteq X</span> be a finite closed
+      subscheme. Set <span class="math inline">U:=X\setminus
+      \operatorname{Supp}(Z).</span> If <span
+      class="math inline">\operatorname{Supp}(Z)</span> meets every
+      irreducible component of <span class="math inline">X</span>, then
+      <span class="math inline">U</span> is affine.</em></p>
+      <p><em>In particular, if <span class="math inline">X</span> is an
+      integral proper curve and <span
+      class="math inline">Z\neq\varnothing</span>, then <span
+      class="math inline">X\setminus \operatorname{Supp}(Z)</span> is
+      affine. Hence, for every closed point <span
+      class="math inline">P\in X</span>, the punctured curve <span
+      class="math inline">X\setminus{P}</span> is affine.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span
+      class="math inline">X_1,\ldots,X_r</span> be the irreducible
+      components of <span class="math inline">X</span>. Since <span
+      class="math inline">Z</span> is finite, it cannot contain an
+      irreducible component of <span class="math inline">X</span>.
+      Therefore every irreducible component of <span
+      class="math inline">U</span> is obtained from some <span
+      class="math inline">X_i</span> by removing the finite closed
+      subset <span class="math inline">X_i\cap
+      \operatorname{Supp}(Z).</span></p>
+      <p>More precisely, if <span class="math inline">U_i</span> denotes
+      the corresponding irreducible component of <span
+      class="math inline">U</span>, then <span
+      class="math inline">U_i</span> is dense in <span
+      class="math inline">X_i</span>. By assumption, <span
+      class="math inline">X_i\cap
+      \operatorname{Supp}(Z)\neq\varnothing,</span> and hence <span
+      class="math inline">U_i\subsetneq X_i.</span></p>
+      <p>We claim that <span class="math inline">U_i</span> is not
+      proper over <span class="math inline">k</span>. Suppose, to the
+      contrary, that <span class="math inline">U_i</span> were proper
+      over <span class="math inline">k</span>. The natural morphism
+      <span class="math inline">U_i\longrightarrow X_i</span> would then
+      be proper, because <span class="math inline">U_i</span> is proper
+      over <span class="math inline">k</span> and <span
+      class="math inline">X_i</span> is separated over <span
+      class="math inline">k</span>. Consequently its image would be
+      closed in <span class="math inline">X_i</span>. On the other hand,
+      the image is dense in <span class="math inline">X_i</span>. It
+      would therefore have to equal <span
+      class="math inline">X_i</span>, contradicting the fact that <span
+      class="math inline">U_i\subsetneq X_i.</span></p>
+      <p>Thus none of the irreducible components of <span
+      class="math inline">U</span> is proper over <span
+      class="math inline">k</span>. Proposition (2) now implies that
+      <span class="math inline">U</span> is affine.</p>
+      <p>If <span class="math inline">X</span> is integral, it has only
+      one irreducible component. Hence every nonempty finite closed
+      subscheme <span class="math inline">Z\subseteq X</span> meets the
+      unique irreducible component, proving the final assertions. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong>. <em>The condition that <span
+      class="math inline">\operatorname{Supp}(Z)</span> meet every
+      irreducible component is necessary in general. Indeed, suppose
+      that some irreducible component <span
+      class="math inline">X_i</span> is disjoint from <span
+      class="math inline">\operatorname{Supp}(Z)</span>. Then <span
+      class="math inline">X_i</span> is a positive-dimensional proper
+      closed subscheme of <span
+      class="math inline">U=X\setminus\operatorname{Supp}(Z).</span> If
+      <span class="math inline">U</span> were affine, then <span
+      class="math inline">X_i</span>, being closed in an affine scheme,
+      would also be affine. But a scheme which is both affine and proper
+      over <span class="math inline">k</span> is finite over <span
+      class="math inline">k</span>, contradicting <span
+      class="math inline">\dim X_i=1</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Projective completion of an
+      affine curve). <em> Let <span class="math inline">X</span> be an
+      affine, separated, one-dimensional scheme of finite type over a
+      field <span class="math inline">k</span>. Then there exist a
+      projective curve <span class="math inline">\widetilde X</span>
+      over <span class="math inline">k</span> and an open immersion
+      <span class="math inline">j\colon X\hookrightarrow \widetilde
+      X</span> such that the boundary <span
+      class="math inline">\widetilde X\setminus j(X)</span> is a finite
+      closed subscheme of <span class="math inline">\widetilde X</span>.
+      In particular, its underlying topological space is finite and
+      hence discrete.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span class="math inline">X</span> is
+      affine and of finite type over <span class="math inline">k</span>,
+      there exists a closed immersion <span
+      class="math inline">\iota\colon X\hookrightarrow \mathbb
+      A_k^n</span> for some <span class="math inline">n</span>. Identify
+      <span class="math inline">\mathbb A_k^n</span> with the standard
+      affine open subset <span
+      class="math inline">D_+(x_0)\subseteq\mathbb P_k^n.</span></p>
+      <p>Let <span class="math inline">\widetilde X</span> be the
+      scheme-theoretic closure of <span
+      class="math inline">\iota(X)</span> in <span
+      class="math inline">\mathbb P_k^n</span>: <span
+      class="math inline">\widetilde X
+      :=
+      \overline{\iota(X)}^{,\mathrm{sch}}
+      \subseteq\mathbb P_k^n.</span> Then <span
+      class="math inline">\widetilde X</span> is projective over <span
+      class="math inline">k</span>, and therefore proper over <span
+      class="math inline">k</span>. Moreover, <span
+      class="math inline">\widetilde X\cap D_+(x_0)=\iota(X)</span>
+      scheme-theoretically. Thus <span class="math inline">\iota</span>
+      induces an open immersion <span class="math inline">j\colon
+      X\hookrightarrow\widetilde X.</span></p>
+      <p>Let <span class="math inline">H_\infty:=V_+(x_0)
+      =
+      \mathbb P_k^n\setminus\mathbb A_k^n</span> be the hyperplane at
+      infinity. The boundary is the closed subscheme <span
+      class="math inline">B
+      :=
+      \widetilde X\cap H_\infty.</span> We show that <span
+      class="math inline">\dim B=0</span>.</p>
+      <p>If <span class="math inline">B</span> had an irreducible
+      component of dimension one, then it would contain an irreducible
+      component of <span class="math inline">\widetilde X</span>. This
+      is impossible, because every irreducible component of the
+      scheme-theoretic closure <span class="math inline">\widetilde
+      X</span> meets the dense open subscheme <span
+      class="math inline">j(X)</span>, whereas <span
+      class="math inline">B\cap j(X)=\varnothing.</span> Therefore <span
+      class="math inline">\dim B=0.</span></p>
+      <p>Since <span class="math inline">B</span> is a zero-dimensional
+      scheme of finite type over <span class="math inline">k</span>, its
+      coordinate rings are Artinian. Hence <span
+      class="math inline">B</span> is finite over <span
+      class="math inline">k</span>. Therefore <span
+      class="math inline">\widetilde X\setminus j(X)</span> is finite,
+      as required. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong>. <em>The compactification <span
+      class="math inline">\widetilde X</span> constructed above need not
+      be regular or normal, even when <span class="math inline">X</span>
+      is integral. If <span class="math inline">X</span> is integral,
+      one may replace <span class="math inline">\widetilde X</span> by
+      its normalization <span class="math inline">\nu\colon \widetilde
+      X^\nu\longrightarrow \widetilde X.</span> The inverse image of
+      <span class="math inline">X</span> under <span
+      class="math inline">\nu</span> is the normalization of <span
+      class="math inline">X</span>, and the inverse image of the
+      boundary remains finite because <span
+      class="math inline">\nu</span> is a finite morphism.</em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Affine–proper dichotomy for
+      integral curves). <em> Let <span class="math inline">X</span> be a
+      curve over a field <span class="math inline">k</span>. Then
+      exactly one of the following alternatives holds:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">X</span> is proper over <span
+      class="math inline">k</span>, in which case <span
+      class="math inline">X</span> is projective over <span
+      class="math inline">k</span>;</em></p></li>
+      <li><p><em><span class="math inline">X</span> is not proper over
+      <span class="math inline">k</span>, in which case <span
+      class="math inline">X</span> is affine.</em></p></li>
+      </ol>
+      <p><em>Thus every curve over <span class="math inline">k</span> is
+      either projective or affine.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> If <span class="math inline">X</span> is proper
+      over <span class="math inline">k</span>, then the standard
+      projectivity theorem forproper curves implies that <span
+      class="math inline">X</span> is projective over <span
+      class="math inline">k</span>. One way to prove this theorem is to
+      choose a closed point in the regular locus of <span
+      class="math inline">X</span>:the corresponding effective Cartier
+      divisor has positive degree, and a positive-degree invertible
+      sheaf on a proper integral curve is ample. Hence <span
+      class="math inline">X</span> admits a closed immersion into some
+      projective space.</p>
+      <p>Now suppose that <span class="math inline">X</span> is not
+      proper over <span class="math inline">k</span>. Since <span
+      class="math inline">X</span> is integral, ithas exactly one
+      irreducible component, namely <span class="math inline">X</span>
+      itself. This component is not proper, so Proposition (2) shows
+      that <span class="math inline">X</span> is affine.</p>
+      <p>Finally, the two alternatives are mutually exclusive. Indeed,
+      if <span class="math inline">X</span> were both affine and proper
+      over <span class="math inline">k</span>, then the structure
+      morphism <span class="math inline">X\longrightarrow
+      \operatorname{Spec}(k)</span> would be both affine and proper and
+      hence finite. This would imply <span class="math inline">\dim
+      X=0,</span> contrary to the assumption that <span
+      class="math inline">\dim X=1</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Why integrality is necessary).
+      <em>The preceding dichotomy is false for arbitrary reducible
+      curves.</em></p>
+      <p><em>For example, let <span class="math inline">Y=L_1\cup
+      L_2\subseteq\mathbb P_k^2</span> be the union of two distinct
+      projective lines meeting in one point, and choose a closed point
+      <span class="math inline">P\in L_2\setminus L_1.</span> Set <span
+      class="math inline">X:=Y\setminus{P}.</span> Then <span
+      class="math inline">X</span> is a connected, separated curve of
+      finite type over <span class="math inline">k</span>. Its
+      irreducible components are <span
+      class="math inline">L_1\simeq\mathbb P_k^1
+      \qquad\text{and}\qquad
+      L_2\setminus{P}\simeq\mathbb A_k^1.</span></em></p>
+      <p><em>The curve <span class="math inline">X</span> is not proper,
+      since one component is missing the point <span
+      class="math inline">P</span>. It is also not affine, since it
+      contains the positive-dimensional proper curve <span
+      class="math inline">L_1</span> as a closed subscheme. Hence <span
+      class="math inline">X</span> is neither proper nor
+      affine.</em></p>
+      </div>
+      <h4 data-number="5.1.3.6"
+      id="dimension-bound-for-effective-divisors">Dimension Bound for
+      Effective Divisors</h4>
+      <p>We continue our applications of the Riemann–Roch theorem by
+      examining how the genus places constraints on the dimensions of
+      linear systems and properties of finite maps from a complete
+      nonsingular curve <span class="math inline">X</span> to the
+      projective line <span
+      class="math inline">\mathbb{P}^1_k</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Dimension Bound for Effective
+      Divisors). <em> Let <span class="math inline">X</span> be a
+      complete nonsingular curve of genus <span
+      class="math inline">g</span> over a field <span
+      class="math inline">k</span>, and let <span class="math inline">D
+      \in \operatorname{Div} X</span> be an effective divisor. Then:
+      <span class="math display">\dim \operatorname{Supp}D \le \deg
+      D</span> Furthermore, equality holds if and only if <span
+      class="math inline">D = 0</span> or <span class="math inline">g =
+      0</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Definition , <span class="math inline">\dim
+      \operatorname{Supp}D = l(D) - 1</span>. The Riemann–Roch theorem
+      states that <span class="math inline">l(D) - l(K - D) = \deg D + 1
+      - g</span>. Rearranging this, we obtain: <span
+      class="math display">\dim \operatorname{Supp}D = \deg D - g + l(K
+      - D)</span> To bound <span class="math inline">\dim
+      \operatorname{Supp}D</span>, we look at the term <span
+      class="math inline">l(K - D)</span>. By Lemma , if <span
+      class="math inline">l(K-D) \neq 0</span>, then <span
+      class="math inline">\deg(K - D) \ge 0</span>, which implies <span
+      class="math inline">\deg D \le \deg K = 2g - 2</span>.</p>
+      <p>We consider two main cases based on <span
+      class="math inline">l(K - D)</span>:</p>
+      <ol>
+      <li><p>If <span class="math inline">l(K - D) = 0</span>, then
+      <span class="math inline">\dim \operatorname{Supp}D = \deg D -
+      g</span>. Since the genus <span class="math inline">g \ge
+      0</span>, it follows immediately that <span
+      class="math inline">\dim \operatorname{Supp}D \le \deg D</span>.
+      Equality can hold here if and only if <span class="math inline">g
+      = 0</span>.</p></li>
+      <li><p>If <span class="math inline">l(K - D) &gt; 0</span>, we can
+      consider the effective divisor <span class="math inline">K - D
+      \sim D&#39;</span> for some effective <span
+      class="math inline">D&#39;</span>. By applying Lemma inductively
+      or using the properties of Clifford’s Theorem for special
+      divisors, it is a standard result that for any effective special
+      divisor <span class="math inline">D</span>, we have <span
+      class="math inline">l(K - D) \le g - 1</span> if <span
+      class="math inline">D \neq 0</span>. Alternatively, via the
+      Riemann–Roch theorem applied directly to <span
+      class="math inline">K-D</span>, we have <span
+      class="math inline">l(K-D) \le \deg(K-D) + 1 = 2g - 1 - \deg D +
+      1</span>. Combining these properties directly yields <span
+      class="math inline">l(K - D) \le g</span>, with equality holding
+      if and only if <span class="math inline">D = 0</span>. Thus, <span
+      class="math inline">\dim \operatorname{Supp}D \le \deg D - g + g =
+      \deg D</span>.</p></li>
+      </ol>
+      <p>Now we examine the cases for equality <span
+      class="math inline">\dim \operatorname{Supp}D = \deg D</span>:</p>
+      <ul>
+      <li><p>If <span class="math inline">D = 0</span>, then <span
+      class="math inline">\dim |0| = l(0) - 1 = 1 - 1 = 0</span>, and
+      <span class="math inline">\deg 0 = 0</span>, so equality holds for
+      any genus <span class="math inline">g</span>.</p></li>
+      <li><p>If <span class="math inline">g = 0</span>, then for any
+      effective divisor <span class="math inline">D</span>, <span
+      class="math inline">l(K - D) = l(-2P_{\infty} - D) = 0</span>
+      since <span class="math inline">\deg(-2P_{\infty} - D) &lt;
+      0</span>. Riemann–Roch gives <span class="math inline">\dim
+      \operatorname{Supp}D = \deg D - 0 + 0 = \deg D</span>, so equality
+      holds.</p></li>
+      <li><p>Conversely, if equality holds and <span
+      class="math inline">D \neq 0</span>, then we must have <span
+      class="math inline">l(K - D) = g</span>. Since <span
+      class="math inline">D</span> is effective and non-zero, <span
+      class="math inline">\deg D &gt; 0</span>, which forces <span
+      class="math inline">\deg(K - D) = 2g - 2 - \deg D &lt; 2g -
+      2</span>. The only way <span class="math inline">l(K - D) =
+      g</span> under this constraint is if <span class="math inline">g =
+      0</span>.</p></li>
+      </ul>
+      <p> ◻</p>
+      </div>
+      <h4 data-number="5.1.3.7"
+      id="existence-of-low-degree-morphisms-to-mathbbp1-and-hyperelliptic-curves">Existence
+      of Low Degree Morphisms to <span
+      class="math inline">\mathbb{P}^1</span> and Hyperelliptic
+      Curves</h4>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Existence of Low Degree
+      Morphisms to <span class="math inline">\mathbb{P}^1</span>). <em>
+      Let <span class="math inline">X</span> be a complete nonsingular
+      curve of genus <span class="math inline">g</span> over a field
+      <span class="math inline">k</span>. Then there exists a finite
+      morphism <span class="math inline">f: X \to \mathbb{P}^1_k</span>
+      of degree <span class="math inline">\le g + 1</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">P \in X</span> be
+      a <span class="math inline">k</span>-rational point of the curve
+      (if no <span class="math inline">k</span>-rational point exists,
+      one can work with a closed point <span
+      class="math inline">P</span> and clear the residue field degree,
+      but let us assume for a standard divisor argument we use a closed
+      point <span class="math inline">P</span> of degree <span
+      class="math inline">d_P</span>). To construct a morphism to <span
+      class="math inline">\mathbb{P}^1_k</span> of degree <span
+      class="math inline">n \cdot \deg P</span>, it suffices to find a
+      divisor <span class="math inline">D = nP</span> such that <span
+      class="math inline">l(nD) \ge 2</span>.</p>
+      <p>Let us choose a closed point <span class="math inline">P \in
+      X</span> of minimal degree <span class="math inline">\deg
+      P</span>. Consider the sequence of linear systems <span
+      class="math inline">|nP|</span> for <span class="math inline">n =
+      1, 2, \dots</span>. By Proposition , as soon as <span
+      class="math inline">\deg(nP) = n \cdot \deg P &gt; 2g - 2</span>,
+      the divisor <span class="math inline">nP</span> becomes
+      nonspecial, meaning: <span class="math display">l(nP) = n \cdot
+      \deg P + 1 - g</span> We wish to find the smallest <span
+      class="math inline">n</span> such that <span
+      class="math inline">l(nP) \ge 2</span>, ensuring the existence of
+      a nonconstant rational function <span class="math inline">f \in
+      L(nP)</span>. Setting <span class="math inline">n \cdot \deg P + 1
+      - g \ge 2</span> implies that we need <span class="math inline">n
+      \cdot \deg P \ge g + 1</span>.</p>
+      <p>Thus, there exists an effective divisor <span
+      class="math inline">D = nP</span> with <span
+      class="math inline">\deg D \le g + 1</span> (or slightly adjusting
+      the point choices if the degrees are not coprime, there always
+      exists an effective divisor <span class="math inline">D</span>
+      composed of closed points such that <span class="math inline">l(D)
+      \ge 2</span> and <span class="math inline">\deg D \le g +
+      1</span>).</p>
+      <p>A nonconstant element <span class="math inline">f \in
+      L(D)</span> corresponds to a dominant morphism <span
+      class="math inline">f: X \to \mathbb{P}^1_k</span>. The poles of
+      <span class="math inline">f</span> are contained within the
+      support of <span class="math inline">D</span>, and the total
+      number of poles counted with multiplicity is bounded by <span
+      class="math inline">\deg D</span>. By Definition , the degree of
+      the finite morphism <span class="math inline">f</span> is
+      precisely the degree of this pole divisor, which is <span
+      class="math inline">\le \deg D \le g + 1</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Hyperelliptic Curves). <em> A
+      complete nonsingular curve <span class="math inline">X</span> over
+      <span class="math inline">k</span> is called
+      <strong>hyperelliptic</strong> if <span class="math inline">g \ge
+      2</span> and there exists a finite morphism <span
+      class="math inline">f: X \to \mathbb{P}^1_k</span> of degree
+      2.</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">X</span> has genus <span
+      class="math inline">g = 2</span>, then its canonical divisor <span
+      class="math inline">K</span> defines a complete linear system
+      <span class="math inline">|K|</span> of degree <span
+      class="math inline">2</span> and dimension <span
+      class="math inline">1</span> that has no base points.
+      Consequently, every curve of genus 2 is
+      hyperelliptic.</em></p></li>
+      <li><p><em>For every genus <span class="math inline">g \ge
+      2</span>, there exists a hyperelliptic curve over <span
+      class="math inline">k</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) Let <span class="math inline">X</span> be a
+      curve of genus <span class="math inline">g = 2</span>. By Example
+      , the canonical divisor <span class="math inline">K</span> has
+      degree: <span class="math display">\deg K = 2g - 2 = 2(2) - 2 =
+      2</span> By definition of the geometric genus, <span
+      class="math inline">l(K) = g = 2</span>. Thus, the dimension of
+      the complete linear system <span class="math inline">|K|</span> is
+      <span class="math inline">\dim |K| = l(K) - 1 = 1</span>.</p>
+      <p>To show that <span class="math inline">|K|</span> has no base
+      points, suppose for contradiction that <span class="math inline">P
+      \in X</span> is a base point of <span
+      class="math inline">|K|</span>. This would mean that every
+      effective divisor in <span class="math inline">|K|</span> contains
+      <span class="math inline">P</span>, implying <span
+      class="math inline">l(K - P) = l(K) = 2</span>. Let us apply the
+      Riemann–Roch theorem to the divisor <span
+      class="math inline">P</span>: <span class="math display">l(P) -
+      l(K - P) = \deg P + 1 - g \implies l(P) - 2 = \deg P + 1 -
+      2</span> <span class="math display">l(P) = \deg P + 1</span>
+      However, by Proposition , since <span class="math inline">g = 2
+      \neq 0</span> and <span class="math inline">P \neq 0</span>, we
+      must have <span class="math inline">\dim |P| &lt; \deg P \implies
+      l(P) - 1 &lt; \deg P \implies l(P) \le \deg P</span>. This
+      directly contradicts <span class="math inline">l(P) = \deg P +
+      1</span>. Thus, <span class="math inline">|K|</span> has no base
+      points.</p>
+      <p>Because <span class="math inline">|K|</span> is a
+      base-point-free linear system of dimension 1 and degree 2, the
+      complete linear system defines a global morphism <span
+      class="math inline">\varphi_{|K|}: X \to \mathbb{P}^1_k</span>.
+      Since <span class="math inline">\deg K = 2</span>, the degree of
+      this finite morphism is exactly 2. Because <span
+      class="math inline">g = 2 \ge 2</span>, this satisfies the
+      definition, proving that <span class="math inline">X</span> is
+      hyperelliptic.</p>
+      <p>(2) To show that hyperelliptic curves exist for any genus <span
+      class="math inline">g \ge 2</span>, we can generalize the
+      construction from Remark . Consider the smooth quadric surface
+      <span class="math inline">Q \cong \mathbb{P}^1_k \times
+      \mathbb{P}^1_k \subset \mathbb{P}^3_k</span>. A divisor class on
+      <span class="math inline">Q</span> is determined by its bi-degree
+      <span class="math inline">(a, b)</span>.</p>
+      <p>Let <span class="math inline">X</span> be an irreducible,
+      nonsingular curve defined by a divisor of type <span
+      class="math inline">(g+1, 2)</span> on <span
+      class="math inline">\mathbb{P}^1_k \times \mathbb{P}^1_k</span>.
+      The adjunction formula on the surface shows that the arithmetic
+      genus of such a curve is: <span class="math display">p_a(X) =
+      (a-1)(b-1) = (g+1-1)(2-1) = g \cdot 1 = g</span> The projection
+      map from the product space onto the second factor, <span
+      class="math inline">\pi_2: \mathbb{P}^1_k \times \mathbb{P}^1_k
+      \to \mathbb{P}^1_k</span>, restricts to a morphism on our curve:
+      <span class="math display">f = \pi_2|_X : X \to
+      \mathbb{P}^1_k</span> Since the curve <span
+      class="math inline">X</span> has degree <span
+      class="math inline">2</span> with respect to the second projection
+      (its bi-degree component is <span class="math inline">b=2</span>),
+      every fiber of <span class="math inline">\pi_2</span> intersects
+      <span class="math inline">X</span> at exactly 2 points (counted
+      with multiplicity). Therefore, <span class="math inline">f: X \to
+      \mathbb{P}^1_k</span> is a finite morphism of degree 2. Since
+      <span class="math inline">g \ge 2</span>, this confirms that <span
+      class="math inline">X</span> is a hyperelliptic curve of genus
+      <span class="math inline">g</span>. ◻</p>
+      </div>
+      <h4 data-number="5.1.3.8"
+      id="singular-curves-and-the-normalization-morphism">Singular
+      Curves and the Normalization Morphism</h4>
+      <p>Up to this point, our theory has heavily relied on the
+      assumption that the curve <span class="math inline">X</span> is
+      nonsingular, which ensures that all local rings are discrete
+      valuation rings and that Weil divisors correspond perfectly to
+      invertible sheaves. We now generalize these concepts to singular
+      curves, utilizing the normalization morphism to analyze local
+      singularities and establishing a version of the Riemann–Roch
+      theorem for singular projective curves.</p>
+      <p>Let <span class="math inline">X</span> be an integral
+      projective scheme of dimension <span class="math inline">1</span>
+      over a field <span class="math inline">k</span> (which may have
+      singular points), and let <span class="math inline">\pi:
+      \widetilde{X} \to X</span> be its normalization. The scheme <span
+      class="math inline">\widetilde{X}</span> is a complete nonsingular
+      curve, and <span class="math inline">\pi</span> is a finite
+      birational morphism. This relationship can be encoded into a
+      fundamental exact sequence of coherent sheaves on <span
+      class="math inline">X</span>: <span class="math display">0 \to
+      \mathcal{O}_X \to \pi_* \mathcal{O}_{\widetilde{X}} \to
+      \bigoplus_{P \in X} \widetilde{\mathcal{O}}_P / \mathcal{O}_P \to
+      0</span> where <span
+      class="math inline">\widetilde{\mathcal{O}}_P</span> denotes the
+      integral closure of the local ring <span
+      class="math inline">\mathcal{O}_{X,P}</span> in the function field
+      <span class="math inline">K(X) = K(\widetilde{X})</span>. Since
+      <span class="math inline">\pi</span> is an isomorphism outside a
+      finite set of singular points, the quotient sheaf is a skyscraper
+      sheaf supported precisely at the singular points of <span
+      class="math inline">X</span>.</p>
+      <div class="definition">
+      <p><strong>Definition 1.9</strong> (The Delta Invariant of a
+      Singularity). <em> For each point <span class="math inline">P \in
+      X</span>, we define the local invariant <span
+      class="math inline">\delta_P</span> as the length of the <span
+      class="math inline">\mathcal{O}_{X,P}</span>-module <span
+      class="math inline">\widetilde{\mathcal{O}}_P /
+      \mathcal{O}_P</span>: <span class="math display">\delta_P =
+      \operatorname{length}_{\mathcal{O}_{X,P}}
+      (\widetilde{\mathcal{O}}_P / \mathcal{O}_P) = \dim_k
+      (\widetilde{\mathcal{O}}_P / \mathcal{O}_P)</span> Note that <span
+      class="math inline">\delta_P = 0</span> if and only if <span
+      class="math inline">P</span> is a regular (nonsingular) point of
+      <span class="math inline">X</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Genus Formula for Singular
+      Curves). <em> Let <span class="math inline">X</span> be an
+      integral projective curve over <span class="math inline">k</span>,
+      and let <span class="math inline">\widetilde{X}</span> be its
+      normalization. Then the arithmetic genus <span
+      class="math inline">p_a(X)</span> satisfies:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">p_a(X) = p_a(\widetilde{X}) +
+      \sum_{P \in X} \delta_P</span>.</em></p></li>
+      <li><p><em>If <span class="math inline">p_a(X) = 0</span>, then
+      <span class="math inline">X</span> is already nonsingular and is
+      isomorphic to <span class="math inline">\mathbb{P}^1_k</span>
+      (provided <span class="math inline">X</span> contains a <span
+      class="math inline">k</span>-rational point, or generally <span
+      class="math inline">X \cong \mathbb{P}^1_k</span> if <span
+      class="math inline">k</span> is algebraically
+      closed).</em></p></li>
+      <li><p><em>If <span class="math inline">P \in X</span> is an
+      ordinary node or an ordinary cusp, then <span
+      class="math inline">\delta_P = 1</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) The Euler characteristic <span
+      class="math inline">\chi(\mathcal{F})</span> is additive on short
+      exact sequences of coherent sheaves. Applying this property to our
+      structural short exact sequence yields: <span
+      class="math display">\chi(\pi_* \mathcal{O}_{\widetilde{X}}) =
+      \chi(\mathcal{O}_X) + \chi\left(\bigoplus_{P \in X}
+      \widetilde{\mathcal{O}}_P / \mathcal{O}_P\right)</span> Since
+      <span class="math inline">\pi</span> is a finite morphism, higher
+      direct images vanish (<span class="math inline">R^i\pi_*
+      \mathcal{O}_{\widetilde{X}} = 0</span> for <span
+      class="math inline">i &gt; 0</span>), which implies <span
+      class="math inline">\operatorname{H}^i(X, \pi_*
+      \mathcal{O}_{\widetilde{X}}) \cong
+      \operatorname{H}^i(\widetilde{X},
+      \mathcal{O}_{\widetilde{X}})</span>. Thus, <span
+      class="math inline">\chi(\pi_* \mathcal{O}_{\widetilde{X}}) =
+      \chi(\mathcal{O}_{\widetilde{X}}) = 1 - p_a(\widetilde{X})</span>.
+      By definition, <span class="math inline">\chi(\mathcal{O}_X) = 1 -
+      p_a(X)</span>.</p>
+      <p>The third term is a finite direct sum of skyscraper sheaves, so
+      its Euler characteristic is simply the sum of its dimensions as a
+      <span class="math inline">k</span>-vector space: <span
+      class="math display">\chi\left(\bigoplus_{P \in X}
+      \widetilde{\mathcal{O}}_P / \mathcal{O}_P\right) = \sum_{P \in X}
+      \dim_k (\widetilde{\mathcal{O}}_P / \mathcal{O}_P) = \sum_{P \in
+      X} \delta_P</span> Substituting these values back into the
+      equation gives: <span class="math display">1 - p_a(\widetilde{X})
+      = 1 - p_a(X) + \sum_{P \in X} \delta_P \implies p_a(X) =
+      p_a(\widetilde{X}) + \sum_{P \in X} \delta_P</span></p>
+      <p>(2) Suppose <span class="math inline">p_a(X) = 0</span>. Since
+      <span class="math inline">\widetilde{X}</span> is a smooth
+      projective curve, its genus satisfies <span
+      class="math inline">p_a(\widetilde{X}) = g \ge 0</span>.
+      Furthermore, the local invariants <span
+      class="math inline">\delta_P</span> are lengths of modules, so
+      they are strictly non-negative (<span class="math inline">\delta_P
+      \ge 0</span>). Thus, the equation <span class="math inline">0 =
+      p_a(\widetilde{X}) + \sum \delta_P</span> can only hold if <span
+      class="math inline">p_a(\widetilde{X}) = 0</span> and <span
+      class="math inline">\delta_P = 0</span> for all <span
+      class="math inline">P \in X</span>. Since all <span
+      class="math inline">\delta_P = 0</span>, the curve <span
+      class="math inline">X</span> has no singular points and is
+      completely nonsingular, meaning <span class="math inline">X \cong
+      \widetilde{X}</span>. Because <span
+      class="math inline">\widetilde{X}</span> is a smooth curve of
+      genus 0, it is isomorphic to <span
+      class="math inline">\mathbb{P}^1_k</span>.</p>
+      <p>(3) The value of <span class="math inline">\delta_P</span>
+      depends solely on the analytic isomorphism class of the
+      singularity at <span class="math inline">P</span>.</p>
+      <ul>
+      <li><p>For an ordinary node, the complete local ring is
+      analytically isomorphic to <span
+      class="math inline">k[[x,y]]/(xy)</span>. Its integral closure is
+      <span class="math inline">k[[x]] \oplus k[[y]]</span>. The
+      quotient module is generated by 1 modulo the relations, which
+      forms a 1-dimensional <span class="math inline">k</span>-vector
+      space, hence <span class="math inline">\delta_P =
+      1</span>.</p></li>
+      <li><p>For an ordinary cusp, the local ring is analytically
+      isomorphic to <span class="math inline">k[[x,y]]/(y^2 - x^3) \cong
+      k[[t^2, t^3]] \subset k[[t]]</span>. The integral closure is <span
+      class="math inline">k[[t]]</span>. The quotient <span
+      class="math inline">k[[t]] / k[[t^2, t^3]]</span> has a basis
+      consisting of the single element <span
+      class="math inline">\{t\}</span>, so its dimension is exactly 1,
+      giving <span class="math inline">\delta_P = 1</span>.</p></li>
+      </ul>
+      <p> ◻</p>
+      </div>
+      <h4 data-number="5.1.3.9"
+      id="riemannroch-theorem-for-singular-curves">Riemann–Roch Theorem
+      for Singular Curves</h4>
+      <p>Let <span class="math inline">X</span> be a projective curve
+      over <span class="math inline">k</span> with arithmetic genus
+      <span class="math inline">p_a</span>. Let <span
+      class="math inline">X_{\text{reg}} \subset X</span> denote the
+      open smooth locus containing all regular points of <span
+      class="math inline">X</span>. We can consider divisors whose
+      support lies entirely inside <span
+      class="math inline">X_{\text{reg}}</span>.</p>
+      <div class="definition">
+      <p><strong>Definition 1.10</strong> (Regular Divisors on a
+      Singular Curve). <em> A divisor <span class="math inline">D = \sum
+      n_i P_i</span> on a singular curve <span
+      class="math inline">X</span> is a <strong>regular divisor</strong>
+      if every point <span class="math inline">P_i</span> in its support
+      belongs to <span class="math inline">X_{\text{reg}}</span>. For
+      such a divisor, the local ring <span
+      class="math inline">\mathcal{O}_{X,P_i}</span> is a discrete
+      valuation ring, allowing us to safely define the degree <span
+      class="math inline">\deg D = \sum n_i [\kappa(P_i):k]</span> and
+      construct an associated invertible sheaf <span
+      class="math inline">\mathcal{L}(D)</span> on <span
+      class="math inline">X</span>.</em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Riemann–Roch for Singular
+      Curves). <em> Let <span class="math inline">X</span> be an
+      integral projective curve of arithmetic genus <span
+      class="math inline">p_a</span> over <span
+      class="math inline">k</span>.</em></p>
+      <ol>
+      <li><p><em>For any regular divisor <span
+      class="math inline">D</span> supported in <span
+      class="math inline">X_{\text{reg}}</span>, we have: <span
+      class="math display">\chi(\mathcal{L}(D)) = \deg D + 1 -
+      p_a</span></em></p></li>
+      <li><p><em>Every invertible sheaf <span
+      class="math inline">\mathcal{L}</span> on <span
+      class="math inline">X</span> is isomorphic to <span
+      class="math inline">\mathcal{L}(D)</span> for some regular divisor
+      <span class="math inline">D</span> supported entirely within <span
+      class="math inline">X_{\text{reg}}</span>.</em></p></li>
+      <li><p><em>If <span class="math inline">X</span> is additionally
+      assumed to be a locally complete intersection in some projective
+      space, then its dualizing sheaf <span
+      class="math inline">\omega_X^\circ</span> is an invertible sheaf.
+      Choosing a canonical divisor <span class="math inline">K</span>
+      supported in <span class="math inline">X_{\text{reg}}</span> such
+      that <span class="math inline">\mathcal{L}(K) \cong
+      \omega_X^\circ</span>, the formula takes its classical form: <span
+      class="math display">l(D) - l(K - D) = \deg D + 1 -
+      p_a</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) We use the same induction pattern via point
+      addition as in Theorem . For the base case <span
+      class="math inline">D = 0</span>, <span
+      class="math inline">\mathcal{L}(0) = \mathcal{O}_X</span>, and its
+      Euler characteristic is <span
+      class="math inline">\chi(\mathcal{O}_X) = 1 - p_a</span> by
+      definition of the arithmetic genus.</p>
+      <p>Now let <span class="math inline">D</span> be a regular divisor
+      and <span class="math inline">P \in X_{\text{reg}}</span> be a
+      smooth closed point. Since <span class="math inline">P</span> is a
+      regular point, its ideal sheaf behaves exactly like the
+      nonsingular case, yielding the exact sequence <span
+      class="math inline">0 \to \mathcal{L}(D) \to \mathcal{L}(D+P) \to
+      \kappa(P) \to 0</span>. By the additivity of the Euler
+      characteristic, <span class="math inline">\chi(\mathcal{L}(D+P)) =
+      \chi(\mathcal{L}(D)) + \deg P</span>. Thus, the identity <span
+      class="math inline">\chi(\mathcal{L}(D)) = \deg D + 1 - p_a</span>
+      holds for all regular divisors by induction.</p>
+      <p>(2) It is a general theorem that any Cartier divisor on a
+      projective scheme can be expressed as the difference of two very
+      ample Cartier divisors. On a 1-dimensional integral scheme, a very
+      ample Cartier divisor can be moved via linear equivalence to avoid
+      any finite set of points. By choosing our linear systems to avoid
+      the finite singular locus <span
+      class="math inline">X_{\text{sing}} = X \setminus
+      X_{\text{reg}}</span>, we can ensure that every invertible sheaf
+      <span class="math inline">\mathcal{L}</span> on <span
+      class="math inline">X</span> is isomorphic to an invertible sheaf
+      associated to a Cartier divisor whose support is contained
+      entirely within <span class="math inline">X_{\text{reg}}</span>.
+      On the smooth locus, Cartier divisors coincide with regular Weil
+      divisors, so <span class="math inline">\mathcal{L} \cong
+      \mathcal{L}(D)</span> for some <span class="math inline">D \in
+      \operatorname{Div}(X_{\text{reg}})</span>.</p>
+      <p>(3) If <span class="math inline">X</span> is a locally complete
+      intersection, it satisfies the requiUniBlue geometric regularity
+      conditions for the dualizing sheaf <span
+      class="math inline">\omega_X^\circ</span> to be locally free of
+      rank 1 (an invertible sheaf). By part (2), we can choose a regular
+      divisor <span class="math inline">K</span> supported in <span
+      class="math inline">X_{\text{reg}}</span> such that <span
+      class="math inline">\mathcal{L}(K) \cong
+      \omega_X^\circ</span>.</p>
+      <p>By Serre duality on projective schemes, the cohomology space
+      <span class="math inline">\operatorname{H}^1(X,
+      \mathcal{L}(D))</span> is canonically dual to <span
+      class="math inline">\operatorname{Hom}_X(\mathcal{L}(D),
+      \omega_X^\circ) \cong \operatorname{H}^0(X, \omega_X^\circ \otimes
+      \mathcal{L}(D)^\vee) \cong \operatorname{H}^0(X, \mathcal{L}(K -
+      D))</span>. Taking dimensions over <span
+      class="math inline">k</span>, we obtain: <span
+      class="math display">\dim_k \operatorname{H}^1(X, \mathcal{L}(D))
+      = l(K - D)</span> Substituting this relation into the Euler
+      characteristic formula <span
+      class="math inline">\chi(\mathcal{L}(D)) = l(D) - \dim_k
+      \operatorname{H}^1(X, \mathcal{L}(D))</span> and combining it with
+      the result from part (1) yields the completed formula: <span
+      class="math display">l(D) - l(K - D) = \deg D + 1 -
+      p_a</span> ◻</p>
+      </div>
+      <h3 data-number="5.1.4" id="hurwitzs-theorem">Hurwitz’s
+      Theorem</h3>
+      <p>In this section, we consider a finite morphism of curves <span
+      class="math inline">f: X \to Y</span> and study the relationship
+      between their canonical divisors. The resulting formula, which
+      links the genus of <span class="math inline">X</span>, the genus
+      of <span class="math inline">Y</span>, and the local ramification
+      data, is known as Hurwitz’s theorem.</p>
+      <p>Before we state the theorem, we must precisely define
+      ramification. Given the structural parallels between the geometry
+      of one-dimensional schemes and the algebra of Dedekind domains, it
+      is highly instructive to view algebraic integral number rings
+      precisely as affine curves. Almost every geometric concept in this
+      section has a direct, identical counterpart in algebraic number
+      theory.</p>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (The Arithmetic-Geometric
+      Dictionary). <em> The theory of finite morphisms of curves is
+      formally equivalent to the theory of finite extensions of number
+      fields. Let <span class="math inline">X</span> and <span
+      class="math inline">Y</span> be curves, and let <span
+      class="math inline">f: X \to Y</span> be a finite morphism. We can
+      construct a direct dictionary translating this to an extension of
+      algebraic number fields <span class="math inline">L/K</span>,
+      where <span class="math inline">\mathcal{O}_L</span> and <span
+      class="math inline">\mathcal{O}_K</span> are their respective
+      rings of integers:</em></p>
+      <ul>
+      <li><p><em><strong>Spaces as Rings:</strong> The curve <span
+      class="math inline">Y</span> corresponds to <span
+      class="math inline">\operatorname{Spec}\mathcal{O}_K</span>, and
+      the curve <span class="math inline">X</span> corresponds to <span
+      class="math inline">\operatorname{Spec}\mathcal{O}_L</span>. The
+      morphism <span class="math inline">f</span> corresponds to the
+      integral ring extension <span class="math inline">\mathcal{O}_K
+      \hookrightarrow \mathcal{O}_L</span>.</em></p></li>
+      <li><p><em><strong>Points as Primes:</strong> A closed point <span
+      class="math inline">Q \in Y</span> is defined by a maximal ideal
+      <span class="math inline">\mathfrak{m}_Q \subset
+      \mathcal{O}_{Y,Q}</span>, which corresponds to a prime ideal <span
+      class="math inline">\mathfrak{p} \subset \mathcal{O}_K</span>. A
+      point <span class="math inline">P \in X</span> in the fiber <span
+      class="math inline">f^{-1}(Q)</span> corresponds to a prime ideal
+      <span class="math inline">\mathfrak{P} \subset
+      \mathcal{O}_L</span> lying over <span
+      class="math inline">\mathfrak{p}</span> (meaning <span
+      class="math inline">\mathfrak{P} \cap \mathcal{O}_K =
+      \mathfrak{p}</span>).</em></p></li>
+      <li><p><em><strong>Local Parameters:</strong> The local parameter
+      <span class="math inline">t \in \mathcal{O}_{Y,Q}</span>
+      corresponds to an element <span class="math inline">\pi \in
+      \mathfrak{p}</span> such that <span class="math inline">\pi \notin
+      \mathfrak{p}^2</span>.</em></p></li>
+      <li><p><em><strong>Ramification Index:</strong> The geometric
+      ramification index <span class="math inline">e_P</span> is
+      identically the algebraic ramification index <span
+      class="math inline">e(\mathfrak{P}|\mathfrak{p})</span>.</em></p></li>
+      <li><p><em><strong>Divisor Pullback as Ideal
+      Factorization:</strong> The pullback of a point, <span
+      class="math inline">f^*(Q) = \sum_{f(P)=Q} e_P P</span>, is the
+      exact geometric translation of the unique prime factorization of
+      extended ideals in number rings: <span
+      class="math inline">\mathfrak{p}\mathcal{O}_L =
+      \prod_{\mathfrak{P}|\mathfrak{p}}
+      \mathfrak{P}^{e(\mathfrak{P}|\mathfrak{p})}</span>.</em></p></li>
+      <li><p><em><strong>Degrees:</strong> The residue field degree
+      <span class="math inline">[\kappa(P) : k]</span> corresponds to
+      the inertia degree <span
+      class="math inline">f(\mathfrak{P}|\mathfrak{p}) =
+      [\mathcal{O}_L/\mathfrak{P} : \mathcal{O}_K/\mathfrak{p}]</span>.
+      The global degree equation <span class="math inline">\deg f \cdot
+      \deg Q = \sum e_P \deg P</span> is precisely the fundamental
+      identity of number theory: <span class="math inline">[L:K] = \sum
+      e_i f_i</span>.</em></p></li>
+      </ul>
+      </div>
+      <p>With this arithmetic perspective in mind, we proceed to the
+      formal geometric definitions. Recall that the degree of a finite
+      morphism <span class="math inline">f: X \to Y</span> is defined as
+      the degree of the extension of their function fields: <span
+      class="math inline">[K(X) : K(Y)]</span>.</p>
+      <div class="definition">
+      <p><strong>Definition 1.11</strong> (Ramification Index and Branch
+      Points). <em> For any closed point <span class="math inline">P \in
+      X</span>, we define the <strong>ramification index</strong> <span
+      class="math inline">e_P</span> as follows. Let <span
+      class="math inline">Q = f(P)</span>, and let <span
+      class="math inline">t \in \mathcal{O}_{Y,Q}</span> be a local
+      parameter at <span class="math inline">Q</span> (so its valuation
+      <span class="math inline">v_Q(t) = 1</span>). We consider <span
+      class="math inline">t</span> as an element of <span
+      class="math inline">\mathcal{O}_{X,P}</span> via the natural
+      pullback map of local rings <span class="math inline">f^\sharp :
+      \mathcal{O}_{Y,Q} \to \mathcal{O}_{X,P}</span>. We define: <span
+      class="math display">e_P = v_P(t)</span> where <span
+      class="math inline">v_P</span> is the discrete valuation
+      associated to the local ring <span
+      class="math inline">\mathcal{O}_{X,P}</span>.</em></p>
+      <p><em>If <span class="math inline">e_P &gt; 1</span>, we say the
+      morphism <span class="math inline">f</span> is
+      <strong>ramified</strong> at <span class="math inline">P</span>,
+      and that the target point <span class="math inline">Q</span> is a
+      <strong>branch point</strong> of <span
+      class="math inline">f</span>. If <span class="math inline">e_P =
+      1</span>, we say <span class="math inline">f</span> is
+      <strong>unramified</strong> at <span class="math inline">P</span>.
+      If <span class="math inline">f</span> is unramified everywhere, it
+      is an étale morphism.</em></p>
+      </div>
+      <p>The geometric intuition for ramification is illustrated below.
+      The local parameter <span class="math inline">t</span> essentially
+      acts as a spatial coordinate near <span
+      class="math inline">Q</span>. When pulled back to <span
+      class="math inline">P</span>, the condition <span
+      class="math inline">v_P(t) = e_P</span> implies that locally, the
+      map behaves like the polynomial map <span class="math inline">z
+      \mapsto z^{e_P}</span> near the origin.</p>
+      <div class="center">
+
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.12</strong> (Tame and Wild Ramification).
+      <em> The nature of the ramification interacts crucially with the
+      characteristic of the base field. Let <span class="math inline">p
+      = \operatorname{char}(k)</span>.</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">p = 0</span>, or if <span
+      class="math inline">p &gt; 0</span> and <span
+      class="math inline">p</span> does not divide the ramification
+      index <span class="math inline">e_P</span>, we say the
+      ramification at <span class="math inline">P</span> is
+      <strong>tame</strong>.</em></p></li>
+      <li><p><em>If <span class="math inline">p &gt; 0</span> and <span
+      class="math inline">p</span> divides <span
+      class="math inline">e_P</span>, we say the ramification at <span
+      class="math inline">P</span> is
+      <strong>wild</strong>.</em></p></li>
+      </ol>
+      <p><em>In number theory, this mirrors the distinction between tame
+      and wild ramification of primes in extensions of local fields or
+      number fields.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Compatibility of Pullbacks).
+      <em> Recall that we defined the pullback homomorphism <span
+      class="math inline">f^*: \operatorname{Div} Y \to
+      \operatorname{Div} X</span> on the groups of Weil divisors by
+      setting: <span class="math display">f^*(Q) = \sum_{f(P)=Q} e_P
+      \cdot P</span> for any closed point <span class="math inline">Q
+      \in Y</span>, and extending by linearity.</em></p>
+      <p><em>If <span class="math inline">D</span> is a divisor on <span
+      class="math inline">Y</span>, there is a canonical isomorphism of
+      invertible sheaves: <span class="math display">f^*(\mathcal{L}(D))
+      \cong \mathcal{L}(f^*D)</span> This implies that the operation
+      <span class="math inline">f^*</span> on divisors is perfectly
+      compatible with the pullback homomorphism <span
+      class="math inline">f^*: \operatorname{Pic} Y \to
+      \operatorname{Pic} X</span> on invertible sheaves modulo
+      isomorphism.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> To see the isomorphism <span
+      class="math inline">f^*(\mathcal{L}(D)) \cong
+      \mathcal{L}(f^*D)</span>, it is enough to verify it locally. Let
+      <span class="math inline">Q \in Y</span> be a closed point, and
+      consider the prime divisor <span class="math inline">D = Q</span>.
+      Locally at <span class="math inline">Q</span>, the invertible
+      sheaf <span class="math inline">\mathcal{L}(Q)</span> is generated
+      by <span class="math inline">t^{-1}</span>, where <span
+      class="math inline">t \in \mathcal{O}_{Y,Q}</span> is a local
+      parameter (uniformizer) defining <span
+      class="math inline">Q</span>.</p>
+      <p>When we pull back this sheaf via <span
+      class="math inline">f</span>, the stalk of <span
+      class="math inline">f^*\mathcal{L}(Q)</span> at a point <span
+      class="math inline">P \in f^{-1}(Q)</span> is generated by the
+      pullback of this rational function, <span
+      class="math inline">f^\sharp (t^{-1}) = (f^\sharp t)^{-1}</span>.
+      By Definition , the element <span class="math inline">f^\sharp t
+      \in \mathcal{O}_{X,P}</span> has valuation <span
+      class="math inline">e_P</span>. Thus, <span
+      class="math inline">(f^\sharp t)^{-1}</span> has a pole of order
+      exactly <span class="math inline">e_P</span> at <span
+      class="math inline">P</span>. But this means it is a local
+      generator for the invertible sheaf associated to the divisor <span
+      class="math inline">e_P \cdot P</span>.</p>
+      <p>Since this holds for all <span class="math inline">P</span> in
+      the fiber over <span class="math inline">Q</span>, the global
+      sections piece together to give an isomorphism <span
+      class="math inline">f^*(\mathcal{L}(Q)) \cong
+      \mathcal{L}(\sum_{f(P)=Q} e_P P) = \mathcal{L}(f^*Q)</span>.
+      Extending this linearly to all divisors establishes the
+      result. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation:
+      Pullbacks and Extended Ideals). <em> In algebraic number theory,
+      passing from a number field <span class="math inline">K</span> to
+      a finite extension <span class="math inline">L</span> comes with
+      an inclusion of their rings of integers <span
+      class="math inline">\mathcal{O}_K \hookrightarrow
+      \mathcal{O}_L</span>. A divisor <span class="math inline">D</span>
+      on <span class="math inline">Y</span> corresponds to a fractional
+      ideal <span class="math inline">I \subset K</span>. The pullback
+      map <span class="math inline">f^*D</span> on divisors corresponds
+      exactly to generating the extended ideal <span
+      class="math inline">I \mathcal{O}_L</span> in <span
+      class="math inline">L</span>.</em></p>
+      <p><em>The proposition <span
+      class="math inline">f^*(\mathcal{L}(D)) \cong
+      \mathcal{L}(f^*D)</span> mirrors the algebraic fact that the
+      operation of extending ideals is well-defined on the ideal class
+      group, inducing a natural homomorphism <span
+      class="math inline">\operatorname{Cl}(\mathcal{O}_K) \to
+      \operatorname{Cl}(\mathcal{O}_L)</span> mapping <span
+      class="math inline">[I] \mapsto [I\mathcal{O}_L]</span>.</em></p>
+      </div>
+      <p>To relate the canonical divisors of <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span>, we must relate their sheaves of
+      differentials, <span class="math inline">\Omega_X</span> and <span
+      class="math inline">\Omega_Y</span>. This relationship is governed
+      by the sheaf of relative differentials, <span
+      class="math inline">\Omega_{X/Y}</span>. From this point onward,
+      we require the finite morphism <span class="math inline">f</span>
+      to be <strong>separable</strong>, meaning the corresponding
+      function field extension <span
+      class="math inline">K(X)/K(Y)</span> is a finite separable field
+      extension.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (The Exact Sequence of
+      Differentials). <em> Let <span class="math inline">f: X \to
+      Y</span> be a finite separable morphism of curves. Then there is a
+      fundamental exact sequence of coherent sheaves on <span
+      class="math inline">X</span>: <span class="math display">0 \to
+      f^*\Omega_Y \to \Omega_X \to \Omega_{X/Y} \to 0</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> From the general theory of morphisms and Kähler
+      differentials, there is always an exact sequence of sheaves <span
+      class="math inline">f^*\Omega_Y \to \Omega_X \to \Omega_{X/Y} \to
+      0</span>. We only have to show that the first map <span
+      class="math inline">f^*\Omega_Y \to \Omega_X</span> is
+      injective.</p>
+      <p>Since both <span class="math inline">f^*\Omega_Y</span> and
+      <span class="math inline">\Omega_X</span> are invertible sheaves
+      (locally free of rank 1) on the integral curve <span
+      class="math inline">X</span>, it is sufficient to show that the
+      map is nonzero at the generic point of <span
+      class="math inline">X</span>. At the generic point, the stalks
+      correspond to the modules of differentials of the function fields:
+      <span class="math inline">f^*\Omega_Y</span> yields <span
+      class="math inline">\Omega_{K(Y)/k} \otimes_{K(Y)} K(X)</span>,
+      and <span class="math inline">\Omega_X</span> yields <span
+      class="math inline">\Omega_{K(X)/k}</span>.</p>
+      <p>Because the field extension <span
+      class="math inline">K(X)/K(Y)</span> is finite and separable, the
+      module of relative differentials of the fields, <span
+      class="math inline">\Omega_{K(X)/K(Y)}</span>, is strictly zero.
+      This means the map at the generic point is surjective. A
+      surjective linear map between one-dimensional vector spaces over
+      <span class="math inline">K(X)</span> is an isomorphism, and
+      therefore nonzero. Hence, the map of sheaves is injective
+      everywhere. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation: The
+      Relative Differentials). <em> If <span class="math inline">Y =
+      \operatorname{Spec}\mathcal{O}_K</span> and <span
+      class="math inline">X = \operatorname{Spec}\mathcal{O}_L</span>,
+      the sheaf of relative differentials <span
+      class="math inline">\Omega_{X/Y}</span> corresponds to the module
+      of relative Kähler differentials <span
+      class="math inline">\Omega_{\mathcal{O}_L/\mathcal{O}_K}</span>.</em></p>
+      <p><em>The exact sequence says that absolute differentials on
+      <span class="math inline">\mathcal{O}_K</span> (pulled back to
+      <span class="math inline">L</span>) inject into the absolute
+      differentials on <span class="math inline">\mathcal{O}_L</span>,
+      and the quotient is precisely the relative differential module
+      measuring how <span class="math inline">L</span> differs from
+      <span class="math inline">K</span>. Because <span
+      class="math inline">L/K</span> is a separable extension of number
+      fields, <span
+      class="math inline">\Omega_{\mathcal{O}_L/\mathcal{O}_K}</span> is
+      a torsion module.</em></p>
+      </div>
+      <p>Since <span class="math inline">\Omega_Y</span> and <span
+      class="math inline">\Omega_X</span> correspond to the canonical
+      divisors on <span class="math inline">Y</span> and <span
+      class="math inline">X</span>, respectively, the exact sequence
+      shows that the sheaf of relative differentials <span
+      class="math inline">\Omega_{X/Y}</span> explicitly measures their
+      difference.</p>
+      <p>To study this sheaf locally, let <span class="math inline">P
+      \in X</span> be a point mapping to <span class="math inline">Q =
+      f(P)</span>. Let <span class="math inline">t</span> be a local
+      parameter at <span class="math inline">Q</span>, and let <span
+      class="math inline">u</span> be a local parameter at <span
+      class="math inline">P</span>. Then <span
+      class="math inline">dt</span> is a generator of the free <span
+      class="math inline">\mathcal{O}_{Y,Q}</span>-module <span
+      class="math inline">\Omega_{Y,Q}</span>, and <span
+      class="math inline">du</span> is a generator of the free <span
+      class="math inline">\mathcal{O}_{X,P}</span>-module <span
+      class="math inline">\Omega_{X,P}</span>. Under the pullback map,
+      there is a unique element <span class="math inline">g \in
+      \mathcal{O}_{X,P}</span> such that <span class="math inline">f^*dt
+      = g \cdot du</span>. We denote this element suggestively as the
+      formal derivative <span class="math inline">g = dt/du</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Structure of the Ramification
+      Sheaf). <em> Let <span class="math inline">f: X \to Y</span> be a
+      finite, separable morphism of curves. Then:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\Omega_{X/Y}</span> is a
+      torsion sheaf on <span class="math inline">X</span>, whose support
+      is exactly the set of ramification points of <span
+      class="math inline">f</span>. In particular, <span
+      class="math inline">f</span> is ramified at only finitely many
+      points.</em></p></li>
+      <li><p><em>For each <span class="math inline">P \in X</span>, the
+      stalk <span class="math inline">(\Omega_{X/Y})_P</span> is a
+      principal <span
+      class="math inline">\mathcal{O}_{X,P}</span>-module of finite
+      length given by: <span
+      class="math display">\operatorname{length}_{\mathcal{O}_{X,P}}
+      (\Omega_{X/Y})_P = v_P(dt/du)</span></em></p></li>
+      <li><p><em>If <span class="math inline">f</span> is tamely
+      ramified at <span class="math inline">P</span>, then <span
+      class="math inline">\operatorname{length}_{\mathcal{O}_{X,P}}
+      (\Omega_{X/Y})_P = e_P - 1</span>. If <span
+      class="math inline">f</span> is wildly ramified at <span
+      class="math inline">P</span>, then the length is strictly greater
+      than <span class="math inline">e_P - 1</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) The fact that <span
+      class="math inline">\Omega_{X/Y}</span> is a torsion sheaf follows
+      directly from Proposition because both <span
+      class="math inline">f^*\Omega_Y</span> and <span
+      class="math inline">\Omega_X</span> are invertible sheaves, and
+      they are isomorphic at the generic point (so the generic stalk of
+      the quotient is zero). Locally at <span
+      class="math inline">P</span>, <span
+      class="math inline">(\Omega_{X/Y})_P = 0</span> if and only if
+      <span class="math inline">f^*dt</span> is a generator for <span
+      class="math inline">\Omega_{X,P}</span>. By our notation, this
+      happens if and only if <span class="math inline">dt/du</span> is a
+      unit in <span class="math inline">\mathcal{O}_{X,P}</span>, which
+      means <span class="math inline">t</span> can serve as a local
+      parameter for <span class="math inline">\mathcal{O}_{X,P}</span>.
+      This is exactly the definition of <span
+      class="math inline">f</span> being unramified at <span
+      class="math inline">P</span> (<span class="math inline">e_P =
+      1</span>). Since a coherent torsion sheaf is supported on a finite
+      set of closed points, ramification occurs only at finitely many
+      points.</p>
+      <p>(2) Using the exact sequence from Proposition , the stalk of
+      the quotient is given by: <span
+      class="math display">(\Omega_{X/Y})_P \cong \Omega_{X,P} /
+      f^*\Omega_{Y,Q} \cong \mathcal{O}_{X,P} \cdot du /
+      \mathcal{O}_{X,P} \cdot \left(\frac{dt}{du} du\right) \cong
+      \mathcal{O}_{X,P} / \left(\frac{dt}{du}\right)</span> Since <span
+      class="math inline">\mathcal{O}_{X,P}</span> is a discrete
+      valuation ring, the length of the quotient module <span
+      class="math inline">\mathcal{O}_{X,P} / (x)</span> is precisely
+      the valuation <span class="math inline">v_P(x)</span>. Thus, the
+      length is <span class="math inline">v_P(dt/du)</span>.</p>
+      <p>(3) If <span class="math inline">f</span> has ramification
+      index <span class="math inline">e = e_P</span> at <span
+      class="math inline">P</span>, then the pullback of the local
+      parameter <span class="math inline">t</span> can be written as
+      <span class="math inline">t = a u^e</span> for some unit <span
+      class="math inline">a \in \mathcal{O}_{X,P}^\times</span>.
+      Differentiating this expression gives: <span
+      class="math display">dt = a e u^{e-1} du + u^e da</span> We wish
+      to find the valuation <span class="math inline">v_P(dt/du)</span>
+      of the coefficient of <span class="math inline">du</span>. The
+      term <span class="math inline">u^e da</span> has valuation at
+      least <span class="math inline">e</span>. If the ramification is
+      <strong>tame</strong>, the integer <span
+      class="math inline">e</span> is not divisible by the
+      characteristic of the field <span class="math inline">k</span>, so
+      <span class="math inline">e</span> is a non-zero element in <span
+      class="math inline">k</span> (and thus a unit in <span
+      class="math inline">\mathcal{O}_{X,P}</span>). The term <span
+      class="math inline">a e u^{e-1}</span> therefore has exact
+      valuation <span class="math inline">e - 1</span>. Since <span
+      class="math inline">e - 1 &lt; e</span>, the valuation of the sum
+      is dominated by the term with the lowest valuation, yielding <span
+      class="math inline">v_P(dt/du) = e - 1</span>. If the ramification
+      is <strong>wild</strong>, <span class="math inline">e</span> is a
+      multiple of <span
+      class="math inline">\operatorname{char}(k)</span>, so <span
+      class="math inline">e = 0</span> in the field <span
+      class="math inline">k</span>. The term <span class="math inline">a
+      e u^{e-1} du</span> vanishes entirely, leaving <span
+      class="math inline">dt = u^e da</span>. Thus <span
+      class="math inline">v_P(dt/du) \ge e &gt; e - 1</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation:
+      Dedekind’s Theorem on the Different). <em> In algebraic number
+      theory, the module of relative differentials <span
+      class="math inline">\Omega_{\mathcal{O}_L/\mathcal{O}_K}</span> is
+      a torsion module whose annihilator ideal is called the
+      <strong>different ideal</strong>, denoted <span
+      class="math inline">\mathbf{D}_{L/K} \subset
+      \mathcal{O}_L</span>.</em></p>
+      <p><em>The local length of the stalk <span
+      class="math inline">(\Omega_{X/Y})_P</span> corresponds exactly to
+      the exponent <span
+      class="math inline">d(\mathfrak{P}|\mathfrak{p})</span> of the
+      prime <span class="math inline">\mathfrak{P}</span> in the prime
+      factorization of the different ideal <span
+      class="math inline">\mathbf{D}_{L/K}</span>.</em></p>
+      <p><em>Proposition (3) is the geometric restatement of
+      <strong>Dedekind’s Theorem on the Different</strong>: A prime
+      <span class="math inline">\mathfrak{P}</span> divides the
+      different <span class="math inline">\mathbf{D}_{L/K}</span> if and
+      only if it is ramified. Furthermore, the exponent of <span
+      class="math inline">\mathfrak{P}</span> in <span
+      class="math inline">\mathbf{D}_{L/K}</span> is exactly <span
+      class="math inline">e - 1</span> if the ramification is tame, and
+      strictly greater than <span class="math inline">e - 1</span> if
+      the ramification is wild. This provides a direct, unifying link
+      between the geometry of differentials and the arithmetic of
+      ramification.</em></p>
+      </div>
+      <p>With the sheaf of relative differentials understood as a
+      measure of ramification, we can now assemble this local data into
+      a global divisor.</p>
+      <div class="definition">
+      <p><strong>Definition 1.13</strong> (The Ramification Divisor).
+      <em> Let <span class="math inline">f: X \to Y</span> be a finite,
+      separable morphism of curves. We define the <strong>ramification
+      divisor</strong> of <span class="math inline">f</span> on <span
+      class="math inline">X</span> to be: <span class="math display">R =
+      \sum_{P \in X}
+      \operatorname{length}_{\mathcal{O}_{X,P}}(\Omega_{X/Y})_P \cdot
+      P</span> By our previous analysis, this is a finite sum supported
+      exactly on the ramification points of <span
+      class="math inline">f</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation: The
+      Different Ideal). <em> The ramification divisor <span
+      class="math inline">R</span> corresponds exactly to the
+      <strong>Different ideal</strong> <span
+      class="math inline">\mathbf{D}_{L/K}</span> of an extension of
+      number fields <span class="math inline">L/K</span>. The Different
+      is an ideal in <span class="math inline">\mathcal{O}_L</span>
+      whose prime factorization is given by <span
+      class="math inline">\mathbf{D}_{L/K} = \prod
+      \mathfrak{P}^{d(\mathfrak{P}|\mathfrak{p})}</span>. The integer
+      <span class="math inline">d(\mathfrak{P}|\mathfrak{p})</span> is
+      precisely the length of the relative differential module localized
+      at <span class="math inline">\mathfrak{P}</span>. Thus, <span
+      class="math inline">R</span> is the geometric embodiment of the
+      Different.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Relation of Canonical
+      Divisors). <em> Let <span class="math inline">f: X \to Y</span> be
+      a finite, separable morphism of curves. Let <span
+      class="math inline">K_X</span> and <span
+      class="math inline">K_Y</span> be the canonical divisors of <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span>, respectively. Then there is a linear
+      equivalence of divisors on <span class="math inline">X</span>:
+      <span class="math display">K_X \sim f^*K_Y + R</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Considering the divisor <span
+      class="math inline">R</span> as a closed subscheme of <span
+      class="math inline">X</span>, we see from our previous local
+      analysis that its structure sheaf <span
+      class="math inline">\mathcal{O}_R</span> is isomorphic to the
+      torsion sheaf <span class="math inline">\Omega_{X/Y}</span>.
+      Tensoring the fundamental exact sequence of differentials <span
+      class="math display">0 \to f^*\Omega_Y \to \Omega_X \to
+      \Omega_{X/Y} \to 0</span> with the inverse invertible sheaf <span
+      class="math inline">\Omega_X^{-1}</span>, we obtain a new exact
+      sequence: <span class="math display">0 \to f^*\Omega_Y \otimes
+      \Omega_X^{-1} \to \mathcal{O}_X \to \mathcal{O}_R \to 0</span> The
+      map to <span class="math inline">\mathcal{O}_R</span> is the
+      standard quotient map, meaning the kernel <span
+      class="math inline">f^*\Omega_Y \otimes \Omega_X^{-1}</span> is
+      exactly the ideal sheaf of the closed subscheme <span
+      class="math inline">R</span>. From the general theory of divisors,
+      the ideal sheaf of <span class="math inline">R</span> is
+      isomorphic to <span class="math inline">\mathcal{L}(-R)</span>.
+      Therefore, we have an isomorphism of invertible sheaves: <span
+      class="math display">f^*\Omega_Y \otimes \Omega_X^{-1} \cong
+      \mathcal{L}(-R)</span> Taking the associated divisors (and
+      remembering that <span class="math inline">\Omega_X \cong
+      \mathcal{L}(K_X)</span> and <span class="math inline">f^*\Omega_Y
+      \cong \mathcal{L}(f^*K_Y)</span>), this isomorphism translates to
+      the linear equivalence <span class="math inline">f^*K_Y - K_X \sim
+      -R</span>, which rearranges to <span class="math inline">K_X \sim
+      f^*K_Y + R</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation:
+      Discriminants and Differents). <em> In number theory, the exact
+      analogue of the canonical divisor class <span
+      class="math inline">K_X</span> is the inverse of the absolute
+      different (or dualizing module). The geometric equivalence <span
+      class="math inline">K_X - f^*K_Y \sim R</span> corresponds to the
+      tower formula for differents in field extensions: <span
+      class="math inline">\mathbf{D}_{L/\mathbb{Q}} = \mathbf{D}_{L/K}
+      \cdot (\mathbf{D}_{K/\mathbb{Q}} \mathcal{O}_L)</span>. The
+      relative canonical divisor corresponds precisely to the relative
+      Different.</em></p>
+      </div>
+      <p>By simply taking the degrees of the divisors in the previous
+      proposition, we arrive at one of the most famous and useful
+      formulas in algebraic geometry.</p>
+      <div class="corollary">
+      <p><strong>Corollary 1.1</strong> (Hurwitz’s Theorem). <em> Let
+      <span class="math inline">f: X \to Y</span> be a finite separable
+      morphism of curves. Let <span class="math inline">n = \deg
+      f</span>. Then the genera of the curves are related by: <span
+      class="math display">2g(X) - 2 = n \cdot (2g(Y) - 2) + \deg
+      R</span> Furthermore, if <span class="math inline">f</span> has
+      only tame ramification (e.g., if <span
+      class="math inline">\operatorname{char}(k) = 0</span>), then the
+      degree of the ramification divisor simplifies to: <span
+      class="math display">\deg R = \sum_{P \in X} (e_P - 1) \cdot \deg
+      P</span> (Note: If <span class="math inline">k</span> is
+      algebraically closed, <span class="math inline">\deg P = 1</span>
+      for all points, yielding the classical formula <span
+      class="math inline">\deg R = \sum (e_P - 1)</span>).</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We compute the degrees of both sides of the
+      linear equivalence <span class="math inline">K_X \sim f^*K_Y +
+      R</span>. By our earlier application of the Riemann–Roch theorem,
+      the canonical divisor has degree <span class="math inline">2g -
+      2</span>, so <span class="math inline">\deg K_X = 2g(X) -
+      2</span>. The pullback map multiplies degrees by the degree of the
+      morphism, so <span class="math inline">\deg(f^*K_Y) = n \cdot \deg
+      K_Y = n(2g(Y) - 2)</span>. Since linear equivalence preserves
+      degrees, the main formula follows immediately.</p>
+      <p>If the ramification is tame, Proposition showed that the length
+      of the stalk <span class="math inline">(\Omega_{X/Y})_P</span> is
+      exactly <span class="math inline">e_P - 1</span>. Substituting
+      this into the definition of <span class="math inline">R</span> and
+      taking the degree yields <span class="math inline">\deg R = \sum
+      (e_P - 1) \deg P</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation: The
+      Discriminant Formula). <em> Taking the degree of a divisor is
+      analogous to taking the ideal norm down to <span
+      class="math inline">\mathbb{Q}</span> (which computes the <span
+      class="math inline">p</span>-adic valuation of the discriminant).
+      Hurwitz’s formula is the direct geometric analogue of the
+      discriminant-norm formula for a tower of number fields <span
+      class="math inline">L/K</span>: <span
+      class="math display">\Delta_L = N_{K/\mathbb{Q}}(\Delta_{L/K})
+      \cdot \Delta_K^{[L:K]}</span> where <span
+      class="math inline">\Delta</span> denotes the absolute
+      discriminant. The <span class="math inline">2g-2</span> term plays
+      the role of the log-discriminant, and <span
+      class="math inline">n</span> is the field extension degree <span
+      class="math inline">[L:K]</span>.</em></p>
+      </div>
+      <p>Hurwitz’s theorem explicitly requires the morphism to be
+      separable. What happens when the field extension <span
+      class="math inline">K(X)/K(Y)</span> is purely inseparable? This
+      phenomenon occurs strictly in positive characteristic and is
+      governed by the Frobenius morphism.</p>
+      <div class="definition">
+      <p><strong>Definition 1.14</strong> (The Frobenius Morphism). <em>
+      Let <span class="math inline">X</span> be a scheme, all of whose
+      local rings are of characteristic <span class="math inline">p &gt;
+      0</span> (i.e., they are <span
+      class="math inline">\mathbb{Z}/p\mathbb{Z}</span>-algebras). We
+      define the <strong>Frobenius morphism</strong> <span
+      class="math inline">F: X \to X</span> as follows:</em></p>
+      <ul>
+      <li><p><em>On the underlying topological space, <span
+      class="math inline">F</span> is the identity map.</em></p></li>
+      <li><p><em>On the structure sheaf, <span
+      class="math inline">F^\sharp : \mathcal{O}_X \to
+      \mathcal{O}_X</span> is the <span class="math inline">p</span>-th
+      power map, defined locally by <span class="math inline">a \mapsto
+      a^p</span>.</em></p></li>
+      </ul>
+      <p><em>Since the local rings have characteristic <span
+      class="math inline">p</span>, the binomial expansion <span
+      class="math inline">(a+b)^p = a^p + b^p</span> holds, making <span
+      class="math inline">F^\sharp</span> a valid ring homomorphism.
+      Because <span class="math inline">F^\sharp</span> preserves the
+      maximal ideals (mapping non-units to non-units), <span
+      class="math inline">F</span> is indeed a morphism of locally
+      ringed spaces.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Purely Inseparable Morphisms
+      of Curves). <em> Let <span class="math inline">f: X \to Y</span>
+      be a finite morphism of curves over <span
+      class="math inline">k</span>, and suppose that <span
+      class="math inline">K(X)</span> is a purely inseparable field
+      extension of <span class="math inline">K(Y)</span>. Then <span
+      class="math inline">X</span> and <span
+      class="math inline">Y</span> are isomorphic as abstract schemes,
+      and <span class="math inline">f</span> is a composition of <span
+      class="math inline">k</span>-linear Frobenius morphisms. In
+      particular, they share the same geometric invariant: <span
+      class="math inline">g(X) = g(Y)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because <span
+      class="math inline">K(X)/K(Y)</span> is a purely inseparable
+      extension, its degree must be a power of the characteristic <span
+      class="math inline">p</span>. Let <span class="math inline">\deg f
+      = p^r</span>. This algebraic condition implies that <span
+      class="math inline">K(X)^{p^r} \subseteq K(Y)</span>, which can be
+      rewritten as <span class="math inline">K(X) \subseteq
+      K(Y)^{1/p^r}</span>.</p>
+      <p>On the geometric side, consider the sequence of <span
+      class="math inline">k</span>-linear Frobenius morphisms iterating
+      <span class="math inline">r</span> times: <span
+      class="math display">Y_{p^r} \xrightarrow{F&#39;} Y_{p^{r-1}}
+      \xrightarrow{F&#39;} \dots \xrightarrow{F&#39;} Y_p
+      \xrightarrow{F&#39;} Y</span> where each step modifies the <span
+      class="math inline">k</span>-algebra structure via the Frobenius
+      map. The composition of these maps yields a morphism <span
+      class="math inline">f&#39;: Y_{p^r} \to Y</span>. The function
+      field of <span class="math inline">Y_{p^r}</span> is exactly <span
+      class="math inline">K(Y)^{1/p^r}</span>, so <span
+      class="math inline">\deg f&#39; = p^r</span>.</p>
+      <p>We now have two function fields, <span
+      class="math inline">K(X)</span> and <span
+      class="math inline">K(Y)^{1/p^r}</span>, both sitting over <span
+      class="math inline">K(Y)</span> with the exact same degree <span
+      class="math inline">p^r</span>, and with an inclusion <span
+      class="math inline">K(X) \subseteq K(Y)^{1/p^r}</span>. An
+      inclusion of vector spaces of the same finite dimension must be an
+      equality, hence <span class="math inline">K(X) =
+      K(Y)^{1/p^r}</span>.</p>
+      <p>Since a complete nonsingular curve is uniquely determined up to
+      isomorphism by its function field, it follows that <span
+      class="math inline">X \cong Y_{p^r}</span> as abstract schemes,
+      and under this identification, <span class="math inline">f =
+      f&#39;</span>. Because <span class="math inline">X</span> and
+      <span class="math inline">Y</span> are isomorphic as abstract
+      schemes (ignoring the specific <span
+      class="math inline">k</span>-algebra structure which the Frobenius
+      map twists), their genus, an absolute topological/algebraic
+      invariant, must be identical. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Number Theory Translation: Global
+      Function Fields). <em> In classical algebraic number theory
+      (finite extensions of <span
+      class="math inline">\mathbb{Q}</span>), the characteristic is
+      <span class="math inline">0</span>, so all field extensions are
+      separable, and purely inseparable morphisms do not exist.</em></p>
+      <p><em>However, modern number theory deeply studies <strong>global
+      function fields</strong>, finite extensions of <span
+      class="math inline">\mathbb{F}_p(t)</span>. In this setting,
+      purely inseparable extensions do exist. Proposition asserts that
+      extracting <span class="math inline">p</span>-th roots in a global
+      function field does not create a "new" geometric arithmetic curve;
+      it merely scales the original curve. The topology and the genus of
+      the "number ring" remain completely unchanged, reflecting that
+      purely inseparable extensions carry no new arithmetic ramification
+      data.</em></p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="5-classical-geometry.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Classical Geometry</strong>
+        </a>
+                        <a class="turn-next" href="5.2-plane-geometry.html" rel="next">
+          <span>NEXT</span><strong>Plane Geometry →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

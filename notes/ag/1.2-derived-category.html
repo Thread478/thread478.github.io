@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Derived Category · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Preliminary</p>
+        <h1>Derived Category</h1>
+      </header>
+      <h2 data-number="1.2" id="derived-category">Derived Category</h2>
+      <h3 data-number="1.2.1"
+      id="homological-algebra-and-derived-category">Homological Algebra
+      and Derived Category</h3>
+      <h4 data-number="1.2.1.1" id="complex-and-chain-homotopy">Complex
+      and Chain Homotopy</h4>
+      <div class="definition">
+      <p><strong>Definition 2.1</strong> (Category of Complexes). <em>
+      Let <span class="math inline">\mathcal{A}</span> be an Abelian
+      category. The <strong>category of complexes</strong>, denoted
+      <span class="math inline">\operatorname{Ch}(\mathcal{A})</span>,
+      is defined by the following data:</em></p>
+      <ol>
+      <li><p><em><strong>Objects:</strong> Chain complexes <span
+      class="math inline">A^\bullet = (\dots \to A^{n-1}
+      \xrightarrow{d_A^{n-1}} A^n \xrightarrow{d_A^n} A^{n+1} \to
+      \dots)</span> where <span class="math inline">A^n \in
+      \operatorname{Ob}(\mathcal{A})</span> for all <span
+      class="math inline">n \in \mathbb{Z}</span>, and the differentials
+      satisfy <span class="math inline">\operatorname{d}_A^{n} \circ
+      \operatorname{d}_A^{n-1} = 0</span>.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> A morphism of complexes
+      <span class="math inline">f^\bullet: A^\bullet \to
+      {\operatorname{B}}^\bullet</span> is a sequence of morphisms <span
+      class="math inline">f^n: A^n \to {\operatorname{B}}^n</span> in
+      <span class="math inline">\mathcal{A}</span> that commute with the
+      differentials, meaning <span
+      class="math inline">\operatorname{d}_{\operatorname{B}}^n \circ
+      f^n = f^{n+1} \circ \operatorname{d}_A^n</span> for all <span
+      class="math inline">n \in \mathbb{Z}</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Embedding <span
+      class="math inline">\mathcal{A}</span> into <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>). <em>
+      The Abelian category <span class="math inline">\mathcal{A}</span>
+      naturally embeds into its category of complexes via a fully
+      faithful functor. Any object <span class="math inline">A \in
+      \operatorname{Ob}(\mathcal{A})</span> can be viewed as a complex
+      concentrated in degree zero:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/36400d8fa6f1d7832460d0bed109630c978ed135.svg" target="_blank" rel="noopener"><img src="assets/diagrams/36400d8fa6f1d7832460d0bed109630c978ed135.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">A</span> sits at index <span
+      class="math inline">n=0</span> and all differentials are the zero
+      morphism.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 2.2</strong> (Chain Homotopy). <em> Let
+      <span class="math inline">f^\bullet, g^\bullet: A^\bullet \to
+      {\operatorname{B}}^\bullet</span> be two morphisms of chain
+      complexes in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>. A
+      <strong>chain homotopy</strong> between <span
+      class="math inline">f^\bullet</span> and <span
+      class="math inline">g^\bullet</span> is a sequence of morphisms
+      <span class="math inline">h^n: A^n \to
+      {\operatorname{B}}^{n-1}</span> in <span
+      class="math inline">\mathcal{A}</span> such that for all <span
+      class="math inline">n \in \mathbb{Z}</span>, the following holds:
+      <span class="math display">f^n - g^n =
+      \operatorname{d}_{\operatorname{B}}^{n-1} \circ h^n + h^{n+1}
+      \circ \operatorname{d}_A^n</span> If such a sequence exists, we
+      say <span class="math inline">f^\bullet</span> and <span
+      class="math inline">g^\bullet</span> are <strong>chain
+      homotopic</strong> and denote this relation by <span
+      class="math inline">f^\bullet \sim g^\bullet</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Chain Homotopies Preserve
+      Cohomology). <em> Let <span class="math inline">f^\bullet,
+      g^\bullet: A^\bullet \to {\operatorname{B}}^\bullet</span> be
+      chain homotopic morphisms in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>. Then,
+      for every <span class="math inline">n \in \mathbb{Z}</span>, they
+      induce identical morphisms on cohomology: <span
+      class="math display">\operatorname{H}^n(f^\bullet) =
+      \operatorname{H}^n(g^\bullet) : \operatorname{H}^n(A^\bullet) \to
+      \operatorname{H}^n({\operatorname{B}}^\bullet)</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">h^n: A^n \to
+      {\operatorname{B}}^{n-1}</span> be a chain homotopy satisfying
+      <span class="math inline">f^n - g^n =
+      \operatorname{d}_{\operatorname{B}}^{n-1} \circ h^n + h^{n+1}
+      \circ \operatorname{d}_A^n</span>.</p>
+      <p>Recall that the <span class="math inline">n</span>-th
+      cohomology is defined as <span
+      class="math inline">\operatorname{H}^n(A^\bullet) =
+      \ker(\operatorname{d}_A^n) /
+      \operatorname{im}(\operatorname{d}_A^{n-1})</span>. Let <span
+      class="math inline">[z] \in \operatorname{H}^n(A^\bullet)</span>
+      be a cohomology class represented by a cocycle <span
+      class="math inline">z \in \ker(\operatorname{d}_A^n)</span>. This
+      means <span class="math inline">\operatorname{d}_A^n(z) =
+      0</span>.</p>
+      <p>We want to examine how the difference <span
+      class="math inline">(f^n - g^n)</span> acts on the cocycle <span
+      class="math inline">z</span>. Evaluating the homotopy equation at
+      <span class="math inline">z</span>, we obtain: <span
+      class="math display">\begin{align*}
+              (f^n - g^n)(z) &amp;=
+      (\operatorname{d}_{\operatorname{B}}^{n-1} \circ h^n + h^{n+1}
+      \circ \operatorname{d}_A^n)(z) \\
+              &amp;= \operatorname{d}_{\operatorname{B}}^{n-1}(h^n(z)) +
+      h^{n+1}(\operatorname{d}_A^n(z)) \\
+              &amp;= \operatorname{d}_{\operatorname{B}}^{n-1}(h^n(z)) +
+      h^{n+1}(0) \\
+              &amp;= \operatorname{d}_{\operatorname{B}}^{n-1}(h^n(z))
+      \end{align*}</span></p>
+      <p>The result, <span
+      class="math inline">\operatorname{d}_{\operatorname{B}}^{n-1}(h^n(z))</span>,
+      is by definition an element of <span
+      class="math inline">\operatorname{im}(\operatorname{d}_{\operatorname{B}}^{n-1})</span>,
+      which constitutes the coboundaries in <span
+      class="math inline">{\operatorname{B}}^\bullet</span>. Because two
+      cocycles define the same cohomology class if they differ by a
+      coboundary, the difference <span class="math inline">(f^n(z) -
+      g^n(z))</span> vanishes in the quotient <span
+      class="math inline">\operatorname{H}^n({\operatorname{B}}^\bullet)</span>.</p>
+      <p>Therefore, <span class="math inline">[f^n(z)] =
+      [g^n(z)]</span>, which implies <span
+      class="math inline">\operatorname{H}^n(f^\bullet) =
+      \operatorname{H}^n(g^\bullet)</span>. ◻</p>
+      </div>
+      <h4 data-number="1.2.1.2" id="category-of-complexes">Category of
+      Complexes</h4>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (The Category of Complexes is
+      Abelian). <em> If <span class="math inline">\mathcal{A}</span> is
+      an Abelian category, then the category of complexes <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> is also
+      an Abelian category.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> To prove that <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> is an
+      Abelian category when <span class="math inline">\mathcal{A}</span>
+      is abelian, we verify the standard axioms of an Abelian category
+      step by step, showing that all constructions can be performed
+      componentwise.</p>
+      <p><strong>Step 1. <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> is
+      Additive</strong> First, we observe that <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> inherits
+      the additive structure from <span
+      class="math inline">\mathcal{A}</span>:</p>
+      <ul>
+      <li><p><strong>Hom-groups:</strong> For any two complexes <span
+      class="math inline">A^\bullet</span> and <span
+      class="math inline">B^\bullet</span>, the set of chain maps <span
+      class="math inline">\operatorname{Hom}_{\operatorname{Ch}(\mathcal{A})}(A^\bullet,
+      B^\bullet)</span> forms an Abelian group under pointwise addition:
+      <span class="math inline">(f + g)_n = f_n + g_n</span> for all
+      <span class="math inline">n \in \mathbb{Z}</span>. Composition is
+      easily seen to be bilinear.</p></li>
+      <li><p><strong>Zero Object:</strong> The complex <span
+      class="math inline">0^\bullet</span> consisting of the zero object
+      <span class="math inline">0 \in \mathcal{A}</span> in every degree
+      with zero differential maps is both initial and terminal in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>.</p></li>
+      <li><p><strong>Finite Biproducts:</strong> Given two complexes
+      <span class="math inline">A^\bullet</span> and <span
+      class="math inline">B^\bullet</span>, their biproduct (direct sum)
+      <span class="math inline">A^\bullet \oplus B^\bullet</span> is
+      defined in each degree <span class="math inline">n</span> by <span
+      class="math inline">(A \oplus B)_n = A_n \oplus B_n</span>, with
+      the differential <span class="math inline">\operatorname{d}_n^{A
+      \oplus B} = \operatorname{d}_n^A \oplus
+      \operatorname{d}_n^B</span>. This inherits the universal
+      properties of both product and coproduct from <span
+      class="math inline">\mathcal{A}</span>.</p></li>
+      </ul>
+      <p><strong>Step 2. Existence of Kernels and Cokernels</strong> Let
+      <span class="math inline">f: A^\bullet \to B^\bullet</span> be a
+      chain map. We construct its kernel and cokernel
+      degree-by-degree.</p>
+      <ul>
+      <li><p><strong>Kernel:</strong> In each degree <span
+      class="math inline">n</span>, let <span class="math inline">K_n =
+      \ker(f_n: A_n \to B_n)</span>, which exists since <span
+      class="math inline">\mathcal{A}</span> is abelian. Since <span
+      class="math inline">f_{n-1} \circ \operatorname{d}_n^A \circ
+      \iota_n = \operatorname{d}_n^B \circ f_n \circ \iota_n = 0</span>
+      (where <span class="math inline">\iota_n: K_n \to A_n</span> is
+      the canonical injection), the universal property of <span
+      class="math inline">\ker(f_{n-1})</span> induces a unique
+      differential <span class="math inline">\operatorname{d}_n^K: K_n
+      \to K_{n-1}</span> making the following diagram commute:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/d7069da8d5d77385afe2b1d39436cdea4c8d7964.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d7069da8d5d77385afe2b1d39436cdea4c8d7964.svg" alt="交换图" loading="lazy" /></a></span>
+      The complex <span class="math inline">K^\bullet</span> along with
+      the chain map <span class="math inline">\iota: K^\bullet \to
+      A^\bullet</span> satisfies the universal property of the kernel in
+      <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>.</p></li>
+      <li><p><strong>Cokernel:</strong> Dually, the cokernel is
+      constructed degree-by-degree by setting <span
+      class="math inline">C_n = \mathrm{coker}(f_n: A_n \to B_n)</span>.
+      The universal property of <span
+      class="math inline">\mathrm{coker}(f_n)</span> induces a unique
+      differential <span class="math inline">\operatorname{d}_n^C: C_n
+      \to C_{n-1}</span> such that the projection <span
+      class="math inline">p: B^\bullet \twoheadrightarrow
+      C^\bullet</span> becomes a chain map.</p></li>
+      </ul>
+      <p><strong>Step 3. Canonical Isomorphism between Coimage and
+      Image</strong> Let <span class="math inline">f: A^\bullet \to
+      B^\bullet</span> be a chain map. By definition: <span
+      class="math display">\operatorname{Coim} f = \mathrm{coker}(\ker f
+      \to A^\bullet) \quad \text{and} \quad \operatorname{im} f =
+      \ker(B^\bullet \to \mathrm{coker}\, f).</span> Since we have shown
+      that kernels and cokernels in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> are
+      computed strictly degree-by-degree, it follows that the coimage
+      and image complexes are also formed componentwise: <span
+      class="math display">(\operatorname{Coim} f)_n \cong
+      \operatorname{Coim}(f_n) \quad \text{and} \quad (\operatorname{im}
+      f)_n \cong \operatorname{im}(f_n).</span> Because <span
+      class="math inline">\mathcal{A}</span> is an Abelian category, for
+      each <span class="math inline">n \in \mathbb{Z}</span> there is a
+      canonical isomorphism <span class="math inline">\bar{f}_n:
+      \operatorname{Coim}(f_n) \xrightarrow{\cong}
+      \operatorname{im}(f_n)</span>.</p>
+      <p>By the naturality of this isomorphism in <span
+      class="math inline">\mathcal{A}</span>, these components <span
+      class="math inline">\bar{f}_n</span> commute with the induced
+      differentials of <span class="math inline">\operatorname{Coim}
+      f</span> and <span class="math inline">\operatorname{im} f</span>.
+      Therefore, they assemble into a global isomorphism of complexes
+      <span class="math inline">\bar{f}: \operatorname{Coim} f
+      \xrightarrow{\cong} \operatorname{im} f</span>.</p>
+      <p>Conclusively, <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>
+      satisfies all axioms of an Abelian category. ◻</p>
+      </div>
+      <h4 data-number="1.2.1.3"
+      id="properties-of-category-of-complexs">Properties of Category of
+      Complexs</h4>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (). <em> Let <span
+      class="math inline">\mathcal{A}</span> be an Abelian category.
+      Then the category of cochain complexes over <span
+      class="math inline">\mathcal{A}</span>, denoted by <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>, is also an
+      Abelian category.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> To prove that <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> is an Abelian
+      category, we must verify that it satisfies the following standard
+      axioms of an Abelian category:</p>
+      <ol>
+      <li><p><span class="math inline">\mathsf{Ch}(\mathcal{A})</span>
+      has a zero object.</p></li>
+      <li><p><span class="math inline">\mathsf{Ch}(\mathcal{A})</span>
+      has finite biproducts (direct sums).</p></li>
+      <li><p>Every morphism in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> has a kernel
+      and a cokernel.</p></li>
+      <li><p>For any morphism <span
+      class="math inline">f^\bullet</span>, the canonical morphism from
+      its coimage to its image, <span
+      class="math inline">\bar{f}^\bullet:
+      \operatorname{coim}(f^\bullet) \to
+      \operatorname{im}(f^\bullet)</span>, is an isomorphism.</p></li>
+      </ol>
+      <p>We will construct these structures degreewise (componentwise)
+      in <span class="math inline">\mathcal{A}</span> and verify their
+      universal properties.</p>
+      <p><strong>Step 1. Existence of a Zero Object</strong> Let <span
+      class="math inline">0</span> be the zero object of <span
+      class="math inline">\mathcal{A}</span>. We define the zero cochain
+      complex <span class="math inline">0^\bullet \in
+      \mathsf{Ch}(\mathcal{A})</span> by setting <span
+      class="math inline">0^n = 0</span> and the differentials <span
+      class="math inline">\operatorname{d}^n = 0: 0^n \to 0^{n+1}</span>
+      for all <span class="math inline">n \in \mathbb{Z}</span>. Since
+      <span class="math inline">0</span> is both initial and terminal in
+      <span class="math inline">\mathcal{A}</span> at each degree, it is
+      straightforward to verify that for any cochain complex <span
+      class="math inline">X^\bullet \in \mathsf{Ch}(\mathcal{A})</span>,
+      there exist unique cochain maps <span
+      class="math inline">0^\bullet \to X^\bullet</span> and <span
+      class="math inline">X^\bullet \to 0^\bullet</span>. Thus, <span
+      class="math inline">0^\bullet</span> is the zero object of <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>.</p>
+      <p><strong>Step 2. Existence of Finite Biproducts</strong> Let
+      <span class="math inline">X^\bullet</span> and <span
+      class="math inline">Y^\bullet</span> be two cochain complexes in
+      <span class="math inline">\mathsf{Ch}(\mathcal{A})</span>. For
+      each <span class="math inline">n \in \mathbb{Z}</span>, let <span
+      class="math inline">X^n \oplus Y^n</span> be the biproduct in
+      <span class="math inline">\mathcal{A}</span>, with canonical
+      injections <span class="math inline">i_{X}^n, i_{Y}^n</span> and
+      projections <span class="math inline">p_{X}^n, p_{Y}^n</span>. We
+      define the cochain complex <span class="math inline">(X \oplus
+      Y)^\bullet</span> by setting: <span class="math display">(X \oplus
+      Y)^n = X^n \oplus Y^n</span> with the differential <span
+      class="math inline">\operatorname{d}^{X \oplus Y}_n =
+      \operatorname{d}^X_n \oplus \operatorname{d}^Y_n: X^n \oplus Y^n
+      \to X^{n+1} \oplus Y^{n+1}</span>. It is easy to check that: <span
+      class="math display">\operatorname{d}^{X \oplus Y}_{n+1} \circ
+      \operatorname{d}^{X \oplus Y}_n = (\operatorname{d}^X_{n+1} \circ
+      \operatorname{d}^X_n) \oplus (\operatorname{d}^Y_{n+1} \circ
+      \operatorname{d}^Y_n) = 0 \oplus 0 = 0</span> The injections <span
+      class="math inline">i_{X}^\bullet, i_{Y}^\bullet</span> and
+      projections <span class="math inline">p_{X}^\bullet,
+      p_{Y}^\bullet</span> defined degreewise assemble into cochain maps
+      because they commute with the differentials. They satisfy the
+      biproduct relations degreewise, hence <span class="math inline">(X
+      \oplus Y)^\bullet</span> is indeed the biproduct of <span
+      class="math inline">X^\bullet</span> and <span
+      class="math inline">Y^\bullet</span> in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>.</p>
+      <p><strong>Step 3. Existence of Kernels and Cokernels</strong> Let
+      <span class="math inline">f^\bullet: X^\bullet \to
+      Y^\bullet</span> be a cochain map in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>. For each
+      <span class="math inline">n \in \mathbb{Z}</span>, let <span
+      class="math inline">\iota^n: K^n \to X^n</span> be the kernel of
+      <span class="math inline">f^n: X^n \to Y^n</span> in <span
+      class="math inline">\mathcal{A}</span>. Since <span
+      class="math inline">f^{n+1} \circ \operatorname{d}^X_n \circ
+      \iota^n = \operatorname{d}^Y_n \circ f^n \circ \iota^n = 0</span>,
+      the universal property of the kernel <span
+      class="math inline">K^{n+1} = \operatorname{ker}(f^{n+1})</span>
+      implies there exists a unique morphism <span
+      class="math inline">\operatorname{d}^K_n: K^n \to K^{n+1}</span>
+      making the following diagram commute:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/07372ab832cfa69f7d925355bc75240dd58a01fb.svg" target="_blank" rel="noopener"><img src="assets/diagrams/07372ab832cfa69f7d925355bc75240dd58a01fb.svg" alt="交换图" loading="lazy" /></a></span>
+      The uniqueness of <span
+      class="math inline">\operatorname{d}^K</span> implies <span
+      class="math inline">\operatorname{d}^K_{n+1} \circ
+      \operatorname{d}^K_n = 0</span>. Thus, <span
+      class="math inline">K^\bullet = (K^n, \operatorname{d}^K_n)</span>
+      forms a cochain complex, and <span
+      class="math inline">\iota^\bullet: K^\bullet \to X^\bullet</span>
+      is a cochain map. It is direct to check degreewise that <span
+      class="math inline">\iota^\bullet</span> satisfies the universal
+      property of the kernel of <span
+      class="math inline">f^\bullet</span> in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>.</p>
+      <p>Dually, by taking the cokernel degreewise, we obtain the
+      cokernel complex <span class="math inline">C^\bullet</span> where
+      <span class="math inline">C^n = \operatorname{coker}(f^n)</span>,
+      with differentials induced by the universal property of cokernels.
+      Thus, every morphism in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> has a kernel
+      and a cokernel.</p>
+      <p><strong>Step 4. Isomorphism of Coimage and Image</strong> Let
+      <span class="math inline">f^\bullet: X^\bullet \to
+      Y^\bullet</span> be a cochain map. In any category with kernels
+      and cokernels, we can define the image and coimage of <span
+      class="math inline">f^\bullet</span>: <span
+      class="math display">\operatorname{im}(f^\bullet) =
+      \operatorname{ker}(\operatorname{coker}(f^\bullet)), \quad
+      \operatorname{coim}(f^\bullet) =
+      \operatorname{coker}(\operatorname{ker}(f^\bullet))</span> Because
+      kernels and cokernels in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> are computed
+      degreewise, it follows that the image and coimage complexes are
+      also computed degreewise: <span
+      class="math display">(\operatorname{im} f)^n =
+      \operatorname{im}(f^n), \quad (\operatorname{coim} f)^n =
+      \operatorname{coim}(f^n)</span> For each <span
+      class="math inline">n \in \mathbb{Z}</span>, there is a canonical
+      morphism <span class="math inline">\bar{f}^n:
+      \operatorname{coim}(f^n) \to \operatorname{im}(f^n)</span> in
+      <span class="math inline">\mathcal{A}</span>. Since <span
+      class="math inline">\mathcal{A}</span> is an Abelian category,
+      <span class="math inline">\bar{f}^n</span> is an isomorphism for
+      every <span class="math inline">n</span>.</p>
+      <p>These morphisms <span class="math inline">\bar{f}^n</span>
+      commute with the induced differentials on the coimage and image
+      complexes, assembling into a cochain map <span
+      class="math inline">\bar{f}^\bullet:
+      \operatorname{coim}(f^\bullet) \to
+      \operatorname{im}(f^\bullet)</span>. Since <span
+      class="math inline">\bar{f}^\bullet</span> is an isomorphism at
+      each degree <span class="math inline">n</span>, it is an
+      isomorphism in the category of cochain complexes <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>.</p>
+      <p> Since all four axioms are satisfied, we conclude that <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> is an Abelian
+      category. ◻</p>
+      </div>
+      <p>Let <span class="math inline">\mathcal{A}</span> and <span
+      class="math inline">\mathcal{B}</span> be additive categories (in
+      particular, Abelian categories). We denote by <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span> and <span
+      class="math inline">\mathsf{Ch}(\mathcal{B})</span> their
+      respective categories of cochain complexes. In this note, we prove
+      that any additive functor between the underlying categories
+      naturally induces a functor on the corresponding cochain complex
+      categories, and that this construction preserves adjoint
+      situations.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (). <em> Any additive functor
+      <span class="math inline">F: \mathcal{A} \to \mathcal{B}</span>
+      naturally induces a functor <span class="math inline">F_*:
+      \mathsf{Ch}(\mathcal{A}) \to
+      \mathsf{Ch}(\mathcal{B})</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We define the induced assignment <span
+      class="math inline">F_*</span> on objects and morphisms of <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>
+      degreewise:</p>
+      <ol>
+      <li><p><strong>On Objects:</strong> For a cochain complex <span
+      class="math inline">X^\bullet = (X^n, \operatorname{d}_X^n)_{n \in
+      \mathbb{Z}}</span> in <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>, we define
+      <span class="math inline">F_*(X^\bullet)</span> to be the sequence
+      of objects <span class="math inline">(F(X^n))_{n \in
+      \mathbb{Z}}</span> equipped with the differentials: <span
+      class="math display">\operatorname{d}_{F_*(X)}^n =
+      F(\operatorname{d}_X^n): F(X^n) \to F(X^{n+1})</span> Since <span
+      class="math inline">F</span> is an additive functor, it preserves
+      zero morphisms and compositions. Therefore, we have: <span
+      class="math display">\operatorname{d}_{F_*(X)}^{n+1} \circ
+      \operatorname{d}_{F_*(X)}^n = F(\operatorname{d}_X^{n+1}) \circ
+      F(\operatorname{d}_X^n) = F(\operatorname{d}_X^{n+1} \circ
+      \operatorname{d}_X^n) = F(0) = 0</span> Thus, <span
+      class="math inline">F_*(X^\bullet)</span> is a well-defined
+      cochain complex in <span
+      class="math inline">\mathsf{Ch}(\mathcal{B})</span>.</p></li>
+      <li><p><strong>On Morphisms:</strong> For a cochain map <span
+      class="math inline">f^\bullet: X^\bullet \to Y^\bullet</span>,
+      which consists of a family of morphisms <span
+      class="math inline">f^n: X^n \to Y^n</span> in <span
+      class="math inline">\mathcal{A}</span> satisfying <span
+      class="math inline">f^{n+1} \circ \operatorname{d}_X^n =
+      \operatorname{d}_Y^n \circ f^n</span>, we define <span
+      class="math inline">F_*(f^\bullet)</span> to be the family of
+      morphisms: <span class="math display">(F_*(f^\bullet))^n = F(f^n):
+      F(X^n) \to F(Y^n)</span> Applying <span
+      class="math inline">F</span> to the commutativity condition of
+      <span class="math inline">f^\bullet</span>, we obtain: <span
+      class="math display">F(f^{n+1}) \circ F(\operatorname{d}_X^n) =
+      F(f^{n+1} \circ \operatorname{d}_X^n) = F(\operatorname{d}_Y^n
+      \circ f^n) = F(\operatorname{d}_Y^n) \circ F(f^n)</span> This
+      shows that <span class="math inline">F_*(f^\bullet)</span>
+      commutes with the induced differentials, making it a valid cochain
+      map in <span
+      class="math inline">\mathsf{Ch}(\mathcal{B})</span>.</p></li>
+      </ol>
+      <p>The identity preservation <span
+      class="math inline">F_*(\operatorname{id}_{X^\bullet}) =
+      \operatorname{id}_{F_*(X^\bullet)}</span> and composition
+      preservation <span class="math inline">F_*(g^\bullet \circ
+      f^\bullet) = F_*(g^\bullet) \circ F_*(f^\bullet)</span> follow
+      directly from the functoriality of <span
+      class="math inline">F</span> at each degree <span
+      class="math inline">n</span>. Hence, <span
+      class="math inline">F_*</span> is a functor. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (). <em> Let <span
+      class="math inline">L: \mathcal{A} \to \mathcal{B}</span> and
+      <span class="math inline">R: \mathcal{B} \to \mathcal{A}</span> be
+      additive functors. If <span class="math inline">L</span> is left
+      adjoint to <span class="math inline">R</span> (denoted <span
+      class="math inline">L \dashv R</span>), then the induced functor
+      <span class="math inline">L_*: \mathsf{Ch}(\mathcal{A}) \to
+      \mathsf{Ch}(\mathcal{B})</span> is left adjoint to <span
+      class="math inline">R_*: \mathsf{Ch}(\mathcal{B}) \to
+      \mathsf{Ch}(\mathcal{A})</span> (denoted <span
+      class="math inline">L_* \dashv R_*</span>).</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span class="math inline">L \dashv
+      R</span>, there exist natural transformations: <span
+      class="math display">\eta: \operatorname{Id}_{\mathcal{A}} \to R
+      \circ L \quad \text{(the unit)} \quad \text{and} \quad
+      \varepsilon: L \circ R \to \operatorname{Id}_{\mathcal{B}} \quad
+      \text{(the counit)}</span> satisfying the triangle identities:
+      <span class="math display">\begin{equation}
+
+      (R\varepsilon) \circ (\eta R) = \operatorname{id}_R \quad
+      \text{and} \quad (\varepsilon L) \circ (L\eta) =
+      \operatorname{id}_L
+      \end{equation}</span></p>
+      <p>We define the unit <span class="math inline">\eta^\bullet:
+      \operatorname{Id}_{\mathsf{Ch}(\mathcal{A})} \to R_* \circ
+      L_*</span> and counit <span
+      class="math inline">\varepsilon^\bullet: L_* \circ R_* \to
+      \operatorname{Id}_{\mathsf{Ch}(\mathcal{B})}</span> degreewise.
+      For any cochain complex <span class="math inline">X^\bullet \in
+      \mathsf{Ch}(\mathcal{A})</span>, let: <span
+      class="math display">\eta^n_X = \eta_{X^n}: X^n \to
+      R(L(X^n))</span> To show that the family <span
+      class="math inline">(\eta^n_X)_{n \in \mathbb{Z}}</span>
+      constitutes a cochain map <span
+      class="math inline">\eta^\bullet_X: X^\bullet \to
+      R_*(L_*(X^\bullet))</span>, we must verify that it commutes with
+      the differentials. Since <span class="math inline">\eta:
+      \operatorname{Id}_{\mathcal{A}} \to R \circ L</span> is a natural
+      transformation, the diagram
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/d5f3602c7d98427730ddd54255575ecc7b815277.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d5f3602c7d98427730ddd54255575ecc7b815277.svg" alt="交换图" loading="lazy" /></a></span>
+      commutes for every <span class="math inline">n \in
+      \mathbb{Z}</span>. Thus, <span
+      class="math inline">\eta^\bullet_X</span> is a well-defined
+      cochain map. The naturality of <span
+      class="math inline">\eta^\bullet</span> with respect to cochain
+      maps follows immediately from the degreewise naturality of <span
+      class="math inline">\eta</span>.</p>
+      <p>Dually, for any cochain complex <span
+      class="math inline">Y^\bullet \in \mathsf{Ch}(\mathcal{B})</span>,
+      we define the counit degreewise by: <span
+      class="math display">\varepsilon^n_Y = \varepsilon_{Y^n}:
+      L(R(Y^n)) \to Y^n</span> which similarly assembles into a natural
+      cochain map <span class="math inline">\varepsilon^\bullet_Y:
+      L_*(R_*(Y^\bullet)) \to Y^\bullet</span>.</p>
+      <p>Finally, we verify the triangle identities for <span
+      class="math inline">\eta^\bullet</span> and <span
+      class="math inline">\varepsilon^\bullet</span> in <span
+      class="math inline">\mathsf{Ch}(\mathcal{B})</span> and <span
+      class="math inline">\mathsf{Ch}(\mathcal{A})</span>. For any
+      complex <span class="math inline">Y^\bullet \in
+      \mathsf{Ch}(\mathcal{B})</span>, the composition of cochain maps
+      <span class="math display">R_*(Y^\bullet)
+      \xrightarrow{\eta^\bullet_{R_*(Y)}} R_*(L_*(R_*(Y^\bullet)))
+      \xrightarrow{R_*(\varepsilon^\bullet_Y)} R_*(Y^\bullet)</span> at
+      each degree <span class="math inline">n</span> is given by: <span
+      class="math display">(R_*(\varepsilon^\bullet_Y))^n \circ
+      (\eta^\bullet_{R_*(Y)})^n = R(\varepsilon_{Y^n}) \circ
+      \eta_{R(Y^n)}</span> By the first triangle identity in , this is
+      equal to <span
+      class="math inline">\operatorname{id}_{R(Y^n)}</span> for every
+      <span class="math inline">n \in \mathbb{Z}</span>. Thus, <span
+      class="math inline">(R_* \varepsilon^\bullet) \circ (\eta^\bullet
+      R_*) = \operatorname{id}_{R_*}</span>.</p>
+      <p>Dually, for any complex <span class="math inline">X^\bullet \in
+      \mathsf{Ch}(\mathcal{A})</span>, the composition <span
+      class="math display">L_*(X^\bullet)
+      \xrightarrow{L_*(\eta^\bullet_X)} L_*(R_*(L_*(X^\bullet)))
+      \xrightarrow{\varepsilon^\bullet_{L_*(X)}} L_*(X^\bullet)</span>
+      at each degree <span class="math inline">n</span> reduces to:
+      <span class="math display">\varepsilon_{L(X^n)} \circ
+      L(\eta_{X^n})</span> which is equal to <span
+      class="math inline">\operatorname{id}_{L(X^n)}</span> by the
+      second triangle identity in . Thus, <span
+      class="math inline">(\varepsilon^\bullet L_*) \circ (L_*
+      \eta^\bullet) = \operatorname{id}_{L_*}</span>.</p>
+      <p>Since both triangle identities hold, the induced natural
+      transformations <span class="math inline">\eta^\bullet</span> and
+      <span class="math inline">\varepsilon^\bullet</span> exhibit <span
+      class="math inline">L_*</span> as the left adjoint of <span
+      class="math inline">R_*</span>. ◻</p>
+      </div>
+      <h4 data-number="1.2.1.4" id="homotopy-category">Homotopy
+      Category</h4>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Termwise Construction). <em> The
+      Abelian structure on <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> is
+      inherited directly from <span
+      class="math inline">\mathcal{A}</span>. Operations such as
+      kernels, cokernels, images, and finite direct sums are all
+      computed termwise. For example, if <span
+      class="math inline">f^\bullet: A^\bullet \to
+      {\operatorname{B}}^\bullet</span> is a morphism of complexes, its
+      kernel is the complex given by <span class="math inline">\ker(f)^n
+      = \ker(f^n)</span> at each degree <span
+      class="math inline">n</span>, equipped with differentials
+      canonically induced by the differentials of <span
+      class="math inline">A^\bullet</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 2.3</strong> (The Homotopy Category). <em>
+      Let <span class="math inline">\mathcal{A}</span> be an Abelian
+      category. The <strong>homotopy category</strong> of complexes,
+      denoted <span class="math inline">\mathcal{K}(\mathcal{A})</span>,
+      is defined by the following data:</em></p>
+      <ol>
+      <li><p><em><strong>Objects:</strong> The objects of <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> are identical
+      to the objects of <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>; they
+      are simply chain complexes in <span
+      class="math inline">\mathcal{A}</span>.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> The morphisms are the
+      homotopy classes of chain complex morphisms. Specifically, for any
+      two complexes <span class="math inline">A^\bullet</span> and <span
+      class="math inline">{\operatorname{B}}^\bullet</span>, the Hom-set
+      in <span class="math inline">\mathcal{K}(\mathcal{A})</span> is
+      the quotient Abelian group: <span
+      class="math display">\operatorname{Hom}_{\mathcal{K}(\mathcal{A})}(A^\bullet,
+      {\operatorname{B}}^\bullet) =
+      \operatorname{Hom}_{\operatorname{Ch}(\mathcal{A})}(A^\bullet,
+      {\operatorname{B}}^\bullet) / \sim</span> where <span
+      class="math inline">f^\bullet \sim g^\bullet</span> if and only if
+      they are chain homotopic (i.e., their difference <span
+      class="math inline">f^\bullet - g^\bullet</span> is
+      null-homotopic).</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Additive Structure of <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>). <em> By
+      passing to homotopy classes, we resolve the issue of non-unique
+      representatives for cohomologically trivial morphisms. However, a
+      crucial consequence is that while <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> is an
+      Abelian category, the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> is, in
+      general, only an <em>additive category</em>. It lacks general
+      kernels and cokernels, which motivates the introduction of mapping
+      cones and triangulated category structures.</em></p>
+      </div>
+      <h4 data-number="1.2.1.5"
+      id="quasi-isomorphism">Quasi-Isomorphism</h4>
+      <div class="definition">
+      <p><strong>Definition 2.4</strong> (Quasi-Isomorphism). <em> Let
+      <span class="math inline">\mathcal{A}</span> be an Abelian
+      category. A morphism of chain complexes <span
+      class="math inline">f^\bullet: A^\bullet \to
+      {\operatorname{B}}^\bullet</span> in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> (and
+      consequently in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>) is called a
+      <strong>quasi-isomorphism</strong> if it induces an isomorphism on
+      cohomology objects for all <span class="math inline">n \in
+      \mathbb{Z}</span>: <span
+      class="math display">\operatorname{H}^n(f^\bullet):
+      \operatorname{H}^n(A^\bullet) \xrightarrow{\sim}
+      \operatorname{H}^n({\operatorname{B}}^\bullet)</span></em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Quasi-Isomorphisms Form a
+      Multiplicative System). <em> Let <span
+      class="math inline">Q</span> denote the class of all
+      quasi-isomorphisms in the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>. The class
+      <span class="math inline">Q</span> satisfies the conditions of a
+      localizing class (or multiplicative system):</em></p>
+      <ol>
+      <li><p><em><strong>Closure under composition:</strong> The
+      identity morphisms are in <span class="math inline">Q</span>, and
+      if <span class="math inline">f, g \in Q</span> are composable,
+      then <span class="math inline">g \circ f \in
+      Q</span>.</em></p></li>
+      <li><p><em><strong>Ore condition (Homotopy Pullbacks):</strong>
+      For any quasi-isomorphism <span class="math inline">s:
+      {\operatorname{Z}}^\bullet \to Y^\bullet</span> and any morphism
+      <span class="math inline">f: X^\bullet \to Y^\bullet</span> in
+      <span class="math inline">\mathcal{K}(\mathcal{A})</span>, there
+      exists a complex <span class="math inline">W^\bullet</span>, a
+      quasi-isomorphism <span class="math inline">t: W^\bullet \to
+      X^\bullet</span>, and a morphism <span class="math inline">g:
+      W^\bullet \to {\operatorname{Z}}^\bullet</span> such that <span
+      class="math inline">s \circ g = f \circ t</span> in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>.</em></p>
+      <p><em>(A dual statement holds for pushouts).</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The closure under composition is immediate from
+      the functoriality of the cohomology functor <span
+      class="math inline">\operatorname{H}^n</span>. If <span
+      class="math inline">f</span> and <span
+      class="math inline">g</span> are quasi-isomorphisms, then <span
+      class="math inline">\operatorname{H}^n(g \circ f) =
+      \operatorname{H}^n(g) \circ \operatorname{H}^n(f)</span>. Since
+      <span class="math inline">\operatorname{H}^n(g)</span> and <span
+      class="math inline">\operatorname{H}^n(f)</span> are isomorphisms
+      in <span class="math inline">\mathcal{A}</span>, their composition
+      is also an isomorphism, meaning <span class="math inline">g \circ
+      f \in Q</span>.</p>
+      <p>For the Ore condition (the homotopy pullback), we construct the
+      requiUniBlue complex <span class="math inline">W^\bullet</span>
+      explicitly. For each <span class="math inline">n \in
+      \mathbb{Z}</span>, define the term: <span class="math display">W^n
+      = X^n \oplus {\operatorname{Z}}^n \oplus Y^{n-1}</span> equipped
+      with the differential <span
+      class="math inline">\operatorname{d}_W^n: W^n \to W^{n+1}</span>
+      given by: <span class="math display">\operatorname{d}_W^n(x, z, y)
+      = (\operatorname{d}_X^n(x),
+      \operatorname{d}_{\operatorname{Z}}^n(z), -d_Y^{n-1}(y) + f^n(x) -
+      s^n(z))</span> A direct calculation shows that <span
+      class="math inline">\operatorname{d}_W^{n+1} \circ
+      \operatorname{d}_W^n = 0</span>, making <span
+      class="math inline">W^\bullet</span> a well-defined chain
+      complex.</p>
+      <p>We define the canonical projections <span
+      class="math inline">t: W^\bullet \to X^\bullet</span> by <span
+      class="math inline">t(x, z, y) = x</span> and <span
+      class="math inline">g: W^\bullet \to
+      {\operatorname{Z}}^\bullet</span> by <span
+      class="math inline">g(x, z, y) = z</span>. It is straightforward
+      to verify that <span class="math inline">\operatorname{d}_X \circ
+      t = t \circ \operatorname{d}_W</span> and <span
+      class="math inline">\operatorname{d}_Z \circ g = g \circ
+      \operatorname{d}_W</span>, so they are valid morphisms in <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>.</p>
+      <p>In the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>, we need the
+      square to commute, meaning <span class="math inline">f \circ t
+      \sim s \circ g</span>. We can define a chain homotopy <span
+      class="math inline">h^n: W^n \to Y^{n-1}</span> simply by <span
+      class="math inline">h^n(x, z, y) = y</span>. Let us evaluate the
+      homotopy condition: <span class="math display">\begin{align*}
+              (\operatorname{d}_Y^{n-1} \circ h^n + h^{n+1} \circ
+      \operatorname{d}_W^n)(x, z, y) &amp;= \operatorname{d}_Y^{n-1}(y)
+      + h^{n+1}(\operatorname{d}_X(x), \operatorname{d}_Z(z), -d_Y(y) +
+      f(x) - s(z)) \\
+              &amp;= \operatorname{d}_Y^{n-1}(y) + (-d_Y^{n-1}(y) +
+      f^n(x) - s^n(z)) \\
+              &amp;= f^n(x) - s^n(z) \\
+              &amp;= (f^n \circ t^n)(x, z, y) - (s^n \circ g^n)(x, z, y)
+      \end{align*}</span> Thus, <span class="math inline">f \circ t - s
+      \circ g = \operatorname{d}_Y \circ h + h \circ
+      \operatorname{d}_W</span>, which means their difference is
+      null-homotopic. Therefore, <span class="math inline">f \circ t = s
+      \circ g</span> holds in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>.</p>
+      <p>Finally, we must show that <span class="math inline">t:
+      W^\bullet \to X^\bullet</span> is a quasi-isomorphism. Notice that
+      <span class="math inline">t</span> is surjective term-by-term,
+      yielding a short exact sequence of complexes: <span
+      class="math display">0 \to K^\bullet \to W^\bullet \xrightarrow{t}
+      X^\bullet \to 0</span> where <span class="math inline">K^\bullet =
+      \ker(t)</span>. The terms of <span
+      class="math inline">K^\bullet</span> are <span
+      class="math inline">K^n = {\operatorname{Z}}^n \oplus
+      Y^{n-1}</span>, with the induced differential <span
+      class="math inline">\operatorname{d}_K(z, y) =
+      (\operatorname{d}_Z(z), -d_Y(y) - s(z))</span>.</p>
+      <p>To compute the cohomology of <span
+      class="math inline">K^\bullet</span>, observe that it naturally
+      fits into another short exact sequence of complexes: <span
+      class="math display">0 \to Y^\bullet[-1] \xrightarrow{i} K^\bullet
+      \xrightarrow{p} {\operatorname{Z}}^\bullet \to 0</span> where
+      <span class="math inline">Y^\bullet[-1]</span> is the shifted
+      complex (with degree <span class="math inline">n</span> term <span
+      class="math inline">Y^{n-1}</span> and differential <span
+      class="math inline">-d_Y</span>), <span class="math inline">i(y) =
+      (0, y)</span>, and <span class="math inline">p(z, y) = z</span>.
+      This induces a long exact sequence in cohomology:</p>
+      <p><span class="commutative-diagram-inline"><a href="assets/diagrams/1805773a197cbcf5d3ad7a0811b63ce2fe4d5ccf.svg" target="_blank" rel="noopener"><img src="assets/diagrams/1805773a197cbcf5d3ad7a0811b63ce2fe4d5ccf.svg" alt="交换图" loading="lazy" /></a></span></p>
+      <p>By the definition of the connecting homomorphism <span
+      class="math inline">\delta</span> (tracing an element <span
+      class="math inline">z \in \ker(\operatorname{d}_Z)</span> back
+      through <span class="math inline">p</span> to <span
+      class="math inline">(z, 0)</span> and applying <span
+      class="math inline">\operatorname{d}_K</span>), we find <span
+      class="math inline">\operatorname{d}_K(z, 0) = (0, -s(z))</span>,
+      which pulls back via <span class="math inline">i</span> to <span
+      class="math inline">-s(z)</span>. Thus, the connecting map <span
+      class="math inline">\delta:
+      \operatorname{H}^{n-1}({\operatorname{Z}}^\bullet) \to
+      \operatorname{H}^n(Y^\bullet[-1]) =
+      \operatorname{H}^{n-1}(Y^\bullet)</span> is precisely <span
+      class="math inline">-\operatorname{H}^{n-1}(s)</span>.</p>
+      <p>Since <span class="math inline">s</span> is assumed to be a
+      quasi-isomorphism, <span
+      class="math inline">\operatorname{H}^{n-1}(s)</span> is an
+      isomorphism for all <span class="math inline">n</span>.
+      Consequently, <span class="math inline">\delta</span> is an
+      isomorphism. By exactness of the long sequence, this forces <span
+      class="math inline">\operatorname{H}^n(K^\bullet) = 0</span> for
+      all <span class="math inline">n</span>, meaning <span
+      class="math inline">K^\bullet</span> is an acyclic complex.</p>
+      <p>Returning to the long exact sequence associated with the first
+      short exact sequence <span class="math inline">0 \to K^\bullet \to
+      W^\bullet \xrightarrow{t} X^\bullet \to 0</span>: <span
+      class="math display">\dots \to \operatorname{H}^n(K^\bullet) \to
+      \operatorname{H}^n(W^\bullet) \xrightarrow{\operatorname{H}^n(t)}
+      \operatorname{H}^n(X^\bullet) \to
+      \operatorname{H}^{n+1}(K^\bullet) \to \dots</span> Because <span
+      class="math inline">\operatorname{H}^n(K^\bullet) =
+      \operatorname{H}^{n+1}(K^\bullet) = 0</span>, the map <span
+      class="math inline">\operatorname{H}^n(t)</span> is squeezed
+      between zeroes and must be an isomorphism for all <span
+      class="math inline">n</span>. Thus, <span class="math inline">t
+      \in Q</span>, and the Ore condition is completely verified. ◻</p>
+      </div>
+      <h4 data-number="1.2.1.6" id="the-derived-category">The Derived
+      Category</h4>
+      <div class="definition">
+      <p><strong>Definition 2.5</strong> (The Derived Category). <em>
+      Let <span class="math inline">\mathcal{A}</span> be an Abelian
+      category, and let <span class="math inline">Q</span> be the
+      multiplicative system of quasi-isomorphisms in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>. The
+      <strong>derived category</strong> of <span
+      class="math inline">\mathcal{A}</span>, denoted <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span>, is defined as
+      the localization of the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> with respect
+      to <span class="math inline">Q</span>: <span
+      class="math display">\mathbf{D}(\mathcal{A}) \coloneqq
+      \mathcal{K}(\mathcal{A})[Q^{-1}]</span> Explicitly, this
+      means:</em></p>
+      <ol>
+      <li><p><em><strong>Objects:</strong> The objects of <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> are identical
+      to those of <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> and
+      <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>.</em></p></li>
+      <li><p><em><strong>Morphisms:</strong> A morphism from <span
+      class="math inline">A^\bullet</span> to <span
+      class="math inline">{\operatorname{B}}^\bullet</span> in <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> is an
+      equivalence class of “left fractions” (or roofs), represented by a
+      diagram in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/4d35321c1ef86cce2b5b0e2e499e1b92b4913217.svg" target="_blank" rel="noopener"><img src="assets/diagrams/4d35321c1ef86cce2b5b0e2e499e1b92b4913217.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">s \in Q</span> is a
+      quasi-isomorphism and <span class="math inline">f</span> is an
+      arbitrary morphism in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (The Two-Step Quotient). <em> To
+      understand why we do not localize <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span>
+      directly, note that passing through <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> is essential.
+      Localizing <span
+      class="math inline">\operatorname{Ch}(\mathcal{A})</span> directly
+      with respect to quasi-isomorphisms suffers from severe
+      set-theoretic issues (the Hom-classes might be proper classes, not
+      sets) and lacks a calculus of fractions. Factoring the
+      construction as <span
+      class="math inline">\operatorname{Ch}(\mathcal{A}) \to
+      \mathcal{K}(\mathcal{A}) \to \mathbf{D}(\mathcal{A})</span> equips
+      the intermediate category with mapping cones, fulfilling the Ore
+      condition and ensuring the derived category inherits a robust
+      triangulated structure. In <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span>, two complexes
+      are isomorphic if and only if they can be linked by a finite
+      zig-zag of quasi-isomorphisms.</em></p>
+      </div>
+      <p>Since morphisms in the derived category <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> are represented
+      by “roofs” (or fractions), composing two morphisms requires
+      finding a common denominator.</p>
+      <p>Suppose we have two morphisms in <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> given by roofs:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/4d35321c1ef86cce2b5b0e2e499e1b92b4913217.svg" target="_blank" rel="noopener"><img src="assets/diagrams/4d35321c1ef86cce2b5b0e2e499e1b92b4913217.svg" alt="交换图" loading="lazy" /></a></span></p>
+      <p>and
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/214044a056137417c187003fb4661689ec77b4f1.svg" target="_blank" rel="noopener"><img src="assets/diagrams/214044a056137417c187003fb4661689ec77b4f1.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">s, t \in Q</span>
+      (quasi-isomorphisms). To compose them, we apply the Ore condition
+      (effectively a homotopy pullback) in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> to the cospan
+      <span class="math inline">X^\bullet \xrightarrow{f}
+      {\operatorname{B}}^\bullet \xleftarrow{t} Y^\bullet</span>. This
+      yields a complex <span
+      class="math inline">{\operatorname{Z}}^\bullet</span>, a
+      quasi-isomorphism <span class="math inline">t&#39;:
+      {\operatorname{Z}}^\bullet \to X^\bullet</span>, and a morphism
+      <span class="math inline">f&#39;: {\operatorname{Z}}^\bullet \to
+      Y^\bullet</span> such that the square commutes in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>: <span
+      class="math inline">f \circ t&#39; = t \circ f&#39;</span>.</p>
+      <p>The composition of the two original roofs is then defined by
+      the outer roof:
+      xsZXQiXSxbMSwyLCJnIl0sWzAsMywiZiJdLFsxLDMsInQiLDJdLFswLDQsInMiLDJdLFs1LDAsInReXFxwcmltZSIsMl0sWzUsMSwiZl5cXHByaW1lIl1d
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/d9f35cd829d70df611f6d24502fc6de4eb71526b.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d9f35cd829d70df611f6d24502fc6de4eb71526b.svg" alt="交换图" loading="lazy" /></a></span>
+      Since <span class="math inline">s</span> and <span
+      class="math inline">t&#39;</span> are quasi-isomorphisms, their
+      composition <span class="math inline">s \circ t&#39;</span> is
+      also a quasi-isomorphism, meaning this resulting roof represents a
+      well-defined morphism in <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span>.</p>
+      <h4 data-number="1.2.1.7" id="triangulated-category">Triangulated
+      Category</h4>
+      <div class="definition">
+      <p><strong>Definition 2.6</strong> (Triangulated Category). <em> A
+      <strong>triangulated category</strong> consists of an additive
+      category <span class="math inline">\mathcal{T}</span>, an additive
+      auto-equivalence <span class="math inline">T: \mathcal{T}
+      \xrightarrow{\sim} \mathcal{T}</span> (called the translation or
+      shift functor, commonly denoted <span class="math inline">X
+      \mapsto X[1]</span>), and a specified class of
+      <strong>distinguished triangles</strong> of the form:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/efc9136b23c737c9c6cf6a1fa0a8f019e2180ce9.svg" target="_blank" rel="noopener"><img src="assets/diagrams/efc9136b23c737c9c6cf6a1fa0a8f019e2180ce9.svg" alt="交换图" loading="lazy" /></a></span>
+      satisfying the following four axioms:</em></p>
+      <ol>
+      <li><p><em><strong>TR1:</strong> Any triangle isomorphic to a
+      distinguished triangle is distinguished. Every morphism <span
+      class="math inline">u: X \to Y</span> can be completed to a
+      distinguished triangle <span class="math inline">X \xrightarrow{u}
+      Y \to Z \to X[1]</span>. The trivial triangle <span
+      class="math inline">X \xrightarrow{\operatorname{id}_X} X \to 0
+      \to X[1]</span> is distinguished.</em></p></li>
+      <li><p><em><strong>TR2 (Rotation):</strong> A triangle <span
+      class="math inline">X \xrightarrow{u} Y \xrightarrow{v} Z
+      \xrightarrow{w} X[1]</span> is distinguished if and only if its
+      rotated form <span class="math inline">Y \xrightarrow{v} Z
+      \xrightarrow{w} X[1] \xrightarrow{-u[1]} Y[1]</span> is
+      distinguished.</em></p></li>
+      <li><p><em><strong>TR3 (Morphisms of Triangles):</strong> Given
+      two distinguished triangles and morphisms <span
+      class="math inline">f: X \to X&#39;</span> and <span
+      class="math inline">g: Y \to Y&#39;</span> making the first square
+      of the triangles commute, there exists a (not necessarily unique)
+      morphism <span class="math inline">h: Z \to Z&#39;</span>
+      completing the diagram to a morphism of triangles.
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/8e201fc138b893003031390d5204267ee70b3789.svg" target="_blank" rel="noopener"><img src="assets/diagrams/8e201fc138b893003031390d5204267ee70b3789.svg" alt="交换图" loading="lazy" /></a></span></em></p></li>
+      <li><p><em><strong>TR4 (Octahedral Axiom):</strong> Given
+      distinguished triangles <span class="math display">X
+      \xrightarrow{u} Y \rightarrow Z&#39; \rightarrow, \quad Y
+      \xrightarrow{v} Z \rightarrow X&#39; \rightarrow, \quad X
+      \xrightarrow{vu} Z \rightarrow Y&#39; \rightarrow,</span> there
+      exist morphisms <span class="math inline">Z&#39; \xrightarrow{f}
+      Y&#39;</span> and <span class="math inline">Y&#39; \xrightarrow{g}
+      X&#39;</span> such that <span class="math display">(Z&#39;
+      \xrightarrow{f} Y&#39; \xrightarrow{g} X&#39; \xrightarrow{j[1]i}
+      Z&#39;[1]) \in T</span>
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/b92e3a126791849020017564f257993ae1732567.svg" target="_blank" rel="noopener"><img src="assets/diagrams/b92e3a126791849020017564f257993ae1732567.svg" alt="交换图" loading="lazy" /></a></span></em></p></li>
+      </ol>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (<span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> and <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> are
+      Triangulated). <em> Both the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> and the
+      derived category <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> carry natural
+      structures of triangulated categories. The shift functor <span
+      class="math inline">[1]</span> is defined by shifting complexes
+      leftward by one degree (with a sign change on differentials: <span
+      class="math inline">\operatorname{d}_{A[1]}^n =
+      -d_A^{n+1}</span>), and the canonical localization functor <span
+      class="math inline">\mathcal{K}(\mathcal{A}) \to
+      \mathbf{D}(\mathcal{A})</span> is an exact functor of triangulated
+      categories.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Distinguished Triangles in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> and <span
+      class="math inline">\mathbf{D}(\mathcal{A})</span>). <em> In both
+      <span class="math inline">\mathcal{K}(\mathcal{A})</span> and
+      <span class="math inline">\mathbf{D}(\mathcal{A})</span>, the
+      distinguished triangles are built using the <strong>mapping
+      cone</strong>.</em></p>
+      <p><em>For any chain complex morphism <span class="math inline">f:
+      X^\bullet \to Y^\bullet</span>, its mapping cone <span
+      class="math inline">C^\bullet(f)</span> is defined in degree <span
+      class="math inline">n</span> as <span class="math inline">C^n(f) =
+      X^{n+1} \oplus Y^n</span>, equipped with the differential <span
+      class="math display">\operatorname{d}_{C(f)}^n(x, y) =
+      (-d_X^{n+1}(x), f^{n+1}(x) + \operatorname{d}_Y^n(y)).</span> This
+      construction naturally yields a standard triangle in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/d46dfffdeaead004efe68f090ea7ba22676841f2.svg" target="_blank" rel="noopener"><img src="assets/diagrams/d46dfffdeaead004efe68f090ea7ba22676841f2.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">i</span> is the canonical
+      inclusion and <span class="math inline">p</span> is the canonical
+      projection.</em></p>
+      <p><em>A triangle <span class="math inline">X^\bullet \to
+      Y^\bullet \to {\operatorname{Z}}^\bullet \to X^\bullet[1]</span>
+      is defined to be <strong>distinguished</strong> in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> (respectively,
+      in <span class="math inline">\mathbf{D}(\mathcal{A})</span>) if
+      and only if it is isomorphic in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span> (respectively,
+      in <span class="math inline">\mathbf{D}(\mathcal{A})</span>) to
+      the standard mapping cone triangle of some morphism.</em></p>
+      </div>
+      <h4 data-number="1.2.1.8" id="derived-functor">Derived
+      Functor</h4>
+      <div class="definition">
+      <p><strong>Definition 2.7</strong> (Derived Functor of an <span
+      class="math inline">n</span>-ary Functor via Kan Extension). <em>
+      Let <span class="math inline">\mathcal{A}_1, \mathcal{A}_2, \dots,
+      \mathcal{A}_n</span> and <span
+      class="math inline">\mathcal{B}</span> be Abelian categories, and
+      let <span class="math inline">F: \mathcal{A}_1 \times \dots \times
+      \mathcal{A}_n \to \mathcal{B}</span> be an additive functor in
+      each variable. This canonically induces a functor on the product
+      of homotopy categories, which we also denote by <span
+      class="math inline">F: \mathcal{K}(\mathcal{A}_1) \times \dots
+      \times \mathcal{K}(\mathcal{A}_n) \to
+      \mathcal{K}(\mathcal{B})</span>.</em></p>
+      <p><em>Let <span class="math inline">Q_{\mathcal{A}_i}:
+      \mathcal{K}(\mathcal{A}_i) \to \mathbf{D}(\mathcal{A}_i)</span>
+      for each <span class="math inline">i \in \{1, \dots, n\}</span>
+      and <span class="math inline">Q_{\mathcal{B}}:
+      \mathcal{K}(\mathcal{B}) \to \mathbf{D}(\mathcal{B})</span> be the
+      respective canonical localization functors. We denote the product
+      localization functor by <span
+      class="math display">\mathbf{Q}_{\mathcal{A}} \coloneqq
+      Q_{\mathcal{A}_1} \times \dots \times Q_{\mathcal{A}_n}:
+      \mathcal{K}(\mathcal{A}_1) \times \dots \times
+      \mathcal{K}(\mathcal{A}_n) \to \mathbf{D}(\mathcal{A}_1) \times
+      \dots \times \mathbf{D}(\mathcal{A}_n)</span></em></p>
+      <ol>
+      <li><p><em>The <strong>Right Derived Functor</strong> <span
+      class="math inline">\mathbf{R}F: \mathbf{D}(\mathcal{A}_1) \times
+      \dots \times \mathbf{D}(\mathcal{A}_n) \to
+      \mathbf{D}(\mathcal{B})</span> is defined as the Left Kan
+      Extension of the composite functor <span
+      class="math inline">Q_{\mathcal{B}} \circ F</span> along <span
+      class="math inline">\mathbf{Q}_{\mathcal{A}}</span>: <span
+      class="math display">\mathbf{R}F \coloneqq
+      \operatorname{Lan}_{\mathbf{Q}_{\mathcal{A}}} (Q_{\mathcal{B}}
+      \circ F)</span> By definition, this comes equipped with a
+      universal natural transformation <span class="math inline">\eta:
+      Q_{\mathcal{B}} \circ F \Rightarrow \mathbf{R}F \circ
+      \mathbf{Q}_{\mathcal{A}}</span>.</em></p></li>
+      <li><p><em>Dually, the <strong>Left Derived Functor</strong> <span
+      class="math inline">\mathbf{L}F: \mathbf{D}(\mathcal{A}_1) \times
+      \dots \times \mathbf{D}(\mathcal{A}_n) \to
+      \mathbf{D}(\mathcal{B})</span> is defined as the Right Kan
+      Extension of <span class="math inline">Q_{\mathcal{B}} \circ
+      F</span> along <span
+      class="math inline">\mathbf{Q}_{\mathcal{A}}</span>: <span
+      class="math display">\mathbf{L}F \coloneqq
+      \operatorname{Ran}_{\mathbf{Q}_{\mathcal{A}}} (Q_{\mathcal{B}}
+      \circ F)</span> This comes equipped with a universal natural
+      transformation <span class="math inline">\epsilon: \mathbf{L}F
+      \circ \mathbf{Q}_{\mathcal{A}} \Rightarrow Q_{\mathcal{B}} \circ
+      F</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Universal Property in Derived
+      Categories). <em> Defining derived functors via Kan extensions
+      elegantly captures their universal properties. For instance, the
+      right derived functor <span class="math inline">\mathbf{R}F</span>
+      is the “closest” functor on the derived category that approximates
+      <span class="math inline">F</span> from the right. If any other
+      functor <span class="math inline">G: \mathbf{D}(\mathcal{A}) \to
+      \mathbf{D}(\mathcal{B})</span> admits a natural transformation
+      from <span class="math inline">Q_{\mathcal{B}} \circ F</span>, it
+      must uniquely factor through <span
+      class="math inline">\mathbf{R}F</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Quasi-Isomorphisms and
+      Injectives). <em> The exactness of the resolution complexes
+      guarantees that if we take two different injective resolutions
+      <span class="math inline">I_1^\bullet</span> and <span
+      class="math inline">I_2^\bullet</span> of the same complex <span
+      class="math inline">X^\bullet</span>, any quasi-isomorphism
+      between them is actually a homotopy equivalence in <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>. Therefore,
+      applying <span class="math inline">F</span> yields complexes <span
+      class="math inline">F(I_1^\bullet)</span> and <span
+      class="math inline">F(I_2^\bullet)</span> that are homotopy
+      equivalent, meaning they become canonically isomorphic once pushed
+      into <span class="math inline">\mathbf{D}(\mathcal{B})</span>.
+      This demonstrates that the derived functor is
+      well-defined.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Bounded Derived Categories <span
+      class="math inline">\mathbf{D}^*(\mathcal{A})</span>). <em> In the
+      literature, you will frequently encounter the notation <span
+      class="math inline">\mathbf{D}^*(\mathcal{A})</span>, where the
+      superscript <span class="math inline">*</span> stands as a
+      placeholder for a specific boundedness condition on the chain
+      complexes. Specifically, we denote:</em></p>
+      <ul>
+      <li><p><em><span
+      class="math inline">\mathbf{D}^+(\mathcal{A})</span>: The derived
+      category of complexes bounded below (i.e., <span
+      class="math inline">X^n = 0</span> for <span class="math inline">n
+      \ll 0</span>).</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathbf{D}^-(\mathcal{A})</span>: The derived
+      category of complexes bounded above (i.e., <span
+      class="math inline">X^n = 0</span> for <span class="math inline">n
+      \gg 0</span>).</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathbf{D}^b(\mathcal{A})</span>: The derived
+      category of bounded complexes (bounded both above and
+      below).</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathbf{D}(\mathcal{A})</span> (sometimes
+      written without a superscript or <span
+      class="math inline">\mathbf{D}^\emptyset</span>): The unbounded
+      derived category.</em></p></li>
+      </ul>
+      <p><em>It is important to note that the entire theoretical
+      framework discussed previously, including localizations, the
+      existence of triangulated structures, and the formulation of
+      derived functors, holds valid for all choices of <span
+      class="math inline">* \in \{+, -, b, \emptyset\}</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 2.8</strong> (Total Complex of an <span
+      class="math inline">n</span>-Complex). <em> Let <span
+      class="math inline">\mathcal{B}</span> be an Abelian category. An
+      <strong><span class="math inline">n</span>-complex</strong> (or
+      multi-complex) <span class="math inline">M^{\bullet, \dots,
+      \bullet}</span> in <span class="math inline">\mathcal{B}</span> is
+      a family of objects <span class="math inline">\{M^{i_1, \dots,
+      i_n}\}_{i_1, \dots, i_n \in \mathbb{Z}}</span> equipped with
+      differentials <span class="math inline">\operatorname{d}_k:
+      M^{i_1, \dots, i_n} \to M^{i_1, \dots, i_k+1, \dots, i_n}</span>
+      for each <span class="math inline">k \in \{1, \dots, n\}</span>
+      such that <span class="math inline">\operatorname{d}_k^2 =
+      0</span> and all differentials anti-commute: <span
+      class="math inline">\operatorname{d}_j \operatorname{d}_k +
+      \operatorname{d}_k \operatorname{d}_j = 0</span> for <span
+      class="math inline">j \neq b</span>.</em></p>
+      <p><em>The <strong>Total Complex</strong> <span
+      class="math inline">\operatorname{Tot}(M)^{\bullet}</span> is a
+      single complex in <span
+      class="math inline">\mathcal{K}(\mathcal{B})</span> whose <span
+      class="math inline">m</span>-th degree object and differential are
+      defined as follows:</em></p>
+      <ol>
+      <li><p><em><strong>Objects:</strong> The object in degree <span
+      class="math inline">m</span> is the direct sum over all indices
+      summing to <span class="math inline">m</span>: <span
+      class="math display">\operatorname{Tot}(M)^m \coloneqq
+      \bigoplus_{i_1 + \dots + i_n = m} M^{i_1, \dots,
+      i_n}</span></em></p></li>
+      <li><p><em><strong>Differentials:</strong> The total differential
+      <span class="math inline">\operatorname{d}_{\text{tot}}:
+      \operatorname{Tot}(M)^m \to \operatorname{Tot}(M)^{m+1}</span> on
+      each component <span class="math inline">M^{i_1, \dots,
+      i_n}</span> is given by the sum of the partial differentials:
+      <span class="math display">\operatorname{d}_{\text{tot}} \coloneqq
+      \operatorname{d}_1 + \operatorname{d}_2 + \dots +
+      \operatorname{d}_n</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Computing <span
+      class="math inline">n</span>-ary Derived Functors via Partial
+      Acyclic Resolutions). <em> <em>(Grothendieck–Verdier Theory on
+      Bounded Derived Categories)</em><br />
+      Let <span class="math inline">F: \mathcal{A}_1 \times \dots \times
+      \mathcal{A}_n \to \mathcal{B}</span> be an additive functor in
+      each variable between Abelian categories. To compute the derived
+      functor, it is not necessary to resolve every variable; it
+      suffices to replace <span class="math inline">n-1</span> of the
+      variables by acyclic complexes.</em></p>
+      <ol>
+      <li><p><em><strong>Right Derived Functors:</strong> Assume that
+      for each <span class="math inline">i \in \{1, \dots, n-1\}</span>,
+      the category <span class="math inline">\mathcal{A}_i</span> has
+      enough <span class="math inline">F</span>-right-acyclic objects
+      relative to the remaining variables. Let <span
+      class="math inline">\mathbf{X}^\bullet = (X_1^\bullet, \dots,
+      X_n^\bullet) \in \mathbf{D}^b(\mathcal{A}_1) \times \dots \times
+      \mathbf{D}^b(\mathcal{A}_n)</span> be a bounded complex. There
+      exist quasi-isomorphisms <span class="math inline">X_i^\bullet
+      \xrightarrow{\sim} I_i^\bullet</span> into bounded-below <span
+      class="math inline">F</span>-right-acyclic complexes for <span
+      class="math inline">i = 1, \dots, n-1</span>.</em></p>
+      <p><em>The right derived functor evaluated at <span
+      class="math inline">\mathbf{X}^\bullet</span> can be computed by
+      leaving the last variable unchanged: <span
+      class="math display">\mathbf{R}F(\mathbf{X}^\bullet) \cong
+      Q_{\mathcal{B}}(\operatorname{Tot}(F(I_1^\bullet, \dots,
+      I_{n-1}^\bullet, X_n^\bullet)))</span></em></p></li>
+      <li><p><em><strong>Left Derived Functors:</strong> Dually, assume
+      that for each <span class="math inline">i \in \{1, \dots,
+      n-1\}</span>, the category <span
+      class="math inline">\mathcal{A}_i</span> has enough <span
+      class="math inline">F</span>-left-acyclic objects relative to the
+      remaining variables. There exist quasi-isomorphisms <span
+      class="math inline">P_i^\bullet \xrightarrow{\sim}
+      X_i^\bullet</span> from bounded-above <span
+      class="math inline">F</span>-left-acyclic complexes for <span
+      class="math inline">i = 1, \dots, n-1</span>.</em></p>
+      <p><em>The left derived functor is computed via: <span
+      class="math display">\mathbf{L}F(\mathbf{X}^\bullet) \cong
+      Q_{\mathcal{B}}(\operatorname{Tot}(F(P_1^\bullet, \dots,
+      P_{n-1}^\bullet, X_n^\bullet)))</span></em></p></li>
+      </ol>
+      </div>
+      <h4 data-number="1.2.1.9"
+      id="cartaneilenberg-resolution">Cartan–Eilenberg Resolution</h4>
+      <p>Let <span class="math inline">\mathcal{A}</span> be an Abelian
+      category, and let <span class="math inline">\mathcal{R} \subset
+      \mathcal{A}</span> be a class of objects that is adapted to a
+      given functor (e.g., injective objects or <span
+      class="math inline">F</span>-acyclic objects). We assume that
+      <span class="math inline">\mathcal{A}</span> has <em>enough <span
+      class="math inline">\mathcal{R}</span>-objects</em>.</p>
+      <p>Given a bounded-below complex <span
+      class="math inline">X^\bullet</span> in <span
+      class="math inline">\mathcal{A}</span>: <span
+      class="math display">\dots \longrightarrow X^{p-1}
+      \xrightarrow{\;\operatorname{d}_X^{p-1}\;} X^p
+      \xrightarrow{\;\operatorname{d}_X^p\;} X^{p+1} \longrightarrow
+      \dots</span> we denote its cycles, boundaries, and homology
+      objects at degree <span class="math inline">p</span> by <span
+      class="math inline">{\operatorname{Z}}^p(X^\bullet)</span>, <span
+      class="math inline">{\operatorname{B}}^p(X^\bullet)</span>, and
+      <span class="math inline">\operatorname{H}^p(X^\bullet)</span>
+      respectively.</p>
+      <div class="definition">
+      <p><strong>Definition 2.9</strong> (Cartan–Eilenberg Resolution).
+      <em> A <strong>Cartan–Eilenberg resolution</strong> (or C-E
+      resolution) of <span class="math inline">X^\bullet</span> is an
+      upper-half-plane double complex <span
+      class="math inline">I^{\bullet, \bullet}</span> consisting of
+      objects in <span class="math inline">\mathcal{R}</span>, together
+      with a chain map <span class="math inline">X^\bullet \to
+      I^{\bullet, 0}</span> such that for each <span
+      class="math inline">p \in \mathbb{Z}</span>:</em></p>
+      <ol>
+      <li><p><em>The induced maps on the objects of cycles <span
+      class="math inline">{\operatorname{Z}}^p(X^\bullet) \to
+      {\operatorname{Z}}^p_I(I^{p, \bullet})</span> and boundaries <span
+      class="math inline">{\operatorname{B}}^p(X^\bullet) \to
+      {\operatorname{B}}^p_I(I^{p, \bullet})</span> are classical
+      resolutions by elements in <span
+      class="math inline">\mathcal{R}</span>.</em></p></li>
+      <li><p><em>Consequently, the column <span
+      class="math inline">I^{p, \bullet}</span> is a resolution of <span
+      class="math inline">X^p</span>, and the induced map on homology
+      <span class="math inline">\operatorname{H}^p(X^\bullet) \to
+      \operatorname{H}^p_I(I^{p, \bullet})</span> is also a resolution
+      in <span class="math inline">\mathcal{R}</span>.</em></p></li>
+      </ol>
+      </div>
+      <p><span class="commutative-diagram-inline"><a href="assets/diagrams/4d49c1f583653262dc23dc867d264453673cb4f8.svg" target="_blank" rel="noopener"><img src="assets/diagrams/4d49c1f583653262dc23dc867d264453673cb4f8.svg" alt="交换图" loading="lazy" /></a></span></p>
+      <p>A C-E resolution cannot be constructed by simply choosing
+      random resolutions for each <span class="math inline">X^p</span>
+      independently, as the horizontal differentials will fail the
+      compatibility conditions. Instead, it must be engineeUniBlue from
+      the internal homology skeletons using the <strong>Horseshoe
+      Lemma</strong> recursively.</p>
+      <p>The construction proceeds through the following three steps for
+      each degree <span class="math inline">p</span>:</p>
+      <dl>
+      <dt>Step 1: Resolving the Boundaries and Homology</dt>
+      <dd>
+      <p> <br />
+      Since <span class="math inline">\mathcal{A}</span> has enough
+      <span class="math inline">\mathcal{R}</span>-objects, we can
+      independently choose and construct classical resolutions for the
+      boundary objects <span
+      class="math inline">{\operatorname{B}}^p(X^\bullet)</span> and the
+      homology groups <span
+      class="math inline">\operatorname{H}^p(X^\bullet)</span> using
+      elements in <span class="math inline">\mathcal{R}</span>: <span
+      class="math display">{\operatorname{B}}^p(X^\bullet)
+      \xrightarrow{\;\sim\;} P^{p, \bullet}, \quad \text{and} \quad
+      \operatorname{H}^p(X^\bullet) \xrightarrow{\;\sim\;} Q^{p,
+      \bullet}</span></p>
+      </dd>
+      <dt>Step 2: Lifting to the Cycles via the Horseshoe Lemma</dt>
+      <dd>
+      <p> <br />
+      Consider the canonical short exact sequence defining the homology
+      group: <span class="math display">0 \longrightarrow
+      {\operatorname{B}}^p(X^\bullet) \longrightarrow
+      {\operatorname{Z}}^p(X^\bullet) \longrightarrow
+      \operatorname{H}^p(X^\bullet) \longrightarrow 0</span> Since we
+      have already constructed the resolutions <span
+      class="math inline">P^{p, \bullet}</span> for <span
+      class="math inline">{\operatorname{B}}^p(X^\bullet)</span> and
+      <span class="math inline">Q^{p, \bullet}</span> for <span
+      class="math inline">\operatorname{H}^p(X^\bullet)</span>, we apply
+      the <strong>Horseshoe Lemma</strong>. This guarantees the
+      existence of a resolution <span class="math inline">R^{p,
+      \bullet}</span> for the cycles <span
+      class="math inline">{\operatorname{Z}}^p(X^\bullet)</span> such
+      that <span class="math inline">R^{p, q} \cong P^{p, q} \oplus
+      Q^{p, q}</span>, fitting into a short exact sequence of complexes:
+      <span class="math display">0 \longrightarrow P^{p, \bullet}
+      \longrightarrow R^{p, \bullet} \longrightarrow Q^{p, \bullet}
+      \longrightarrow 0</span> This ensures that <span
+      class="math inline">{\operatorname{Z}}^p(X^\bullet) \to R^{p,
+      \bullet}</span> and <span
+      class="math inline">\operatorname{H}^p(X^\bullet) \to Q^{p,
+      \bullet}</span> satisfy the rigid compatibility conditions.</p>
+      <p><span class="commutative-diagram-inline"><a href="assets/diagrams/b2a8dfe9cb989f43267c2ba867dbf03e16cdbe41.svg" target="_blank" rel="noopener"><img src="assets/diagrams/b2a8dfe9cb989f43267c2ba867dbf03e16cdbe41.svg" alt="交换图" loading="lazy" /></a></span></p>
+      </dd>
+      <dt>Step 3: Synthesizing the Resolution for <span
+      class="math inline">X^p</span></dt>
+      <dd>
+      <p> <br />
+      Next, we consider the standard short exact sequence relating
+      cycles, boundaries, and the total space: <span
+      class="math display">0 \longrightarrow
+      {\operatorname{Z}}^p(X^\bullet) \longrightarrow X^p
+      \longrightarrow {\operatorname{B}}^{p+1}(X^\bullet)
+      \longrightarrow 0</span> At this stage, we possess the resolution
+      <span class="math inline">R^{p, \bullet}</span> for <span
+      class="math inline">{\operatorname{Z}}^p(X^\bullet)</span> (from
+      Step 2) and the resolution <span class="math inline">P^{p+1,
+      \bullet}</span> for <span
+      class="math inline">{\operatorname{B}}^{p+1}(X^\bullet)</span>
+      (from Step 1). Applying the <strong>Horseshoe Lemma</strong> a
+      second time allows us to construct the final resolution <span
+      class="math inline">I^{p, \bullet}</span> for the component <span
+      class="math inline">X^p</span>, where <span
+      class="math inline">I^{p, q} \cong R^{p, q} \oplus P^{p+1,
+      q}</span>.</p>
+      </dd>
+      </dl>
+      <p>By assembling these columns <span class="math inline">I^{p,
+      \bullet}</span> and utilizing the maps induced by the components
+      of the Horseshoe Lemma, we obtain the total double complex <span
+      class="math inline">I^{\bullet, \bullet}</span> satisfying all
+      compatibility conditions requiUniBlue by Definition 1.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (). <em> The total complex <span
+      class="math inline">\operatorname{Tot}(I^{\bullet,
+      \bullet})</span> formed by taking direct sums along the diagonals:
+      <span class="math display">\operatorname{Tot}(I^{\bullet,
+      \bullet})^n = \bigoplus_{p+q=n} I^{p,q}</span> is a bounded-below
+      complex of <span class="math inline">\mathcal{R}</span>-objects,
+      and the canonical augmentation map induces a global
+      quasi-isomorphism in the homotopy category <span
+      class="math inline">\mathcal{K}(\mathcal{A})</span>: <span
+      class="math display">X^\bullet \xrightarrow{\;\sim\;}
+      \operatorname{Tot}(I^{\bullet, \bullet})</span> This <span
+      class="math inline">\operatorname{Tot}(I^{\bullet,
+      \bullet})</span> serves as the valid hyper-acyclic resolution
+      requiUniBlue to compute derived functors.</em></p>
+      </div>
+      <h4 data-number="1.2.1.10"
+      id="an-equivalence-of-triangulated-categories">An Equivalence of
+      Triangulated Categories</h4>
+      <p>Let <span class="math inline">\mathcal{A}</span> be an Abelian
+      category with enough injective objects, and let <span
+      class="math inline">\mathcal{I}</span> denote the full subcategory
+      of injective objects in <span
+      class="math inline">\mathcal{A}</span>. We denote by <span
+      class="math inline">K^+(\mathcal{I})</span> the homotopy category
+      of bounded-below complexes of injective objects, and by <span
+      class="math inline">\mathbf{D}^+(\mathcal{A})</span> the
+      bounded-below derived category of <span
+      class="math inline">\mathcal{A}</span>.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (). <em> Let <span
+      class="math inline">\mathcal{A}</span> be an Abelian category with
+      enough injectives. The natural localization functor induces an
+      equivalence of triangulated categories: <span
+      class="math display">F: K^+(\mathcal{I}) \xrightarrow{\,\sim\,}
+      \mathbf{D}^+(\mathcal{A})</span></em></p>
+      </div>
+      <p>To prove this theorem, we recall that a functor is an
+      equivalence of categories if and only if it is essentially
+      surjective and fully faithful. The proof is divided into two main
+      parts.</p>
+      <p>We need to show that for every bounded-below complex <span
+      class="math inline">X^\bullet \in K^+(\mathcal{A})</span>, there
+      exists a complex <span class="math inline">I^\bullet \in
+      K^+(\mathcal{I})</span> and a quasi-isomorphism <span
+      class="math inline">X^\bullet \to I^\bullet</span>. Without loss
+      of generality, assume <span class="math inline">X^n = 0</span> for
+      all <span class="math inline">n &lt; 0</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (). <em> Every bounded-below
+      complex <span class="math inline">X^\bullet</span> admits an
+      injective resolution, i.e., a quasi-isomorphism <span
+      class="math inline">X^\bullet \to I^\bullet</span> where <span
+      class="math inline">I^\bullet \in
+      K^+(\mathcal{I})</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We construct <span
+      class="math inline">I^\bullet</span> and the morphism <span
+      class="math inline">f^\bullet: X^\bullet \to I^\bullet</span>
+      inductively from left to right.</p>
+      <ol>
+      <li><p><strong>Step 0:</strong> Since <span
+      class="math inline">\mathcal{A}</span> has enough injectives,
+      choose an injective object <span class="math inline">I^0</span>
+      and a monomorphism <span class="math inline">j^0: X^0
+      \hookrightarrow I^0</span>. Set <span class="math inline">f^0 =
+      j^0</span> and <span class="math inline">\operatorname{d}_I^{-1} =
+      0</span>.</p></li>
+      <li><p><strong>Inductive Step:</strong> Suppose we have
+      constructed the complex up to degree <span
+      class="math inline">n</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/9b833af69678d417118843f2194c5e87b8ed4ad2.svg" target="_blank" rel="noopener"><img src="assets/diagrams/9b833af69678d417118843f2194c5e87b8ed4ad2.svg" alt="交换图" loading="lazy" /></a></span>
+      such that <span class="math inline">\operatorname{d}_I^{n-1} \circ
+      f^{n-1} = f^n \circ \operatorname{d}_X^{n-1}</span> and <span
+      class="math inline">\operatorname{d}_I^{n-1} \circ
+      \operatorname{d}_I^{n-2} = 0</span>.</p>
+      <p>To ensure the mapping is a quasi-isomorphism, we consider the
+      pushout or simply the internal boundaries. Consider the object
+      <span class="math inline">C^n =
+      \operatorname{Coker}(\operatorname{d}_I^{n-1}) = I^n /
+      \operatorname{im}(\operatorname{d}_I^{n-1})</span>. The
+      compatibility condition implies that <span class="math inline">f^n
+      \circ \operatorname{d}_X^{n-1} = 0</span> when projected to <span
+      class="math inline">C^n</span>. Thus, <span
+      class="math inline">f^n</span> induces a morphism <span
+      class="math inline">\bar{f}^n:
+      \operatorname{Coker}(\operatorname{d}_X^{n-1}) \to C^n</span>.</p>
+      <p>We combine <span class="math inline">X^{n+1}</span> and <span
+      class="math inline">C^n</span> to construct a map into an
+      injective object. By the property of enough injectives, embed the
+      pushout of <span class="math inline">X^{n+1} \leftarrow
+      \operatorname{Coker}(\operatorname{d}_X^{n-1}) \to C^n</span> into
+      an injective object <span class="math inline">I^{n+1}</span>. This
+      simultaneously defines <span
+      class="math inline">\operatorname{d}_I^n: I^n \to I^{n+1}</span>
+      (factoring through <span class="math inline">C^n</span>) and <span
+      class="math inline">f^{n+1}: X^{n+1} \to I^{n+1}</span> such that
+      the diagram commutes.</p></li>
+      </ol>
+      <p>By tracking the exact sequences, a standard application of the
+      Five Lemma ensures that the induced map on cohomology <span
+      class="math inline">\mathrm{H}^n(f^\bullet):
+      \mathrm{H}^n(X^\bullet) \to \mathrm{H}^n(I^\bullet)</span> is an
+      isomorphism for all <span class="math inline">n</span>. Thus,
+      <span class="math inline">f^\bullet</span> is a quasi-isomorphism,
+      proving essential surjectivity. ◻</p>
+      </div>
+      <p>The crucial step for fully faithfulness relies on showing that
+      <span class="math inline">K^+(\mathcal{I})</span> is orthogonal to
+      acyclic complexes.</p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (). <em> Let <span
+      class="math inline">A^\bullet</span> be an acyclic complex in
+      <span class="math inline">K^+(\mathcal{A})</span> (i.e., <span
+      class="math inline">\mathrm{H}^n(A^\bullet) = 0</span> for all
+      <span class="math inline">n</span>), and let <span
+      class="math inline">I^\bullet \in K^+(\mathcal{I})</span> be a
+      bounded-below complex of injective objects. Then: <span
+      class="math display">\operatorname{Hom}_{K^+(\mathcal{A})}(A^\bullet,
+      I^\bullet) = 0</span> In other words, every chain map <span
+      class="math inline">f^\bullet: A^\bullet \to I^\bullet</span> is
+      homotopic to zero.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">f^\bullet:
+      A^\bullet \to I^\bullet</span> be a chain map. We need to
+      construct a collection of morphisms <span class="math inline">s^n:
+      A^n \to I^{n-1}</span> such that: <span class="math display">f^n =
+      \operatorname{d}_I^{n-1} s^n + s^{n+1} \operatorname{d}_X^n \quad
+      \forall n \in \mathbb{Z}</span> Since <span
+      class="math inline">I^\bullet</span> is bounded below, there
+      exists some <span class="math inline">N</span> such that <span
+      class="math inline">I^n = 0</span> for all <span
+      class="math inline">n &lt; N</span>. For all <span
+      class="math inline">n \le N</span>, we can safely define <span
+      class="math inline">s^n = 0</span>.</p>
+      <p>Now, assume by induction that we have constructed <span
+      class="math inline">s^n</span> up to degree <span
+      class="math inline">n</span> satisfying the homotopy relation. We
+      want to find <span class="math inline">s^{n+1}: A^{n+1} \to
+      I^n</span> such that: <span class="math display">f^n -
+      \operatorname{d}_I^{n-1}s^n = s^{n+1}d_X^n</span> Let us denote
+      <span class="math inline">g^n = f^n -
+      \operatorname{d}_I^{n-1}s^n</span>. We first check that <span
+      class="math inline">g^n \circ \operatorname{d}_X^{n-1} = 0</span>:
+      <span class="math display">\begin{align*}
+      g^n \operatorname{d}_X^{n-1} &amp;= (f^n -
+      \operatorname{d}_I^{n-1}s^n) \operatorname{d}_X^{n-1} \\
+      &amp;= f^n \operatorname{d}_X^{n-1} - \operatorname{d}_I^{n-1}
+      (f^{n-1} - \operatorname{d}_I^{n-2}s^{n-1}) \quad \text{(by
+      induction hypothesis)} \\
+      &amp;= \operatorname{d}_I^{n-1} f^{n-1} - \operatorname{d}_I^{n-1}
+      f^{n-1} + 0 = 0
+      \end{align*}</span> Therefore, <span class="math inline">g^n: A^n
+      \to I^n</span> factors through the cokernel <span
+      class="math inline">\operatorname{Coker}(\operatorname{d}_X^{n-1})
+      = A^n / \operatorname{im}(\operatorname{d}_X^{n-1})</span>.</p>
+      <p>Since <span class="math inline">A^\bullet</span> is acyclic,
+      the short sequence <span class="math inline">0 \to
+      \operatorname{im}(\operatorname{d}_X^{n-1}) \to A^n \to
+      \operatorname{im}(\operatorname{d}_X^n) \to 0</span> is exact,
+      which implies <span
+      class="math inline">\operatorname{Coker}(\operatorname{d}_X^{n-1})
+      \cong \operatorname{im}(\operatorname{d}_X^n)</span>. Thus, <span
+      class="math inline">g^n</span> canonical factors through the
+      image: <span class="math display">\bar{g}^n:
+      \operatorname{im}(\operatorname{d}_X^n) \to I^n</span> We now have
+      the following diagram:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/4ac4745dbfde42b9a18698af31e5893c1cf183e9.svg" target="_blank" rel="noopener"><img src="assets/diagrams/4ac4745dbfde42b9a18698af31e5893c1cf183e9.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">\iota</span> is the canonical
+      inclusion. Because <span class="math inline">I^n</span> is an
+      <strong>injective object</strong> in <span
+      class="math inline">\mathcal{A}</span>, the morphism <span
+      class="math inline">\bar{g}^n</span> extends to a morphism <span
+      class="math inline">s^{n+1}: A^{n+1} \to I^n</span> such that
+      <span class="math inline">s^{n+1} \circ \iota =
+      \bar{g}^n</span>.</p>
+      <p>By construction, for any element in <span
+      class="math inline">A^n</span>, we have <span
+      class="math inline">s^{n+1} \operatorname{d}_X^n = \bar{g}^n
+      \operatorname{d}_X^n = g^n = f^n - \operatorname{d}_I^{n-1}
+      s^n</span>. This completes the induction step. Hence, <span
+      class="math inline">f^\bullet \sim 0</span>, so <span
+      class="math inline">\operatorname{Hom}_{K^+(\mathcal{A})}(A^\bullet,
+      I^\bullet) = 0</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (). <em> If <span
+      class="math inline">I^\bullet, J^\bullet \in
+      K^+(\mathcal{I})</span> and <span class="math inline">f^\bullet:
+      I^\bullet \to J^\bullet</span> is a quasi-isomorphism, then <span
+      class="math inline">f^\bullet</span> is a homotopy equivalence
+      (i.e., an isomorphism in <span
+      class="math inline">K^+(\mathcal{I})</span>).</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Consider the mapping cone <span
+      class="math inline">C(f)^\bullet</span>. Since <span
+      class="math inline">f^\bullet</span> is a quasi-isomorphism, its
+      cone <span class="math inline">C(f)^\bullet</span> is an acyclic
+      complex. Applying Lemma 1, since <span
+      class="math inline">J^\bullet \in K^+(\mathcal{I})</span>, we have
+      <span
+      class="math inline">\operatorname{Hom}_{K^+(\mathcal{A})}(C(f)^\bullet,
+      J^\bullet) = 0</span>. By the long exact sequence of <span
+      class="math inline">\operatorname{Hom}</span> groups associated
+      with a mapping cone, this implies that <span
+      class="math inline">f^\bullet</span> induces a bijection on the
+      homotopy Hom-sets, meaning <span
+      class="math inline">f^\bullet</span> is invertible in <span
+      class="math inline">K^+(\mathcal{I})</span>. ◻</p>
+      </div>
+      <p>By the general theory of localization of triangulated
+      categories, the morphisms in the derived category are defined via
+      fractions of the form <span class="math inline">s^{-1} \circ
+      g</span>, where <span class="math inline">s</span> is a
+      quasi-isomorphism. Proposition 2 guarantees that if the target and
+      source lie in <span class="math inline">K^+(\mathcal{I})</span>,
+      any such quasi-isomorphism <span class="math inline">s</span> is
+      already invertible in the homotopy category <span
+      class="math inline">K^+(\mathcal{I})</span>.</p>
+      <p>Thus, the localized hom-sets <span
+      class="math inline">\operatorname{Hom}_{\mathbf{D}^+(\mathcal{A})}(I^\bullet,
+      J^\bullet)</span> are isomorphic to the original hom-sets <span
+      class="math inline">\operatorname{Hom}_{K^+(\mathcal{I})}(I^\bullet,
+      J^\bullet)</span>. The functor is fully faithful. Combined with
+      the essential surjectivity established in Part 1, <span
+      class="math inline">K^+(\mathcal{I}) \to
+      \mathbf{D}^+(\mathcal{A})</span> is an equivalence of triangulated
+      categories.</p>
+      <h4 data-number="1.2.1.11" id="way-out-lemma">Way-out Lemma</h4>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (The Induction Principle for
+      Derived Categories). <em> In classical homological algebra,
+      proving a property for a long chain complex can be combinatorially
+      overwhelming. The triangulated structure of the derived category
+      offers an elegant solution: every bounded complex can be built by
+      repeatedly taking mapping cones (forming exact triangles) of
+      single objects shifted in degree.</em></p>
+      <p><em>The <strong>Way-out Lemma</strong> (originally formalized
+      in Grothendieck’s SGA 4) is essentially the <em>induction
+      principle</em> for derived categories. It states that to prove an
+      isomorphism between two exact functors on the bounded derived
+      category, it suffices to check the isomorphism on objects
+      concentrated in a single degree.</em></p>
+      </div>
+      <p>To rigorously state and prove the lemma, we recall that an
+      <strong>exact functor</strong> (or triangulated functor) between
+      triangulated categories is a functor that preserves shifts <span
+      class="math inline">F(X[1]) \cong F(X)[1]</span> and sends exact
+      triangles to exact triangles.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (The Way-out Lemma (Bounded
+      Version)). <em> Let <span class="math inline">\mathcal{A}</span>
+      and <span class="math inline">\mathcal{B}</span> be Abelian
+      categories, and let <span
+      class="math inline">\mathbf{D}^b(\mathcal{A})</span> and <span
+      class="math inline">\mathbf{D}^b(\mathcal{B})</span> be their
+      bounded derived categories.</em></p>
+      <p><em>Let <span class="math inline">F, G:
+      \mathbf{D}^b(\mathcal{A}) \to \mathbf{D}^b(\mathcal{B})</span> be
+      exact functors, and let <span class="math inline">\eta: F \to
+      G</span> be a natural transformation of exact functors.</em></p>
+      <p><em>If <span class="math inline">\eta_X: F(X) \to G(X)</span>
+      is an isomorphism for all objects <span class="math inline">X \in
+      \mathcal{A}</span> (viewed as complexes concentrated in degree 0),
+      then <span class="math display">\eta_{C^\bullet}: F(C^\bullet)
+      \longrightarrow G(C^\bullet)</span> is an isomorphism for all
+      bounded complexes <span class="math inline">C^\bullet \in
+      \mathbf{D}^b(\mathcal{A})</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The proof proceeds by induction on the “length”
+      of the bounded complex. Since <span
+      class="math inline">C^\bullet</span> is bounded, there exist
+      integers <span class="math inline">a \le b</span> such that <span
+      class="math inline">C^i = 0</span> for <span class="math inline">i
+      &lt; a</span> and <span class="math inline">i &gt; b</span>. We
+      define the length of the complex as <span
+      class="math inline">\ell(C^\bullet) = b - a</span>.</p>
+      <p><strong>Base Case (<span class="math inline">\ell =
+      0</span>):</strong> If <span class="math inline">\ell(C^\bullet) =
+      0</span>, then <span class="math inline">a = b</span>, meaning
+      <span class="math inline">C^\bullet</span> is concentrated
+      entirely in degree <span class="math inline">a</span>. Thus, <span
+      class="math inline">C^\bullet \cong X[-a]</span> for some object
+      <span class="math inline">X \in \mathcal{A}</span>. Because both
+      <span class="math inline">F</span> and <span
+      class="math inline">G</span> are exact functors, they commute with
+      shifts. The natural transformation gives a commutative square:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/3c9c458bdac89ad3b0d3886f55ee6019cd016ac3.svg" target="_blank" rel="noopener"><img src="assets/diagrams/3c9c458bdac89ad3b0d3886f55ee6019cd016ac3.svg" alt="交换图" loading="lazy" /></a></span>
+      By hypothesis, <span class="math inline">\eta_X</span> is an
+      isomorphism, hence its shift <span
+      class="math inline">\eta_X[-a]</span> is also an isomorphism.
+      Thus, <span class="math inline">\eta_{C^\bullet}</span> is an
+      isomorphism.</p>
+      <p><strong>Inductive Step:</strong> Assume the theorem holds for
+      all complexes of length less than <span
+      class="math inline">n</span>. Let <span
+      class="math inline">C^\bullet</span> be a complex of length <span
+      class="math inline">n = b - a &gt; 0</span>. We can use "stupid
+      truncation" to split <span class="math inline">C^\bullet</span>.
+      Let <span class="math inline">\sigma_{\le b-1}C^\bullet</span> be
+      the truncated complex up to degree <span
+      class="math inline">b-1</span>, and let <span
+      class="math inline">C^b[-b]</span> be the complex consisting only
+      of the top term <span class="math inline">C^b</span> in degree
+      <span class="math inline">b</span>.</p>
+      <p>There is a standard exact triangle in <span
+      class="math inline">\mathbf{D}^b(\mathcal{A})</span>: <span
+      class="math display">C^b[-b] \longrightarrow C^\bullet
+      \longrightarrow \sigma_{\le b-1}C^\bullet   \xrightarrow{+1}
+      0</span> Notice that <span class="math inline">\ell(C^b[-b]) =
+      0</span> and <span class="math inline">\ell(\sigma_{\le
+      b-1}C^\bullet) = n - 1</span>.</p>
+      <p>Since <span class="math inline">F</span> and <span
+      class="math inline">G</span> are exact functors, applying them
+      yields two exact triangles in <span
+      class="math inline">\mathbf{D}^b(\mathcal{B})</span>. The natural
+      transformation <span class="math inline">\eta</span> provides a
+      morphism between these exact triangles, forming the following
+      commutative diagram:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/de8bc64676249b60ba2db1a4235a4e6ead5746d4.svg" target="_blank" rel="noopener"><img src="assets/diagrams/de8bc64676249b60ba2db1a4235a4e6ead5746d4.svg" alt="交换图" loading="lazy" /></a></span></p>
+      <p>By the inductive hypothesis, the right vertical map <span
+      class="math inline">\eta_{\sigma_{\le b-1}C^\bullet}</span> is an
+      isomorphism (since the length is <span
+      class="math inline">n-1</span>). By the base case, the left
+      vertical map <span class="math inline">\eta_{C^b[-b]}</span> is an
+      isomorphism (since the length is <span
+      class="math inline">0</span>).</p>
+      <p>By the <strong>Triangulated Five Lemma</strong> (a fundamental
+      property of triangulated categories: if two out of three parallel
+      maps between exact triangles are isomorphisms, the third one is
+      too), the middle map <span
+      class="math inline">\eta_{C^\bullet}</span> must also be an
+      isomorphism.</p>
+      <p>This completes the induction, and thus the theorem is
+      proven. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Generalization). <em> While we
+      stated this for <span
+      class="math inline">\mathbf{D}^b(\mathcal{A})</span> to ensure
+      length induction terminates, classical Way-out Lemmas exist for
+      unbounded derived categories <span
+      class="math inline">\mathbf{D}^+(\mathcal{A})</span> or <span
+      class="math inline">\mathbf{D}^-(\mathcal{A})</span> by imposing
+      suitable homological boundedness conditions (e.g., functors having
+      finite cohomological amplitude). For our geometric applications
+      (like the Projection Formula), the bounded version is exactly what
+      is needed.</em></p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="1.1-Basic_Concepts_of_Category_Theory.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Basic Concepts of Category Theory</strong>
+        </a>
+                        <a class="turn-next" href="1.3-Presheaves_and_Sheaves.html" rel="next">
+          <span>NEXT</span><strong>Presheaves and Sheaves →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

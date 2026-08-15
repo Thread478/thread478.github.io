@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thread478 数学札记的已知问题、修正建议与修订状态。">
+  <meta name="color-scheme" content="light dark">
+  <title>勘误与修订 | 线，从来</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="site-mark" href="index.html"><span class="site-mark__name">线，从来</span><span class="site-mark__handle">THREAD478</span></a>
+      <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">菜单</button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="主导航">
+        <a href="index.html">首页</a><a href="math-resources.html">数学札记</a><a href="useless.html">沿途</a><a href="errata.html" aria-current="page">勘误</a><button class="icon-button" type="button" data-theme-toggle>夜间</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <header class="page-intro">
+      <p class="eyebrow">Errata · Revision log</p>
+      <h1>勘误与修订</h1>
+      <p class="page-intro__lead">公开学习笔记意味着允许错误被看见，也意味着给错误留下明确的去处。这里记录已经确认的问题；原 PDF 尚未同步改写的项目会特别标明。</p>
+      <div class="intro-meta"><span class="tag tag--warm">4 项待回写</span><span class="tag">最近核对：2026-08-14</span></div>
+      <div class="callout"><strong>范围说明：</strong>目前只是对两份 PDF 的抽样检查，并非完整审校。页码采用 PDF 正文印刷页码；相交论笔记没有印刷页码时采用文件页序。</div>
+    </header>
+
+    <section class="section" aria-labelledby="confirmed-title">
+      <div class="section-heading"><div><p class="eyebrow">Confirmed</p><h2 id="confirmed-title">已确认的问题</h2></div><p>下面的修正应当回写 LaTeX 或 Obsidian 源稿，而不是只在网页上遮掩。</p></div>
+      <div class="errata-list">
+        <article class="erratum">
+          <div class="erratum__where">AlgebraicGeometry.pdf<br>Chapter 1 · p.4<br><span class="tag tag--warm">待回写</span></div>
+          <div><h2>整体截面函子的方向写反</h2><p>原文把 <span class="math">Γ : Sch → Ring</span> 称为协变函子。对概形态射 <span class="math">f : X → Y</span>，整体截面诱导环同态 <span class="math">Γ(Y,O<sub>Y</sub>) → Γ(X,O<sub>X</sub>)</span>，因此应写成 <span class="math">Γ : Sch<sup>op</sup> → CRing</span>，或等价地 <span class="math">Sch → CRing<sup>op</sup></span>。</p></div>
+        </article>
+        <article class="erratum">
+          <div class="erratum__where">Rational Equivalence I<br>file p.1<br><span class="tag tag--warm">待回写</span></div>
+          <div><h2>Bézout 定理的假设需要提前出现</h2><p>“两条次数为 <span class="math">d<sub>1</sub>, d<sub>2</sub></span> 的射影平面曲线总有 <span class="math">d<sub>1</sub>d<sub>2</sub></span> 个交点”需要说明基域代数闭、两曲线无公共分支，并按交点重数计数。下一页虽引入代数闭域，但开头的独立表述仍然过宽。</p></div>
+        </article>
+        <article class="erratum">
+          <div class="erratum__where">Rational Equivalence I<br>file p.3<br><span class="tag tag--warm">待回写</span></div>
+          <div><h2>高阶 Tor 消失的理由表述过宽</h2><p>光滑曲面或正则局部环本身并不保证任意两个子概形的所有高阶 Tor 都消失。对无公共分支的平面 Cartier 除子，可由定义方程在另一商环中为非零因子推出相关的 <span class="math">Tor<sub>1</sub></span> 消失；这里应补充对象与相交条件。</p></div>
+        </article>
+        <article class="erratum">
+          <div class="erratum__where">Rational Equivalence I<br>file p.5<br><span class="tag tag--warm">待回写</span></div>
+          <div><h2>二重点与二重直线混淆</h2><p><span class="math">Spec K[x]/(x²)</span> 的底空间只有一个点，是带幂零结构的二重点。若要描述支撑在一条直线上的二重结构，可以使用 <span class="math">Spec K[x,y]/(x²)</span>，其约化支撑为 <span class="math">A¹</span>。</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="policy-title">
+      <div class="section-heading"><div><p class="eyebrow">Policy</p><h2 id="policy-title">修订约定</h2></div><p>勘误页不是免责声明，而是维护流程的一部分。</p></div>
+      <div class="card-grid">
+        <div class="content-card"><span class="content-card__index">01 · Record</span><h3>先记录</h3><p>确认问题后先写出位置、原断言和修正理由，避免只留下“这里可能有错”。</p></div>
+        <div class="content-card"><span class="content-card__index">02 · Repair</span><h3>再回写源稿</h3><p>修正 LaTeX 或原始笔记，并在重新导出 PDF 后更新状态和日期。</p></div>
+        <div class="content-card"><span class="content-card__index">03 · Close</span><h3>保留修订记录</h3><p>问题修复后不删除条目，改为“已修复”并注明进入哪个版本。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-shell"><p>© <span data-year>2026</span> Thread478 · Errors are recorded, not hidden.</p><div class="footer-links"><a href="math-resources.html">返回数学札记</a><a href="index.html">首页</a></div></div></footer>
+</body>
+</html>

@@ -1,0 +1,2764 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Differential Geometry of Standard
+Schemes · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Morphisms of Schemes</p>
+        <h1>Differential Geometry of Standard Schemes</h1>
+      </header>
+      <h2 data-number="3.3"
+      id="differential-geometry-of-standard-schemes">Differential
+      Geometry of Standard Schemes</h2>
+      <p>Throughout this chapter, let <span class="math inline">S</span>
+      be a standard base ring in the sense of <a
+      href="#def:def_standard_base_ring">Definition </a>, and put <span
+      class="math display">B:=\operatorname{Spec}S.</span> Unless
+      explicitly stated otherwise, every scheme is a standard scheme
+      over <span class="math inline">S</span> and every morphism is a
+      morphism over <span class="math inline">B</span>, in accordance
+      with <a href="#nt:note_global_convention">Note </a>. We shall call
+      objects defined relative to the fixed base <span
+      class="math inline">B</span> <em>absolute</em>; objects defined
+      relative to a morphism <span class="math inline">f\colon X\to
+      Y</span> will be called <em>relative</em>.</p>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Scope and Corrections to the
+      Earlier Draft). <em> The theory developed below does not require
+      irreducibility or reducedness. In fact, Kähler differentials and
+      relative tangent spaces are naturally defined for arbitrary
+      schemes. The standard hypotheses are used only to guarantee
+      Noetherianity, finite presentation, coherence, and
+      finite-dimensional pointwise tangent spaces. Thus no retreat to
+      the category of standard varieties is needed for the main
+      constructions.</em></p>
+      <p><em>Several distinctions are essential.</em></p>
+      <ol>
+      <li><p><em>At a non-rational point, the relative cotangent space
+      is not generally <span class="math inline">\mathfrak m_x/\mathfrak
+      m_x^2</span>. The correct object is <span
+      class="math inline">\Omega^1_{X/Y,x}\otimes\kappa(x)</span>.</em></p></li>
+      <li><p><em>The map from a conormal module to a module of
+      differentials need not be injective. Consequently, a conormal
+      sequence is generally right exact rather than short
+      exact.</em></p></li>
+      <li><p><em>The tangent sheaf need not be locally free, and its
+      fibre need not equal the pointwise tangent space. They agree under
+      additional hypotheses, for example when the differential sheaf is
+      locally free near the point.</em></p></li>
+      <li><p><em>The relative spectrum constructions called tangent,
+      cotangent, normal, and conormal bundles in the earlier draft are
+      omitted here. Their natural setting is the later theory of affine
+      morphisms, linear spaces, regular immersions, and intersection
+      theory.</em></p></li>
+      </ol>
+      </div>
+      <h3 data-number="3.3.1" id="relative-differential">Relative
+      Differential</h3>
+      <h4 data-number="3.3.1.1"
+      id="standard-morphisms-admit-finite-polynomial-presentations">Standard
+      Morphisms Admit Finite Polynomial Presentations</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Finite Presentation of
+      Standard Morphisms). <em> Let <span class="math inline">f\colon
+      X\to Y</span> be a morphism of standard schemes over <span
+      class="math inline">S</span>. Then <span
+      class="math inline">f</span> is of finite presentation. More
+      precisely, for every <span class="math inline">x\in X</span> there
+      are affine open neighbourhoods <span class="math inline">x\in
+      U=\operatorname{Spec}A</span> and <span
+      class="math inline">f(x)\in V=\operatorname{Spec}C</span> with
+      <span class="math inline">f(U)\subseteq V</span> and an
+      isomorphism of <span class="math inline">C</span>-algebras <span
+      class="math display">A\cong
+      C[T_1,\ldots,T_n]/(F_1,\ldots,F_r)</span> for some finite families
+      of variables and equations.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the standard-category convention, <span
+      class="math inline">f</span> is of finite type. The scheme <span
+      class="math inline">Y</span> is Noetherian, so every affine
+      coordinate ring <span class="math inline">C</span> on <span
+      class="math inline">Y</span> is Noetherian. After shrinking around
+      <span class="math inline">x</span>, the coordinate ring <span
+      class="math inline">A</span> is a finite type <span
+      class="math inline">C</span>-algebra. Hence there is a surjection
+      <span class="math inline">C[T_1,\ldots,T_n]\twoheadrightarrow
+      A</span>. Its kernel is finitely generated because the polynomial
+      ring is Noetherian, giving the asserted presentation. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Polynomial Models are Auxiliary,
+      Differentials are Intrinsic). <em> A presentation <span
+      class="math display">A\cong C[T_1,\ldots,T_n]/I</span> is never
+      canonical. The variables, the ambient affine space, and the
+      generators of <span class="math inline">I</span> may all be
+      changed. The module <span
+      class="math inline">\Omega^1_{A/C}</span> and the tangent spaces
+      obtained from it are intrinsic. A Jacobian matrix is therefore a
+      matrix presentation of an intrinsic linear map, not the definition
+      of the geometry itself.</em></p>
+      </div>
+      <h4 data-number="3.3.1.2"
+      id="derivations-and-square-zero-extensions">Derivations and
+      Square-Zero Extensions</h4>
+      <div class="definition">
+      <p><strong>Definition 3.1</strong> (Relative Derivation). <em> Let
+      <span class="math inline">R\to A</span> be a homomorphism of rings
+      and let <span class="math inline">M</span> be an <span
+      class="math inline">A</span>-module. An <strong><span
+      class="math inline">R</span>-derivation of <span
+      class="math inline">A</span> with values in <span
+      class="math inline">M</span></strong> is an additive map <span
+      class="math display">D\colon A\longrightarrow M</span> such that
+      <span class="math display">D(r)=0\quad(r\in R),
+              \qquad
+              D(ab)=aD(b)+bD(a)\quad(a,b\in A).</span> The <span
+      class="math inline">A</span>-module of such derivations is denoted
+      by <span
+      class="math inline">\operatorname{Der}_R(A,M)</span>.</em></p>
+      </div>
+      <p>Here and below, <span class="math inline">D(r)=0</span> means
+      that <span class="math inline">D</span> annihilates the image of
+      <span class="math inline">R</span> in <span
+      class="math inline">A</span>. The Leibniz rule immediately gives
+      <span class="math inline">D(1)=0</span> and <span
+      class="math display">D(a^m)=ma^{m-1}D(a).</span></p>
+      <div class="definition">
+      <p><strong>Definition 3.2</strong> (Square-Zero Extension). <em>
+      Let <span class="math inline">C</span> be a ring and let <span
+      class="math inline">M</span> be a <span
+      class="math inline">C</span>-module. The <strong>trivial
+      square-zero extension</strong> of <span
+      class="math inline">C</span> by <span class="math inline">M</span>
+      is the ring <span class="math display">C\oplus M,
+              \qquad
+              (c,m)(c&#39;,m&#39;)=(cc&#39;,cm&#39;+c&#39;m).</span> The
+      ideal <span class="math inline">0\oplus M</span> has square zero,
+      and the projection <span class="math inline">C\oplus
+      M\twoheadrightarrow C</span> is a ring homomorphism.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Derivations as First-Order
+      Liftings). <em> Let <span class="math inline">R\to A</span> and
+      <span class="math inline">R\to C</span> be ring maps, let <span
+      class="math inline">\varphi\colon A\to C</span> be an <span
+      class="math inline">R</span>-algebra homomorphism, and let <span
+      class="math inline">M</span> be a <span
+      class="math inline">C</span>-module. Give <span
+      class="math inline">M</span> the induced <span
+      class="math inline">A</span>-module structure through <span
+      class="math inline">\varphi</span>. Then there is a natural
+      bijection <span class="math display">\operatorname{Der}_R(A,M)
+              \xrightarrow{\sim}
+              \left\{
+              \widetilde\varphi\colon A\to C\oplus M
+              \ \middle|\
+              \widetilde\varphi\text{ is an $R$-algebra map and }
+              \operatorname{pr}_C\circ\widetilde\varphi=\varphi
+              \right\},</span> given by <span
+      class="math display">D\longmapsto\left(a\longmapsto(\varphi(a),D(a))\right).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Multiplicativity of <span
+      class="math inline">a\mapsto(\varphi(a),D(a))</span> is exactly
+      the Leibniz rule. Conversely, the second component of any lifting
+      is additive, annihilates <span class="math inline">R</span>, and
+      satisfies the Leibniz rule because <span
+      class="math inline">M^2=0</span>. ◻</p>
+      </div>
+      <p>This proposition is the algebraic replacement for taking the
+      velocity of an infinitesimal curve. It is also the conceptual
+      origin of the use of dual numbers in tangent-space theory.</p>
+      <h4 data-number="3.3.1.3"
+      id="the-module-of-kähler-differentials">The Module of Kähler
+      Differentials</h4>
+      <div class="definition">
+      <p><strong>Definition 3.3</strong> (Module of Relative
+      Differentials). <em> Let <span class="math inline">R\to A</span>
+      be a ring map. A <strong>module of Kähler differentials of <span
+      class="math inline">A</span> over <span
+      class="math inline">R</span></strong> is an <span
+      class="math inline">A</span>-module <span
+      class="math inline">\Omega^1_{A/R}</span> equipped with an <span
+      class="math inline">R</span>-derivation <span
+      class="math display">d_{A/R}\colon
+      A\longrightarrow\Omega^1_{A/R}</span> satisfying the following
+      universal property: for every <span
+      class="math inline">A</span>-module <span
+      class="math inline">M</span>, composition with <span
+      class="math inline">d_{A/R}</span> induces a functorial
+      isomorphism <span
+      class="math display">\operatorname{Hom}_A(\Omega^1_{A/R},M)
+              \xrightarrow{\sim}
+              \operatorname{Der}_R(A,M).</span></em></p>
+      </div>
+      <p>The universal property determines <span
+      class="math inline">\Omega^1_{A/R}</span> uniquely up to a unique
+      isomorphism. There are two complementary constructions.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Generators-and-Relations
+      Construction). <em> The <span class="math inline">A</span>-module
+      <span class="math inline">\Omega^1_{A/R}</span> is generated by
+      formal symbols <span class="math inline">da</span>, <span
+      class="math inline">a\in A</span>, subject to the relations <span
+      class="math display">d(a+b)=da+db,
+              \qquad
+              d(ab)=a\,db+b\,da,
+              \qquad
+              dr=0\quad(r\in R).</span> The map <span
+      class="math inline">a\mapsto da</span> is the universal <span
+      class="math inline">R</span>-derivation.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Every <span
+      class="math inline">R</span>-derivation sends the displayed
+      relations to zero, and hence factors uniquely through the quotient
+      module defined by those relations. This is exactly the universal
+      property. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Diagonal Construction and
+      First Principal Parts). <em> Let <span
+      class="math display">\mu\colon A\otimes_R A\longrightarrow A,
+              \qquad
+              a\otimes b\longmapsto ab,</span> and put <span
+      class="math inline">I:=\ker\mu</span>. Then <span
+      class="math display">\Omega^1_{A/R}\cong I/I^2,
+              \qquad
+              da=1\otimes a-a\otimes1\pmod{I^2}.</span> If <span
+      class="math display">P^1_{A/R}:=(A\otimes_R A)/I^2,</span> then
+      there is a split exact sequence of <span
+      class="math inline">A</span>-modules <span
+      class="math display">0\longrightarrow\Omega^1_{A/R}
+              \longrightarrow P^1_{A/R}
+              \xrightarrow{\mu}A
+              \longrightarrow0,</span> where the <span
+      class="math inline">A</span>-module structure is induced by the
+      first tensor factor. The two maps <span
+      class="math display">p_1(a)=a\otimes1,
+              \qquad
+              p_2(a)=1\otimes a</span> satisfy the exact first-order
+      identity <span
+      class="math display">p_2(a)=p_1(a)+da.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The difference <span
+      class="math inline">p_2-p_1</span> is an <span
+      class="math inline">R</span>-derivation with values in the
+      square-zero ideal <span class="math inline">I/I^2</span>.
+      Conversely, for an <span class="math inline">R</span>-derivation
+      <span class="math inline">D\colon A\to M</span>, the formula <span
+      class="math display">\sum_i a_i\otimes b_i\longmapsto\sum_i
+      a_iD(b_i)</span> sends <span class="math inline">I^2</span> to
+      zero and induces the unique <span
+      class="math inline">A</span>-linear map <span
+      class="math inline">I/I^2\to M</span> through which <span
+      class="math inline">D</span> factors. The splitting is induced by
+      <span class="math inline">p_1</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (The Exact Algebraic First-Order
+      Taylor Formula). <em> Let <span
+      class="math inline">P=R[T_1,\ldots,T_n]</span> and set <span
+      class="math display">\delta T_i:=1\otimes T_i-T_i\otimes1\in
+      P^1_{P/R}.</span> Since every product <span
+      class="math inline">\delta T_i\delta T_j</span> vanishes modulo
+      <span class="math inline">I^2</span>, one has the exact identity
+      <span class="math display">1\otimes F
+              =F\otimes1+
+              \sum_{i=1}^n
+              \left(\frac{\partial F}{\partial T_i}\otimes1\right)\delta
+      T_i
+              \qquad\text{ in }P^1_{P/R}</span> for every polynomial
+      <span class="math inline">F\in P</span>. Thus the Jacobian is not
+      an analytic approximation: it is the exact linear part of
+      polynomial substitution after all terms of order at least two have
+      been killed.</em></p>
+      </div>
+      <h4 data-number="3.3.1.4"
+      id="polynomial-algebras-quotients-and-jacobian-presentations">Polynomial
+      Algebras, Quotients, and Jacobian Presentations</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Differentials of a Polynomial
+      Algebra). <em> Let <span
+      class="math inline">P=R[T_1,\ldots,T_n]</span>. Then <span
+      class="math display">\Omega^1_{P/R}
+              \cong
+              \bigoplus_{j=1}^n P\,dT_j,</span> and for every <span
+      class="math inline">F\in P</span>, <span
+      class="math display">dF=\sum_{j=1}^n\frac{\partial F}{\partial
+      T_j}\,dT_j.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> An <span
+      class="math inline">R</span>-derivation <span
+      class="math inline">D\colon P\to M</span> is uniquely determined
+      by the arbitrary values <span
+      class="math inline">D(T_1),\ldots,D(T_n)</span>. The displayed
+      free module therefore represents the functor <span
+      class="math inline">M\mapsto\operatorname{Der}_R(P,M)</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Conormal Sequence for a
+      Quotient). <em> Let <span class="math inline">P</span> be an <span
+      class="math inline">R</span>-algebra, let <span
+      class="math inline">J\subseteq P</span> be an ideal, and put <span
+      class="math inline">A=P/J</span>. There is a canonical exact
+      sequence of <span class="math inline">A</span>-modules <span
+      class="math display">J/J^2
+              \xrightarrow{\ d\ }
+              \Omega^1_{P/R}\otimes_P A
+              \longrightarrow
+              \Omega^1_{A/R}
+              \longrightarrow0,</span> where the first map sends the
+      class of <span class="math inline">F\in J</span> to <span
+      class="math inline">dF\otimes1</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Every <span
+      class="math inline">R</span>-derivation of <span
+      class="math inline">P</span> descends to <span
+      class="math inline">A</span> exactly when it annihilates <span
+      class="math inline">J</span>. Applying <span
+      class="math inline">\operatorname{Hom}_A(-,M)</span> and the
+      universal property of differentials gives the asserted right exact
+      sequence. The Leibniz rule shows that <span
+      class="math inline">J^2</span> maps to zero after tensoring with
+      <span class="math inline">A</span>. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Jacobian Presentation of a
+      Differential Module). <em> Suppose <span
+      class="math display">A=R[T_1,\ldots,T_n]/(F_1,\ldots,F_r).</span>
+      Then <span class="math inline">\Omega^1_{A/R}</span> has the
+      finite presentation <span class="math display">A^r
+              \xrightarrow{\ J_F^{\mathsf t}\ }
+              A^n
+              \longrightarrow
+              \Omega^1_{A/R}
+              \longrightarrow0,</span> where <span
+      class="math display">J_F=
+              \left(\frac{\partial F_i}{\partial T_j}\right)_
+              {\substack{1\le i\le r\\1\le j\le n}}</span> and the <span
+      class="math inline">i</span>-th basis vector of <span
+      class="math inline">A^r</span> is sent to <span
+      class="math display">\mathrm{d}F_i=\sum_{j=1}^n
+              \frac{\partial F_i}{\partial T_j}\,dT_j.</span> No
+      regular-sequence hypothesis is required, and the first arrow need
+      not be injective.</em></p>
+      </div>
+      <h4 data-number="3.3.1.5"
+      id="formal-properties-of-differential-modules">Formal Properties
+      of Differential Modules</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Localization and Base
+      Change). <em> Let <span class="math inline">R\to A</span> be a
+      ring map.</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">W\subseteq A</span> is
+      multiplicatively closed, then <span
+      class="math display">W^{-1}\Omega^1_{A/R}
+                  \xrightarrow{\sim}
+                  \Omega^1_{W^{-1}A/R}.</span></em></p></li>
+      <li><p><em>If <span class="math inline">R\to R&#39;</span> is a
+      ring map and <span
+      class="math inline">A&#39;:=A\otimes_RR&#39;</span>, then <span
+      class="math display">\Omega^1_{A/R}\otimes_AA&#39;
+                  \xrightarrow{\sim}
+                  \Omega^1_{A&#39;/R&#39;}.</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Both statements follow from the universal
+      property. A derivation extends uniquely across localization by the
+      quotient rule, and an <span
+      class="math inline">R&#39;</span>-derivation of <span
+      class="math inline">A&#39;</span> is equivalent to an <span
+      class="math inline">R</span>-derivation of <span
+      class="math inline">A</span> with values in the same <span
+      class="math inline">A&#39;</span>-module. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Transitivity Sequence). <em>
+      For ring maps <span class="math inline">R\to A\to C</span>, there
+      is a canonical exact sequence of <span
+      class="math inline">C</span>-modules <span
+      class="math display">\Omega^1_{A/R}\otimes_AC
+              \longrightarrow
+              \Omega^1_{C/R}
+              \longrightarrow
+              \Omega^1_{C/A}
+              \longrightarrow0.</span> The first map sends <span
+      class="math inline">da\otimes c</span> to <span
+      class="math inline">c\,da</span>, and the second sends <span
+      class="math inline">dc</span> to its class relative to <span
+      class="math inline">A</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> An <span
+      class="math inline">R</span>-derivation of <span
+      class="math inline">C</span> is an <span
+      class="math inline">A</span>-derivation precisely when its
+      restriction to <span class="math inline">A</span> vanishes.
+      Dualizing this exact statement about derivations through the
+      universal property gives the sequence. ◻</p>
+      </div>
+      <h3 data-number="3.3.2" id="tangent-spaces">Tangent Spaces</h3>
+      <h4 data-number="3.3.2.1" id="the-absolute-differential-sheaf">The
+      Absolute Differential Sheaf</h4>
+      <div class="definition">
+      <p><strong>Definition 3.4</strong> (Absolute Differential Sheaf).
+      <em> Let <span class="math inline">X</span> be a standard scheme
+      with structure morphism <span class="math inline">p_X\colon X\to
+      B</span>. Its <strong>absolute differential sheaf</strong> is
+      <span class="math display">\Omega^1_X:=\Omega^1_{X/B},</span>
+      equipped with the universal <span
+      class="math inline">B</span>-derivation <span
+      class="math display">d_X:=d_{X/B}\colon\mathcal{O}_X\longrightarrow\Omega^1_X.</span>
+      The word “absolute” is always relative to the fixed standard base
+      ring <span class="math inline">S</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Local and Diagonal
+      Descriptions). <em> Let <span class="math inline">X</span> be a
+      standard scheme.</em></p>
+      <ol>
+      <li><p><em>If <span
+      class="math inline">U=\operatorname{Spec}A\subseteq X</span> is
+      affine, then <span
+      class="math display">\Gamma(U,\Omega^1_X)\cong\Omega^1_{A/S}.</span></em></p></li>
+      <li><p><em>Let <span class="math inline">\Delta_{X/B}\colon X\to
+      X\times_BX</span> be the diagonal. If <span
+      class="math inline">\mathcal I_\Delta</span> denotes its ideal
+      sheaf on an open neighbourhood on which it is closed, then <span
+      class="math display">\Omega^1_X\cong\mathcal I_\Delta/\mathcal
+      I_\Delta^2</span> as <span
+      class="math inline">\mathcal{O}_X</span>-modules.</em></p></li>
+      <li><p><em>The sheaf <span class="math inline">\Omega^1_X</span>
+      is coherent.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The first two assertions are the sheafified
+      forms of the affine universal property and the diagonal
+      construction. Since <span class="math inline">X\to B</span> is of
+      finite presentation, <span class="math inline">\Omega^1_X</span>
+      is finitely presented. Because <span class="math inline">X</span>
+      is Noetherian, it is coherent. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Universal Property on
+      Schemes). <em> Let <span class="math inline">\mathcal F</span> be
+      an <span class="math inline">\mathcal{O}_X</span>-module.
+      Composition with <span class="math inline">d_X</span> induces a
+      functorial isomorphism <span
+      class="math display">\operatorname{Hom}_{\mathcal{O}_X}(\Omega^1_X,\mathcal
+      F)
+              \xrightarrow{\sim}
+              \operatorname{Der}_B(\mathcal{O}_X,\mathcal F).</span> In
+      particular, the <strong>absolute tangent sheaf</strong> <span
+      class="math display">\mathcal T_X:=
+              \mathcal
+      H\!om_{\mathcal{O}_X}(\Omega^1_X,\mathcal{O}_X)</span> is the
+      sheaf of <span class="math inline">B</span>-derivations of <span
+      class="math inline">\mathcal{O}_X</span> into itself.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (The Tangent Sheaf is not a Tangent
+      Bundle). <em> Although <span class="math inline">\mathcal
+      T_X</span> is always coherent, it need not be locally free.
+      Moreover, there is only a natural map <span
+      class="math display">\mathcal
+      T_{X,x}\otimes_{\mathcal{O}_{X,x}}\kappa(x)
+              \longrightarrow T_xX,</span> and this map can fail to be
+      an isomorphism. It is an isomorphism whenever <span
+      class="math inline">\Omega^1_X</span> is locally free near <span
+      class="math inline">x</span>. Thus pointwise tangent spaces should
+      be defined directly from the cotangent fibre, not from the fibre
+      of the tangent sheaf.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Restriction, Base Change, and
+      Products). <em> </em></p>
+      <ol>
+      <li><p><em>For every open subscheme <span
+      class="math inline">U\subseteq X</span>, <span
+      class="math display">\Omega^1_U\cong\Omega^1_X|_U.</span></em></p></li>
+      <li><p><em>If <span class="math inline">B&#39;\to B</span> is any
+      morphism, <span
+      class="math inline">X&#39;:=X\times_BB&#39;</span>, and <span
+      class="math inline">q\colon X&#39;\to X</span> is the projection,
+      then <span
+      class="math display">q^*\Omega^1_X\cong\Omega^1_{X&#39;/B&#39;}.</span></em></p></li>
+      <li><p><em>If <span class="math inline">X</span> and <span
+      class="math inline">Y</span> are standard schemes, then <span
+      class="math display">\Omega^1_{X\times_BY/B}
+                  \cong
+                  \operatorname{pr}_X^*\Omega^1_X
+                  \oplus
+                  \operatorname{pr}_Y^*\Omega^1_Y.</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) Since the sheaf of relative differentials
+      <span class="math inline">\Omega_{X/B}^1</span> (here denoted
+      <span class="math inline">\Omega_X^1</span>) is constructed by
+      gluing affine covers, it suffices to prove the statement locally
+      on affine open sets. Let <span class="math inline">V =
+      \text{Spec}(B) \subseteq B</span> be an affine open subset, <span
+      class="math inline">W = \text{Spec}(A) \subseteq X</span> an
+      affine open contained in the inverse image of <span
+      class="math inline">V</span>, and <span class="math inline">D(f)
+      \subseteq W</span> an affine open distinguished subscheme for some
+      <span class="math inline">f \in A</span>.</p>
+      <p>In commutative algebra, for any <span
+      class="math inline">B</span>-algebra <span
+      class="math inline">A</span> and any multiplicative set <span
+      class="math inline">S \subset A</span>, there is a natural
+      isomorphism of <span class="math inline">S^{-1}A</span>-modules:
+      <span class="math display">S^{-1}\Omega_{A/B}^1 \cong
+      \Omega_{(S^{-1}A)/B}^1.</span> Taking <span class="math inline">S
+      = \{1, f, f^2, \dots\}</span>, this yields <span
+      class="math inline">\Omega_{A_f/B}^1 \cong
+      (\Omega_{A/B}^1)_f</span>. Sheafifying these local isomorphisms
+      over an affine open cover of <span class="math inline">U</span>
+      proves that <span class="math display">\Omega_U^1 \cong
+      \Omega_X^1|_U.</span></p>
+      <p>(2) The question is local on <span
+      class="math inline">B</span>, <span
+      class="math inline">B&#39;</span>, <span
+      class="math inline">X</span>, and <span
+      class="math inline">X&#39;</span>, so we may assume that all
+      schemes are affine: <span class="math inline">B =
+      \text{Spec}(R)</span>, <span class="math inline">B&#39; =
+      \text{Spec}(R&#39;)</span>, <span class="math inline">X =
+      \text{Spec}(A)</span>, and thus <span class="math inline">X&#39; =
+      \text{Spec}(A \otimes_R R&#39;)</span>. Under this setup, the
+      projection map <span class="math inline">q: X&#39; \to X</span>
+      corresponds to the algebra map <span class="math inline">A \to A
+      \otimes_R R&#39;</span> defined by <span class="math inline">a
+      \mapsto a \otimes 1</span>.</p>
+      <p>By standard commutative algebra for Kähler differentials, base
+      change yields a natural isomorphism of <span
+      class="math inline">(A \otimes_R R&#39;)</span>-modules: <span
+      class="math display">\Omega_{(A \otimes_R R&#39;)/R&#39;}^1 \cong
+      \Omega_{A/R}^1 \otimes_A (A \otimes_R R&#39;).</span> The module
+      on the right-hand side corresponds to the pullback sheaf <span
+      class="math inline">q^*\Omega_{X/B}^1</span>, while the left-hand
+      side corresponds to <span
+      class="math inline">\Omega_{X&#39;/B&#39;}^1</span>. Sheafifying
+      this canonical isomorphism gives the desired scheme-theoretic
+      isomorphism: <span class="math display">q^*\Omega_X^1 \cong
+      \Omega_{X&#39;/B&#39;}^1.</span></p>
+      <p>(3) Let <span class="math inline">\text{pr}_X: X \times_B Y \to
+      X</span> and <span class="math inline">\text{pr}_Y: X \times_B Y
+      \to Y</span> be the canonical projections. By reducing to affine
+      open subsets <span class="math inline">B = \text{Spec}(R)</span>,
+      <span class="math inline">X = \text{Spec}(A)</span>, and <span
+      class="math inline">Y = \text{Spec}(C)</span>, the fiber product
+      scheme <span class="math inline">X \times_B Y</span> is covered by
+      affine open schemes of the form <span
+      class="math inline">\text{Spec}(A \otimes_R C)</span>.</p>
+      <p>For <span class="math inline">R</span>-algebras <span
+      class="math inline">A</span> and <span
+      class="math inline">C</span>, the module of Kähler differentials
+      of the tensor product <span class="math inline">A \otimes_R
+      C</span> satisfies the canonical isomorphism of <span
+      class="math inline">(A \otimes_R C)</span>-modules: <span
+      class="math display">\Omega_{(A \otimes_R C)/R}^1 \cong
+      \left(\Omega_{A/R}^1 \otimes_A (A \otimes_R C)\right) \oplus
+      \left(\Omega_{C/R}^1 \otimes_C (A \otimes_R C)\right).</span>
+      Sheafifying this identity over <span class="math inline">X
+      \times_B Y</span>, the first direct summand corresponds to <span
+      class="math inline">\text{pr}_X^* \Omega_X^1</span> and the second
+      summand corresponds to <span class="math inline">\text{pr}_Y^*
+      \Omega_Y^1</span>. Thus, we obtain: <span
+      class="math display">\Omega_{X \times_B Y / B}^1 \cong
+      \text{pr}_X^* \Omega_X^1 \oplus \text{pr}_Y^*
+      \Omega_Y^1.</span> ◻</p>
+      </div>
+      <h4 data-number="3.3.2.2"
+      id="absolute-cotangent-and-tangent-spaces">Absolute Cotangent and
+      Tangent Spaces</h4>
+      <div class="definition">
+      <p><strong>Definition 3.5</strong> (Absolute Cotangent and Tangent
+      Spaces). <em> Let <span class="math inline">x\in X</span>, let
+      <span class="math inline">s\in B</span> be its image, and let
+      <span class="math inline">i_x\colon\operatorname{Spec}\kappa(x)\to
+      X</span> be the canonical point. The <strong>absolute cotangent
+      space</strong> and <strong>absolute tangent space</strong> of
+      <span class="math inline">X</span> at <span
+      class="math inline">x</span> are <span class="math display">T_x^*X
+              :=i_x^*\Omega^1_X
+              =\Omega^1_{X/B,x}\otimes_{\mathcal{O}_{X,x}}\kappa(x),</span>
+      and <span class="math display">T_xX
+              :=\operatorname{Hom}_{\kappa(x)}(T_x^*X,\kappa(x)).</span></em></p>
+      </div>
+      <p>Because <span class="math inline">\Omega^1_X</span> is
+      coherent, <span class="math inline">T_x^*X</span> and <span
+      class="math inline">T_xX</span> are finite-dimensional <span
+      class="math inline">\kappa(x)</span>-vector spaces for every point
+      <span class="math inline">x</span>, including non-closed
+      points.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Three Equivalent Descriptions
+      of an Absolute Tangent Vector). <em> There are canonical
+      isomorphisms <span class="math display">T_xX
+              \cong
+              \operatorname{Hom}_{\mathcal{O}_{X,x}}(\Omega^1_{X/B,x},\kappa(x))
+              \cong
+              \operatorname{Der}_{\mathcal{O}_{B,s}}(\mathcal{O}_{X,x},\kappa(x)).</span>
+      Moreover, <span class="math inline">T_xX</span> is naturally
+      identified with the set of <span
+      class="math inline">B</span>-morphisms <span
+      class="math display">\theta\colon\operatorname{Spec}\kappa(x)[\varepsilon]\longrightarrow
+      X,
+              \qquad \varepsilon^2=0,</span> whose restriction along
+      <span
+      class="math inline">\operatorname{Spec}\kappa(x)\hookrightarrow\operatorname{Spec}\kappa(x)[\varepsilon]</span>
+      is <span class="math inline">i_x</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The first two descriptions follow from the
+      universal property of <span
+      class="math inline">\Omega^1_{X/B}</span>. A lifting to the dual
+      numbers corresponds on local rings to a homomorphism <span
+      class="math display">\mathcal{O}_{X,x}\longrightarrow\kappa(x)[\varepsilon],
+              \qquad
+              a\longmapsto\overline a+D(a)\varepsilon,</span> where
+      <span class="math inline">D</span> is an <span
+      class="math inline">\mathcal{O}_{B,s}</span>-derivation. The
+      square-zero lifting proposition gives the bijection, and the
+      vector-space operations are induced by addition and scalar
+      multiplication on the coefficient of <span
+      class="math inline">\varepsilon</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (The Absolute Tangent Space
+      Lives in the Fibre). <em> Let <span
+      class="math inline">X_s:=X\times_B\operatorname{Spec}\kappa(s)</span>
+      be the scheme-theoretic fibre. Then <span
+      class="math display">T_xX
+              \cong
+              T_x(X_s/\kappa(s)).</span> Thus the absolute tangent space
+      relative to <span class="math inline">S</span> measures
+      infinitesimal directions inside the fibre over <span
+      class="math inline">s</span>; it does not measure motion of the
+      base point <span class="math inline">s</span> in <span
+      class="math inline">B</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> This is the base-change isomorphism for the
+      differential sheaf, followed by taking the fibre at <span
+      class="math inline">x</span> and dualizing. ◻</p>
+      </div>
+      <h4 data-number="3.3.2.3"
+      id="comparison-with-the-zariski-cotangent-space">Comparison with
+      the Zariski Cotangent Space</h4>
+      <p>Let <span class="math inline">\mathfrak
+      m_x\subset\mathcal{O}_{X,x}</span> and <span
+      class="math inline">\mathfrak m_s\subset\mathcal{O}_{B,s}</span>
+      be the maximal ideals. The maximal ideal of the local ring of the
+      fibre <span class="math inline">X_s</span> at <span
+      class="math inline">x</span> is <span
+      class="math display">\mathfrak n_x
+          =\mathfrak m_x/\mathfrak m_s\mathcal{O}_{X,x}.</span></p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Residue-Field Exact
+      Sequence). <em> There is a canonical right exact sequence of <span
+      class="math inline">\kappa(x)</span>-vector spaces <span
+      class="math display">\frac{\mathfrak m_x}
+              {\mathfrak m_x^2+\mathfrak m_s\mathcal{O}_{X,x}}
+              \longrightarrow
+              T_x^*X
+              \longrightarrow
+              \Omega^1_{\kappa(x)/\kappa(s)}
+              \longrightarrow0.</span> Since <span
+      class="math inline">X_s</span> is of finite type over the field
+      <span class="math inline">\kappa(s)</span>, the extension <span
+      class="math inline">\kappa(x)/\kappa(s)</span> is finitely
+      generated. If this extension is separable, the first map is
+      injective. Hence in that case there is a short exact sequence
+      <span class="math display">0\longrightarrow
+              \frac{\mathfrak m_x}
+              {\mathfrak m_x^2+\mathfrak m_s\mathcal{O}_{X,x}}
+              \longrightarrow
+              T_x^*X
+              \longrightarrow
+              \Omega^1_{\kappa(x)/\kappa(s)}
+              \longrightarrow0.</span> If <span
+      class="math inline">\kappa(x)/\kappa(s)</span> is separable
+      algebraic, then <span class="math display">T_x^*X
+              \cong
+              \frac{\mathfrak m_x}
+              {\mathfrak m_x^2+\mathfrak
+      m_s\mathcal{O}_{X,x}}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Apply the conormal sequence to the quotient
+      <span
+      class="math inline">\mathcal{O}_{X_s,x}\twoheadrightarrow\kappa(x)</span>.
+      This gives the right exact sequence. For a finitely generated
+      separable residue-field extension, the standard cotangent sequence
+      for a local algebra over a field is left exact. If the extension
+      is separable algebraic, its differential module vanishes. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Classical Zariski Tangent Space
+      at a Rational Point). <em> Suppose <span
+      class="math inline">B=\operatorname{Spec}k</span> for a field
+      <span class="math inline">k</span> and <span
+      class="math inline">x\in X(k)</span>. Then <span
+      class="math display">T_x^*X\cong\mathfrak m_x/\mathfrak m_x^2,
+              \qquad
+              T_xX\cong
+              \operatorname{Hom}_k(\mathfrak m_x/\mathfrak
+      m_x^2,k).</span></em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (Pure Inseparability is Visible to
+      the Relative Tangent Space). <em> Let <span
+      class="math inline">k</span> be an imperfect field of
+      characteristic <span class="math inline">p&gt;0</span>, choose
+      <span class="math inline">a\in k</span> which is not a <span
+      class="math inline">p</span>-th power, and put <span
+      class="math display">L=k[u]/(u^p-a),
+              \qquad
+              X=\operatorname{Spec}L.</span> The unique local ring of
+      <span class="math inline">X</span> is the field <span
+      class="math inline">L</span>, so its maximal ideal is zero.
+      However, <span class="math display">\Omega^1_{L/k}\cong
+      L\,du</span> because <span class="math inline">d(u^p-a)=0</span>
+      in characteristic <span class="math inline">p</span>. Therefore
+      <span class="math display">\dim_LT_xX=1.</span> This shows why
+      <span class="math inline">\mathfrak m_x/\mathfrak m_x^2</span>
+      cannot replace <span class="math inline">\Omega^1_{X/k,x}\otimes
+      L</span> at a non-separable point.</em></p>
+      </div>
+      <h4 data-number="3.3.2.4" id="the-relative-differential-sheaf">The
+      Relative Differential Sheaf</h4>
+      <div class="definition">
+      <p><strong>Definition 3.6</strong> (Relative Differential Sheaf).
+      <em> Let <span class="math inline">f\colon X\to Y</span> be a
+      morphism of standard schemes. The <strong>relative differential
+      sheaf</strong> of <span class="math inline">X</span> over <span
+      class="math inline">Y</span> is the coherent <span
+      class="math inline">\mathcal{O}_X</span>-module <span
+      class="math inline">\Omega^1_{X/Y}</span> equipped with the
+      universal <span class="math inline">Y</span>-derivation <span
+      class="math display">d_{X/Y}\colon\mathcal{O}_X\longrightarrow\Omega^1_{X/Y}.</span>
+      Thus, for every <span
+      class="math inline">\mathcal{O}_X</span>-module <span
+      class="math inline">\mathcal F</span>, <span
+      class="math display">\operatorname{Hom}_{\mathcal{O}_X}(\Omega^1_{X/Y},\mathcal
+      F)
+              \xrightarrow{\sim}
+              \operatorname{Der}_Y(\mathcal{O}_X,\mathcal
+      F).</span></em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Affine Description and
+      Coherence). <em> Let <span class="math inline">x\in X</span>.
+      Choose affine neighbourhoods <span class="math inline">x\in
+      U=\operatorname{Spec}A</span> and <span
+      class="math inline">f(x)\in V=\operatorname{Spec}C</span> with
+      <span class="math inline">f(U)\subseteq V</span>. Then <span
+      class="math display">\Gamma(U,\Omega^1_{X/Y})\cong\Omega^1_{A/C}.</span>
+      Since <span class="math inline">f</span> is of finite
+      presentation, <span class="math inline">\Omega^1_{X/Y}</span> is
+      finitely presented and hence coherent.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Absolute–Relative
+      Transitivity Sequence). <em> For a morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes,
+      there is a canonical exact sequence <span
+      class="math display">f^*\Omega^1_Y
+              \xrightarrow{c_f}
+              \Omega^1_X
+              \longrightarrow
+              \Omega^1_{X/Y}
+              \longrightarrow0.</span> Locally, <span
+      class="math inline">c_f</span> is characterized by <span
+      class="math display">c_f(da)=d(f^\sharp a).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> This is the sheafified transitivity sequence
+      for the composition <span class="math inline">X\xrightarrow{f}Y\to
+      B</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Conormal Sequence for a
+      Closed Subscheme). <em> Let <span class="math inline">i\colon
+      Z\hookrightarrow X</span> be a closed immersion of standard
+      schemes over <span class="math inline">Y</span>, defined by an
+      ideal sheaf <span class="math inline">\mathcal
+      I\subseteq\mathcal{O}_X</span>. There is a canonical exact
+      sequence of coherent <span
+      class="math inline">\mathcal{O}_Z</span>-modules <span
+      class="math display">\mathcal I/\mathcal I^2
+              \xrightarrow{\ d\ }
+              i^*\Omega^1_{X/Y}
+              \longrightarrow
+              \Omega^1_{Z/Y}
+              \longrightarrow0.</span> The first map need not be
+      injective.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The statement is local. On affine opens it is
+      exactly <a href="#prop:conormal_sequence_rings">Proposition
+      </a>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Relative Base Change). <em>
+      Consider a Cartesian square
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/e0fbb771c36db160e53962a414660332f47c23eb.svg" target="_blank" rel="noopener"><img src="assets/diagrams/e0fbb771c36db160e53962a414660332f47c23eb.svg" alt="交换图" loading="lazy" /></a></span>
+      Then the canonical map <span
+      class="math display">q^*\Omega^1_{X/Y}
+              \xrightarrow{\sim}
+              \Omega^1_{X&#39;/Y&#39;}</span> is an
+      isomorphism.</em></p>
+      </div>
+      <h4 data-number="3.3.2.5"
+      id="relative-cotangent-and-tangent-spaces">Relative Cotangent and
+      Tangent Spaces</h4>
+      <div class="definition">
+      <p><strong>Definition 3.7</strong> (Relative Cotangent and Tangent
+      Spaces). <em> Let <span class="math inline">f\colon X\to Y</span>,
+      let <span class="math inline">x\in X</span>, and write <span
+      class="math inline">y=f(x)</span>. The <strong>relative cotangent
+      space</strong> and <strong>relative tangent space</strong> of
+      <span class="math inline">f</span> at <span
+      class="math inline">x</span> are <span
+      class="math display">T_x^*(X/Y)
+              :=\Omega^1_{X/Y,x}\otimes_{\mathcal{O}_{X,x}}\kappa(x),</span>
+      and <span class="math display">T_x(X/Y)
+              :=\operatorname{Hom}_{\kappa(x)}(T_x^*(X/Y),\kappa(x)).</span></em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Derivations and Dual Numbers
+      for the Relative Tangent Space). <em> There are canonical
+      identifications <span class="math display">T_x(X/Y)
+              \cong
+              \operatorname{Der}_{\mathcal{O}_{Y,y}}(\mathcal{O}_{X,x},\kappa(x))</span>
+      and <span class="math display">T_x(X/Y)
+              \cong
+              \left\{
+              \theta\colon\operatorname{Spec}\kappa(x)[\varepsilon]\to X
+              \ \middle|\
+              f\circ\theta=f\circ i_x\circ\pi,
+              \quad
+              \theta|_{\varepsilon=0}=i_x
+              \right\},</span> where <span
+      class="math inline">\pi\colon\operatorname{Spec}\kappa(x)[\varepsilon]\to\operatorname{Spec}\kappa(x)</span>
+      is the canonical morphism.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The first statement is the universal property
+      of <span class="math inline">\Omega^1_{X/Y}</span> at the stalk.
+      The second is the square-zero lifting description of
+      derivations. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Relative Tangent Space as the
+      Tangent Space of a Fibre). <em> Let <span
+      class="math inline">X_y:=X\times_Y\operatorname{Spec}\kappa(y)</span>.
+      Then <span class="math display">T_x(X/Y)
+              \cong
+              T_x(X_y/\kappa(y)).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Apply relative base change to <span
+      class="math inline">\operatorname{Spec}\kappa(y)\to Y</span> and
+      take the fibre at <span class="math inline">x</span>. ◻</p>
+      </div>
+      <h4 data-number="3.3.2.6"
+      id="differentials-of-morphisms-and-the-relative-tangent-exact-sequence">Differentials
+      of Morphisms and the Relative Tangent Exact Sequence</h4>
+      <p>For a finite-dimensional <span
+      class="math inline">\kappa(y)</span>-vector space <span
+      class="math inline">V</span>, write <span
+      class="math display">V_{\kappa(x)}:=V\otimes_{\kappa(y)}\kappa(x).</span></p>
+      <div class="definition">
+      <p><strong>Definition 3.8</strong> (Tangent Morphism). <em> Let
+      <span class="math inline">f\colon X\to Y</span> and <span
+      class="math inline">x\in X</span>, with <span
+      class="math inline">y=f(x)</span>. Tensoring the map <span
+      class="math inline">f^*\Omega^1_Y\to\Omega^1_X</span> at <span
+      class="math inline">x</span> gives <span
+      class="math display">T_y^*Y\otimes_{\kappa(y)}\kappa(x)
+              \longrightarrow
+              T_x^*X.</span> Its <span
+      class="math inline">\kappa(x)</span>-dual is the <strong>tangent
+      morphism</strong>, or <strong>differential of <span
+      class="math inline">f</span> at <span
+      class="math inline">x</span></strong>, <span
+      class="math display">\mathrm{d}f_x\colon
+              T_xX
+              \longrightarrow
+              T_yY\otimes_{\kappa(y)}\kappa(x).</span></em></p>
+      </div>
+      <p>The final identification uses finite-dimensionality, which is
+      automatic in the standard category.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Relative Tangent Exact Sequence).
+      <em> For every morphism <span class="math inline">f\colon X\to
+      Y</span> of standard schemes and every <span
+      class="math inline">x\in X</span>, there is a canonical exact
+      sequence <span class="math display">0
+              \longrightarrow
+              T_x(X/Y)
+              \longrightarrow
+              T_xX
+              \xrightarrow{\mathrm{d}f_x}
+              T_yY\otimes_{\kappa(y)}\kappa(x).</span> In particular,
+      <span class="math display">T_x(X/Y)=\ker(\mathrm{d}f_x).</span> No
+      surjectivity assertion is made at the right-hand end.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Tensor the absolute–relative transitivity
+      sequence with <span class="math inline">\kappa(x)</span> to obtain
+      the right exact sequence <span
+      class="math display">T_y^*Y\otimes_{\kappa(y)}\kappa(x)
+              \longrightarrow T_x^*X
+              \longrightarrow T_x^*(X/Y)
+              \longrightarrow0.</span> Duality of vector spaces is
+      exact, so dualizing gives the asserted sequence. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Chain Rule). <em> Let <span
+      class="math inline">X\xrightarrow{f}Y\xrightarrow{g}Z</span> be
+      morphisms of standard schemes and let <span
+      class="math inline">x\in X</span>, <span
+      class="math inline">y=f(x)</span>, and <span
+      class="math inline">z=g(y)</span>. After the natural scalar
+      extensions, <span class="math display">d(g\circ f)_x
+              =
+              \left(dg_y\otimes_{\kappa(y)}\kappa(x)\right)\circ
+      \mathrm{d}f_x.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> On cotangent spaces this is the functorial
+      identity <span class="math inline">d((g\circ f)^\sharp
+      a)=d(f^\sharp(g^\sharp a))</span>. Dualizing gives the stated
+      formula. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Tangent Spaces and Field
+      Extension). <em> In the Cartesian square of <a
+      href="#prop:relative_differentials_base_change">Proposition </a>,
+      let <span class="math inline">x&#39;\in X&#39;</span> map to <span
+      class="math inline">x\in X</span>. Then <span
+      class="math display">T_{x&#39;}^*(X&#39;/Y&#39;)
+              \cong
+              T_x^*(X/Y)\otimes_{\kappa(x)}\kappa(x&#39;)</span> and
+      <span class="math display">T_{x&#39;}(X&#39;/Y&#39;)
+              \cong
+              T_x(X/Y)\otimes_{\kappa(x)}\kappa(x&#39;).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The cotangent statement follows from base
+      change for <span class="math inline">\Omega^1_{X/Y}</span>. The
+      cotangent spaces are finite-dimensional, so duality commutes with
+      extension of the ground field. ◻</p>
+      </div>
+      <h4 data-number="3.3.2.7" id="the-relative-jacobian-formula">The
+      Relative Jacobian Formula</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Jacobian Description of a
+      Relative Tangent Space). <em> Let <span
+      class="math inline">f\colon X\to Y</span> be a morphism of
+      standard schemes, let <span class="math inline">x\in X</span>, and
+      choose a finite affine presentation around <span
+      class="math inline">x</span>, <span
+      class="math display">V=\operatorname{Spec}C\subseteq Y,
+              \qquad
+              U=\operatorname{Spec}A\subseteq f^{-1}(V),
+              \qquad
+              A\cong C[T_1,\ldots,T_n]/(F_1,\ldots,F_r).</span> Let
+      <span class="math inline">J_F(x)</span> be the matrix <span
+      class="math display">J_F(x)=
+              \left(
+              \frac{\partial F_i}{\partial T_j}(x)
+              \right)
+              \in M_{r\times n}(\kappa(x)),</span> obtained by reducing
+      the coefficients and coordinates in <span
+      class="math inline">\kappa(x)</span>. Then <span
+      class="math display">T_x^*(X/Y)
+              \cong
+              \operatorname{coker}
+              \left(
+              J_F(x)^{\mathsf t}\colon
+              \kappa(x)^r\to\kappa(x)^n
+              \right),</span> and <span class="math display">T_x(X/Y)
+              \cong
+              \ker
+              \left(
+              J_F(x)\colon
+              \kappa(x)^n\to\kappa(x)^r
+              \right).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The Jacobian presentation of <span
+      class="math inline">\Omega^1_{A/C}</span> gives <span
+      class="math display">A^r\xrightarrow{J_F^{\mathsf t}}A^n
+              \longrightarrow\Omega^1_{A/C}\longrightarrow0.</span>
+      Tensoring with <span class="math inline">\kappa(x)</span> gives
+      the cotangent-space formula. Dualizing the resulting
+      finite-dimensional right exact sequence gives the tangent-space
+      formula. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Generality of the Jacobian
+      Formula). <em> The theorem applies simultaneously to</em></p>
+      <ol>
+      <li><p><em>closed and non-closed points;</em></p></li>
+      <li><p><em>reducible schemes;</em></p></li>
+      <li><p><em>non-reduced schemes and embedded nilpotent
+      structures;</em></p></li>
+      <li><p><em>arithmetic fibres over non-field standard base
+      rings;</em></p></li>
+      <li><p><em>arbitrary finite presentations, without any
+      complete-intersection or regular- sequence
+      hypothesis.</em></p></li>
+      </ol>
+      <p><em>The Jacobian criterion for smoothness is a later theorem.
+      The kernel formula itself is purely first-order algebra and
+      requires no smoothness assumption.</em></p>
+      </div>
+      <h4 data-number="3.3.2.8"
+      id="independence-of-equations-and-coordinates">Independence of
+      Equations and Coordinates</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Independence of the Chosen
+      Generators). <em> In the setting of <a
+      href="#th:relative_tangent_jacobian">Theorem </a>, the subspace
+      <span
+      class="math display">\operatorname{rowspan}_{\kappa(x)}J_F(x)
+              \subseteq\kappa(x)^n</span> depends only on the ideal
+      <span class="math inline">I=(F_1,\ldots,F_r)</span> and the chosen
+      ambient coordinates, not on the chosen generating family of <span
+      class="math inline">I</span>. Equivalently, the kernel defining
+      <span class="math inline">T_x(X/Y)</span> is unchanged when the
+      equations are replaced by any other finite set of
+      generators.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Intrinsically, the row space is the image of
+      <span class="math display">I/I^2\otimes_A\kappa(x)
+              \longrightarrow
+              \Omega^1_{C[T_1,\ldots,T_n]/C}\otimes_A\kappa(x)
+              \cong\kappa(x)^n.</span> For a direct polynomial
+      verification, if <span
+      class="math inline">G_a=\sum_iH_{ai}F_i</span>, then on <span
+      class="math inline">X</span> <span class="math display">dG_a
+              =\sum_iH_{ai}\,\mathrm{d}F_i+\sum_iF_i\,dH_{ai}
+              =\sum_iH_{ai}\,\mathrm{d}F_i.</span> Evaluating at <span
+      class="math inline">x</span> shows every row associated with the
+      <span class="math inline">G_a</span> lies in the row span of the
+      <span class="math inline">F_i</span>. Applying the same argument
+      in the opposite direction gives equality when both families
+      generate <span class="math inline">I</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Change of Ambient Presentation).
+      <em> Changing the variables or embedding <span
+      class="math inline">U</span> into another affine space changes the
+      matrix but not the vector space. The two cokernels are canonically
+      identified with <span class="math inline">T_x^*(X/Y)</span>, and
+      their dual kernels are canonically identified with <span
+      class="math inline">T_x(X/Y)</span>. Thus different Jacobian
+      matrices are coordinate matrices of the same intrinsic cotangent
+      map.</em></p>
+      </div>
+      <h4 data-number="3.3.2.9"
+      id="jacobian-matrix-of-a-morphism-between-polynomial-models">Jacobian
+      Matrix of a Morphism Between Polynomial Models</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Polynomial Formula for the
+      Tangent Morphism). <em> Let <span
+      class="math display">X=\operatorname{Spec}A,
+              \qquad
+              A=S[X_1,\ldots,X_n]/I,</span> and <span
+      class="math display">Y=\operatorname{Spec}C,
+              \qquad
+              C=S[Y_1,\ldots,Y_m]/J.</span> Let <span
+      class="math inline">f\colon X\to Y</span> be determined by
+      polynomials <span class="math inline">P_1,\ldots,P_m\in
+      S[X_1,\ldots,X_n]</span> satisfying <span
+      class="math display">f^\sharp(Y_a)=P_a\pmod I,
+              \qquad
+              G(P_1,\ldots,P_m)\in I\quad(G\in J).</span> For <span
+      class="math inline">x\in X</span>, write <span
+      class="math inline">y=f(x)</span>. Under the Jacobian descriptions
+      of the absolute tangent spaces, the differential is <span
+      class="math display">\mathrm{d}f_x(v)=J_P(x)v,
+              \qquad
+              J_P(x)=
+              \left(
+              \frac{\partial P_a}{\partial X_j}(x)
+              \right)_{a,j}.</span> More explicitly, <span
+      class="math inline">J_P(x)</span> maps the subspace <span
+      class="math inline">T_xX\subseteq\kappa(x)^n</span> into <span
+      class="math inline">T_yY\otimes_{\kappa(y)}\kappa(x)\subseteq\kappa(x)^m</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> For a tangent vector <span
+      class="math inline">v</span>, viewed as a derivation, the chain
+      rule for formal derivatives gives <span
+      class="math display">v(P_a)=
+              \sum_{j=1}^n
+              \frac{\partial P_a}{\partial X_j}(x)v(X_j).</span> Hence
+      the coordinate matrix is <span class="math inline">J_P(x)</span>.
+      To see that the image satisfies the tangent equations of <span
+      class="math inline">Y</span>, take <span class="math inline">G\in
+      J</span>. Since <span class="math inline">G(P)\in I</span>, every
+      tangent vector to <span class="math inline">X</span> annihilates
+      <span class="math inline">d(G(P))</span>. The polynomial chain
+      rule gives <span class="math display">J_G(y)J_P(x)v=0,</span>
+      which is exactly the required compatibility. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Relative Tangent Space from a
+      Stacked Jacobian). <em> In the preceding setting, if <span
+      class="math inline">I=(F_1,\ldots,F_r)</span>, then <span
+      class="math display">T_x(X/Y)
+              =
+              \left\{
+              v\in\kappa(x)^n
+              \ \middle|\
+              J_F(x)v=0,
+              \quad
+              J_P(x)v=0
+              \right\}.</span> Equivalently, <span
+      class="math display">T_x(X/Y)
+              =
+              \ker
+              \begin{pmatrix}
+                  J_F(x)\\
+                  J_P(x)
+              \end{pmatrix}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The first condition says that <span
+      class="math inline">v</span> is an absolute tangent vector to
+      <span class="math inline">X</span>. The second says that the
+      corresponding derivation annihilates the image of every coordinate
+      generator of <span class="math inline">C</span>, hence annihilates
+      <span class="math inline">C</span> and is a <span
+      class="math inline">C</span>-derivation. This is precisely the
+      definition of <span class="math inline">T_x(X/Y)</span>. ◻</p>
+      </div>
+      <h4 data-number="3.3.2.10"
+      id="tangent-dimension-loci-and-fitting-ideals">Tangent-Dimension
+      Loci and Fitting Ideals</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Upper Semicontinuity of Relative
+      Tangent Dimension). <em> Let <span class="math inline">f\colon
+      X\to Y</span> be a morphism of standard schemes. For every integer
+      <span class="math inline">d\ge0</span>, the subset <span
+      class="math display">X_{\ge d}(f)
+              :=
+              \left\{
+              x\in X
+              \ \middle|\
+              \dim_{\kappa(x)}T_x(X/Y)\ge d
+              \right\}</span> is closed. More precisely, it is the
+      closed locus defined by the appropriate Fitting ideal of the
+      coherent module <span
+      class="math inline">\Omega^1_{X/Y}</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The tangent and cotangent spaces have the same
+      dimension. Locally choose a presentation <span
+      class="math display">A^r\xrightarrow{M}A^n\longrightarrow\Omega^1_{A/C}\longrightarrow0.</span>
+      At <span class="math inline">x</span>, the cotangent dimension is
+      <span class="math inline">n-\operatorname{rank}M(x)</span>.
+      Therefore the condition that this dimension be at least <span
+      class="math inline">d</span> is the condition <span
+      class="math display">\operatorname{rank}M(x)\le n-d,</span> which
+      is cut out by all <span
+      class="math inline">(n-d+1)\times(n-d+1)</span> minors of <span
+      class="math inline">M</span>. Fitting ideals show that the
+      resulting closed subscheme is independent of the chosen
+      presentation. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Jacobian-Minor Description).
+      <em> In a relative affine presentation <span
+      class="math display">A=C[T_1,\ldots,T_n]/(F_1,\ldots,F_r),</span>
+      the locus where <span class="math inline">\dim T_x(X/Y)\ge
+      d</span> is the zero locus of the <span
+      class="math inline">(n-d+1)\times(n-d+1)</span> minors of the
+      Jacobian matrix <span class="math inline">J_F</span>, with the
+      usual convention when the requested size exceeds the dimensions of
+      the matrix.</em></p>
+      </div>
+      <h4 data-number="3.3.2.11"
+      id="examples-detecting-non-reduced-reducible-and-arithmetic-geometry">Examples
+      Detecting Non-Reduced, Reducible, and Arithmetic Geometry</h4>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (A Non-Reduced Point). <em> Let
+      <span class="math display">X=\operatorname{Spec}k[t]/(t^2)</span>
+      over a field <span class="math inline">k</span>, and let <span
+      class="math inline">x</span> be its unique point. The presentation
+      has one equation <span class="math inline">F=t^2</span>, so <span
+      class="math display">J_F(x)=(2t)(x)=0.</span> Hence <span
+      class="math display">T_xX\cong k.</span> By contrast, the reduced
+      subscheme <span
+      class="math inline">X_{\mathrm{red}}=\operatorname{Spec}k</span>
+      has zero tangent space. The tangent space therefore detects the
+      first-order nilpotent thickening which the underlying topological
+      space cannot see.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (A Reducible Crossing). <em> Let
+      <span class="math display">X=V(xy)\subseteq\mathbb A_k^2.</span>
+      At the origin <span class="math inline">o</span>, the Jacobian row
+      is <span class="math display">J_{xy}(o)=(y(o),x(o))=(0,0),</span>
+      so <span class="math display">T_oX=k^2.</span> At a point <span
+      class="math inline">(a,0)</span> with <span
+      class="math inline">a\ne0</span>, the Jacobian has rank one and
+      the tangent space has dimension one. The two-dimensional tangent
+      space at the crossing records the two first-order branch
+      directions without requiring <span class="math inline">X</span> to
+      be irreducible.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (An Arithmetic Tangent Jump). <em>
+      Consider the standard scheme <span
+      class="math display">X=\operatorname{Spec}\mathbb Z[t]/(t^2-2)
+              \longrightarrow\operatorname{Spec}\mathbb Z.</span> At a
+      point <span class="math inline">x</span> over a prime <span
+      class="math inline">p</span>, let <span
+      class="math inline">\alpha</span> be the image of <span
+      class="math inline">t</span> in <span
+      class="math inline">\kappa(x)</span>. The relative Jacobian is the
+      <span class="math inline">1\times1</span> matrix <span
+      class="math display">(2\alpha).</span> If <span
+      class="math inline">p\ne2</span>, then <span
+      class="math inline">2\alpha\ne0</span>, because <span
+      class="math inline">\alpha^2=2</span>, and therefore <span
+      class="math inline">T_x(X/\mathbb Z)=0</span>. Over <span
+      class="math inline">p=2</span>, one has <span
+      class="math inline">\alpha=0</span> and the matrix vanishes, so
+      <span class="math display">\dim_{\kappa(x)}T_x(X/\mathbb
+      Z)=1.</span> Thus the relative tangent space detects the ramified
+      and non-reduced special fibre by a purely polynomial
+      calculation.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (A Relative Morphism Computed by a
+      Stacked Jacobian). <em> Let <span class="math inline">k</span> be
+      a field, <span class="math display">X=V(y^2-x^3)\subseteq\mathbb
+      A_k^2,
+              \qquad
+              f\colon X\to\mathbb A_k^1,
+              \qquad
+              f(x,y)=x.</span> At the origin, the equation Jacobian and
+      morphism Jacobian are <span class="math display">J_F(0,0)=(0,0),
+              \qquad
+              J_f(0,0)=(1,0).</span> Hence <span
+      class="math display">T_{(0,0)}X=k^2,
+              \qquad
+              T_{(0,0)}(X/\mathbb A_k^1)
+              =\ker
+              \begin{pmatrix}
+                  0&amp;0\\
+                  1&amp;0
+              \end{pmatrix}
+              =k\cdot(0,1).</span> The absolute tangent space contains
+      all first-order directions compatible with the cusp equation,
+      while the relative tangent space retains only the infinitesimal
+      directions along the fibre of <span
+      class="math inline">f</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (The Differential Dictionary for
+      Standard Schemes). <em> For a morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes, the
+      first-order geometry is organized by the following dictionary:
+      <span class="math display">\begin{array}{c|c}
+              \text{Algebraic or geometric datum} &amp;
+      \text{First-order object}\\
+              \hline
+              \text{$Y$-derivations of $\mathcal{O}_X$} &amp;
+      \Omega^1_{X/Y}\text{ by universality}\\
+              \text{diagonal }X\hookrightarrow X\times_YX
+                  &amp; \Omega^1_{X/Y}\cong\mathcal I_\Delta/\mathcal
+      I_\Delta^2\\
+              \text{first principal parts} &amp;
+                  0\to\Omega^1_{X/Y}\to\mathcal
+      P^1_{X/Y}\to\mathcal{O}_X\to0\\
+              \text{point }x\in X &amp;
+                  T_x^*(X/Y)=\Omega^1_{X/Y,x}\otimes\kappa(x)\\
+              \text{dual-number lift through }x &amp;
+                  T_x(X/Y)=\operatorname{Hom}_{\kappa(x)}(T_x^*(X/Y),\kappa(x))\\
+              \text{local equations }F_1,\ldots,F_r &amp;
+                  T_x(X/Y)=\ker J_F(x)\\
+              \text{morphism }f\colon X\to Y &amp;
+                  T_x(X/Y)=\ker(\mathrm{d}f_x)\\
+              \text{jump of tangent dimension} &amp;
+                  \text{Fitting ideals, equivalently Jacobian minors
+      locally.}
+          \end{array}</span></em></p>
+      <p><em>The intrinsic sheaf <span
+      class="math inline">\Omega^1_{X/Y}</span> is the central object.
+      Polynomial equations supply finite matrix presentations, dual
+      numbers interpret its fibres geometrically, and Jacobian matrices
+      are the resulting coordinate expressions of exact first-order
+      algebra.</em></p>
+      </div>
+      <h3 data-number="3.3.3"
+      id="infinitesimal-thickenings-and-formal-lifting-properties">Infinitesimal
+      Thickenings and Formal Lifting Properties</h3>
+      <h4 data-number="3.3.3.1"
+      id="first-order-and-nilpotent-thickenings">First-Order and
+      Nilpotent Thickenings</h4>
+      <div class="definition">
+      <p><strong>Definition 3.9</strong> (First-Order and Nilpotent
+      Thickenings). <em> Let <span class="math inline">i\colon
+      T_0\hookrightarrow T</span> be a closed immersion defined by a
+      quasi-coherent ideal sheaf <span class="math inline">\mathcal
+      J\subseteq\mathcal{O}_T</span>.</em></p>
+      <ol>
+      <li><p><em>It is a <strong>first-order thickening</strong> or
+      <strong>square-zero thickening</strong> if <span
+      class="math inline">\mathcal J^2=0</span>.</em></p></li>
+      <li><p><em>It is a <strong>nilpotent thickening</strong> if <span
+      class="math inline">\mathcal J^N=0</span> for some <span
+      class="math inline">N\geq 1</span> locally on <span
+      class="math inline">T</span>.</em></p></li>
+      </ol>
+      <p><em>Since <span class="math inline">|T_0|=|T|</span>, a
+      nilpotent thickening changes only the structure sheaf and not the
+      underlying topological space.</em></p>
+      </div>
+      <p>In the affine case, <span
+      class="math inline">T=\operatorname{Spec}C</span> and <span
+      class="math inline">T_0=\operatorname{Spec}(C/J)</span>, where
+      <span class="math inline">J\subseteq C</span> is an ideal
+      satisfying <span class="math inline">J^2=0</span> or <span
+      class="math inline">J^N=0</span>. The module <span
+      class="math inline">J</span> is naturally a <span
+      class="math inline">C/J</span>-module in the square-zero case.</p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Square-Zero Tests Suffice). <em>
+      Suppose a lifting property asks for existence, uniqueness, or
+      unique existence of a lift across every first-order thickening of
+      affine schemes. Then the same property holds across every affine
+      nilpotent thickening.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">J^N=0</span>.
+      Factor <span class="math display">C\longrightarrow
+      C/J^{N-1}\longrightarrow\cdots\longrightarrow C/J^2
+              \longrightarrow C/J.</span> The kernel of <span
+      class="math display">C/J^{m+1}\longrightarrow C/J^m</span> is
+      <span class="math inline">J^m/J^{m+1}</span>, whose square is zero
+      because <span class="math inline">2m\geq m+1</span> for <span
+      class="math inline">m\geq1</span>. Lift successively through this
+      finite tower. Existence, uniqueness, and unique existence are
+      preserved under finite iteration. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Why the Test Schemes Leave the
+      Standard Category). <em> A morphism <span
+      class="math inline">f\colon X\to Y</span> whose source and target
+      are standard schemes will be tested against arbitrary affine <span
+      class="math inline">Y</span>-schemes <span
+      class="math inline">T</span>. This is unavoidable: an arbitrary
+      square-zero algebra <span class="math inline">C\oplus M</span>
+      need not be finite type over <span class="math inline">S</span>.
+      The property being defined still belongs to <span
+      class="math inline">f</span>; the non-standard schemes are merely
+      probes detecting its infinitesimal behaviour.</em></p>
+      </div>
+      <h4 data-number="3.3.3.2"
+      id="formal-unramifiedness-smoothness-and-étaleness">Formal
+      Unramifiedness, Smoothness, and Étaleness</h4>
+      <div class="definition">
+      <p><strong>Definition 3.10</strong> (The Three Formal Differential
+      Properties). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be a morphism of schemes. Consider every commutative
+      solid diagram
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/1be90de9071bba9a5ea0245f7d234333e65ac780.svg" target="_blank" rel="noopener"><img src="assets/diagrams/1be90de9071bba9a5ea0245f7d234333e65ac780.svg" alt="交换图" loading="lazy" /></a></span>
+      in which <span class="math inline">T</span> is affine and <span
+      class="math inline">i</span> is a first-order thickening.</em></p>
+      <ol>
+      <li><p><em>The morphism <span class="math inline">f</span> is
+      <strong>formally unramified</strong> if there is at most one
+      dotted lift <span class="math inline">u</span>.</em></p></li>
+      <li><p><em>The morphism <span class="math inline">f</span> is
+      <strong>formally smooth</strong> if there is at least one dotted
+      lift <span class="math inline">u</span>.</em></p></li>
+      <li><p><em>The morphism <span class="math inline">f</span> is
+      <strong>formally étale</strong> if there is exactly one dotted
+      lift <span class="math inline">u</span>.</em></p></li>
+      </ol>
+      </div>
+      <p>The adjective “formal” refers to the fact that only nilpotent
+      infinitesimal directions are tested. Formally unramified means
+      rigidity, formally smooth means absence of first-order
+      obstructions, and formally étale means both simultaneously.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Affine Algebra Translation).
+      <em> Let <span class="math inline">Y=\operatorname{Spec}R</span>
+      and <span class="math inline">X=\operatorname{Spec}A</span>. Then
+      <span class="math inline">X\to Y</span> is formally unramified,
+      formally smooth, or formally étale if and only if, for every <span
+      class="math inline">R</span>-algebra <span
+      class="math inline">C</span> and square-zero ideal <span
+      class="math inline">J\subseteq C</span>, every <span
+      class="math inline">R</span>-algebra homomorphism <span
+      class="math display">A\longrightarrow C/J</span> has at most one,
+      at least one, or exactly one lift <span class="math inline">A\to
+      C</span>, respectively.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> This is the contravariant equivalence between
+      affine schemes and rings applied to the lifting square in
+      Definition . ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (The Space of Liftings is
+      Controlled by Differentials). <em> In the lifting diagram of
+      Definition , let <span class="math inline">\mathcal J</span> be
+      the square-zero ideal defining <span
+      class="math inline">T_0\hookrightarrow T</span>. If a lift exists,
+      then the set of all lifts is a principal homogeneous space under
+      <span class="math display">\operatorname{Hom}_{\mathcal{O}_{T_0}}
+              \left(u_0^*\Omega^1_{X/Y},\mathcal J\right).</span> In
+      particular, the difference between two lifts is a <span
+      class="math inline">Y</span>-derivation with values in <span
+      class="math inline">\mathcal J</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Work affinely, with <span
+      class="math inline">T=\operatorname{Spec}C</span>, <span
+      class="math inline">T_0=\operatorname{Spec}(C/J)</span>, and
+      suppose <span class="math inline">\varphi_1,\varphi_2\colon A\to
+      C</span> are two lifts of the same map <span
+      class="math inline">\overline\varphi\colon A\to C/J</span>. Their
+      difference <span class="math display">D:=\varphi_1-\varphi_2\colon
+      A\longrightarrow J</span> is <span
+      class="math inline">R</span>-linear. Because <span
+      class="math inline">J^2=0</span> and the two maps have the same
+      reduction modulo <span class="math inline">J</span>, one computes
+      <span
+      class="math display">D(ab)=\overline\varphi(a)D(b)+\overline\varphi(b)D(a).</span>
+      Hence <span class="math inline">D</span> is an <span
+      class="math inline">R</span>-derivation, and by the universal
+      property of Kähler differentials it corresponds uniquely to a
+      homomorphism <span class="math display">\Omega^1_{A/R}\otimes_A
+      C/J\longrightarrow J.</span> Conversely, adding such a derivation
+      to one lift gives another lift. The global statement follows by
+      the same sheafwise calculation. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Formal Unramifiedness is
+      Vanishing of Differentials). <em> For an arbitrary morphism of
+      schemes <span class="math inline">f\colon X\to Y</span>, the
+      following are equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is formally
+      unramified;</em></p></li>
+      <li><p><em><span
+      class="math inline">\Omega^1_{X/Y}=0</span>;</em></p></li>
+      <li><p><em>every relative tangent space <span
+      class="math inline">T_x(X/Y)</span> is zero, provided <span
+      class="math inline">\Omega^1_{X/Y}</span> is of finite
+      type.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The implication (ii)<span
+      class="math inline">\Rightarrow</span>(i) follows immediately from
+      Proposition . For the converse, let <span
+      class="math inline">\Delta\colon X\to X\times_YX</span> be the
+      diagonal and let <span class="math inline">X^{(1)}</span> be its
+      first infinitesimal neighbourhood. The two projections <span
+      class="math display">p_1,p_2\colon X^{(1)}\longrightarrow X</span>
+      agree on <span class="math inline">X\subseteq X^{(1)}</span>.
+      Formal unramifiedness forces <span
+      class="math inline">p_1=p_2</span>. The differences <span
+      class="math inline">p_1^\#(a)-p_2^\#(a)</span> generate the
+      conormal sheaf of the diagonal, which is <span
+      class="math inline">\Omega^1_{X/Y}</span>. Hence this sheaf
+      vanishes.</p>
+      <p>If <span class="math inline">\Omega^1_{X/Y}</span> is of finite
+      type, then its stalk at <span class="math inline">x</span>
+      vanishes if and only if its fibre <span
+      class="math display">\Omega^1_{X/Y,x}\otimes\kappa(x)=T_x^*(X/Y)</span>
+      vanishes, by Nakayama’s lemma. Dualizing gives (iii). ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Formal and Geometric Properties
+      Coincide in the Standard Category). <em> Let <span
+      class="math inline">f\colon X\to Y</span> be a morphism of
+      standard schemes. Then <span class="math display">\begin{align*}
+              f\text{ is formally unramified}
+              &amp;\iff f\text{ is unramified},\\
+              f\text{ is formally smooth}
+              &amp;\iff f\text{ is smooth},\\
+              f\text{ is formally \&#39;etale}
+              &amp;\iff f\text{ is \&#39;etale}.
+      \end{align*}</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Every standard morphism is of finite
+      presentation. For arbitrary schemes, unramified morphisms are
+      exactly the locally finite type formally unramified morphisms;
+      smooth morphisms are exactly the locally finitely presented
+      formally smooth morphisms; and étale morphisms are exactly the
+      locally finitely presented formally étale morphisms. The
+      finiteness hypotheses are therefore automatic here. ◻</p>
+      </div>
+      <h3 data-number="3.3.4" id="unramified-morphisms">Unramified
+      Morphisms</h3>
+      <h4 data-number="3.3.4.1"
+      id="fibrewise-definition-and-intrinsic-characterizations">Fibrewise
+      Definition and Intrinsic Characterizations</h4>
+      <div class="definition">
+      <p><strong>Definition 3.11</strong> (Unramified Morphism in the
+      Standard Category). <em> Let <span class="math inline">f\colon
+      X\to Y</span> be a morphism of standard schemes.</em></p>
+      <ol>
+      <li><p><em>We say that <span class="math inline">f</span> is
+      <strong>unramified at <span class="math inline">x\in
+      X</span></strong> if, for <span class="math inline">y=f(x)</span>,
+      the local fibre <span class="math inline">(X_y)_x</span> is the
+      spectrum of the finite separable extension <span
+      class="math inline">\kappa(x)/\kappa(y)</span>.</em></p></li>
+      <li><p><em>We say that <span class="math inline">f</span> is
+      <strong>unramified</strong> if it is unramified at every
+      point.</em></p></li>
+      </ol>
+      <p><em>Equivalently, every fibre <span
+      class="math inline">X_y</span> is a disjoint union of spectra of
+      finite separable extensions of <span
+      class="math inline">\kappa(y)</span>.</em></p>
+      </div>
+      <p>Thus an unramified fibre has no positive-dimensional
+      directions, no nilpotent directions, and no inseparable
+      residue-field directions.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Equivalent Criteria for
+      Unramifiedness). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be a morphism of standard schemes, let <span
+      class="math inline">x\in X</span>, and set <span
+      class="math inline">y=f(x)</span>. The following are
+      equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is unramified at
+      <span class="math inline">x</span>;</em></p></li>
+      <li><p><em><span class="math display">\mathfrak
+      m_y\mathcal{O}_{X,x}=\mathfrak m_x
+                  \quad\text{and}\quad
+                  \kappa(x)/\kappa(y)\text{ is finite
+      separable};</span></em></p></li>
+      <li><p><em><span
+      class="math inline">\Omega^1_{X/Y,x}=0</span>;</em></p></li>
+      <li><p><em><span
+      class="math inline">T_x(X/Y)=0</span>;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is formally
+      unramified in a neighbourhood of <span
+      class="math inline">x</span>;</em></p></li>
+      <li><p><em>the diagonal <span class="math display">\Delta_f\colon
+      X\longrightarrow X\times_YX</span> is an open immersion in a
+      neighbourhood of <span class="math inline">x</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span class="math inline">f</span> is of
+      finite presentation, the usual local criterion for unramifiedness
+      applies. The local ring of the fibre at <span
+      class="math inline">x</span> is <span
+      class="math display">\mathcal{O}_{X,x}/\mathfrak
+      m_y\mathcal{O}_{X,x}.</span> It equals <span
+      class="math inline">\kappa(x)</span> precisely when <span
+      class="math inline">\mathfrak m_y\mathcal{O}_{X,x}=\mathfrak
+      m_x</span>, giving (i)<span
+      class="math inline">\Leftrightarrow</span>(ii), with separability
+      recording geometric reducedness of the point.</p>
+      <p>The equivalence (ii)<span
+      class="math inline">\Leftrightarrow</span>(iii) is the local
+      differential criterion for a finite type ring map. Since <span
+      class="math inline">\Omega^1_{X/Y}</span> is coherent, Nakayama’s
+      lemma gives (iii)<span
+      class="math inline">\Leftrightarrow</span>(iv). Theorem gives
+      (iii)<span class="math inline">\Leftrightarrow</span>(v). Finally,
+      <span class="math inline">\Omega^1_{X/Y}</span> is the conormal
+      sheaf of the diagonal. For a diagonal of finite presentation,
+      vanishing of this conormal sheaf is equivalent locally to the
+      diagonal being an open immersion, yielding (iii)<span
+      class="math inline">\Leftrightarrow</span>(vi). ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Unramifiedness is Purely
+      Fibrewise for Standard Morphisms). <em> A morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes is
+      unramified if and only if every fibre is a zero-dimensional
+      geometrically reduced standard variety over its residue field.
+      Equivalently, after extending <span
+      class="math inline">\kappa(y)</span> to an algebraic closure,
+      every geometric fibre is a discrete reduced finite type
+      scheme.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> A finite type scheme over a field is
+      zero-dimensional and geometrically reduced if and only if it is a
+      disjoint union of spectra of finite separable field
+      extensions. ◻</p>
+      </div>
+      <h4 data-number="3.3.4.2"
+      id="polynomial-and-jacobian-criterion-for-unramifiedness">Polynomial
+      and Jacobian Criterion for Unramifiedness</h4>
+      <p>Let <span class="math inline">V=\operatorname{Spec}C\subseteq
+      Y</span> and <span
+      class="math display">U=\operatorname{Spec}A\subseteq f^{-1}(V),
+          \qquad
+          A=C[T_1,\ldots,T_n]/(F_1,\ldots,F_r).</span> For <span
+      class="math inline">x\in U</span> write <span
+      class="math inline">\kappa=\kappa(x)</span>. The Jacobian
+      presentation from the previous chapter gives <span
+      class="math display">\kappa^r\xrightarrow{J_F(x)^{\mathsf
+      t}}\kappa^n
+          \longrightarrow T_x^*(X/Y)\longrightarrow0,</span> and hence
+      <span class="math display">T_x(X/Y)=\ker J_F(x).</span></p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Jacobian Criterion for
+      Unramifiedness). <em> In the local polynomial model above, the
+      following are equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is unramified at
+      <span class="math inline">x</span>;</em></p></li>
+      <li><p><em><span
+      class="math inline">J_F(x)\colon\kappa^n\to\kappa^r</span> is
+      injective;</em></p></li>
+      <li><p><em><span
+      class="math inline">\operatorname{rank}_{\kappa}J_F(x)=n</span>;</em></p></li>
+      <li><p><em>some <span class="math inline">n\times n</span> minor
+      of <span class="math inline">J_F</span> is nonzero at <span
+      class="math inline">x</span>.</em></p></li>
+      </ol>
+      <p><em>In particular, unramifiedness is detected by ordinary
+      formal partial derivatives over the coefficient ring <span
+      class="math inline">C</span>; no reducedness or irreducibility is
+      required.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Theorem , <span class="math inline">f</span>
+      is unramified at <span class="math inline">x</span> if and only if
+      <span class="math inline">T_x(X/Y)=0</span>. The Jacobian formula
+      identifies this tangent space with <span class="math inline">\ker
+      J_F(x)</span>, proving the equivalence. Full column rank is
+      equivalent to the nonvanishing of an <span
+      class="math inline">n\times n</span> minor. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (The Number of Equations is not
+      Intrinsic). <em> The criterion does not assert that the ideal
+      <span class="math inline">(F_1,\ldots,F_r)</span> is minimally
+      generated by <span class="math inline">n</span> equations. It says
+      only that the differentials of some <span
+      class="math inline">n</span> elements of the ideal span the <span
+      class="math inline">n</span> ambient cotangent directions at <span
+      class="math inline">x</span>. This is invariant under changing
+      generators because it is the intrinsic condition <span
+      class="math inline">\Omega^1_{X/Y,x}=0</span>.</em></p>
+      </div>
+      <h4 data-number="3.3.4.3"
+      id="structural-properties-of-unramified-morphisms">Structural
+      Properties of Unramified Morphisms</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Stability and Geometry of
+      Unramified Morphisms). <em> For morphisms of standard
+      schemes:</em></p>
+      <ol>
+      <li><p><em>the unramified locus is open in the
+      source;</em></p></li>
+      <li><p><em>open and closed immersions, and hence all immersions,
+      are unramified;</em></p></li>
+      <li><p><em>unramified morphisms are stable under composition and
+      arbitrary base change;</em></p></li>
+      <li><p><em>if <span
+      class="math inline">X\xrightarrow{f}Y\xrightarrow{g}Z</span> and
+      <span class="math inline">g\circ f</span> is unramified, then
+      <span class="math inline">f</span> is unramified;</em></p></li>
+      <li><p><em>every unramified morphism is locally
+      quasi-finite;</em></p></li>
+      <li><p><em>if <span class="math inline">g\colon Y\to Z</span> is
+      unramified, then the graph of every <span
+      class="math inline">Z</span>-morphism <span
+      class="math inline">f\colon X\to Y</span>, <span
+      class="math display">\Gamma_f\colon X\longrightarrow
+      X\times_ZY,</span> is an open immersion;</em></p></li>
+      <li><p><em>a section of an unramified standard morphism is an
+      open-and-closed immersion;</em></p></li>
+      <li><p><em>unramifiedness descends under faithfully flat base
+      change.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The vanishing locus of the coherent sheaf <span
+      class="math inline">\Omega^1_{X/Y}</span> is open, proving (1). An
+      immersion is a monomorphism, so its relative differential sheaf is
+      zero, proving (2). Base change follows from base change for
+      differentials. Composition and (4) follow from the transitivity
+      sequence <span
+      class="math display">f^*\Omega^1_{Y/Z}\longrightarrow\Omega^1_{X/Z}
+              \longrightarrow\Omega^1_{X/Y}\longrightarrow0.</span> The
+      fibre description shows that points are isolated in their fibres,
+      giving local quasi-finiteness. The graph is the base change of the
+      diagonal of <span class="math inline">Y\to Z</span>, proving (6).
+      A section is therefore open; it is also closed because standard
+      morphisms are separated. Finally, if <span
+      class="math inline">Y&#39;\to Y</span> is faithfully flat and the
+      base change of <span class="math inline">f\colon X\to Y</span> is
+      unramified, then the faithfully flat pullback of <span
+      class="math inline">\Omega^1_{X/Y}</span> vanishes. Faithful
+      flatness detects the zero module, so <span
+      class="math inline">\Omega^1_{X/Y}=0</span> and <span
+      class="math inline">f</span> is unramified. ◻</p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (Closed Immersions are Unramified
+      but Need not be Reduced). <em> Let <span
+      class="math inline">A</span> be any ring and <span
+      class="math inline">I\subseteq A</span> any ideal. The closed
+      immersion <span
+      class="math display">\operatorname{Spec}(A/I)\hookrightarrow\operatorname{Spec}A</span>
+      is unramified because <span
+      class="math inline">\Omega^1_{(A/I)/A}=0</span>. Thus
+      unramifiedness does not mean that the source itself is reduced. It
+      means that there are no infinitesimal directions <em>relative to
+      the target</em>.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (Purely Inseparable Field
+      Extensions are Ramified). <em> Let <span
+      class="math inline">k</span> have characteristic <span
+      class="math inline">p&gt;0</span>, choose <span
+      class="math inline">a\in k\setminus k^p</span>, and set <span
+      class="math display">K=k[T]/(T^p-a).</span> Then <span
+      class="math inline">K</span> is a field, but <span
+      class="math display">\Omega^1_{K/k}=K\,dT</span> because <span
+      class="math inline">d(T^p-a)=0</span>. Hence <span
+      class="math inline">\operatorname{Spec}K\to\operatorname{Spec}k</span>
+      is neither unramified nor smooth nor étale. The obstruction is
+      inseparability, not singularity of the ring <span
+      class="math inline">K</span>.</em></p>
+      </div>
+      <h4 data-number="3.3.4.4"
+      id="finite-unramified-morphisms-and-closed-immersions">Finite
+      Unramified Morphisms and Closed Immersions</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Corrected Finite Closed-Immersion
+      Criterion). <em> Let <span class="math inline">\pi\colon X\to
+      Y</span> be a finite morphism of standard schemes. The following
+      are equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\pi</span> is a closed
+      immersion;</em></p></li>
+      <li><p><em>for every <span class="math inline">y\in Y</span>, the
+      fibre <span class="math inline">X_y</span> is either empty or
+      isomorphic to <span
+      class="math inline">\operatorname{Spec}\kappa(y)</span>;</em></p></li>
+      <li><p><em><span class="math inline">\pi</span> is unramified and
+      radicial, equivalently universally injective;</em></p></li>
+      <li><p><em><span class="math inline">\pi</span> is unramified,
+      injective on points, and <span
+      class="math inline">\kappa(x)=\kappa(\pi(x))</span> for every
+      <span class="math inline">x\in X</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> A closed immersion remains a closed immersion
+      after every base change, and the only closed subschemes of <span
+      class="math inline">\operatorname{Spec}\kappa(y)</span> are the
+      empty scheme and the whole point. Thus (i) implies (ii). Condition
+      (ii) implies (iv) by inspecting the local rings of the fibres.
+      Condition (iv) implies (iii), since a morphism is radicial
+      precisely when it is injective on points and all residue-field
+      extensions are purely inseparable.</p>
+      <p>Assume (iii). Unramifiedness makes the diagonal <span
+      class="math display">\Delta_\pi\colon X\longrightarrow
+      X\times_YX</span> an open immersion. Radiciality makes this
+      diagonal surjective on points; hence it is an isomorphism. Thus
+      <span class="math inline">\pi</span> is a monomorphism. A finite
+      monomorphism is a closed immersion, proving (i). ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Why Injectivity on Points Alone is
+      Insufficient). <em> The residue-field condition in the theorem
+      cannot be omitted. If <span class="math inline">L/k</span> is a
+      finite separable extension of degree greater than <span
+      class="math inline">1</span>, then <span
+      class="math display">\operatorname{Spec}L\longrightarrow\operatorname{Spec}k</span>
+      is finite, unramified, and injective on the underlying one-point
+      spaces, but it is not a closed immersion because the ring
+      homomorphism <span class="math inline">k\to L</span> is not
+      surjective. This corrects the corresponding claim in the earlier
+      draft.</em></p>
+      </div>
+      <h3 data-number="3.3.5" id="smooth-morphisms">Smooth
+      Morphisms</h3>
+      <h4 data-number="3.3.5.1"
+      id="geometric-regularity-of-fibres">Geometric Regularity of
+      Fibres</h4>
+      <div class="definition">
+      <p><strong>Definition 3.12</strong> (Geometrically Regular Scheme
+      over a Field). <em> Let <span class="math inline">k</span> be a
+      field and let <span class="math inline">W</span> be a locally
+      Noetherian <span class="math inline">k</span>-scheme. We call
+      <span class="math inline">W</span> <strong>geometrically regular
+      over <span class="math inline">k</span></strong> if, for every
+      finite field extension <span class="math inline">k&#39;/k</span>,
+      the base change <span class="math inline">W_{k&#39;}</span> is
+      regular. Equivalently, it is enough to test all finitely generated
+      field extensions, or all finite purely inseparable
+      extensions.</em></p>
+      </div>
+      <p>For a finite type scheme over a field, geometric regularity is
+      equivalent to smoothness over that field. This is the correct
+      fibre condition over an arbitrary base.</p>
+      <div class="definition">
+      <p><strong>Definition 3.13</strong> (Smooth Morphism in the
+      Standard Category). <em> A morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes is
+      <strong>smooth</strong> if</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is flat,
+      and</em></p></li>
+      <li><p><em>for every <span class="math inline">y\in Y</span>, the
+      fibre <span class="math inline">X_y</span> is geometrically
+      regular over <span
+      class="math inline">\kappa(y)</span>.</em></p></li>
+      </ol>
+      <p><em>It is <strong>smooth at <span
+      class="math inline">x</span></strong> if these conditions hold
+      after restricting to a neighbourhood of <span
+      class="math inline">x</span>.</em></p>
+      </div>
+      <p>The finite-presentation condition appearing in the general
+      definition of smoothness is absent only because it is automatic
+      for standard morphisms.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Equivalent Criteria for
+      Smoothness). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be a morphism of standard schemes and let <span
+      class="math inline">x\in X</span> with <span
+      class="math inline">y=f(x)</span>. The following are
+      equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is smooth at <span
+      class="math inline">x</span>;</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathcal{O}_{Y,y}\to\mathcal{O}_{X,x}</span>
+      is flat and the fibre <span class="math inline">X_y</span> is
+      smooth at <span class="math inline">x</span>;</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathcal{O}_{Y,y}\to\mathcal{O}_{X,x}</span>
+      is flat and <span class="math inline">X_y</span> is geometrically
+      regular at <span class="math inline">x</span>;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is formally smooth
+      in a neighbourhood of <span
+      class="math inline">x</span>;</em></p></li>
+      <li><p><em>locally near <span class="math inline">x</span>, the
+      morphism is standard smooth in the polynomial sense of Theorem
+      below.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The equivalence of (i)–(iii) is the fibrewise
+      criterion for a locally finitely presented morphism. The
+      equivalence (i)<span
+      class="math inline">\Leftrightarrow</span>(iv) is the
+      infinitesimal lifting criterion, since <span
+      class="math inline">f</span> is of finite presentation. Smooth
+      ring maps are locally standard smooth, and standard smooth ring
+      maps are smooth, giving (i)<span
+      class="math inline">\Leftrightarrow</span>(v). ◻</p>
+      </div>
+      <h4 data-number="3.3.5.2" id="the-two-term-conormal-complex">The
+      Two-Term Conormal Complex</h4>
+      <p>Let <span class="math inline">R\to A</span> be a finite
+      presentation and choose <span class="math display">A=P/I,
+          \qquad
+          P=R[T_1,\ldots,T_n].</span> The <strong>naive cotangent
+      complex</strong> attached to this presentation is the two-term
+      complex <span class="math display">\mathbb
+      L^{\mathrm{naive}}_{A/R}
+          =
+          \left[
+              I/I^2\xrightarrow{d}
+              \Omega^1_{P/R}\otimes_PA
+          \right]
+          =
+          \left[
+              I/I^2\xrightarrow{J^{\mathsf t}}
+              A^n
+          \right],</span> with <span class="math inline">I/I^2</span> in
+      degree <span class="math inline">-1</span>. Its degree-<span
+      class="math inline">0</span> homology is <span
+      class="math inline">\Omega^1_{A/R}</span>; its degree-<span
+      class="math inline">(-1)</span> homology records hidden relations
+      among the chosen equations.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Differential Complex Criterion
+      for Smoothness). <em> A finite presentation <span
+      class="math inline">R\to A</span> is smooth at a prime <span
+      class="math inline">\mathfrak p\subseteq A</span> if and only if,
+      after localizing at <span class="math inline">\mathfrak
+      p</span>,</em></p>
+      <ol>
+      <li><p><em><span class="math inline">I/I^2\to A^n</span> is
+      injective, and</em></p></li>
+      <li><p><em>its cokernel <span
+      class="math inline">\Omega^1_{A/R}</span> is a finite free module
+      locally near <span class="math inline">\mathfrak
+      p</span>.</em></p></li>
+      </ol>
+      <p><em>Equivalently, the two-term complex is locally
+      quasi-isomorphic to a finite free module concentrated in degree
+      <span class="math inline">0</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Why Local Freeness of
+      Differentials is not Enough). <em> The module <span
+      class="math inline">\Omega^1_{A/R}</span> sees only the cokernel
+      of the Jacobian map. Smoothness also requires the kernel in degree
+      <span class="math inline">-1</span> to vanish. Thus a locally free
+      differential module may coexist with hidden infinitesimal
+      equations.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (Flat with Free Differentials but
+      not Smooth). <em> Let <span class="math display">R=\mathbf F_p[s],
+              \qquad
+              A=\mathbf F_p[t],
+              \qquad
+              s\longmapsto t^p.</span> The <span
+      class="math inline">R</span>-module <span
+      class="math inline">A</span> is finite free with basis <span
+      class="math inline">1,t,\ldots,t^{p-1}</span>, so the map is flat.
+      Moreover, <span class="math display">\Omega^1_{A/R}=A\,dt</span>
+      is free of rank <span class="math inline">1</span>. Nevertheless
+      the fibres are defined by <span class="math inline">t^p-a</span>
+      and become non-reduced after adjoining a <span
+      class="math inline">p</span>th root of <span
+      class="math inline">a</span>. Therefore the morphism is not
+      smooth. In the presentation <span class="math display">A\cong
+      R[T]/(T^p-s),</span> the Jacobian map is zero, so its degree-<span
+      class="math inline">(-1)</span> kernel is nonzero.</em></p>
+      </div>
+      <h4 data-number="3.3.5.3"
+      id="standard-smooth-polynomial-models">Standard Smooth Polynomial
+      Models</h4>
+      <div class="definition">
+      <p><strong>Definition 3.14</strong> (Standard Smooth Polynomial
+      Algebra). <em> Let <span class="math inline">R</span> be a ring.
+      An <span class="math inline">R</span>-algebra <span
+      class="math display">A=R[T_1,\ldots,T_n]/(G_1,\ldots,G_c),
+              \qquad c\leq n,</span> is <strong>standard smooth</strong>
+      if some <span class="math inline">c\times c</span> minor <span
+      class="math display">\Delta=
+              \det\left(\frac{\partial G_i}{\partial
+      T_{j_\ell}}\right)_{1\leq i,\ell\leq c}</span> maps to a unit of
+      <span class="math inline">A</span>. Its relative dimension is
+      <span class="math inline">n-c</span>.</em></p>
+      </div>
+      <p>After permuting the variables, one may assume <span
+      class="math inline">j_\ell=\ell</span>.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Local Jacobian Criterion for
+      Smoothness). <em> Let <span
+      class="math display">A=R[T_1,\ldots,T_n]/I</span> be a finitely
+      presented <span class="math inline">R</span>-algebra and let <span
+      class="math inline">\mathfrak p\in\operatorname{Spec}A</span>. The
+      map <span class="math inline">R\to A</span> is smooth at <span
+      class="math inline">\mathfrak p</span> if and only if there exist
+      <span class="math inline">G_1,\ldots,G_c\in I</span> and <span
+      class="math inline">h\in A\setminus\mathfrak p</span> such
+      that</em></p>
+      <ol>
+      <li><p><em><span class="math inline">I_h=(G_1,\ldots,G_c)</span>
+      in <span class="math inline">R[T_1,\ldots,T_n]_h</span>,
+      and</em></p></li>
+      <li><p><em>some <span class="math inline">c\times c</span>
+      Jacobian minor of the <span class="math inline">G_i</span> is
+      invertible in <span class="math inline">A_h</span>.</em></p></li>
+      </ol>
+      <p><em>Thus every smooth standard morphism is locally obtained by
+      solving <span class="math inline">c</span> polynomial equations
+      for <span class="math inline">c</span> variables with an
+      invertible linearization.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> If the two conditions hold, the conormal module
+      is free on the classes of the <span
+      class="math inline">G_i</span>, and the Jacobian map identifies it
+      with a direct summand of <span class="math inline">A_h^n</span>.
+      Its cokernel is free of rank <span class="math inline">n-c</span>,
+      so Theorem gives smoothness.</p>
+      <p>Conversely, a smooth finitely presented algebra is locally
+      standard smooth. Applied at <span class="math inline">\mathfrak
+      p</span>, this supplies the required local generators and
+      invertible minor. ◻</p>
+      </div>
+      <h4 data-number="3.3.5.4"
+      id="exact-infinitesimal-newton-method">Exact Infinitesimal Newton
+      Method</h4>
+      <p>The polynomial criterion admits a direct lifting proof which
+      makes the relationship with ordinary differential calculus
+      completely explicit.</p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Square-Zero Taylor Formula). <em>
+      Let <span class="math inline">C</span> be a ring, <span
+      class="math inline">J\subseteq C</span> an ideal with <span
+      class="math inline">J^2=0</span>, and let <span
+      class="math inline">a=(a_1,\ldots,a_n)\in C^n</span>, <span
+      class="math inline">\delta=(\delta_1,\ldots,\delta_n)\in
+      J^n</span>. For every polynomial <span class="math inline">F\in
+      R[T_1,\ldots,T_n]</span> one has the exact identity <span
+      class="math display">F(a+\delta)
+              =F(a)+\sum_{j=1}^n
+              \frac{\partial F}{\partial
+      T_j}(a)\delta_j.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Expand every monomial. Terms containing two or
+      more factors from <span class="math inline">J</span> vanish
+      because <span class="math inline">J^2=0</span>; the remaining
+      linear terms are precisely the formal partial derivatives. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Polynomial Lifting for a Standard
+      Smooth Algebra). <em> Let <span
+      class="math display">A=R[T_1,\ldots,T_n]/(G_1,\ldots,G_c)</span>
+      be standard smooth, and suppose the Jacobian block in the first
+      <span class="math inline">c</span> variables has invertible
+      determinant. Let <span class="math inline">C\twoheadrightarrow
+      C/J</span> be a square-zero extension of <span
+      class="math inline">R</span>-algebras. Then every <span
+      class="math inline">R</span>-algebra map <span
+      class="math inline">A\to C/J</span> lifts to <span
+      class="math inline">A\to C</span>.</em></p>
+      <p><em>More precisely, after arbitrary lifts <span
+      class="math inline">a_j\in C</span> of the images of <span
+      class="math inline">T_j</span>, set <span
+      class="math display">e_i=G_i(a_1,\ldots,a_n)\in J.</span> There
+      are unique corrections <span
+      class="math inline">\delta_1,\ldots,\delta_c\in J</span> with
+      <span class="math inline">\delta_{c+1}=\cdots=\delta_n=0</span>
+      such that <span
+      class="math display">G_i(a_1+\delta_1,\ldots,a_n+\delta_n)=0
+              \quad(1\leq i\leq c).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span
+      class="math display">M=\left(\frac{\partial G_i}{\partial
+      T_j}(a)\right)_{1\leq i,j\leq c}.</span> Its determinant is a unit
+      modulo <span class="math inline">J</span>, hence a unit in <span
+      class="math inline">C</span>. By the square-zero Taylor formula,
+      the corrected equations are <span
+      class="math display">e+M\delta=0.</span> The unique solution is
+      <span class="math inline">\delta=-M^{-1}e</span>. The resulting
+      corrected coordinate map annihilates all <span
+      class="math inline">G_i</span> and therefore factors through <span
+      class="math inline">A</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Geometric Meaning of the Free
+      Variables). <em> If corrections in the remaining <span
+      class="math inline">n-c</span> variables are also allowed, the set
+      of all lifts is a torsor under <span
+      class="math display">\operatorname{Hom}_A(\Omega^1_{A/R},J)\cong
+      J^{n-c}.</span> The <span class="math inline">n-c</span> free
+      correction parameters are exactly the relative tangent directions.
+      When <span class="math inline">c=n</span>, there are no free
+      variables and the lift is unique; this is the étale case.</em></p>
+      </div>
+      <h4 data-number="3.3.5.5"
+      id="consequences-and-stability-of-smoothness">Consequences and
+      Stability of Smoothness</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Differential Consequences of
+      Smoothness). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be smooth.</em></p>
+      <ol>
+      <li><p><em><span class="math inline">\Omega^1_{X/Y}</span> is
+      finite locally free.</em></p></li>
+      <li><p><em>Its rank is locally constant; on a component where the
+      rank is <span class="math inline">d</span>, every nonempty fibre
+      is smooth and equidimensional of dimension <span
+      class="math inline">d</span>.</em></p></li>
+      <li><p><em>For every <span class="math inline">x\in X</span>,
+      <span
+      class="math display">\dim_{\kappa(x)}T_x(X/Y)=d.</span></em></p></li>
+      <li><p><em>The infinitesimal lifting property makes the tangent
+      map <span class="math display">\mathrm{d}f_x\colon
+      T_xX\longrightarrow
+                  T_{f(x)}Y\otimes_{\kappa(f(x))}\kappa(x)</span>
+      surjective, and its kernel is <span
+      class="math inline">T_x(X/Y)</span>.</em></p></li>
+      <li><p><em>A smooth morphism is open.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> These assertions may be checked on a standard
+      smooth polynomial model. There the differential sheaf is free on
+      the <span class="math inline">n-c</span> unsolved coordinate
+      differentials. The tangent assertions follow by duality and the
+      lifting interpretation. Openness follows from the fibrewise local
+      structure of smooth morphisms. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Stability and Descent of
+      Smooth Morphisms). <em> Smooth morphisms of standard schemes are
+      stable under composition, arbitrary base change, products, and
+      restriction to open subschemes. Smoothness is local on the source
+      and target and descends under faithfully flat base
+      change.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Finite presentation and flatness have these
+      properties, and geometric regularity of fibres is preserved and
+      detected after field extension. Equivalently, one may use formal
+      smoothness and the local standard smooth models. ◻</p>
+      </div>
+      <h4 data-number="3.3.5.6"
+      id="standard-varieties-over-perfect-and-imperfect-fields">Standard
+      Varieties over Perfect and Imperfect Fields</h4>
+      <p>Let <span class="math inline">k</span> be a field and let <span
+      class="math inline">X</span> be a standard variety over <span
+      class="math inline">k</span>. The structure morphism <span
+      class="math inline">X\to\operatorname{Spec}k</span> is
+      automatically flat, so smoothness is entirely a question of
+      geometric regularity.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Smoothness over an Arbitrary
+      Field). <em> Let <span class="math inline">x\in X</span>. The
+      following are equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">X</span> is smooth over <span
+      class="math inline">k</span> at <span
+      class="math inline">x</span>;</em></p></li>
+      <li><p><em><span class="math inline">X</span> is geometrically
+      regular over <span class="math inline">k</span> at <span
+      class="math inline">x</span>;</em></p></li>
+      <li><p><em>the local ring <span
+      class="math inline">\mathcal{O}_{X,x}</span> is regular and the
+      finitely generated field extension <span
+      class="math inline">\kappa(x)/k</span> is separable.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> A finite type <span
+      class="math inline">k</span>-scheme is smooth exactly when it is
+      geometrically regular. A smooth point has a regular local ring and
+      a separable residue extension. Conversely, a regular local ring
+      together with separability of the residue extension satisfies the
+      differential criterion for smoothness over a field. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Perfect-Field Simplification).
+      <em> If <span class="math inline">k</span> is perfect, then <span
+      class="math display">X\text{ is smooth at }x
+              \iff
+              \mathcal{O}_{X,x}\text{ is regular}.</span> Consequently,
+      for a reduced standard variety over a perfect field, the smooth
+      locus is the regular locus and is a dense open subset.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Every finitely generated extension of a perfect
+      field is separable, so the separability condition in Theorem is
+      automatic. The density statement follows because the local rings
+      at the generic points of a reduced Noetherian scheme are
+      fields. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Classical Jacobian Criterion over
+      a Perfect Field). <em> Let <span class="math inline">k</span> be
+      perfect and <span class="math display">X=\operatorname{Spec}A,
+              \qquad
+              A=k[T_1,\ldots,T_n]/(F_1,\ldots,F_r).</span> Let <span
+      class="math inline">x\in X</span>, let <span
+      class="math inline">\kappa=\kappa(x)</span>, and write <span
+      class="math inline">J_F(x)</span> for the evaluated relative
+      Jacobian. Then <span class="math inline">X</span> is smooth at
+      <span class="math inline">x</span> if and only if <span
+      class="math display">n-\operatorname{rank}_{\kappa}J_F(x)
+              =\dim\mathcal{O}_{X,x}+\operatorname{trdeg}_k\kappa(x).</span>
+      If <span class="math inline">x</span> is closed, this reduces to
+      <span
+      class="math display">\operatorname{rank}J_F(x)=n-\dim\mathcal{O}_{X,x}.</span>
+      If moreover <span class="math inline">k</span> is algebraically
+      closed, every closed point is <span
+      class="math inline">k</span>-rational and this is the usual
+      classical Jacobian criterion.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span class="math inline">k</span> is
+      perfect, <span class="math inline">\kappa(x)/k</span> is separable
+      and the residue-field cotangent sequence is short exact: <span
+      class="math display">0\longrightarrow\mathfrak m_x/\mathfrak m_x^2
+              \longrightarrow\Omega^1_{A/k}\otimes_A\kappa
+              \longrightarrow\Omega^1_{\kappa/k}\longrightarrow0.</span>
+      The middle term has dimension <span
+      class="math inline">n-\operatorname{rank}J_F(x)</span>, while the
+      last term has dimension <span
+      class="math inline">\operatorname{trdeg}_k\kappa(x)</span>.
+      Smoothness is equivalent to regularity, which is equivalent to
+      <span class="math display">\dim_{\kappa}\mathfrak m_x/\mathfrak
+      m_x^2
+              =\dim\mathcal{O}_{X,x}.</span> Combining these equalities
+      gives the formula. ◻</p>
+      </div>
+      <h4 data-number="3.3.5.7"
+      id="imperfect-fields-and-the-role-of-a-p-basis">Imperfect Fields
+      and the Role of a <span class="math inline">p</span>-Basis</h4>
+      <div class="definition">
+      <p><strong>Definition 3.15</strong> (<span
+      class="math inline">p</span>-Basis). <em> Let <span
+      class="math inline">k</span> be a field of characteristic <span
+      class="math inline">p&gt;0</span>. A family <span
+      class="math inline">\{b_\lambda\}_{\lambda\in\Lambda}\subseteq
+      k</span> is a <strong><span class="math inline">p</span>-basis of
+      <span class="math inline">k</span></strong> if the monomials <span
+      class="math display">\prod_{\lambda}b_\lambda^{e_\lambda},
+              \qquad 0\leq e_\lambda&lt;p,</span> with finite support
+      form a basis of <span class="math inline">k</span> over <span
+      class="math inline">k^p</span>. Equivalently, <span
+      class="math display">\{db_\lambda\}_{\lambda\in\Lambda}</span> is
+      a basis of the <span class="math inline">k</span>-vector space
+      <span class="math inline">\Omega^1_{k/\mathbf
+      F_p}</span>.</em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Intrinsic Imperfect-Field
+      Criterion). <em> Let <span class="math inline">k</span> have
+      characteristic <span class="math inline">p&gt;0</span>, and let
+      <span class="math inline">(A,\mathfrak m,K)</span> be a Noetherian
+      local <span class="math inline">k</span>-algebra. Then <span
+      class="math inline">A</span> is geometrically regular over <span
+      class="math inline">k</span> if and only if</em></p>
+      <ol>
+      <li><p><em><span class="math inline">A</span> is a regular local
+      ring, and</em></p></li>
+      <li><p><em>the canonical map <span
+      class="math display">\Omega^1_{k/\mathbf F_p}\otimes_kK
+                  \longrightarrow
+                  \Omega^1_{A/\mathbf F_p}\otimes_AK</span> is
+      injective.</em></p></li>
+      </ol>
+      <p><em>Therefore, for a finite type <span
+      class="math inline">k</span>-scheme, smoothness is ordinary
+      regularity plus the survival of all coefficient <span
+      class="math inline">p</span>-directions.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (What the <span
+      class="math inline">p</span>-Basis is Actually Needed For). <em>
+      If an explicit presentation <span
+      class="math display">A=k[T_1,\ldots,T_n]/I</span> is available,
+      the relative Jacobian matrix with respect to the variables <span
+      class="math inline">T_j</span> already gives a correct smoothness
+      test over arbitrary <span class="math inline">k</span> through
+      Theorem . No <span class="math inline">p</span>-basis is
+      needed.</em></p>
+      <p><em>A <span class="math inline">p</span>-basis enters when one
+      wants to use only the regularity of <span
+      class="math inline">A_\mathfrak p</span> and must determine
+      whether this regularity remains after purely inseparable
+      extensions of <span class="math inline">k</span>. The extra
+      coefficient differentials <span
+      class="math inline">db_\lambda</span> record precisely the
+      directions invisible to ordinary regularity.</em></p>
+      </div>
+      <p>Assume now that <span class="math inline">k</span> has a finite
+      <span class="math inline">p</span>-basis <span
+      class="math inline">b_1,\ldots,b_e</span>. Let <span
+      class="math inline">\partial/\partial b_\ell</span> be the <span
+      class="math inline">\mathbf F_p</span>-derivation of <span
+      class="math inline">k</span> dual to <span
+      class="math inline">db_\ell</span>, and extend it to <span
+      class="math inline">k[T_1,\ldots,T_n]</span> by fixing the
+      variables. For <span class="math inline">F_1,\ldots,F_r</span>
+      define the <strong>augmented absolute Jacobian</strong> <span
+      class="math display">J_F^{\mathrm{abs}}
+          =
+          \left(
+              \frac{\partial F_i}{\partial b_1},\ldots,
+              \frac{\partial F_i}{\partial b_e}
+              \;\middle|\;
+              \frac{\partial F_i}{\partial T_1},\ldots,
+              \frac{\partial F_i}{\partial T_n}
+          \right)_{1\leq i\leq r}.</span></p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Matrix Form of the <span
+      class="math inline">p</span>-Basis Correction). <em> Let <span
+      class="math display">A=k[T_1,\ldots,T_n]/(F_1,\ldots,F_r),
+              \qquad x\in\operatorname{Spec}A,
+              \qquad K=\kappa(x).</span> The rows of <span
+      class="math inline">J_F^{\mathrm{abs}}(x)</span> present <span
+      class="math inline">\Omega^1_{A/\mathbf F_p}\otimes_AK</span> as a
+      quotient of <span class="math inline">K^{e+n}</span>. Let <span
+      class="math inline">R_x\subseteq K^{e+n}</span> be their row span
+      and let <span class="math display">C_x=K^e\oplus0\subseteq
+      K^{e+n}</span> be the coefficient-direction subspace. Then the
+      coefficient map <span class="math display">\Omega^1_{k/\mathbf
+      F_p}\otimes_kK
+              \longrightarrow
+              \Omega^1_{A/\mathbf F_p}\otimes_AK</span> is injective if
+      and only if <span class="math display">R_x\cap C_x=0.</span>
+      Consequently, <span class="math inline">X</span> is smooth over
+      <span class="math inline">k</span> at <span
+      class="math inline">x</span> if and only if <span
+      class="math inline">\mathcal{O}_{X,x}</span> is regular and <span
+      class="math inline">R_x\cap C_x=0</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The decomposition <span
+      class="math display">\Omega^1_{k[T]/\mathbf F_p}
+              \cong
+              \left(k[T]\otimes_k\Omega^1_{k/\mathbf F_p}\right)
+              \oplus\bigoplus_{j=1}^n k[T]dT_j</span> has basis <span
+      class="math inline">db_1,\ldots,db_e,dT_1,\ldots,dT_n</span>.
+      Applying the conormal sequence and then tensoring with <span
+      class="math inline">K</span> gives the stated matrix presentation.
+      The kernel of the map from coefficient directions to the quotient
+      is exactly <span class="math inline">R_x\cap C_x</span>. The last
+      assertion is Theorem . ◻</p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (The Purely Inseparable Point
+      Revisited by a <span class="math inline">p</span>-Basis). <em> Let
+      <span class="math inline">k=\mathbf F_p(s)</span>, whose <span
+      class="math inline">p</span>-basis is <span
+      class="math inline">\{s\}</span>, and let <span
+      class="math display">A=k[T]/(T^p-s).</span> The relative Jacobian
+      with respect to <span class="math inline">T</span> is zero, so the
+      morphism is visibly not smooth over <span
+      class="math inline">k</span>. The augmented absolute Jacobian is
+      <span
+      class="math display">\begin{pmatrix}-1&amp;0\end{pmatrix},</span>
+      where the first column is the <span
+      class="math inline">s</span>-direction and the second is the <span
+      class="math inline">T</span>-direction. Its row span lies entirely
+      in the coefficient subspace, so the coefficient map is not
+      injective. Although <span class="math inline">A</span> is a field
+      and hence regular, it is not geometrically regular.</em></p>
+      </div>
+      <h3 data-number="3.3.6" id="étale-morphisms">Étale Morphisms</h3>
+      <h4 data-number="3.3.6.1" id="equivalent-definitions">Equivalent
+      Definitions</h4>
+      <div class="definition">
+      <p><strong>Definition 3.16</strong> (Étale Morphism in the
+      Standard Category). <em> A morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes is
+      <strong>étale</strong> if it is flat and unramified. It is
+      <strong>étale at <span class="math inline">x</span></strong> if
+      this holds in a neighbourhood of <span
+      class="math inline">x</span>.</em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Equivalent Criteria for
+      Étaleness). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be a morphism of standard schemes. The following are
+      equivalent:</em></p>
+      <ol>
+      <li><p><em><span class="math inline">f</span> is
+      étale;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is flat and
+      unramified;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is flat and <span
+      class="math inline">\Omega^1_{X/Y}=0</span>;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is smooth of
+      relative dimension <span
+      class="math inline">0</span>;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is formally
+      étale;</em></p></li>
+      <li><p><em><span class="math inline">f</span> is flat and every
+      fibre is a disjoint union of spectra of finite separable
+      residue-field extensions;</em></p></li>
+      <li><p><em>locally on source and target, <span
+      class="math inline">f</span> is standard étale in the polynomial
+      sense of Theorem .</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The first two conditions agree by definition.
+      Unramifiedness is equivalent to vanishing of the relative
+      differential sheaf, giving (ii)<span
+      class="math inline">\Leftrightarrow</span>(iii). A flat unramified
+      morphism is smooth with zero-dimensional geometric fibres, and a
+      smooth morphism of relative dimension zero is flat and has zero
+      differentials. The formal equivalence follows from Theorem . The
+      fibre criterion follows from Corollary . Finally, every étale
+      finitely presented algebra is locally standard étale, and every
+      standard étale algebra is étale. ◻</p>
+      </div>
+      <h4 data-number="3.3.6.2"
+      id="polynomial-criteria-and-unique-newton-lifting">Polynomial
+      Criteria and Unique Newton Lifting</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Square Jacobian Criterion for
+      Étaleness). <em> Let <span class="math inline">R</span> be a ring
+      and <span
+      class="math display">A=R[T_1,\ldots,T_n]/(G_1,\ldots,G_n).</span>
+      If <span class="math display">\Delta=
+              \det\left(\frac{\partial G_i}{\partial T_j}\right)_{1\leq
+      i,j\leq n}</span> is a unit in <span class="math inline">A</span>,
+      then <span class="math inline">R\to A</span> is étale.</em></p>
+      <p><em>Conversely, every étale morphism of standard schemes is,
+      after shrinking around any chosen point, represented by such a
+      square system with invertible Jacobian determinant.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> This is the standard smooth criterion with
+      <span class="math inline">c=n</span>, so the relative differential
+      module has rank <span class="math inline">n-c=0</span>. The
+      polynomial lifting calculation of Theorem has no free correction
+      variables and therefore produces a unique lift across every
+      square-zero extension. Hence the map is formally étale and, being
+      finitely presented, étale. The converse is the local standard
+      smooth form of an étale algebra. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (One-Variable Standard Étale
+      Form). <em> Locally around every point of an étale morphism there
+      is a presentation <span class="math display">A\cong
+      R[T]_g/(h)</span> where <span class="math inline">h\in R[T]</span>
+      is monic and <span class="math inline">h&#39;</span> is a unit in
+      <span class="math inline">A</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Henselian Interpretation). <em>
+      The equation <span class="math inline">h(T)=0</span> with <span
+      class="math inline">h&#39;(T)</span> invertible has a unique
+      infinitesimal correction. Indeed, across <span
+      class="math inline">C\twoheadrightarrow C/J</span> with <span
+      class="math inline">J^2=0</span>, an approximate root <span
+      class="math inline">a</span> is corrected by <span
+      class="math display">\delta=-h&#39;(a)^{-1}h(a).</span> This is
+      the exact square-zero form of Newton’s method and is the
+      infinitesimal core of Hensel’s lemma.</em></p>
+      </div>
+      <h4 data-number="3.3.6.3"
+      id="structural-properties-and-examples">Structural Properties and
+      Examples</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Structural Properties of
+      Étale Morphisms). <em> Étale morphisms of standard schemes are
+      stable under composition, arbitrary base change, products, and
+      restriction to open subschemes. The étale locus is open, étale
+      morphisms are open and locally quasi-finite, and étaleness
+      descends under faithfully flat base change.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 3.1</strong> (Basic Étale Morphisms).
+      <em></em></p>
+      <ol>
+      <li><p><em>Every open immersion is étale.</em></p></li>
+      <li><p><em>If <span class="math inline">L/k</span> is a finite
+      separable field extension, then <span
+      class="math inline">\operatorname{Spec}L\to\operatorname{Spec}k</span>
+      is finite étale.</em></p></li>
+      <li><p><em>If <span class="math inline">n</span> is invertible on
+      the base, the power map <span class="math display">\mathbf
+      G_m\longrightarrow\mathbf G_m,
+                  \qquad t\longmapsto t^n,</span> is étale because its
+      derivative <span class="math inline">nt^{n-1}</span> is invertible
+      on <span class="math inline">\mathbf G_m</span>.</em></p></li>
+      <li><p><em>In characteristic <span class="math inline">p</span>,
+      the Frobenius map <span class="math inline">t\mapsto t^p</span> is
+      not étale: its derivative vanishes and its geometric fibres are
+      non-reduced.</em></p></li>
+      <li><p><em>The projection <span class="math inline">\mathbb
+      A_Y^d\to Y</span> is smooth of relative dimension <span
+      class="math inline">d</span>, but it is étale only for <span
+      class="math inline">d=0</span>.</em></p></li>
+      </ol>
+      </div>
+      <h3 data-number="3.3.7"
+      id="further-consequences-and-practical-polynomial-tests">Further
+      Consequences and Practical Polynomial Tests</h3>
+      <h4 data-number="3.3.7.1" id="smooth-and-étale-loci">Smooth and
+      Étale Loci</h4>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Openness of the Three
+      Differential Loci). <em> For a morphism <span
+      class="math inline">f\colon X\to Y</span> of standard schemes, the
+      subsets <span class="math display">\operatorname{Unr}(f),
+              \qquad
+              \operatorname{Sm}(f),
+              \qquad
+              \operatorname{Et}(f)</span> where <span
+      class="math inline">f</span> is unramified, smooth, and étale are
+      open in <span class="math inline">X</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The unramified locus is the vanishing locus of
+      the coherent sheaf <span
+      class="math inline">\Omega^1_{X/Y}</span>. The smooth locus is
+      open because smoothness is locally standard smooth. The étale
+      locus is their intersection with the flat locus, or equivalently
+      the smooth locus where the relative differential rank is
+      zero. ◻</p>
+      </div>
+      <p>In a fixed polynomial presentation, these opens are described
+      by Jacobian minors together with the local generation condition on
+      the defining ideal. Thus the intrinsic loci are computed by finite
+      polynomial algebra even for reducible and non-reduced standard
+      schemes.</p>
+      <h4 data-number="3.3.7.2"
+      id="generic-smoothness-and-generic-étaleness">Generic Smoothness
+      and Generic Étaleness</h4>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Generic Smoothness under
+      Separability). <em> Let <span class="math inline">f\colon X\to
+      Y</span> be a dominant morphism of integral standard varieties
+      over a field <span class="math inline">k</span>. If the induced
+      extension of function fields <span
+      class="math display">K(Y)\hookrightarrow K(X)</span> is separable,
+      then there is a nonempty open subset <span
+      class="math inline">U\subseteq X</span> on which <span
+      class="math inline">f</span> is smooth. In characteristic zero,
+      separability is automatic.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> At the generic point of <span
+      class="math inline">X</span>, the local map is the field extension
+      <span class="math inline">K(Y)\to K(X)</span>. A finitely
+      generated field extension is smooth exactly when it is separable.
+      Hence <span class="math inline">f</span> is smooth at the generic
+      point. The smooth locus is open, so it contains a nonempty open
+      subset. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Generic Étaleness of a
+      Separable Generically Finite Map). <em> If, in addition, <span
+      class="math inline">K(X)/K(Y)</span> is finite separable, then
+      <span class="math inline">f</span> is étale on a nonempty open
+      subset of <span class="math inline">X</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> At the generic point the induced field map is
+      finite separable, hence étale. The étale locus is open. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Positive-Characteristic Failure).
+      <em> The separability hypothesis cannot be omitted. The Frobenius
+      map <span class="math display">\mathbb A^1_k\longrightarrow\mathbb
+      A^1_k,
+              \qquad t\longmapsto t^p,</span> over a
+      characteristic-<span class="math inline">p</span> field induces a
+      purely inseparable extension of function fields and is nowhere
+      smooth.</em></p>
+      </div>
+      <h4 data-number="3.3.7.3"
+      id="a-reliable-local-decision-procedure">A Reliable Local Decision
+      Procedure</h4>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Polynomial Decision Tree for a
+      Standard Morphism). <em> Let <span class="math inline">f\colon
+      X\to Y</span> be a standard morphism, choose affine neighbourhoods
+      <span class="math display">U=\operatorname{Spec}A,
+              \qquad
+              V=\operatorname{Spec}R,
+              \qquad
+              A=R[T_1,\ldots,T_n]/I,</span> and let <span
+      class="math inline">x\in U</span>.</em></p>
+      <ol>
+      <li><p><em>Choose finitely many generators <span
+      class="math inline">F_1,\ldots,F_r</span> of <span
+      class="math inline">I</span> and evaluate the relative Jacobian
+      <span class="math inline">J_F(x)</span>.</em></p></li>
+      <li><p><em>The morphism is unramified at <span
+      class="math inline">x</span> exactly when <span
+      class="math display">\operatorname{rank}J_F(x)=n.</span> This is
+      equivalent to <span
+      class="math inline">T_x(X/Y)=0</span>.</em></p></li>
+      <li><p><em>To prove smoothness, do not merely compute the rank of
+      <span class="math inline">J_F(x)</span>. Find a localization on
+      which <span class="math inline">I</span> is generated by <span
+      class="math inline">c</span> equations and a <span
+      class="math inline">c\times c</span> Jacobian minor is invertible.
+      This simultaneously proves flatness, injectivity of the conormal
+      map, and local freeness of the differential module.</em></p></li>
+      <li><p><em>The morphism is étale at <span
+      class="math inline">x</span> when the preceding smooth model has
+      <span class="math inline">c=n</span>; equivalently, a square
+      Jacobian determinant is invertible.</em></p></li>
+      <li><p><em>Over a perfect field, one may instead compare Jacobian
+      rank with local dimension because regularity and smoothness
+      coincide. Over an imperfect field, this shortcut is invalid unless
+      the residue extension is known to be separable or the coefficient
+      <span class="math inline">p</span>-directions are checked by
+      Theorem .</em></p></li>
+      </ol>
+      </div>
+      <h3 data-number="3.3.8" id="structural-summary">Structural
+      Summary</h3>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (The Differential-Property
+      Dictionary). <em> For a morphism <span class="math inline">f\colon
+      X\to Y</span> of standard schemes, the three properties fit into
+      the following dictionary:</em></p>
+      <div class="center">
+      <table>
+      <thead>
+      <tr>
+      <th style="text-align: left;"></th>
+      <th
+      style="text-align: left;"><em><strong>unramified</strong></em></th>
+      <th
+      style="text-align: left;"><em><strong>smooth</strong></em></th>
+      <th style="text-align: left;"><em><strong>étale</strong></em></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style="text-align: left;"><em>formal lifting</em></td>
+      <td style="text-align: left;"><em>at most one lift</em></td>
+      <td style="text-align: left;"><em>at least one lift</em></td>
+      <td style="text-align: left;"><em>exactly one lift</em></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><em>differentials</em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">\Omega^1_{X/Y}=0</span></em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">\Omega^1_{X/Y}</span> locally free and <span
+      class="math inline">H_1(\mathop{N\!L}_{X/Y})=0</span></em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">\Omega^1_{X/Y}=0</span> and flatness</em></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><em>fibres</em></td>
+      <td style="text-align: left;"><em>finite separable
+      points</em></td>
+      <td style="text-align: left;"><em>geometrically regular</em></td>
+      <td style="text-align: left;"><em>finite separable points and
+      flatness</em></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><em>Jacobian model</em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">\operatorname{rank}J=n</span></em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">c</span> local equations with an invertible
+      <span class="math inline">c\times c</span> minor</em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">n</span> equations with an invertible
+      determinant</em></td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><em>relative tangent space</em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">0</span></em></td>
+      <td style="text-align: left;"><em>constant dimension <span
+      class="math inline">d</span></em></td>
+      <td style="text-align: left;"><em><span
+      class="math inline">0</span></em></td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      <p><em>The polynomial calculus is not an approximation. Modulo a
+      square-zero ideal, the first-order Taylor formula is exact. The
+      three differential properties are therefore governed by the
+      elementary linear algebra of the Jacobian: injectivity gives
+      rigidity, solvability gives smoothness, and bijectivity gives
+      étaleness. Flatness and geometric regularity are the global
+      conditions ensuring that this linearized picture genuinely
+      describes the entire family.</em></p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="3.2-flat-morphism.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Flat Morphism</strong>
+        </a>
+                        <a class="turn-next" href="4-cohomology-of-proper-and-projective-schemes.html" rel="next">
+          <span>NEXT</span><strong>Cohomology of Proper and Projective Schemes →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

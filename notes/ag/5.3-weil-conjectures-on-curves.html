@@ -1,0 +1,3278 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Weil Conjectures on Curves · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Classical Geometry</p>
+        <h1>Weil Conjectures on Curves</h1>
+      </header>
+      <h2 data-number="5.3" id="weil-conjectures-on-curves">Weil
+      Conjectures on Curves</h2>
+      <h3 data-number="5.3.1" id="what-are-weil-conjectures">What are
+      Weil Conjectures?</h3>
+      <p>To understand the profound impact of the Weil Conjectures, we
+      must trace their origins through the history of number theory and
+      algebraic geometry, beginning with a striking analogy between
+      numbers and polynomials.</p>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Historical Context: From Artin to
+      Hasse). <em> In 1924, Emil Artin observed a deep structural
+      similarity between algebraic number fields (such as <span
+      class="math inline">\mathbb{Q}(\sqrt{-D})</span>) and function
+      fields over finite fields (such as <span
+      class="math inline">\mathbb{F}_p(x, \sqrt{f(x)})</span>). Just as
+      the classic Riemann <span
+      class="math inline">\zeta</span>-function studies the distribution
+      of prime numbers over the ring of integers <span
+      class="math inline">\mathbb{Z}</span>, Artin defined a <span
+      class="math inline">\zeta</span>-function for the polynomial ring
+      <span class="math inline">\mathbb{F}_q[x]</span>: <span
+      class="math display">\zeta(s) = \sum_{A} \frac{1}{|A|^s} =
+      \prod_{P} \left(1 - \frac{1}{|P|^s}\right)^{-1}.</span> where
+      <span class="math inline">A</span> runs over all monic polynomials
+      and <span class="math inline">P</span> runs over all irreducible
+      monic polynomials.</em></p>
+      <p><em>Following this analogy, Helmut Hasse (between 1933 and
+      1936) utilized the theory of complex multiplication to solve the
+      Riemann Hypothesis for algebraic curves of genus <span
+      class="math inline">g=1</span> (elliptic curves). By estimating
+      the zeroes of the <span class="math inline">\zeta</span>-function,
+      Hasse proved the famous bound for the number of rational points
+      <span class="math inline">N</span> on an elliptic curve over <span
+      class="math inline">\mathbb{F}_q</span>: <span
+      class="math display">|N - (q + 1)| \le 2\sqrt{q}.</span></em></p>
+      </div>
+      <p>Between 1940 and 1941, while incarcerated in a military prison
+      in Rouen, France, André Weil sought to generalize Hasse’s work
+      from elliptic curves to smooth, projective, geometrically
+      irreducible curves of arbitrary genus <span
+      class="math inline">g</span>.</p>
+      <p>Weil realized that the classical Italian school of algebraic
+      geometry lacked the rigorous foundations necessary to handle
+      spaces over fields of positive characteristic. Consequently, he
+      spent the following years completely rebuilding algebraic geometry
+      using the language of abstract algebra, culminating in his
+      treatises <em>Foundations of Algebraic Geometry</em> (1946) and
+      <em>Sur les courbes algébriques</em> (1948).</p>
+      <p>By 1949, after studying Gauss and Jacobi sums and counting
+      points on diagonal hypersurfaces, Weil discovered that the
+      patterns governing rational points on curves were not isolated
+      phenomena. They were manifestations of a profound topological
+      structure shaUniBlue by algebraic varieties of <em>all</em>
+      dimensions. He formally proposed this in his landmark paper
+      <em>Numbers of solutions of equations in finite fields</em>,
+      giving birth to the classic Weil Conjectures.</p>
+      <p>To state the conjectures, we first define the generating
+      function that encodes the number of solutions to a system of
+      polynomial equations over extensions of a finite field.</p>
+      <div class="definition">
+      <p><strong>Definition 3.1</strong> (The Local Zeta Function). <em>
+      Let <span class="math inline">X</span> be an <span
+      class="math inline">n</span>-dimensional smooth projective
+      algebraic variety defined over a finite field <span
+      class="math inline">\mathbb{F}_q</span>. Let <span
+      class="math inline">N_m</span> denote the number of rational
+      points of <span class="math inline">X</span> over the degree-<span
+      class="math inline">m</span> extension field <span
+      class="math inline">\mathbb{F}_{q^m}</span> (i.e., <span
+      class="math inline">N_m = |X(\mathbb{F}_{q^m})|</span>). The
+      <em>local zeta function</em> of <span class="math inline">X</span>
+      is defined as the formal power series: <span
+      class="math display">Z(X, t) = \exp\left( \sum_{m=1}^{\infty}
+      \frac{N_m}{m} t^m \right).</span></em></p>
+      </div>
+      <p>The Weil Conjectures state that this power series, constructed
+      purely from combinatorial counting, exhibits extraordinary
+      analytic and topological properties.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (The Weil Conjectures (1949)).
+      <em> Let <span class="math inline">X</span> be an <span
+      class="math inline">n</span>-dimensional smooth projective variety
+      over <span class="math inline">\mathbb{F}_q</span>. The zeta
+      function <span class="math inline">Z(X, t)</span> satisfies the
+      following four properties:</em></p>
+      <ol>
+      <li><p><em><strong>Rationality:</strong> <span
+      class="math inline">Z(X, t)</span> is a rational function in <span
+      class="math inline">t</span>. That is, there exist polynomials
+      <span class="math inline">P(t), Q(t) \in \mathbb{Q}[t]</span> such
+      that <span class="math inline">Z(X, t) =
+      \frac{P(t)}{Q(t)}</span>.</em></p></li>
+      <li><p><em><strong>Functional Equation:</strong> Let <span
+      class="math inline">\chi</span> be the Euler characteristic of
+      <span class="math inline">X</span>. The zeta function satisfies a
+      highly symmetric functional equation linking the values at <span
+      class="math inline">t</span> and <span class="math inline">1/(q^n
+      t)</span>: <span class="math display">Z\left(X, \frac{1}{q^n
+      t}\right) = \pm q^{\frac{n\chi}{2}} t^\chi Z(X,
+      t).</span></em></p></li>
+      <li><p><em><strong>Riemann Hypothesis:</strong> This is the
+      deepest part of the conjecture. The rational function factors into
+      an alternating product of polynomials: <span
+      class="math display">Z(X, t) = \frac{P_1(t) P_3(t) \cdots
+      P_{2n-1}(t)}{P_0(t) P_2(t) \cdots P_{2n}(t)}.</span> where each
+      <span class="math inline">P_i(t) \in \mathbb{Z}[t]</span>.
+      Furthermore:</em></p>
+      <ul>
+      <li><p><em><span class="math inline">P_0(t) = 1 -
+      t</span></em></p></li>
+      <li><p><em><span class="math inline">P_{2n}(t) = 1 - q^n
+      t</span></em></p></li>
+      <li><p><em>For <span class="math inline">1 \le i \le 2n-1</span>,
+      every root <span class="math inline">\alpha</span> of <span
+      class="math inline">P_i(t)</span> has absolute value <span
+      class="math inline">|\alpha| = q^{-i/2}</span> in the complex
+      plane. (Substituting <span class="math inline">t = q^{-s}</span>
+      places the zeroes on the critical line <span
+      class="math inline">\operatorname{Re}(s) =
+      i/2</span>).</em></p></li>
+      </ul></li>
+      <li><p><em><strong>Betti Numbers:</strong> If <span
+      class="math inline">X</span> is obtained by the good reduction
+      modulo <span class="math inline">p</span> of a smooth projective
+      variety <span class="math inline">\mathcal{X}</span> defined over
+      a number field <span class="math inline">K \subset
+      \mathbb{C}</span>, then the degree of <span
+      class="math inline">P_i(t)</span> is equal to the <span
+      class="math inline">i</span>-th topological Betti number of the
+      complex manifold <span
+      class="math inline">\mathcal{X}(\mathbb{C})</span>: <span
+      class="math display">\deg P_i(t) =
+      \beta_i(\mathcal{X}(\mathbb{C})).</span></em></p></li>
+      </ol>
+      </div>
+      <p>To truly appreciate the power of these conjectures, let us
+      specialize to the case of a curve, which is the core object of our
+      current study. Let <span class="math inline">X</span> be a smooth,
+      projective, geometrically irreducible curve over <span
+      class="math inline">\mathbb{F}_q</span>.</p>
+      <p>Because a curve has dimension <span class="math inline">n =
+      1</span>, the Betti number sequence for a corresponding compact
+      Riemann surface of genus <span class="math inline">g</span> is
+      <span class="math inline">\beta_0 = 1</span>, <span
+      class="math inline">\beta_1 = 2g</span>, and <span
+      class="math inline">\beta_2 = 1</span>. The Weil Conjectures
+      drastically simplify this scenario.</p>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Weil Conjectures for Curves).
+      <em> For a smooth projective curve <span
+      class="math inline">X</span> of genus <span
+      class="math inline">g</span> over <span
+      class="math inline">\mathbb{F}_q</span>, the polynomials <span
+      class="math inline">P_i(t)</span> vanish for <span
+      class="math inline">i &gt; 2</span>. The zeta function takes the
+      precise form: <span class="math display">Z(X, t) =
+      \frac{P_1(t)}{(1-t)(1-qt)}.</span> where <span
+      class="math inline">P_1(t) \in \mathbb{Z}[t]</span> is a
+      polynomial of degree <span class="math inline">2g</span>. The
+      roots of <span class="math inline">P_1(t)</span> can be written as
+      <span class="math inline">\alpha_1^{-1}, \dots,
+      \alpha_{2g}^{-1}</span>, where each algebraic integer <span
+      class="math inline">\alpha_j</span> has complex absolute value
+      <span class="math inline">|\alpha_j| = \sqrt{q}</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Why this matters: The
+      Point-Counting Formula). <em> The true magic of the Riemann
+      Hypothesis for curves reveals itself when we extract the point
+      counts <span class="math inline">N_m</span>. By taking the
+      logarithmic derivative of <span class="math inline">Z(X, t) =
+      \frac{\prod_{j=1}^{2g} (1 - \alpha_j t)}{(1-t)(1-qt)}</span> and
+      comparing coefficients with the original definition <span
+      class="math inline">\exp(\sum \frac{N_m}{m} t^m)</span>, we obtain
+      a breathtakingly exact formula for the number of points: <span
+      class="math display">N_m = q^m + 1 - \sum_{j=1}^{2g}
+      \alpha_j^m.</span> Because we know the absolute value of every
+      <span class="math inline">\alpha_j</span> is <span
+      class="math inline">\sqrt{q}</span>, we can apply the triangle
+      inequality to instantly derive the generalized <strong>Hasse-Weil
+      Bound</strong> for a curve of arbitrary genus <span
+      class="math inline">g</span>: <span class="math display">|N_m -
+      (q^m + 1)| \le 2g q^{m/2}.</span> This tells us that the number of
+      points on a curve over a finite field is approximately <span
+      class="math inline">q^m + 1</span>, with an error term tightly
+      constrained by the geometry (the genus <span
+      class="math inline">g</span>) of the curve!</em></p>
+      </div>
+      <p>To rigorously define the point-counting numbers <span
+      class="math inline">N_m = |X(\mathbb{F}_{q^m})|</span> used in the
+      Weil Conjectures, we must define what a “point” over a field
+      extension means in the language of scheme theory, and how the
+      Galois group acts upon these points.</p>
+      <div class="definition">
+      <p><strong>Definition 3.2</strong> (<span
+      class="math inline">K</span>-Rational Points). <em> Let <span
+      class="math inline">X</span> be a scheme over a field <span
+      class="math inline">k</span>, and let <span
+      class="math inline">K</span> be a field extension of <span
+      class="math inline">k</span>. The set of <em><span
+      class="math inline">K</span>-rational points</em> of <span
+      class="math inline">X</span>, denoted <span
+      class="math inline">X(K)</span>, is defined as the set of <span
+      class="math inline">k</span>-morphisms from <span
+      class="math inline">\operatorname{Spec}K</span> to <span
+      class="math inline">X</span>: <span class="math display">X(K) =
+      \operatorname{Hom}_k(\operatorname{Spec}K, X).</span> Every
+      individual morphism <span class="math inline">P \colon
+      \operatorname{Spec}K \to X</span> is referUniBlue to as a <span
+      class="math inline">K</span>-point of <span
+      class="math inline">X</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 3.3</strong> (Galois Action on Points). <em>
+      Let <span class="math inline">K/k</span> be a Galois field
+      extension with Galois group <span class="math inline">G =
+      \operatorname{Gal}(K/k)</span>. For any automorphism <span
+      class="math inline">\sigma \in G</span> and any <span
+      class="math inline">K</span>-point <span class="math inline">P \in
+      X(K)</span>, the action of <span class="math inline">\sigma</span>
+      on <span class="math inline">P</span> is defined by the
+      composition of morphisms: <span class="math display">\sigma \cdot
+      P := P \circ \operatorname{Spec}(\sigma^{-1}).</span> where <span
+      class="math inline">\operatorname{Spec}(\sigma^{-1}) \colon
+      \operatorname{Spec}K \to \operatorname{Spec}K</span> is the scheme
+      morphism canonically induced by the field automorphism <span
+      class="math inline">\sigma^{-1} \colon K \to K</span>.</em></p>
+      </div>
+      <p>To compute with <span class="math inline">K</span>-points, it
+      is highly practical to relate these abstract morphisms back to the
+      underlying topological space of the scheme <span
+      class="math inline">X</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Characterization of Rational
+      Points). <em> Let <span class="math inline">X</span> be a <span
+      class="math inline">k</span>-scheme and let <span
+      class="math inline">k&#39;</span> be a field extension of <span
+      class="math inline">k</span>. The <span
+      class="math inline">k&#39;</span>-rational points of <span
+      class="math inline">X</span> (the elements <span
+      class="math inline">f \in
+      \operatorname{Hom}_k(\operatorname{Spec}k&#39;, X)</span>) are in
+      canonical bijection with pairs <span class="math inline">(x,
+      \iota)</span>, where <span class="math inline">x \in X</span> is a
+      point in the underlying topological space of <span
+      class="math inline">X</span>, and <span class="math inline">\iota
+      \colon \kappa(x) \hookrightarrow k&#39;</span> is a <span
+      class="math inline">k</span>-linear field embedding of the residue
+      field <span class="math inline">\kappa(x)</span> into <span
+      class="math inline">k&#39;</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">f \in
+      \operatorname{Hom}_k(\operatorname{Spec}k&#39;, X)</span> be a
+      given morphism. The underlying topological space of <span
+      class="math inline">\operatorname{Spec}k&#39;</span> is a single
+      point, denoted <span class="math inline">*</span>. The continuous
+      map on topological spaces must send <span
+      class="math inline">*</span> to some specific point <span
+      class="math inline">x \in X</span>, so <span
+      class="math inline">f(*) = x</span>.</p>
+      <p>At the level of structure sheaves, the morphism <span
+      class="math inline">f</span> induces a homomorphism of local rings
+      at the target point: <span class="math display">f^\sharp _x \colon
+      \mathcal{O}_{X,x} \to k&#39;.</span> Because <span
+      class="math inline">f</span> is a morphism of locally ringed
+      spaces, <span class="math inline">f^\sharp _x</span> is a local
+      ring homomorphism. This strictly means the maximal ideal <span
+      class="math inline">\mathfrak{m}_x</span> of <span
+      class="math inline">\mathcal{O}_{X,x}</span> must be mapped into
+      the unique maximal ideal of the field <span
+      class="math inline">k&#39;</span>, which is simply the zero ideal
+      <span class="math inline">(0)</span>. Therefore, the kernel of
+      <span class="math inline">f^\sharp _x</span> contains <span
+      class="math inline">\mathfrak{m}_x</span>, and the homomorphism
+      naturally factors through the quotient: <span
+      class="math display">\mathcal{O}_{X,x} \twoheadrightarrow
+      \mathcal{O}_{X,x}/\mathfrak{m}_x = \kappa(x) \hookrightarrow
+      k&#39;.</span> This canonical injection <span
+      class="math inline">\kappa(x) \hookrightarrow k&#39;</span>
+      provides our embedding <span class="math inline">\iota</span>.</p>
+      <p>Conversely, suppose we are given a topological point <span
+      class="math inline">x \in X</span> and a <span
+      class="math inline">k</span>-linear embedding <span
+      class="math inline">\iota \colon \kappa(x) \hookrightarrow
+      k&#39;</span>. For any affine open set <span class="math inline">U
+      \subseteq X</span> containing <span class="math inline">x</span>,
+      we have a natural composite ring homomorphism: <span
+      class="math display">\mathcal{O}_X(U) \to \mathcal{O}_{X,x}
+      \twoheadrightarrow \kappa(x) \xrightarrow{\iota} k&#39;.</span>
+      Taking the spectrum of this ring homomorphism constructs a unique
+      scheme morphism <span
+      class="math inline">\operatorname{Spec}k&#39; \to U
+      \hookrightarrow X</span>, which precisely yields the <span
+      class="math inline">k&#39;</span>-point <span
+      class="math inline">f</span>. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (). <em> When <span
+      class="math inline">k&#39; = k</span>, the <span
+      class="math inline">k</span>-rational points <span
+      class="math inline">X(k)</span> correspond strictly bijectively to
+      the closed points <span class="math inline">x \in X</span> that
+      satisfy the residue field condition <span
+      class="math inline">\kappa(x) = k</span>.</em></p>
+      </div>
+      <p>When we study the points of <span class="math inline">X</span>
+      over an algebraic closure, the Galois group groups these points
+      into distinct orbits. The size of these orbits depends entirely on
+      the degree of the residue fields of the closed points of <span
+      class="math inline">X</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Fibers and Galois Orbits).
+      <em> Let <span class="math inline">\bar{k}</span> be an algebraic
+      closure of a perfect field <span class="math inline">k</span>, and
+      let <span class="math inline">\pi \colon \bar{X} = X \times_k
+      \bar{k} \to X</span> be the natural projection morphism. For any
+      closed point <span class="math inline">x \in X</span>, its
+      geometric fiber <span class="math inline">\bar{X}_x =
+      \pi^{-1}(x)</span> satisfies: <span
+      class="math display">\#\bar{X}_x = [\kappa(x) : k].</span>
+      Furthermore, the absolute Galois group <span class="math inline">G
+      = \operatorname{Gal}(\bar{k}/k)</span> acts transitively on the
+      points of <span class="math inline">\bar{X}_x</span>; that is,
+      <span class="math inline">\bar{X}_x</span> constitutes a single
+      Galois orbit under the action of <span
+      class="math inline">G</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the definition of the scheme-theoretic
+      fiber, the fiber over <span class="math inline">x</span> is
+      isomorphic to the base change of its residue field: <span
+      class="math display">\bar{X}_x \simeq
+      \operatorname{Spec}(\kappa(x) \otimes_k \bar{k}).</span> Because
+      <span class="math inline">k</span> is perfect, the finite field
+      extension <span class="math inline">\kappa(x)/k</span> is a
+      separable extension. By the Primitive Element Theorem, <span
+      class="math inline">\kappa(x)</span> is generated by a single
+      element, so <span class="math inline">\kappa(x) \simeq
+      k[z]/(f(z))</span> for some irreducible separable polynomial <span
+      class="math inline">f(z) \in k[z]</span>.</p>
+      <p>We can then compute the tensor product explicitly: <span
+      class="math display">\kappa(x) \otimes_k \bar{k} \simeq \left(
+      k[z]/(f(z)) \right) \otimes_k \bar{k} \simeq
+      \bar{k}[z]/(f(z)).</span> Since <span
+      class="math inline">\bar{k}</span> is an algebraically closed
+      field, the polynomial <span class="math inline">f(z)</span> splits
+      completely into distinct linear factors over <span
+      class="math inline">\bar{k}</span>, yielding roots <span
+      class="math inline">\alpha_1, \alpha_2, \dots, \alpha_n \in
+      \bar{k}</span>, where <span class="math inline">n = \deg(f) =
+      [\kappa(x) : k]</span>.</p>
+      <p>Applying the Chinese Remainder Theorem to the pairwise coprime
+      ideals <span class="math inline">(z - \alpha_i)</span>, the ring
+      decomposes into a direct product: <span
+      class="math display">\bar{k}[z]/(f(z)) \simeq \prod_{i=1}^n
+      \bar{k}[z]/(z - \alpha_i) \simeq \prod_{i=1}^n \bar{k}.</span>
+      Taking the spectrum transforms this direct product of rings into a
+      disjoint union of schemes: <span class="math display">\bar{X}_x
+      \simeq \operatorname{Spec}\left( \prod_{i=1}^n \bar{k} \right)
+      \simeq \coprod_{i=1}^n \operatorname{Spec}\bar{k}.</span> This
+      shows that the fiber consists of exactly <span
+      class="math inline">n</span> distinct points, proving that <span
+      class="math inline">\#\bar{X}_x = \deg(f) = [\kappa(x) :
+      k]</span>.</p>
+      <p>Finally, we consider the Galois action. Because <span
+      class="math inline">f(z)</span> is an irreducible polynomial over
+      <span class="math inline">k</span>, classical Galois theory states
+      that the absolute Galois group <span class="math inline">G =
+      \operatorname{Gal}(\bar{k}/k)</span> acts transitively on the set
+      of its roots <span class="math inline">\{\alpha_i\}</span>. Since
+      the geometric points of the fiber <span
+      class="math inline">\bar{X}_x</span> correspond exactly to these
+      roots, the Galois group <span class="math inline">G</span> acts
+      transitively on the <span class="math inline">n</span> points of
+      the fiber. Therefore, the geometric points lying over a single
+      closed point <span class="math inline">x \in X</span> form exactly
+      one complete Galois orbit. ◻</p>
+      </div>
+      <h3 data-number="5.3.2" id="the-proof-of-the-first-part">The proof
+      of the First Part</h3>
+      <p>To translate the geometric problem of point-counting into
+      algebraic machinery, we must fix our base field and study the
+      divisors on our curve.</p>
+      <p>Let <span class="math inline">k = \mathbb{F}_q</span> be a
+      finite field with <span class="math inline">q</span> elements.
+      Throughout this section, let <span class="math inline">X</span> be
+      a smooth, projective, and geometrically irreducible curve over
+      <span class="math inline">k</span> of genus <span
+      class="math inline">g</span>. In the language of schemes, we
+      formulate the specific objects that construct the Weil Conjectures
+      as follows:</p>
+      <ol>
+      <li><p>For any closed point <span class="math inline">x \in
+      |X|</span> (where <span class="math inline">|X|</span> denotes the
+      underlying topological space of the scheme <span
+      class="math inline">X</span>), the <em>degree</em> of <span
+      class="math inline">x</span> is defined as the degree of its
+      residue field over the base field: <span
+      class="math inline">\deg(x) = [\kappa(x) : k]</span>.</p></li>
+      <li><p>An <em>effective Weil divisor</em> on <span
+      class="math inline">X</span> is a formal sum <span
+      class="math inline">D = \sum_{x \in |X|} n_x x</span>, where the
+      coefficients <span class="math inline">n_x</span> are non-negative
+      integers (<span class="math inline">n_x \ge 0</span>) and only
+      finitely many <span class="math inline">n_x</span> are strictly
+      positive. The degree of the divisor extends the degree of points
+      linearly: <span class="math inline">\deg(D) = \sum_{x \in |X|} n_x
+      \deg(x)</span>. The set of all effective divisors is denoted <span
+      class="math inline">\operatorname{Div}^+(X)</span>.</p></li>
+      <li><p>Let <span class="math inline">k_s = \mathbb{F}_{q^s}</span>
+      be the unique field extension of <span
+      class="math inline">k</span> of degree <span
+      class="math inline">s</span>. The set of <span
+      class="math inline">k_s</span>-rational points on <span
+      class="math inline">X</span> is denoted <span
+      class="math inline">X(k_s) =
+      \operatorname{Hom}_k(\operatorname{Spec}k_s, X)</span>.</p></li>
+      </ol>
+      <p>To construct the Zeta function combinatorially, we define three
+      sequences of non-negative integers indexed by <span
+      class="math inline">s \ge 1</span> (with <span
+      class="math inline">A_0 = 1</span> by convention for the zero
+      divisor): <span class="math display">\begin{align*}
+          A_s &amp;= \#\{D \in \operatorname{Div}^+(X) \mid \deg(D) =
+      s\} &amp;&amp; \text{(Number of effective divisors of degree } s
+      \text{)} \\
+          M_s &amp;= \#\{x \in |X| \mid \deg(x) = s\} &amp;&amp;
+      \text{(Number of closed points of degree } s \text{)} \\
+          N_s &amp;= \#X(k_s) &amp;&amp; \text{(Number of } k_s
+      \text{-rational points)}
+      \end{align*}</span></p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Equivalent Expressions of the
+      Zeta Function). <em> For a curve <span
+      class="math inline">X</span> over a finite field <span
+      class="math inline">k = \mathbb{F}_q</span>, the following three
+      formal power series in the formal variable <span
+      class="math inline">t</span> are absolutely identical:</em></p>
+      <ol>
+      <li><p><em> <span class="math inline">\displaystyle
+      \sum_{s=0}^\infty A_s t^s</span></em></p></li>
+      <li><p><em> <span class="math inline">\displaystyle
+      \prod_{s=1}^\infty (1 - t^s)^{-M_s}</span></em></p></li>
+      <li><p><em> <span class="math inline">\displaystyle \exp\left(
+      \sum_{s=1}^\infty \frac{N_s}{s} t^s \right)</span></em></p></li>
+      </ol>
+      <p><em>We formally define this identical series as the <em>local
+      Zeta function</em> of the curve <span
+      class="math inline">X</span>, denoted <span
+      class="math inline">Z(X, t)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> <strong>Proof that = :</strong> The set of
+      effective divisors <span
+      class="math inline">\operatorname{Div}^+(X)</span> forms a free
+      commutative monoid generated strictly by the closed points <span
+      class="math inline">x \in |X|</span>. Because of this unique
+      factorization property (every effective divisor is a unique finite
+      sum of closed points), we can rewrite the sum over all effective
+      divisors as an Euler product over all closed points: <span
+      class="math display">\sum_{s=0}^\infty A_s t^s = \sum_{D \in
+      \operatorname{Div}^+(X)} t^{\deg(D)} = \prod_{x \in |X|} \left(
+      \sum_{n=0}^\infty t^{n \deg(x)} \right).</span> By evaluating the
+      inner geometric series for each point <span
+      class="math inline">x</span>, this becomes: <span
+      class="math display">\prod_{x \in |X|} (1 -
+      t^{\deg(x)})^{-1}.</span> We can now group the terms in this
+      infinite product by the degree of the closed points. Let <span
+      class="math inline">s = \deg(x)</span>. By definition, there are
+      exactly <span class="math inline">M_s</span> closed points of
+      degree <span class="math inline">s</span>. Grouping these
+      identical factors together yields: <span
+      class="math display">\prod_{s=1}^\infty (1 - t^s)^{-M_s}.</span>
+      This proves that and are equivalent.</p>
+      <p><strong>Proof that = :</strong> By Proposition , specifying a
+      <span class="math inline">k_s</span>-rational point is perfectly
+      equivalent to choosing a closed point <span class="math inline">x
+      \in |X|</span> alongside a <span
+      class="math inline">k</span>-linear field embedding of its residue
+      field into the target field: <span class="math inline">\kappa(x)
+      \hookrightarrow k_s</span>. Such an embedding exists if and only
+      if the degree <span class="math inline">d = \deg(x) =
+      [\kappa(x):k]</span> divides the extension degree <span
+      class="math inline">s</span>. Furthermore, standard Galois theory
+      of finite fields dictates that if one such embedding exists, there
+      are exactly <span class="math inline">d</span> distinct
+      embeddings, corresponding to the conjugates under the action of
+      <span class="math inline">\operatorname{Gal}(\kappa(x)/k)</span>.
+      Therefore, if we classify the rational points by the degree <span
+      class="math inline">d</span> of their underlying closed point, we
+      obtain the fundamental counting formula: <span
+      class="math display">N_s = \sum_{d \mid s} d M_d.</span> Now, we
+      apply the formal logarithm to the infinite product in . Using the
+      Taylor expansion <span class="math inline">\log(1-X) =
+      -\sum_{k=1}^\infty \frac{X^k}{k}</span>, we obtain: <span
+      class="math display">\begin{align*}
+          \log \left( \prod_{s=1}^\infty (1 - t^s)^{-M_s} \right) &amp;=
+      -\sum_{d=1}^\infty M_d \log(1 - t^d) \\
+          &amp;= \sum_{d=1}^\infty M_d \sum_{k=1}^\infty
+      \frac{t^{dk}}{k}
+      \end{align*}</span> To re-index this double sum, let <span
+      class="math inline">s = dk</span>. Then <span
+      class="math inline">k = s/d</span>. For a fixed <span
+      class="math inline">s \ge 1</span>, the inner sum will iterate
+      over all divisors <span class="math inline">d</span> of <span
+      class="math inline">s</span>. Substituting <span
+      class="math inline">k</span> gives: <span
+      class="math display">\begin{align*}
+          \sum_{d=1}^\infty \sum_{k=1}^\infty M_d \frac{t^{dk}}{k}
+      &amp;= \sum_{s=1}^\infty \left( \sum_{d \mid s} M_d \frac{d}{s}
+      \right) t^s \\
+          &amp;= \sum_{s=1}^\infty \frac{1}{s} \left( \sum_{d \mid s} d
+      M_d \right) t^s \\
+          &amp;= \sum_{s=1}^\infty \frac{N_s}{s} t^s
+      \end{align*}</span> Taking the formal exponential <span
+      class="math inline">\exp</span> of both sides immediately shows
+      that the product equals the exponential generating function . This
+      concludes the proof of the theorem. ◻</p>
+      </div>
+      <p>To prove the rationality of <span class="math inline">Z(X,
+      t)</span>, we will eventually group the effective divisors <span
+      class="math inline">D</span> not just by their degree, but by
+      their linear equivalence classes. We must therefore count how many
+      effective divisors exist in a given linear equivalence class.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Size of a Complete Linear
+      System). <em> Let <span class="math inline">D</span> be a divisor
+      on the curve <span class="math inline">X</span>, and let <span
+      class="math inline">\ell(D) = \dim_k \operatorname{H}^0(X,
+      \mathcal{O}_X(D))</span>. Assuming <span
+      class="math inline">\ell(D) &gt; 0</span>, the number of effective
+      divisors that are linearly equivalent to <span
+      class="math inline">D</span> (i.e., the cardinality of the
+      complete linear system <span class="math inline">|D|</span>) is
+      exactly: <span class="math display">\frac{q^{\ell(D)} - 1}{q -
+      1}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because <span class="math inline">X</span> is a
+      geometrically irreducible projective scheme over <span
+      class="math inline">k</span>, the ring of global regular functions
+      is simply the base field itself: <span
+      class="math inline">\Gamma(X, \mathcal{O}_X) = k</span>.
+      Consequently, the group of globally invertible regular functions
+      is the multiplicative group of the field: <span
+      class="math inline">\Gamma(X, \mathcal{O}_X^\times) =
+      k^\times</span>.</p>
+      <p>There is a canonical bijection between the effective divisors
+      in the complete linear system <span class="math inline">|D|</span>
+      and the non-zero global sections of the line bundle <span
+      class="math inline">\mathcal{O}_X(D)</span> modulo scaling by
+      global invertible functions. That is: <span
+      class="math display">|D| \longleftrightarrow \left( \Gamma(X,
+      \mathcal{O}_X(D)) \setminus \{0\} \right) / k^\times.</span> The
+      space of global sections <span class="math inline">\Gamma(X,
+      \mathcal{O}_X(D))</span> is a <span
+      class="math inline">k</span>-vector space of dimension <span
+      class="math inline">\ell(D)</span>. Since the base field has <span
+      class="math inline">q</span> elements, this vector space contains
+      exactly <span class="math inline">q^{\ell(D)}</span> total
+      elements. Removing the zero section leaves <span
+      class="math inline">q^{\ell(D)} - 1</span> non-zero sections.</p>
+      <p>The group <span class="math inline">k^\times</span> acts on
+      these non-zero sections by scalar multiplication. Because <span
+      class="math inline">X</span> is an integral scheme, the space of
+      sections is torsion-free, meaning the multiplication action by any
+      element of <span class="math inline">k^\times</span> (other than
+      <span class="math inline">1</span>) has no fixed points on the
+      non-zero sections. Thus, the action is free.</p>
+      <p>Since the group <span class="math inline">k^\times</span> has
+      order <span class="math inline">q - 1</span>, each orbit under
+      this action has exactly <span class="math inline">q - 1</span>
+      elements. The number of orbits, which corresponds exactly to the
+      number of effective divisors in <span
+      class="math inline">|D|</span>, is the total number of non-zero
+      sections divided by the size of the orbits: <span
+      class="math display">\#|D| = \frac{q^{\ell(D)} - 1}{q - 1}.</span>
+      Geometrically, this demonstrates that over a finite field, the
+      complete linear system <span class="math inline">|D|</span> is
+      simply the set of rational points of the projective space <span
+      class="math inline">\mathbb{P}^{\ell(D)-1}(\mathbb{F}_q)</span>. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Finiteness of Effective Divisors of
+      Bounded Degree). <em> For any integer <span class="math inline">d
+      \ge 0</span>, the set of effective divisors of degree <span
+      class="math inline">d</span> on <span class="math inline">X</span>
+      is finite. That is, the set <span
+      class="math display">\operatorname{Div}_+^d(X) := \{E \in
+      \operatorname{Div}(X) \mid E \ge 0, \deg(E) = d\}.</span> is a
+      finite set.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> An effective divisor can be uniquely
+      represented as a formal sum <span class="math inline">E = \sum n_x
+      x</span>, where <span class="math inline">x \in |X|</span> are
+      closed points, <span class="math inline">n_x \ge 0</span>, and the
+      degree satisfies <span class="math inline">\sum n_x \deg(x) =
+      d</span>. Because the degree of any closed point is positive
+      (<span class="math inline">\deg(x) \ge 1</span>), the points <span
+      class="math inline">x</span> actively participating in this sum
+      (where <span class="math inline">n_x &gt; 0</span>) must
+      individually satisfy <span class="math inline">\deg(x) \le
+      d</span>.</p>
+      <p>Because <span class="math inline">X</span> is a projective
+      scheme over <span class="math inline">k</span>, it admits a closed
+      immersion into some projective space <span
+      class="math inline">\mathbb{P}^n_k</span>. For any closed point
+      <span class="math inline">x \in |X|</span> with <span
+      class="math inline">\deg(x) = r \le d</span>, its residue field
+      <span class="math inline">\kappa(x)</span> is isomorphic to the
+      finite field <span class="math inline">\mathbb{F}_{q^r}</span>.
+      This structure gives rise to a naturally defined morphism <span
+      class="math inline">\operatorname{Spec}\mathbb{F}_{q^r} \to X
+      \hookrightarrow \mathbb{P}^n_k</span>, which corresponds to a
+      specific rational point in <span
+      class="math inline">\mathbb{P}^n(\mathbb{F}_{q^r})</span>.</p>
+      <p>Since a projective space over a finite field only has a finite
+      number of rational points, the set <span
+      class="math inline">\mathbb{P}^n(\mathbb{F}_{q^r})</span> is
+      finite. Consequently, its closed subset <span
+      class="math inline">X(\mathbb{F}_{q^r})</span> is also finite.
+      This implies that the total number of closed points on <span
+      class="math inline">X</span> whose degree does not exceed <span
+      class="math inline">d</span> is strictly finite. Since there are
+      only finitely many closed points available to form the divisor
+      <span class="math inline">E</span>, and their respective
+      coefficients <span class="math inline">n_x</span> are strictly
+      bounded by the condition <span class="math inline">\sum n_x
+      \deg(x) = d</span>, there are only finitely many valid linear
+      combinations. Thus, <span
+      class="math inline">\operatorname{Div}_+^d(X)</span> is a finite
+      set. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Finiteness of <span
+      class="math inline">\operatorname{Pic}^d(X)</span> and the Class
+      Number). <em> For any integer <span class="math inline">d</span>,
+      the set of divisor classes of degree <span
+      class="math inline">d</span>, denoted <span
+      class="math inline">\operatorname{Pic}^d(X)</span>, is a finite
+      set. In particular, the degree-zero Picard group <span
+      class="math inline">\operatorname{Pic}^0(X)</span> is a finite
+      Abelian group. Its cardinality is called the <em>class number</em>
+      of the curve <span class="math inline">X</span>, denoted by <span
+      class="math inline">h</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We first prove that <span
+      class="math inline">\operatorname{Pic}^d(X)</span> is finite for
+      any <span class="math inline">d \ge 2g</span>. Take an arbitrary
+      divisor class <span class="math inline">[D] \in
+      \operatorname{Pic}^d(X)</span> with <span class="math inline">d
+      \ge 2g</span>. By the Riemann-Roch theorem, we must consider the
+      canonical divisor <span class="math inline">K</span>, which has
+      degree <span class="math inline">\deg(K) = 2g - 2</span>. We
+      evaluate the degree of <span class="math inline">K - D</span>:
+      <span class="math display">\deg(K - D) = 2g - 2 - d &lt; 0.</span>
+      Because a divisor of negative degree cannot be linearly equivalent
+      to an effective divisor, the space of global sections for <span
+      class="math inline">K-D</span> is trivial, meaning <span
+      class="math inline">\ell(K - D) = 0</span>.</p>
+      <p>Therefore, the Riemann-Roch formula simplifies exactly to:
+      <span class="math display">\ell(D) = \deg(D) + 1 - g = d + 1 -
+      g.</span> Since <span class="math inline">d \ge 2g</span>, it
+      immediately follows that <span class="math inline">\ell(D) \ge g +
+      1 \ge 1</span>. This proves that <span class="math inline">\ell(D)
+      &gt; 0</span>, meaning the complete linear system <span
+      class="math inline">|D|</span> is non-empty. This establishes a
+      crucial fact: when <span class="math inline">d \ge 2g</span>,
+      <em>every</em> divisor class in <span
+      class="math inline">\operatorname{Pic}^d(X)</span> contains at
+      least one effective divisor.</p>
+      <p>In other words, the natural quotient map mapping effective
+      divisors to their linear equivalence class: <span
+      class="math display">\operatorname{Div}_+^d(X) \twoheadrightarrow
+      \operatorname{Pic}^d(X).</span> is surjective. By Lemma , the
+      domain <span class="math inline">\operatorname{Div}_+^d(X)</span>
+      is a finite set. The surjective image of a finite set is
+      necessarily finite, so <span
+      class="math inline">\operatorname{Pic}^d(X)</span> must be finite
+      for <span class="math inline">d \ge 2g</span>.</p>
+      <p>Now consider an arbitrary degree <span
+      class="math inline">r</span>. Because the degrees of closed points
+      on <span class="math inline">X</span> are strictly positive, we
+      can simply pick a sufficiently large number of closed points to
+      construct an effective divisor <span
+      class="math inline">D_h</span> such that <span
+      class="math inline">r + \deg(D_h) \ge 2g</span>. Translation by
+      <span class="math inline">D_h</span> induces a group isomorphism:
+      <span class="math display">\operatorname{Pic}^r(X)
+      \xrightarrow{\sim} \operatorname{Pic}^{r + \deg(D_h)}(X), \quad
+      [D] \mapsto [D + D_h].</span> Because the target set <span
+      class="math inline">\operatorname{Pic}^{r + \deg(D_h)}(X)</span>
+      has a degree greater than or equal to <span
+      class="math inline">2g</span>, we know it is finite. The bijection
+      implies the source set <span
+      class="math inline">\operatorname{Pic}^r(X)</span> is also finite.
+      Setting <span class="math inline">r=0</span> demonstrates that
+      <span class="math inline">\operatorname{Pic}^0(X)</span> is a
+      finite group, allowing us to formally define the class number
+      <span class="math inline">h =
+      \#\operatorname{Pic}^0(X)</span>. ◻</p>
+      </div>
+      <p>We continue to fix <span class="math inline">X</span> as a
+      smooth, projective, geometrically irreducible curve over the
+      finite field <span class="math inline">k = \mathbb{F}_q</span>,
+      with genus <span class="math inline">g</span> and class number
+      <span class="math inline">h</span>. Let <span
+      class="math inline">A_s</span> denote the number of effective
+      divisors of degree <span class="math inline">s</span>.</p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (The Greatest Common Divisor of
+      Divisor Degrees). <em> Let <span class="math inline">m</span> be
+      the greatest common divisor of the degrees of all closed points on
+      <span class="math inline">X</span> (equivalently, <span
+      class="math inline">m</span> is the smallest positive integer such
+      that there exists a divisor of degree <span
+      class="math inline">m</span> on <span
+      class="math inline">X</span>). Then <span class="math inline">m =
+      1</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We begin by observing the explicit distribution
+      of the sequence <span class="math inline">A_s</span>:</p>
+      <ol>
+      <li><p>If <span class="math inline">m \nmid s</span>, there are
+      strictly no divisors of degree <span class="math inline">s</span>
+      on <span class="math inline">X</span> (as all degrees are
+      multiples of <span class="math inline">m</span>). Thus, <span
+      class="math inline">A_s = 0</span>.</p></li>
+      <li><p>If <span class="math inline">m \mid s</span> and <span
+      class="math inline">s &gt; 2g - 2</span>, the set <span
+      class="math inline">\operatorname{Pic}^s(X)</span> is a principal
+      homogeneous space over <span
+      class="math inline">\operatorname{Pic}^0(X)</span>, meaning it
+      contains exactly <span class="math inline">h</span> distinct
+      divisor classes. For each class <span class="math inline">[D] \in
+      \operatorname{Pic}^s(X)</span>, since <span class="math inline">s
+      &gt; 2g - 2</span>, the Riemann-Roch theorem dictates <span
+      class="math inline">\ell(D) = s - g + 1</span>. By Theorem , each
+      of the <span class="math inline">h</span> classes contains exactly
+      <span class="math inline">\frac{q^{s-g+1}-1}{q-1}</span> effective
+      divisors. Summing these up yields: <span class="math display">A_s
+      = h \frac{q^{s-g+1} - 1}{q - 1}.</span></p></li>
+      </ol>
+      <p>Using these two rules, we can expand the formal series of the
+      Zeta function and re-index it using the variable <span
+      class="math inline">t^m</span>: <span
+      class="math display">\begin{align*}
+          Z(X, t) &amp;= \sum_{s=0}^\infty A_s t^s = \sum_{r=0}^\infty
+      A_{rm} t^{rm} \\
+          &amp;= \sum_{rm \le 2g-2} A_{rm} t^{rm} + \frac{h}{q-1}
+      \sum_{rm &gt; 2g-2} \left( q^{rm-g+1} - 1 \right) t^{rm}
+      \end{align*}</span> The first summation is simply a polynomial in
+      <span class="math inline">t^m</span>. The second summation is the
+      difference of two geometric series, which can be evaluated
+      explicitly: <span class="math display">Z(X, t) = \left(
+      \text{Polynomial in } t^m \right) + \frac{h}{q-1} \left(
+      \frac{q^{1-g} (qt)^{r_0 m}}{1 - q^m t^m} - \frac{t^{r_0 m}}{1 -
+      t^m} \right).</span> where <span class="math inline">r_0</span> is
+      the smallest integer such that <span class="math inline">r_0 m
+      &gt; 2g - 2</span>.</p>
+      <p>This explicit formula shows that <span class="math inline">Z(X,
+      t)</span> is a rational function, a quotient of two polynomials in
+      the variable <span class="math inline">t^m</span>. If we view
+      <span class="math inline">Z(X, t)</span> as a meromorphic function
+      on the complex plane <span class="math inline">\mathbb{C}</span>,
+      the presence of the term <span class="math inline">\frac{1}{1 -
+      t^m}</span> (whose numerator coefficient is non-zero) forces <span
+      class="math inline">Z(X, t)</span> to have a simple (first-order)
+      pole at <span class="math inline">t = 1</span>.</p>
+      <p>Now, let <span class="math inline">M_j</span> be the number of
+      closed points of degree <span class="math inline">j</span> on
+      <span class="math inline">X</span>. Because <span
+      class="math inline">M_j = 0</span> whenever <span
+      class="math inline">m \nmid j</span>, we can rewrite the Euler
+      product formula of the Zeta function strictly in terms of
+      multiples of <span class="math inline">m</span>: <span
+      class="math display">Z(X, t) = \prod_{s=1}^\infty (1 -
+      t^{ms})^{-M_{ms}}.</span> Define an auxiliary power series <span
+      class="math inline">f(t) = \prod_{s=1}^\infty (1 -
+      t^s)^{-M_{ms}}</span>, so that the relationship is exactly <span
+      class="math inline">Z(X, t) = f(t^m)</span>. Since we established
+      that <span class="math inline">Z(X, t)</span> has a simple pole at
+      <span class="math inline">t = 1</span>, it immediately follows
+      that <span class="math inline">f(t)</span> itself must have a
+      simple pole at <span class="math inline">t = 1</span>.</p>
+      <p>We now employ a base change argument. Let <span
+      class="math inline">k_m = \mathbb{F}_{q^m}</span>, and consider
+      the base-changed curve <span class="math inline">X_{k_m} = X
+      \times_k k_m</span>. Let its Zeta function be denoted <span
+      class="math inline">Z(X_{k_m}, t) = \prod_{s=1}^\infty (1 -
+      t^s)^{-M_s^*}</span>. For any closed point <span
+      class="math inline">x</span> on <span
+      class="math inline">X</span>, its degree <span
+      class="math inline">[\kappa(x) : k]</span> must be a multiple of
+      <span class="math inline">m</span>. This implies its residue field
+      <span class="math inline">\kappa(x)</span> contains the subfield
+      <span class="math inline">k_m</span>. Thus, the field extension
+      degrees satisfy the tower law: <span
+      class="math inline">[\kappa(x) : k] = m \cdot [\kappa(x) :
+      k_m]</span>. Geometrically, this implies that a single closed
+      point on <span class="math inline">X</span> of degree <span
+      class="math inline">ms</span>, upon base change to <span
+      class="math inline">k_m</span>, splits completely into exactly
+      <span class="math inline">m</span> distinct closed points, each of
+      degree <span class="math inline">s</span>. This gives us a direct
+      counting correspondence: <span class="math display">M_s^* = m
+      \cdot M_{ms}.</span></p>
+      <p>Substitute this correspondence back into the Euler product for
+      <span class="math inline">X_{k_m}</span>: <span
+      class="math display">Z(X_{k_m}, t) = \prod_{s=1}^\infty (1 -
+      t^s)^{-m M_{ms}} = \left( \prod_{s=1}^\infty (1 - t^s)^{-M_{ms}}
+      \right)^m = f(t)^m.</span></p>
+      <p>On the other hand, <span class="math inline">X_{k_m}</span> is
+      itself a smooth, geometrically irreducible curve defined over the
+      finite field <span class="math inline">k_m</span>. The greatest
+      common divisor of its closed point degrees is naturally 1 (as we
+      factoUniBlue out <span class="math inline">m</span>). Applying the
+      exact same analytic derivation we used for <span
+      class="math inline">X</span> to the curve <span
+      class="math inline">X_{k_m}</span>, we conclude that <span
+      class="math inline">Z(X_{k_m}, t)</span> as a whole must have a
+      simple pole at <span class="math inline">t = 1</span>.</p>
+      <p>However, we just proved that <span
+      class="math inline">Z(X_{k_m}, t) = f(t)^m</span>. Since <span
+      class="math inline">f(t)</span> has a simple pole at <span
+      class="math inline">t=1</span>, the function <span
+      class="math inline">f(t)^m</span> inherently has a pole of order
+      <span class="math inline">m</span> at <span
+      class="math inline">t=1</span>. To avoid a mathematical
+      contradiction between having a simple pole and a pole of order
+      <span class="math inline">m</span>, it is strictly necessary that
+      <span class="math inline">m = 1</span>. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Rationality of the Zeta
+      Function). <em> Let <span class="math inline">X</span> be a
+      smooth, projective, geometrically irreducible curve of genus <span
+      class="math inline">g</span> over a finite field <span
+      class="math inline">\mathbb{F}_q</span>. The local Zeta function
+      of <span class="math inline">X</span> is a rational function of
+      the specific form: <span class="math display">Z(X, t) =
+      \frac{P(t)}{(1 - t)(1 - qt)}.</span> where <span
+      class="math inline">P(t) \in \mathbb{Z}[t]</span> is a polynomial
+      with integer coefficients satisfying <span
+      class="math inline">P(0) = 1</span> and <span
+      class="math inline">\deg P(t) = 2g</span>. Furthermore, the
+      leading term of <span class="math inline">P(t)</span> is exactly
+      <span class="math inline">q^g t^{2g}</span>. Consequently, <span
+      class="math inline">P(t)</span> factors over the complex numbers
+      as <span class="math inline">\prod_{i=1}^{2g} (1 - \alpha_i
+      t)</span>, where the reciprocal roots <span
+      class="math inline">\alpha_i</span> are algebraic
+      integers.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We first address the special case where <span
+      class="math inline">g = 0</span>. For a curve of genus zero, the
+      Riemann-Roch theorem simplifies significantly. For any divisor
+      <span class="math inline">D</span> of degree <span
+      class="math inline">s \ge 0</span>, we have: <span
+      class="math display">\ell(D) = s + 1 - g = s + 1.</span>
+      Therefore, by Theorem , every divisor class of degree <span
+      class="math inline">s</span> contains exactly <span
+      class="math inline">\frac{q^{s+1} - 1}{q - 1}</span> effective
+      divisors. Since <span class="math inline">m=1</span> (Lemma ),
+      there are exactly <span class="math inline">h</span> divisor
+      classes of degree <span class="math inline">s</span>. Summing over
+      all classes yields the total number of effective divisors of
+      degree <span class="math inline">s</span>: <span
+      class="math display">A_s = h \left( \frac{q^{s+1} - 1}{q - 1}
+      \right), \quad \forall s \ge 0.</span> Taking <span
+      class="math inline">s = 0</span>, the only effective divisor of
+      degree zero is the zero divisor itself, so <span
+      class="math inline">A_0 = 1</span>. This immediately forces the
+      class number <span class="math inline">h = A_0 = 1</span>. The
+      Zeta function then becomes a direct evaluation of geometric
+      series: <span class="math display">Z(X, t) = \sum_{s=0}^\infty
+      \left( \frac{q^{s+1} - 1}{q - 1} \right) t^s = \frac{1}{q-1}
+      \left( q \sum_{s=0}^\infty (qt)^s - \sum_{s=0}^\infty t^s
+      \right).</span> <span class="math display">Z(X, t) = \frac{1}{q-1}
+      \left( \frac{q}{1 - qt} - \frac{1}{1 - t} \right) = \frac{1}{(1 -
+      t)(1 - qt)}.</span> This perfectly matches the theorem’s claim
+      with <span class="math inline">P(t) = 1</span>, which satisfies
+      <span class="math inline">\deg P(t) = 2(0) = 0</span> and <span
+      class="math inline">P(0) = 1</span>.</p>
+      <p>For the general case where <span class="math inline">g \ge
+      1</span>, we already established that <span
+      class="math inline">m=1</span>, meaning <span
+      class="math inline">\operatorname{Pic}^s(X)</span> always contains
+      exactly <span class="math inline">h</span> divisor classes for any
+      integer <span class="math inline">s</span>. By the Riemann-Roch
+      theorem, when <span class="math inline">s &gt; 2g - 2</span>, any
+      divisor <span class="math inline">D</span> of degree <span
+      class="math inline">s</span> satisfies <span
+      class="math inline">\ell(K - D) = 0</span>, which dictates that
+      <span class="math inline">\ell(D) = s - g + 1</span>. Thus, every
+      class of degree <span class="math inline">s</span> contains
+      identically <span class="math inline">\frac{q^{s-g+1} - 1}{q -
+      1}</span> effective divisors. Summing over the <span
+      class="math inline">h</span> classes gives the exact count for
+      <span class="math inline">s &gt; 2g - 2</span>: <span
+      class="math display">A_s = h \frac{q^{s-g+1} - 1}{q - 1}.</span>
+      To leverage this stable asymptotic behavior, we define an
+      “expected” number of effective divisors for <em>all</em> <span
+      class="math inline">s \ge 0</span>: <span
+      class="math display">A_s^* = \frac{h}{q-1} (q^{s-g+1} - 1).</span>
+      We can then split the full Zeta function series into a finite
+      polynomial part (the deviations from the expected count) and a
+      pUniBlueictable infinite series part: <span
+      class="math display">Z(X, t) = \sum_{s=0}^{2g-2} (A_s - A_s^*) t^s
+      + \sum_{s=0}^\infty A_s^* t^s.</span> We explicitly compute the
+      infinite sum of geometric series on the right: <span
+      class="math display">\begin{align*}
+      \sum_{s=0}^\infty A_s^* t^s &amp;= \frac{h}{q-1} \sum_{s=0}^\infty
+      \left( q^{1-g}(qt)^s - t^s \right) \\
+      &amp;= \frac{h}{q-1} \left( \frac{q^{1-g}}{1 - qt} - \frac{1}{1 -
+      t} \right)
+      \end{align*}</span> The left-hand sum is a finite polynomial,
+      which we will define as <span class="math inline">Q(t) =
+      \sum_{s=0}^{2g-2} (A_s - A_s^*) t^s</span>. Substituting this back
+      yields: <span class="math display">Z(X, t) = Q(t) + \frac{h}{q-1}
+      \left( \frac{q^{1-g}}{1 - qt} - \frac{1}{1 - t} \right).</span> By
+      finding a common denominator, we obtain: <span
+      class="math display">Z(X, t) = \frac{Q(t)(1 - t)(1 - qt) +
+      \frac{h}{q-1} \left( q^{1-g}(1-t) - (1-qt) \right)}{(1 - t)(1 -
+      qt)}.</span> This proves that <span class="math inline">Z(X,
+      t)</span> is a rational function with the denominator <span
+      class="math inline">(1-t)(1-qt)</span>. Let its numerator be
+      denoted <span class="math inline">P(t)</span>. Because the
+      original power series definition dictates <span
+      class="math inline">Z(X, 0) = A_0 = 1</span>, evaluating the
+      rational function at <span class="math inline">t=0</span> forces
+      <span class="math inline">P(0) = 1</span>.</p>
+      <p>It remains to compute the highest degree term of <span
+      class="math inline">P(t)</span>. Since the correction term in the
+      numerator has degree at most 1, the leading term of <span
+      class="math inline">P(t)</span> is entirely determined by the
+      leading term of <span class="math inline">Q(t)(1-t)(1-qt)</span>.
+      We must therefore find the highest degree term of <span
+      class="math inline">Q(t)</span>. We look at the coefficient at
+      <span class="math inline">s = 2g - 2</span>.</p>
+      <p>In <span
+      class="math inline">\operatorname{Pic}^{2g-2}(X)</span>, there are
+      exactly <span class="math inline">h</span> divisor classes.
+      Exactly one of these is the canonical divisor class <span
+      class="math inline">[K]</span>. For <span
+      class="math inline">[K]</span>, the dimension of global sections
+      is <span class="math inline">\ell(K) = g</span>. Thus, the
+      canonical class contains <span class="math inline">\frac{q^g -
+      1}{q - 1}</span> effective divisors.</p>
+      <p>For the remaining <span class="math inline">h - 1</span>
+      divisor classes <span class="math inline">[D] \neq [K]</span> of
+      degree <span class="math inline">2g-2</span>, the fact that <span
+      class="math inline">D \not\sim K</span> forces <span
+      class="math inline">\ell(K - D) = 0</span>. Using Riemann-Roch,
+      <span class="math inline">\ell(D) = (2g - 2) + 1 - g = g -
+      1</span>. Each of these <span class="math inline">h-1</span>
+      classes contains <span class="math inline">\frac{q^{g-1} - 1}{q -
+      1}</span> effective divisors.</p>
+      <p>Summing these contributions gives the true exact count <span
+      class="math inline">A_{2g-2}</span>: <span
+      class="math display">\begin{align*}
+      A_{2g-2} &amp;= \frac{q^g - 1}{q - 1} + (h - 1)\frac{q^{g-1} -
+      1}{q - 1} \\
+      &amp;= h \frac{q^{g-1} - 1}{q - 1} + \frac{q^g - q^{g-1}}{q - 1}
+      \\
+      &amp;= A_{2g-2}^* + q^{g-1}
+      \end{align*}</span> This reveals that the deviation exactly at
+      <span class="math inline">s = 2g-2</span> is <span
+      class="math inline">A_{2g-2} - A_{2g-2}^* = q^{g-1} \neq 0</span>.
+      Because all terms <span class="math inline">s &gt; 2g-2</span>
+      have identically zero deviation, the polynomial <span
+      class="math inline">Q(t)</span> has exactly degree <span
+      class="math inline">2g-2</span>, and its leading term is precisely
+      <span class="math inline">q^{g-1} t^{2g-2}</span>.</p>
+      <p>We now substitute this back into the structural expression for
+      <span class="math inline">P(t)</span>: <span
+      class="math display">P(t) = Q(t)(1 - t)(1 - qt) + (\text{lower
+      degree terms}).</span> Expanding the leading terms: <span
+      class="math display">\left( q^{g-1} t^{2g-2} \right) \cdot (-t)
+      \cdot (-qt) = q^g t^{2g}.</span> This decisively proves that <span
+      class="math inline">\deg P(t) = 2g</span>, and its leading term is
+      <span class="math inline">q^g t^{2g}</span>.</p>
+      <p>Finally, because <span class="math inline">P(t) \in
+      \mathbb{Z}[t]</span> and its constant term is <span
+      class="math inline">P(0) = 1</span>, the reciprocal polynomial
+      <span class="math inline">t^{2g} P(1/t)</span> is a monic
+      polynomial with integer coefficients. The roots of this monic
+      polynomial are precisely <span
+      class="math inline">\alpha_i</span>. Because they are roots of a
+      monic polynomial in <span
+      class="math inline">\mathbb{Z}[t]</span>, the numbers <span
+      class="math inline">\alpha_i</span> are by definition algebraic
+      integers. ◻</p>
+      </div>
+      <p>To establish the functional equation, it is highly convenient
+      to rewrite our rational Zeta function using a slightly different
+      algebraic grouping. Recall that the number of effective divisors
+      in any divisor class <span class="math inline">C</span> is exactly
+      <span class="math inline">\frac{q^{\ell(C)} - 1}{q - 1}</span>. If
+      we define a new summation notation <span class="math inline">L_d =
+      \sum_{C \in \operatorname{Pic}^d(X)} q^{\ell(C)}</span>, then the
+      total number of effective divisors of degree <span
+      class="math inline">d</span> is <span class="math inline">A_d =
+      \frac{L_d - h}{q - 1}</span>. Substituting this into our power
+      series naturally rearranges the Zeta function into the following
+      compact form: <span class="math display">Z(X, t) = \frac{1}{q-1}
+      \left( \sum_{d=0}^{2g-2} L_d t^d + \frac{h q^g t^{2g-1}}{1 - qt} -
+      \frac{h}{1 - t} \right).</span></p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Functional Equation of the
+      Zeta Function). <em> Let <span class="math inline">X</span> be a
+      smooth, projective, geometrically irreducible curve of genus <span
+      class="math inline">g</span> over a finite field <span
+      class="math inline">\mathbb{F}_q</span>. Its local Zeta function
+      satisfies the following symmetric functional equation: <span
+      class="math display">Z\left(X, \frac{1}{qt}\right) = q^{1-g}
+      t^{2-2g} Z(X, t).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We first establish a symmetry property for the
+      sequence <span class="math inline">L_d</span>. In the Picard group
+      <span class="math inline">\operatorname{Pic}(X)</span>, the map
+      <span class="math inline">C \mapsto K - C</span> (where <span
+      class="math inline">K</span> is the canonical divisor) provides a
+      canonical bijection between <span
+      class="math inline">\operatorname{Pic}^d(X)</span> and <span
+      class="math inline">\operatorname{Pic}^{2g-2-d}(X)</span>.</p>
+      <p>Using this bijection, we can rewrite the Riemann-Roch formula
+      <span class="math inline">\ell(C) - \ell(K - C) = d + 1 - g</span>
+      as <span class="math inline">\ell(K - C) = \ell(C) - d - 1 +
+      g</span>. This allows us to directly relate <span
+      class="math inline">L_{2g-2-d}</span> to <span
+      class="math inline">L_d</span>: <span
+      class="math display">\begin{align*}
+      L_{2g-2-d} &amp;= \sum_{D \in \operatorname{Pic}^{2g-2-d}(X)}
+      q^{\ell(D)} \\
+      &amp;= \sum_{C \in \operatorname{Pic}^d(X)} q^{\ell(K-C)} \\
+      &amp;= \sum_{C \in \operatorname{Pic}^d(X)} q^{\ell(C) - d - 1 +
+      g} \\
+      &amp;= q^{g-1-d} \sum_{C \in \operatorname{Pic}^d(X)} q^{\ell(C)}
+      \\
+      &amp;= q^{g-1-d} L_d
+      \end{align*}</span></p>
+      <p>Now, we substitute <span
+      class="math inline">\frac{1}{qt}</span> into the rearranged
+      formula for <span class="math inline">Z(X, t)</span>: <span
+      class="math display">Z\left(X, \frac{1}{qt}\right) = \frac{1}{q-1}
+      \left( \sum_{d=0}^{2g-2} L_d (qt)^{-d} + \frac{h q^g
+      (qt)^{1-2g}}{1 - q(qt)^{-1}} - \frac{h}{1 - (qt)^{-1}}
+      \right).</span></p>
+      <p>We will factor out <span
+      class="math inline">q^{1-g}t^{2-2g}</span> from each of the three
+      terms inside the parenthesis to show they perfectly match the
+      terms of the original <span class="math inline">Z(X,
+      t)</span>.</p>
+      <p><strong>First Term (The Finite Sum):</strong> We apply the
+      substitution <span class="math inline">k = 2g - 2 - d</span>. As
+      <span class="math inline">d</span> ranges from <span
+      class="math inline">0</span> to <span
+      class="math inline">2g-2</span>, <span
+      class="math inline">k</span> also ranges from <span
+      class="math inline">2g-2</span> down to <span
+      class="math inline">0</span>. Utilizing the symmetry <span
+      class="math inline">L_{2g-2-k} = q^{g-1-k} L_k</span>, we compute:
+      <span class="math display">\begin{align*}
+      \sum_{d=0}^{2g-2} L_d (qt)^{-d} &amp;= \sum_{k=0}^{2g-2}
+      L_{2g-2-k} q^{-(2g-2-k)} t^{-(2g-2-k)} \\
+      &amp;= \sum_{k=0}^{2g-2} (q^{g-1-k} L_k) q^{-2g+2+k} t^{-2g+2+k}
+      \\
+      &amp;= \sum_{k=0}^{2g-2} q^{1-g} L_k t^{2-2g+k} \\
+      &amp;= q^{1-g} t^{2-2g} \sum_{k=0}^{2g-2} L_k t^k
+      \end{align*}</span> This exactly matches <span
+      class="math inline">q^{1-g}t^{2-2g}</span> times the first term of
+      <span class="math inline">Z(X, t)</span>.</p>
+      <p><strong>Second Term:</strong> We simplify the algebraic
+      fraction: <span class="math display">\begin{align*}
+      \frac{h q^g (qt)^{1-2g}}{1 - q(qt)^{-1}} &amp;= \frac{h q^g
+      q^{1-2g} t^{1-2g}}{1 - t^{-1}} \\
+      &amp;= \frac{h q^{1-g} t^{1-2g}}{(t - 1)/t} \\
+      &amp;= \frac{h q^{1-g} t^{2-2g}}{t - 1} \\
+      &amp;= -q^{1-g} t^{2-2g} \left( \frac{h}{1 - t} \right)
+      \end{align*}</span> This exactly matches <span
+      class="math inline">q^{1-g}t^{2-2g}</span> times the
+      <em>third</em> term of <span class="math inline">Z(X,
+      t)</span>.</p>
+      <p><strong>Third Term:</strong> We simplify the final algebraic
+      fraction: <span class="math display">\begin{align*}
+      - \frac{h}{1 - (qt)^{-1}} &amp;= - \frac{h}{(qt - 1)/qt} \\
+      &amp;= - \frac{h qt}{qt - 1} \\
+      &amp;= \frac{h qt}{1 - qt} \\
+      &amp;= q^{1-g} t^{2-2g} \left( \frac{h q^g t^{2g-1}}{1 - qt}
+      \right)
+      \end{align*}</span> This exactly matches <span
+      class="math inline">q^{1-g}t^{2-2g}</span> times the
+      <em>second</em> term of <span class="math inline">Z(X,
+      t)</span>.</p>
+      <p>In conclusion, all three transformed terms precisely match the
+      original terms of <span class="math inline">Z(X, t)</span>
+      multiplied by the scaling factor. We therefore obtain: <span
+      class="math display">Z\left(X, \frac{1}{qt}\right) = q^{1-g}
+      t^{2-2g} Z(X, t).</span> The functional equation is proved. ◻</p>
+      </div>
+      <h3 data-number="5.3.3" id="the-proof-of-the-second-part">The
+      proof of the Second Part</h3>
+      <p>To estimate the lower bounds of sums of powers of complex
+      numbers, which will be crucial for connecting the point counts to
+      the roots of the Zeta function, we first require a foundational
+      analytic lemma based on Dirichlet’s simultaneous approximation
+      theorem.</p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Integer Multiple Approximation of
+      Phases). <em> Let <span class="math inline">\lambda_1, \dots,
+      \lambda_r</span> be complex numbers with absolute value exactly
+      equal to <span class="math inline">1</span>. For any given real
+      number <span class="math inline">\epsilon &gt; 0</span>, there
+      exist infinitely many positive integers <span
+      class="math inline">m</span> such that for all <span
+      class="math inline">j = 1, \dots, r</span>, we have: <span
+      class="math display">\operatorname{Re}(\lambda_j^m) &gt; 1 -
+      \epsilon.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We can write the complex numbers in polar form
+      as <span class="math inline">\lambda_j = e^{2\pi i
+      \theta_j}</span>, where <span class="math inline">\theta_j \in
+      \mathbb{R}</span>. According to Dirichlet’s simultaneous
+      approximation theorem, the sequence of fractional parts <span
+      class="math inline">\left( \{m\theta_1\}, \dots, \{m\theta_r\}
+      \right)_{m=1}^\infty</span> must have an accumulation point in the
+      <span class="math inline">r</span>-dimensional torus <span
+      class="math inline">(\mathbb{R}/\mathbb{Z})^r</span>.</p>
+      <p>Because this is a translation on a compact group, the origin
+      <span class="math inline">(0, \dots, 0)</span> itself is an
+      accumulation point. Therefore, for any arbitrarily small <span
+      class="math inline">\delta &gt; 0</span>, there exist infinitely
+      many positive integers <span class="math inline">m</span> such
+      that for all <span class="math inline">j</span>, the phase angle
+      difference between <span class="math inline">\lambda_j^m</span>
+      and <span class="math inline">1</span> on the unit circle is
+      strictly less than <span
+      class="math inline">2\pi\delta</span>.</p>
+      <p>If we choose <span class="math inline">\delta</span> to be
+      sufficiently small such that <span
+      class="math inline">\cos(2\pi\delta) &gt; 1 - \epsilon</span>,
+      then by the geometry of the complex plane, we immediately obtain:
+      <span class="math display">\operatorname{Re}(\lambda_j^m) =
+      \cos(2\pi m \theta_j) &gt; 1 - \epsilon.</span> Since there are
+      infinitely many such <span class="math inline">m</span> for any
+      <span class="math inline">\delta</span>, the lemma is
+      proved. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Non-Degenerate Lower Bound for
+      Power Sums). <em> Let <span class="math inline">\alpha_1, \dots,
+      \alpha_t</span> be a finite sequence of non-zero complex numbers.
+      Then there exist infinitely many positive integers <span
+      class="math inline">m</span> such that: <span
+      class="math display">\left| \sum_{j=1}^t \alpha_j^m \right| \ge
+      \max_{1 \le j \le t} |\alpha_j|^m.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Without loss of generality, we may assume the
+      complex numbers are sorted in descending order of their absolute
+      values: <span class="math display">|\alpha_1| = \dots = |\alpha_r|
+      &gt; |\alpha_{r+1}| \ge \dots \ge |\alpha_t|.</span> Let this
+      maximum absolute value be denoted by <span class="math inline">A =
+      |\alpha_1|</span>. We factor out the dominant magnitude <span
+      class="math inline">A^m</span> from the sum: <span
+      class="math display">\sum_{j=1}^t \alpha_j^m = A^m \left(
+      \sum_{j=1}^r \left(\frac{\alpha_j}{A}\right)^m + \sum_{j=r+1}^t
+      \left(\frac{\alpha_j}{A}\right)^m \right).</span> Define
+      normalized complex numbers <span class="math inline">\lambda_j =
+      \alpha_j / A</span>. By our ordering, for <span
+      class="math inline">1 \le j \le r</span>, we have <span
+      class="math inline">|\lambda_j| = 1</span>; and for <span
+      class="math inline">j &gt; r</span>, we have <span
+      class="math inline">|\lambda_j| &lt; 1</span>.</p>
+      <p>Now, consider the real part of the normalized sum: <span
+      class="math display">\operatorname{Re}\left( \frac{1}{A^m}
+      \sum_{j=1}^t \alpha_j^m \right) = \sum_{j=1}^r
+      \operatorname{Re}(\lambda_j^m) + \sum_{j=r+1}^t
+      \operatorname{Re}(\lambda_j^m).</span> By Lemma , for any <span
+      class="math inline">\epsilon &gt; 0</span> (choose <span
+      class="math inline">\epsilon &lt; 1/r</span>), there exist
+      infinitely many positive integers <span
+      class="math inline">m</span> such that the first sum strictly
+      satisfies: <span class="math display">\sum_{j=1}^r
+      \operatorname{Re}(\lambda_j^m) &gt; r(1 - \epsilon).</span> For
+      the second term, because <span class="math inline">|\lambda_j|
+      &lt; 1</span> for all <span class="math inline">j &gt; r</span>,
+      the geometric progression forces <span
+      class="math inline">\sum_{j=r+1}^t \operatorname{Re}(\lambda_j^m)
+      \to 0</span> as <span class="math inline">m \to \infty</span>.</p>
+      <p>Therefore, if we restrict our attention to the infinitely many
+      chosen integers <span class="math inline">m</span>, and take <span
+      class="math inline">m</span> sufficiently large, we must have:
+      <span class="math display">\operatorname{Re}\left( \frac{1}{A^m}
+      \sum_{j=1}^t \alpha_j^m \right) \ge r(1 - \epsilon) - o(1) \ge
+      1.</span> Because the real part of this complex number is greater
+      than or equal to <span class="math inline">1</span>, its absolute
+      value must naturally be greater than or equal to <span
+      class="math inline">1</span> as well. This yields: <span
+      class="math display">\frac{1}{A^m} \left| \sum_{j=1}^t \alpha_j^m
+      \right| \ge 1 \implies \left| \sum_{j=1}^t \alpha_j^m \right| \ge
+      A^m = |\alpha_1|^m.</span> This holds for infinitely many <span
+      class="math inline">m</span>, concluding the proof. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Equivalence of the Riemann
+      Hypothesis and Hasse-Weil Bound). <em> Let <span
+      class="math inline">X</span> be a smooth projective curve of genus
+      <span class="math inline">g</span> over a finite field <span
+      class="math inline">\mathbb{F}_q</span>. We have shown its Zeta
+      function takes the form: <span class="math display">Z(X, t) =
+      \frac{\prod_{i=1}^{2g} (1 - \alpha_i t)}{(1 - t)(1 - qt)}.</span>
+      Let <span class="math inline">N_s</span> denote the number of
+      <span class="math inline">\mathbb{F}_{q^s}</span>-rational points
+      on <span class="math inline">X</span>. Then the following two
+      assertions are strictly equivalent:</em></p>
+      <ol>
+      <li><p><em> For all <span class="math inline">i = 1, \dots,
+      2g</span>, the absolute value of the reciprocal roots satisfies
+      <span class="math inline">|\alpha_i| =
+      \sqrt{q}</span>.</em></p></li>
+      <li><p><em> There exists a constant <span class="math inline">c
+      &gt; 0</span> such that for all integers <span
+      class="math inline">s \ge 1</span>, we have <span
+      class="math inline">|N_s - q^s - 1| \le c \cdot
+      q^{s/2}</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We begin by explicitly extracting the point
+      counts from the Zeta function. By definition, <span
+      class="math inline">Z(X, t) = \exp\left( \sum_{s=1}^\infty
+      \frac{N_s}{s} t^s \right)</span>. Taking the formal logarithm of
+      both sides and expanding the rational function representation:
+      <span class="math display">\begin{align*}
+      \sum_{s=1}^\infty \frac{N_s}{s} t^s &amp;= \sum_{i=1}^{2g} \log(1
+      - \alpha_i t) - \log(1 - t) - \log(1 - qt) \\
+      &amp;= - \sum_{i=1}^{2g} \sum_{s=1}^\infty \frac{(\alpha_i
+      t)^s}{s} + \sum_{s=1}^\infty \frac{t^s}{s} + \sum_{s=1}^\infty
+      \frac{(qt)^s}{s}
+      \end{align*}</span> By equating the coefficients of <span
+      class="math inline">t^s</span> on both sides of the series, we
+      instantly obtain the exact point-counting formula: <span
+      class="math display">N_s = q^s + 1 - \sum_{i=1}^{2g}
+      \alpha_i^s.</span> Consequently, the deviation of the point count
+      from the expected <span class="math inline">q^s + 1</span> is
+      governed perfectly by the roots: <span class="math display">|N_s -
+      q^s - 1| = \left| \sum_{i=1}^{2g} \alpha_i^s \right|.</span></p>
+      <p><strong>Proof of <span class="math inline">\Rightarrow</span>
+      :</strong> Assume holds, meaning <span
+      class="math inline">|\alpha_i| = q^{1/2}</span> for all <span
+      class="math inline">i</span>. Applying the standard triangle
+      inequality to the deviation formula: <span
+      class="math display">|N_s - q^s - 1| = \left| \sum_{i=1}^{2g}
+      \alpha_i^s \right| \le \sum_{i=1}^{2g} |\alpha_i|^s = 2g \cdot
+      q^{s/2}.</span> Choosing the constant <span class="math inline">c
+      = 2g</span> immediately proves assertion .</p>
+      <p><strong>Proof of <span class="math inline">\Rightarrow</span>
+      :</strong> Conversely, assume holds. This means there exists some
+      absolute constant <span class="math inline">c</span> such that
+      <span class="math inline">\left| \sum_{i=1}^{2g} \alpha_i^s
+      \right| \le c \cdot q^{s/2}</span> for all <span
+      class="math inline">s \ge 1</span>.</p>
+      <p>We apply Lemma to the finite set of complex numbers <span
+      class="math inline">\{\alpha_1, \dots, \alpha_{2g}\}</span>. Let
+      <span class="math inline">\alpha_1</span> be a root with the
+      maximal absolute value. By the lemma, there exist infinitely many
+      integers <span class="math inline">s</span> such that: <span
+      class="math display">|\alpha_1|^s \le \left| \sum_{i=1}^{2g}
+      \alpha_i^s \right| \le c \cdot q^{s/2}.</span> Taking the <span
+      class="math inline">s</span>-th root of both sides yields: <span
+      class="math display">|\alpha_1| \le c^{1/s} \cdot q^{1/2}.</span>
+      Because this inequality is satisfied for an infinite sequence of
+      <span class="math inline">s</span> tending to infinity, we can
+      pass to the limit as <span class="math inline">s \to
+      \infty</span>. Since <span class="math inline">c^{1/s} \to
+      1</span>, we obtain: <span class="math display">\max_i |\alpha_i|
+      = |\alpha_1| \le \sqrt{q}.</span> This proves that <em>every</em>
+      root satisfies <span class="math inline">|\alpha_i| \le
+      \sqrt{q}</span>.</p>
+      <p>On the other hand, in Theorem , we established that the
+      polynomial <span class="math inline">P(t) = \prod_{i=1}^{2g} (1 -
+      \alpha_i t)</span> in the numerator has a leading coefficient of
+      <span class="math inline">q^g</span>. Expanding the product, the
+      highest-order term is <span class="math inline">(-1)^{2g} \left(
+      \prod_{i=1}^{2g} \alpha_i \right) t^{2g}</span>. Therefore, the
+      product of all reciprocal roots must exactly equal <span
+      class="math inline">q^g</span>: <span
+      class="math display">\prod_{i=1}^{2g} |\alpha_i| = q^g.</span> If
+      there were even a single root with <span
+      class="math inline">|\alpha_i| &lt; \sqrt{q}</span>, then because
+      absolutely no root can exceed <span
+      class="math inline">\sqrt{q}</span> (as proven above), the total
+      product of their absolute values would be strictly less than <span
+      class="math inline">(\sqrt{q})^{2g} = q^g</span>. This directly
+      contradicts the established leading coefficient.</p>
+      <p>Therefore, the only mathematical possibility avoiding a
+      contradiction is that for all <span class="math inline">i = 1,
+      \dots, 2g</span>, we have identically <span
+      class="math inline">|\alpha_i| = \sqrt{q}</span>. This completes
+      the proof of equivalence. ◻</p>
+      </div>
+      <p>To apply the intersection theory of surfaces, we perform a base
+      change to an algebraically closed field. Fix the finite field
+      <span class="math inline">k = \mathbb{F}_q</span> and choose its
+      algebraic closure <span class="math inline">\bar{k} =
+      \overline{\mathbb{F}}_q</span>. Let <span
+      class="math inline">X</span> be a smooth projective irreducible
+      curve over <span class="math inline">k</span>. Let <span
+      class="math inline">k = \mathbb{F}_q</span> and <span
+      class="math inline">\bar{k} = \overline{\mathbb{F}}_q</span> be
+      its algebraic closure. Let <span class="math inline">X</span> be a
+      separated scheme of finite type over <span
+      class="math inline">k</span>.</p>
+      <p>Denote the base change by <span class="math inline">\bar{X} = X
+      \times_k \bar{k}</span>, and the product surface by <span
+      class="math inline">S = \bar{X} \times_{\bar{k}} \bar{X}</span>.
+      Let <span class="math inline">F_X: X \to X</span> be the absolute
+      <span class="math inline">s</span>-th Frobenius morphism, which is
+      given on the structure sheaf by <span class="math inline">a
+      \mapsto a^{q^s}</span>. Its base change over <span
+      class="math inline">\bar{k}</span> is denoted by <span
+      class="math inline">F^s = F_X \times_k
+      \operatorname{id}_{\bar{k}}: \bar{X} \to \bar{X}</span>. In <span
+      class="math inline">S</span>, the intersection of the diagonal
+      scheme <span class="math inline">\Delta</span> and the Frobenius
+      graph scheme <span class="math inline">\Gamma_{F^s}</span> is
+      defined as the fiber product: <span class="math display">Z =
+      \Gamma_{F^s} \times_S \Delta</span></p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Intersection Points Correspond to
+      Rational Points). <em> There exists a canonical one-to-one
+      correspondence between the set <span class="math inline">X(k_s) =
+      \operatorname{Hom}_k(\operatorname{Spec}k_s, X)</span> and the set
+      of <span class="math inline">\bar{k}</span>-valued points of the
+      intersection scheme <span class="math inline">Z</span>, denoted by
+      <span class="math inline">Z(\bar{k}) =
+      \operatorname{Hom}_{\bar{k}}(\operatorname{Spec}\bar{k},
+      Z)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Given an intersection point <span
+      class="math inline">z \in
+      \operatorname{Hom}_{\bar{k}}(\operatorname{Spec}\bar{k},
+      Z)</span>. By the definition of the fiber product, giving <span
+      class="math inline">z</span> is uniquely equivalent to giving two
+      morphisms <span class="math inline">u: \operatorname{Spec}\bar{k}
+      \to \Gamma_{F^s}</span> and <span class="math inline">v:
+      \operatorname{Spec}\bar{k} \to \Delta</span> such that their
+      compositions in <span class="math inline">S</span> are equal. From
+      the constructions of <span class="math inline">\Gamma_{F^s}</span>
+      and <span class="math inline">\Delta</span> in <span
+      class="math inline">S</span>, we have the following commutative
+      diagram:</p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/86569f1cb74960db79e2e089078009abbafb817c.svg" target="_blank" rel="noopener"><img src="assets/diagrams/86569f1cb74960db79e2e089078009abbafb817c.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p>The equality of the compositions of the morphisms <span
+      class="math inline">u</span> and <span
+      class="math inline">v</span> in <span
+      class="math inline">S</span>, namely <span
+      class="math inline">\gamma \circ u = \delta \circ v</span>, is
+      equivalent to their equality under the two projections <span
+      class="math inline">p_1, p_2</span> of <span
+      class="math inline">S</span>: <span class="math display">\gamma
+      \circ u = \delta \circ v \iff
+      \begin{cases}
+      p_1 \circ \gamma \circ u = p_1 \circ \delta \circ v \\
+      p_2 \circ \gamma \circ u = p_2 \circ \delta \circ v
+      \end{cases}</span> Since the closed immersions <span
+      class="math inline">\gamma</span> and <span
+      class="math inline">\delta</span> are defined by graph morphisms,
+      the above equations simplify directly to: <span
+      class="math display">\iff
+      \begin{cases}
+      u = v \\
+      F^s \circ u = v
+      \end{cases}
+      \implies u = F^s \circ u</span> Setting <span
+      class="math inline">x = u = v</span>, we obtain a morphism <span
+      class="math inline">x \in
+      \operatorname{Hom}_{\bar{k}}(\operatorname{Spec}\bar{k},
+      \bar{X})</span> that satisfies: <span class="math display">x = F^s
+      \circ x \quad \text{--- (Eq. 1)}</span></p>
+      <p>We note that <span class="math inline">x</span> is a <span
+      class="math inline">\bar{k}</span>-morphism whose structure
+      mapping is the identity map. The universal property of the fiber
+      product induces the following canonical bijection: <span
+      class="math display">\operatorname{Hom}_{\bar{k}}(\operatorname{Spec}\bar{k},
+      \bar{X}) \simeq \operatorname{Hom}_k(\operatorname{Spec}\bar{k},
+      X)</span> Geometrically, this means we have the following
+      commutative diagram determined by the universal property:</p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/b93113dd95d0dd998fa6816423d1895ffcf7f580.svg" target="_blank" rel="noopener"><img src="assets/diagrams/b93113dd95d0dd998fa6816423d1895ffcf7f580.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p>The mapping rule is <span class="math inline">x \mapsto
+      x_X</span>. According to the construction of the base change, the
+      morphism can be decomposed as <span class="math inline">x = x_X
+      \times_k \operatorname{id}_{\bar{k}}</span>. Meanwhile, the
+      geometric Frobenius <span class="math inline">F^s</span> also
+      takes the form <span class="math inline">F^s = F_X^s \times_k
+      \operatorname{id}_{\bar{k}}</span>. Substituting these two
+      decompositions into (Eq. 1), on <span class="math inline">\bar{X}
+      = X \times_k \bar{k}</span> we have: <span
+      class="math display">x_X \times_k \operatorname{id}_{\bar{k}} =
+      (F_X^s \circ x_X) \times_k \operatorname{id}_{\bar{k}}</span> By
+      the uniqueness of the adjoint bijection, this forces the following
+      equality to hold in the set of <span
+      class="math inline">k</span>-morphisms of the original scheme
+      <span class="math inline">X</span>, <span
+      class="math inline">\operatorname{Hom}_k(\operatorname{Spec}\bar{k},
+      X)</span>: <span class="math display">x_X = F_X^s \circ x_X \quad
+      \text{--- (Eq. 2)}</span></p>
+      <p>We examine the affine open set <span class="math inline">U =
+      \operatorname{Spec}A</span> containing the morphism <span
+      class="math inline">x_X</span>. The morphism <span
+      class="math inline">x_X</span> corresponds to a <span
+      class="math inline">k</span>-algebra homomorphism <span
+      class="math inline">\phi: A \to \bar{k}</span>. Under
+      contravariant equivalence, (Eq. 2) means that for any <span
+      class="math inline">a \in A</span>: <span
+      class="math display">(\phi(a))^{q^s} = \phi(a)</span> Since <span
+      class="math inline">\phi(a) \in \bar{k}</span>, finite field
+      theory states that elements in <span
+      class="math inline">\bar{k}</span> satisfying this algebraic
+      equation must lie in the subfield <span
+      class="math inline">\mathbb{F}_{q^s} = k_s</span>. Therefore, the
+      entire image of the homomorphism satisfies <span
+      class="math inline">\operatorname{im}(\phi) \subseteq k_s</span>.
+      The homomorphism <span class="math inline">\phi</span> must
+      uniquely factor as: <span class="math display">A
+      \xrightarrow{\psi} k_s \hookrightarrow \bar{k}</span> where <span
+      class="math inline">\psi</span> is a valid <span
+      class="math inline">k</span>-algebra homomorphism. This uniquely
+      determines the factorization of the morphism <span
+      class="math inline">\operatorname{Spec}\bar{k} \to
+      \operatorname{Spec}k_s \xrightarrow{P} X</span>. Thus, we obtain
+      <span class="math inline">x_X \in
+      \operatorname{Hom}_k(\operatorname{Spec}k_s, X)</span>.</p>
+      <p>Because of the bijectivity of the adjoint functor and the
+      uniqueness of the universal property of the fiber product, each
+      step from <span class="math inline">Z(\bar{k})</span> to <span
+      class="math inline">X(k_s)</span> above is reversible, thereby
+      establishing a one-to-one correspondence. ◻</p>
+      </div>
+      <p>We now prove that on the product surface <span
+      class="math inline">S = \bar{X} \times_{\bar{k}} \bar{X}</span>,
+      the intersection of the Frobenius graph <span
+      class="math inline">\Gamma_{F^s}</span> and the diagonal <span
+      class="math inline">\Delta</span> is everywhere transverse.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Transverse Intersection Theorem).
+      <em> For any intersection point <span class="math inline">P \in
+      \Gamma_{F^s} \cap \Delta</span>, its local intersection
+      multiplicity is strictly <span class="math inline">1</span>. That
+      is: <span class="math display">i(P; \Gamma_{F^s}, \Delta) =
+      \operatorname{length}_{\mathcal{O}_{S, P}} \left(
+      \frac{\mathcal{O}_{S, P}}{\mathcal{I}_\Delta +
+      \mathcal{I}_{\Gamma_{F^s}}} \right) = 1</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">P = (x, x)</span>
+      be an intersection point of <span
+      class="math inline">\Gamma_{F^s}</span> and <span
+      class="math inline">\Delta</span>. We investigate this in an
+      affine local open neighborhood. Let <span class="math inline">A =
+      \mathcal{O}_{\bar{X}, x}</span> be the local ring of <span
+      class="math inline">x</span> in <span
+      class="math inline">\bar{X}</span>. Since <span
+      class="math inline">\bar{X}</span> is a smooth curve, <span
+      class="math inline">A</span> is a discrete valuation ring. Let
+      <span class="math inline">\mathfrak{m}_x</span> be its maximal
+      ideal, and choose a local parameter <span class="math inline">t
+      \in A</span> such that <span class="math inline">\mathfrak{m}_x =
+      (t)</span>.</p>
+      <p>The local ring <span class="math inline">\mathcal{O}_{S,
+      P}</span> of the product surface <span
+      class="math inline">S</span> at the point <span
+      class="math inline">P</span> is the localization of the tensor
+      product <span class="math inline">A \otimes_{\bar{k}} A</span>
+      along the corresponding prime ideal. The maximal ideal
+      corresponding to the point <span class="math inline">P</span> is:
+      <span class="math display">\mathfrak{m}_P = \mathfrak{m}_x \otimes
+      A + A \otimes \mathfrak{m}_x</span> We select two natural local
+      parameters in <span class="math inline">\mathcal{O}_{S, P}</span>:
+      <span class="math display">u = t \otimes 1, \quad v = 1 \otimes
+      t</span> It is obvious that <span
+      class="math inline">\mathfrak{m}_P = (u, v)</span>. (The specific
+      proof is given in Lemma below).</p>
+      <p>Next, we respectively determine the local defining ideals of
+      the subschemes <span class="math inline">\Gamma_{F^s}</span> and
+      <span class="math inline">\Delta</span> in <span
+      class="math inline">\mathcal{O}_{S, P}</span>.</p>
+      <p>The closed immersion <span class="math inline">\delta: \bar{X}
+      \to S</span> corresponding to the diagonal induces a surjective
+      homomorphism on the local rings: <span
+      class="math display">\delta^\sharp : \mathcal{O}_{S, P} \to A,
+      \quad a \otimes b \mapsto a \cdot b</span> Its kernel is the ideal
+      <span class="math inline">\mathcal{I}_\Delta</span> of <span
+      class="math inline">\Delta</span>. Clearly, <span
+      class="math inline">\delta^\sharp (u - v) = t \cdot 1 - 1 \cdot t
+      = 0</span>. Therefore, the local equation is <span
+      class="math inline">\mathcal{I}_\Delta = \langle u - v
+      \rangle</span>.</p>
+      <p>The morphism <span class="math inline">\gamma: \bar{X} \to
+      S</span> is defined as <span class="math inline">\gamma =
+      (\operatorname{id}_{\bar{X}}, F^s)</span>. It induces a surjective
+      homomorphism on the local rings: <span
+      class="math display">\gamma^\sharp : \mathcal{O}_{S, P} \to
+      A</span> Its action rule is: <span
+      class="math inline">\gamma^\sharp (a \otimes 1) = a</span>, while
+      for the second factor, since it passes through the <span
+      class="math inline">s</span>-th absolute Frobenius morphism, <span
+      class="math inline">\gamma^\sharp (1 \otimes a) = a^{q^s}</span>.
+      Substituting our local parameters gives: <span
+      class="math display">\gamma^\sharp (u) = \gamma^\sharp (t \otimes
+      1) = t</span> <span class="math display">\gamma^\sharp (v) =
+      \gamma^\sharp (1 \otimes t) = t^{q^s}</span> To find the generator
+      of the kernel, we construct the element <span
+      class="math inline">u^{q^s} - v</span>. Calculating its image
+      under <span class="math inline">\gamma^\sharp</span>: <span
+      class="math display">\gamma^\sharp (u^{q^s} - v) = (\gamma^\sharp
+      (u))^{q^s} - \gamma^\sharp (v) = t^{q^s} - t^{q^s} = 0</span>
+      Therefore, the local equation is <span
+      class="math inline">\mathcal{I}_{\Gamma_{F^s}} = \langle u^{q^s} -
+      v \rangle</span>.</p>
+      <p>Now we need to determine whether the ideal <span
+      class="math inline">\langle f, g \rangle</span> generated by the
+      two local equations <span class="math inline">f = u^{q^s} -
+      v</span> and <span class="math inline">g = u - v</span> is indeed
+      the entire maximal ideal <span class="math inline">\mathfrak{m}_P
+      = (u, v)</span>. Since <span class="math inline">S</span> is a
+      non-singular surface, this is equivalent to calculating whether
+      the Jacobian matrix <span class="math inline">J</span> of these
+      two functions at the point <span class="math inline">P</span> has
+      full rank. Computing the partial derivatives: <span
+      class="math display">J = \begin{pmatrix} \frac{\partial
+      f}{\partial u} &amp; \frac{\partial f}{\partial v} \\
+      \frac{\partial g}{\partial u} &amp; \frac{\partial g}{\partial v}
+      \end{pmatrix} = \begin{pmatrix} q^s u^{q^s-1} &amp; -1 \\ 1 &amp;
+      -1 \end{pmatrix} =\begin{pmatrix} 0 &amp; -1 \\ 1 &amp; -1
+      \end{pmatrix}</span></p>
+      <p>Since the Jacobian matrix is non-singular at the intersection
+      point, according to the fundamental theorem of regular local rings
+      in commutative algebra, the elements <span
+      class="math inline">f</span> and <span
+      class="math inline">g</span> form a regular system of parameters
+      for <span class="math inline">\mathcal{O}_{S, P}</span>.</p>
+      <p>This shows that they generate the maximal ideal: <span
+      class="math display">\mathcal{I}_{\Gamma_{F^s}} +
+      \mathcal{I}_\Delta = \langle u^{q^s} - v, u - v \rangle = (u, v) =
+      \mathfrak{m}_P</span> Therefore, the local quotient ring of the
+      intersection is: <span class="math display">\frac{\mathcal{O}_{S,
+      P}}{\mathcal{I}_{\Gamma_{F^s}} + \mathcal{I}_\Delta} =
+      \frac{\mathcal{O}_{S, P}}{\mathfrak{m}_P} \cong \bar{k}</span> Its
+      length as a <span class="math inline">\bar{k}</span>-module is
+      <span class="math inline">1</span>. This proves that the
+      intersection occurring at the intersection point is strictly
+      transverse. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Isomorphism between Normal Sheaf
+      and Invertible Sheaf). <em> Let <span class="math inline">D
+      \subset X</span> be an effective Cartier divisor. Then the normal
+      sheaf <span class="math inline">\mathcal{N}_{D/X}</span> of <span
+      class="math inline">D</span> in <span class="math inline">X</span>
+      is naturally isomorphic to the restriction of the invertible sheaf
+      <span class="math inline">\mathcal{O}_X(D)</span> to <span
+      class="math inline">D</span>. That is: <span
+      class="math display">\mathcal{N}_{D/X} \cong
+      \mathcal{O}_X(D)|_D.</span> In particular, when <span
+      class="math inline">X</span> is a smooth surface and <span
+      class="math inline">D</span> is a non-singular curve on it, the
+      self-intersection number of <span class="math inline">D</span> is
+      equivalently computed as the degree of its normal sheaf: <span
+      class="math inline">D^2 =
+      \deg_D(\mathcal{N}_{D/X})</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Since <span class="math inline">D</span> is a
+      closed subscheme, it corresponds to an ideal sheaf <span
+      class="math inline">\mathcal{I}_D \subset \mathcal{O}_X</span>.
+      Because <span class="math inline">D</span> is a Cartier divisor,
+      <span class="math inline">\mathcal{I}_D</span> is a locally free
+      sheaf of rank 1, namely <span
+      class="math inline">\mathcal{O}_X(-D)</span>.</p>
+      <p>In scheme theory, the conormal sheaf is defined as <span
+      class="math inline">\mathcal{I}_D/\mathcal{I}_D^2</span>.
+      Quotienting out by <span
+      class="math inline">\mathcal{I}_D^2</span> is actually equivalent
+      to tensoring the ideal sheaf with the structure sheaf of the
+      closed subscheme <span class="math inline">D</span>: <span
+      class="math display">\mathcal{I}_D/\mathcal{I}_D^2 \cong
+      \mathcal{I}_D \otimes_{\mathcal{O}_X}
+      (\mathcal{O}_X/\mathcal{I}_D) = \mathcal{O}_X(-D)
+      \otimes_{\mathcal{O}_X} \mathcal{O}_D =
+      \mathcal{O}_X(-D)|_D.</span> The normal sheaf <span
+      class="math inline">\mathcal{N}_{D/X}</span> is defined as the
+      dual of the conormal sheaf in the category of <span
+      class="math inline">\mathcal{O}_D</span>-modules: <span
+      class="math display">\mathcal{N}_{D/X} :=
+      \mathcal{H}om_{\mathcal{O}_D}(\mathcal{I}_D/\mathcal{I}_D^2,
+      \mathcal{O}_D) \cong
+      \mathcal{H}om_{\mathcal{O}_D}(\mathcal{O}_X(-D)|_D,
+      \mathcal{O}_D).</span> Since restriction and dualization commute
+      for invertible sheaves, and the dual of <span
+      class="math inline">\mathcal{O}_X(-D)</span> is precisely <span
+      class="math inline">\mathcal{O}_X(D)</span>, we obtain the
+      canonical isomorphism: <span
+      class="math display">\mathcal{N}_{D/X} \cong
+      \mathcal{O}_X(D)|_D.</span> According to the intersection theory
+      of surfaces, the self-intersection number of a curve is equivalent
+      to the degree of its normal sheaf on the curve, hence <span
+      class="math inline">D^2 = \deg_D(\mathcal{N}_{D/X})</span>
+      holds. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Commutativity of Pullback and
+      Invertible Sheaves). <em> Let <span class="math inline">f: X \to
+      Y</span> be a morphism of schemes, and let <span
+      class="math inline">D</span> be a Cartier divisor on <span
+      class="math inline">Y</span>. Assume that the image of <span
+      class="math inline">f</span> is not contained in the support of
+      <span class="math inline">D</span>. Then there is an isomorphism:
+      <span class="math display">f^*(\mathcal{O}_Y(D)) \cong
+      \mathcal{O}_X(f^*D).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We return to the local data for verification.
+      On <span class="math inline">Y</span>, the Cartier divisor <span
+      class="math inline">D</span> is locally given by an open covering
+      <span class="math inline">\{U_i\}</span> and rational functions
+      <span class="math inline">\{g_i \in \mathcal{K}^*(U_i)\}</span> on
+      them. In this case, the invertible sheaf <span
+      class="math inline">\mathcal{O}_Y(D)</span> on the local open set
+      <span class="math inline">U_i</span> is a free <span
+      class="math inline">\mathcal{O}_{U_i}</span>-module generated by
+      <span class="math inline">g_i^{-1}</span>.</p>
+      <p>Pulling back the invertible sheaf via the morphism <span
+      class="math inline">f</span> is essentially performing a tensor
+      product of sheaves: <span
+      class="math display">f^*(\mathcal{O}_Y(D)) :=
+      f^{-1}\mathcal{O}_Y(D) \otimes_{f^{-1}\mathcal{O}_Y}
+      \mathcal{O}_X.</span> Therefore, on the local open set <span
+      class="math inline">f^{-1}(U_i)</span>, <span
+      class="math inline">f^*(\mathcal{O}_Y(D))</span> is a free <span
+      class="math inline">\mathcal{O}_X</span>-module generated by the
+      element <span class="math inline">g_i^{-1} \otimes 1</span>.</p>
+      <p>On the other hand, let us examine the pullback of the divisor
+      <span class="math inline">f^*D</span>. According to the definition
+      of the pullback of a Cartier divisor, its local data on the
+      covering <span class="math inline">\{f^{-1}(U_i)\}</span> is
+      determined by the rational functions <span
+      class="math inline">\{f^\sharp (g_i)\}</span> given by the
+      pullback algebra mapping. Thus, the invertible sheaf <span
+      class="math inline">\mathcal{O}_X(f^*D)</span> on the local open
+      set <span class="math inline">f^{-1}(U_i)</span> is generated by
+      <span class="math inline">f^\sharp (g_i)^{-1}</span>.</p>
+      <p>Comparing the two, the isomorphism mapping is natural: mapping
+      the section <span class="math inline">g_i^{-1} \otimes 1</span> to
+      <span class="math inline">f^\sharp (g_i)^{-1}</span> is compatible
+      on the overlapping regions, thereby yielding a canonical
+      isomorphism globally. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Triviality of Pullback by Constant
+      Morphisms). <em> Let <span class="math inline">g: L \to C</span>
+      be a constant morphism, i.e., the entire scheme <span
+      class="math inline">L</span> is mapped to a closed point <span
+      class="math inline">y \in C</span>. For any invertible sheaf <span
+      class="math inline">\mathcal{L}</span> on the target space <span
+      class="math inline">C</span>, its pullback <span
+      class="math inline">g^*\mathcal{L}</span> must be the trivial
+      invertible sheaf on <span class="math inline">L</span>, i.e.,
+      <span class="math inline">g^*\mathcal{L} \cong
+      \mathcal{O}_L</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The constant morphism <span
+      class="math inline">g</span> can be rigorously factoUniBlue into
+      the following two-step mapping: <span class="math display">L
+      \xrightarrow{\pi} \operatorname{Spec}\kappa(y) \xrightarrow{i_y}
+      C.</span> where <span class="math inline">\kappa(y)</span> is the
+      residue field of the closed point <span
+      class="math inline">y</span>. For any invertible sheaf <span
+      class="math inline">\mathcal{L}</span> on <span
+      class="math inline">C</span>, its pullback to the residue field
+      <span class="math inline">\operatorname{Spec}\kappa(y)</span> as
+      the fiber <span class="math inline">i_y^*\mathcal{L}</span> is
+      essentially a one-dimensional vector space defined over the field
+      <span class="math inline">\kappa(y)</span>. Algebraically, any
+      one-dimensional vector space over a field is necessarily
+      isomorphic to the field itself, which means it is trivial: <span
+      class="math display">i_y^*\mathcal{L} \cong
+      \mathcal{O}_{\operatorname{Spec}\kappa(y)}.</span> Pulling it back
+      further to <span class="math inline">L</span> via <span
+      class="math inline">\pi</span> yields: <span
+      class="math display">g^*\mathcal{L} \cong \pi^*(i_y^*\mathcal{L})
+      \cong \pi^*(\mathcal{O}_{\operatorname{Spec}\kappa(y)}) =
+      \mathcal{O}_L.</span> This completes the proof that any invertible
+      sheaf pulled back by a constant morphism is trivial. ◻</p>
+      </div>
+      <p>We change the notation: let <span class="math inline">k</span>
+      be the algebraic closure <span
+      class="math inline">\overline{\mathbb{F}_q}</span> of the finite
+      field <span class="math inline">\mathbb{F}_q</span>, and let <span
+      class="math inline">C</span> be a curve over the algebraically
+      closed field <span class="math inline">k</span> (which corresponds
+      to the previous <span class="math inline">\bar{C} = C \times
+      \bar{k}</span>).</p>
+      <p>Now we apply these lemmas to the product surface <span
+      class="math inline">S = C \times_k C</span>. Let <span
+      class="math inline">x, y \in C(k)</span> be closed points, and
+      define two intersecting curves given by fiber products: <span
+      class="math display">l = C \times_k \{y\} = p_2^{-1}(y).</span>
+      <span class="math display">m = \{x\} \times_k C =
+      p_1^{-1}(x).</span></p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Intersection Number of <span
+      class="math inline">l</span> with Itself). <em> On the product
+      surface <span class="math inline">C \times_k C</span>, the
+      self-intersection number of the divisor <span
+      class="math inline">l</span> is <span class="math inline">l^2 =
+      0</span> (by symmetry, it similarly follows that <span
+      class="math inline">m^2 = 0</span>).</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We need to calculate the self-intersection
+      number <span class="math inline">l^2 = (l \cdot l)</span>.
+      According to Lemma , the self-intersection number of the divisor
+      <span class="math inline">l</span> is equivalent to the degree of
+      its corresponding invertible sheaf <span
+      class="math inline">\mathcal{O}_S(l)</span> restricted to the
+      closed subscheme <span class="math inline">l</span>: <span
+      class="math display">l^2 = \deg_l(\mathcal{O}_S(l)|_l).</span></p>
+      <p>Note that the curve <span class="math inline">l</span> is a
+      Cartier divisor obtained by pulling back the point <span
+      class="math inline">y \in C</span> via the second projection <span
+      class="math inline">p_2: S \to C</span>, which gives an
+      isomorphism of invertible sheaves: <span
+      class="math display">\mathcal{O}_S(l) \cong
+      p_2^*(\mathcal{O}_C(y)).</span></p>
+      <p>The closed subscheme <span class="math inline">l</span>
+      corresponds to the closed immersion morphism <span
+      class="math inline">i_y: l \hookrightarrow S</span>. By the
+      definition of the restriction of an invertible sheaf to a closed
+      subscheme, and utilizing the functoriality of the pullback, we
+      have: <span class="math display">\mathcal{O}_S(l)|_l \cong
+      i_y^*(\mathcal{O}_S(l)) \cong i_y^*(p_2^*(\mathcal{O}_C(y))) \cong
+      (p_2 \circ i_y)^*(\mathcal{O}_C(y)).</span></p>
+      <p>Since <span class="math inline">l</span> is the fiber of <span
+      class="math inline">p_2</span> at the point <span
+      class="math inline">y</span>, the composite morphism <span
+      class="math inline">p_2 \circ i_y: l \to S \to C</span> is a
+      constant morphism that maps the entire curve <span
+      class="math inline">l</span> to the single point <span
+      class="math inline">y</span>. This morphism can be factoUniBlue as
+      <span class="math inline">l \xrightarrow{\pi} \{y\}
+      \xrightarrow{j} C</span>, where <span
+      class="math inline">\pi</span> is the projection to the spectrum
+      of the base field. Therefore: <span class="math display">(p_2
+      \circ i_y)^*(\mathcal{O}_C(y)) \cong
+      \pi^*(\underbrace{j^*\mathcal{O}_C(y)}_{\mathcal{L}}).</span></p>
+      <p>Since <span class="math inline">j^*\mathcal{O}_C(y)</span> is
+      an invertible sheaf defined on the single point <span
+      class="math inline">\{y\} \cong \operatorname{Spec}k</span>, it
+      must be trivial, i.e., <span
+      class="math inline">j^*\mathcal{O}_C(y) \cong
+      \mathcal{O}_{\{y\}}</span>. Consequently, its pullback is also a
+      trivial sheaf: <span class="math display">\mathcal{O}_S(l)|_l
+      \cong \pi^*(\mathcal{O}_{\{y\}}) \cong \mathcal{O}_l.</span></p>
+      <p>The degree of a trivial sheaf on any smooth projective curve is
+      <span class="math inline">0</span>. Therefore: <span
+      class="math display">l^2 = \deg_l(\mathcal{O}_l) = 0.</span> The
+      proposition is proved. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Scheme-Theoretic Intersection
+      Consists of a Single Point). <em> The scheme-theoretic
+      intersection <span class="math inline">l \cap m</span> of the
+      divisors <span class="math inline">l</span> and <span
+      class="math inline">m</span> is isomorphic to <span
+      class="math inline">\operatorname{Spec}k</span>. In particular,
+      they have exactly one unique intersection point <span
+      class="math inline">(x, y)</span> in the total space, and the
+      intersection is reduced.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> It is known that there exist closed immersions
+      <span class="math inline">l \hookrightarrow S</span> and <span
+      class="math inline">m \hookrightarrow S</span>, and their
+      intersection is defined as: <span class="math display">l \cap m :=
+      l \times_S m.</span> Substituting <span class="math inline">l = C
+      \times_k \{y\}</span> and <span class="math inline">m = \{x\}
+      \times_k C</span>, and using the associativity and commutativity
+      of the fiber product, we obtain: <span class="math display">(C
+      \times_k y) \times_{C \times_k C} (x \times_k C) \cong x \times_k
+      y.</span> Since we are working over an algebraically closed field
+      <span class="math inline">k</span>, the closed points <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> on the curve <span
+      class="math inline">C</span> are both <span
+      class="math inline">k</span>-rational points. This means that
+      their residue fields <span class="math inline">\kappa(x)</span>
+      and <span class="math inline">\kappa(y)</span> are both equal to
+      the base field <span class="math inline">k</span>. Thus, as <span
+      class="math inline">k</span>-schemes, <span class="math inline">x
+      \cong \operatorname{Spec}k</span> and <span class="math inline">y
+      \cong \operatorname{Spec}k</span>. Calculating their fiber
+      product: <span class="math display">x \times_k y \cong
+      \operatorname{Spec}k \times_{\operatorname{Spec}k}
+      \operatorname{Spec}k \cong \operatorname{Spec}(k \otimes_{k}
+      k).</span> Because <span class="math inline">k \otimes_{k} k \cong
+      k</span>, we finally obtain <span class="math inline">l \cap m
+      \cong \operatorname{Spec}k</span>. <span
+      class="math inline">\operatorname{Spec}k</span> is a topological
+      space containing only a single point, and its structure sheaf is
+      simply the field <span class="math inline">k</span>. This not only
+      indicates that the intersection consists of only one point <span
+      class="math inline">p = (x,y)</span>, but also demonstrates that
+      there are no nilpotent elements at the intersection point. ◻</p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Local Parameters of the Tensor
+      Product). <em> Let <span class="math inline">p = (x, y)</span> be
+      a closed point on <span class="math inline">S</span>. Let <span
+      class="math inline">t_x \in \mathfrak{m}_x</span> and <span
+      class="math inline">t_y \in \mathfrak{m}_y</span> be the local
+      parameters of <span class="math inline">C</span> at the points
+      <span class="math inline">x</span> and <span
+      class="math inline">y</span>, respectively. Then in the local ring
+      <span class="math inline">\mathcal{O}_{S, p}</span> of the product
+      space, the maximal ideal <span
+      class="math inline">\mathfrak{m}_p</span> is generated precisely
+      by <span class="math inline">(t_x, t_y)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Without loss of generality, assume that <span
+      class="math inline">U = \operatorname{Spec}A</span> and <span
+      class="math inline">V = \operatorname{Spec}B</span> are affine
+      open neighborhoods of the closed points <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> on the curve <span
+      class="math inline">C</span>, respectively. The points <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> correspond to the maximal ideals
+      <span class="math inline">\mathfrak{m}_A</span> and <span
+      class="math inline">\mathfrak{m}_B</span> in the rings <span
+      class="math inline">A</span> and <span
+      class="math inline">B</span>. The local affine open neighborhood
+      of the product scheme <span class="math inline">S = C \times_k
+      C</span> is <span class="math inline">U \times_k V =
+      \operatorname{Spec}(A \otimes_k B)</span>. The point <span
+      class="math inline">p = (x,y) \in S</span> corresponds to a
+      certain maximal ideal <span
+      class="math inline">\mathfrak{m}_p</span> in the ring <span
+      class="math inline">A \otimes_k B</span>.</p>
+      <p>At the geometric level, the images of the point <span
+      class="math inline">p</span> under the two natural projection
+      morphisms <span class="math inline">p_1: S \to C</span> and <span
+      class="math inline">p_2: S \to C</span> are <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> respectively, i.e., <span
+      class="math inline">p_1(p) = x</span> and <span
+      class="math inline">p_2(p) = y</span>. Under the contravariant
+      equivalence between the category of schemes and the category of
+      commutative rings, these two projections correspond respectively
+      to the following canonical ring homomorphisms: <span
+      class="math display">\varphi_A: A \to A \otimes_k B, \quad a
+      \mapsto a \otimes 1.</span> <span class="math display">\varphi_B:
+      B \to A \otimes_k B, \quad b \mapsto 1 \otimes b.</span></p>
+      <p>According to the correspondence between morphisms and prime
+      ideals, the fact that the point <span class="math inline">p</span>
+      maps to the point <span class="math inline">x</span> is
+      algebraically equivalent to saying that the preimage of the
+      maximal ideal <span class="math inline">\mathfrak{m}_p</span>
+      under the homomorphism <span class="math inline">\varphi_A</span>
+      is <span class="math inline">\mathfrak{m}_A</span>, i.e., <span
+      class="math inline">\varphi_A^{-1}(\mathfrak{m}_p) =
+      \mathfrak{m}_A</span>. From the basic properties of the preimage
+      of an ideal, this necessarily implies that <span
+      class="math inline">\varphi_A(\mathfrak{m}_A) \subseteq
+      \mathfrak{m}_p</span>, which means: <span
+      class="math display">\mathfrak{m}_A \otimes 1 \subseteq
+      \mathfrak{m}_p.</span> Similarly, from <span
+      class="math inline">p_2(p) = y</span>, we obtain <span
+      class="math inline">\varphi_B^{-1}(\mathfrak{m}_p) =
+      \mathfrak{m}_B</span>, which in turn implies: <span
+      class="math display">1 \otimes \mathfrak{m}_B \subseteq
+      \mathfrak{m}_p.</span></p>
+      <p>Since <span class="math inline">\mathfrak{m}_p</span> is an
+      ideal in <span class="math inline">A \otimes_k B</span> and is
+      closed under addition, it must contain the ideal generated jointly
+      by the two sets above. We denote this ideal as <span
+      class="math inline">I</span>: <span class="math display">I =
+      \mathfrak{m}_A \otimes_k B + A \otimes_k \mathfrak{m}_B \subseteq
+      \mathfrak{m}_p.</span></p>
+      <p>Next, we verify the maximality of the ideal <span
+      class="math inline">I</span> itself. Examining the quotient ring
+      <span class="math inline">(A \otimes_k B) / I</span> and utilizing
+      the isomorphism properties of the tensor product, we have: <span
+      class="math display">\frac{A \otimes_k B}{I} = \frac{A \otimes_k
+      B}{\mathfrak{m}_A \otimes_k B + A \otimes_k \mathfrak{m}_B} \cong
+      \left( \frac{A}{\mathfrak{m}_A} \right) \otimes_k \left(
+      \frac{B}{\mathfrak{m}_B} \right).</span> Since both <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> are closed points on the
+      algebraically closed field <span class="math inline">k</span>,
+      their residue fields are naturally isomorphic to the base field
+      <span class="math inline">k</span>, i.e., <span
+      class="math inline">A/\mathfrak{m}_A \cong k</span> and <span
+      class="math inline">B/\mathfrak{m}_B \cong k</span>. Substituting
+      this into the equation yields: <span class="math display">\frac{A
+      \otimes_k B}{I} \cong k \otimes_k k \cong k.</span> Since the
+      quotient ring is isomorphic to the field <span
+      class="math inline">k</span>, this rigorously proves that <span
+      class="math inline">I</span> is indeed a maximal ideal in the
+      tensor product ring <span class="math inline">A \otimes_k
+      B</span>.</p>
+      <p>Noting that <span class="math inline">I \subseteq
+      \mathfrak{m}_p</span> and that <span
+      class="math inline">\mathfrak{m}_p</span> is a proper ideal, by
+      the maximality of a maximal ideal, a strict inclusion relation
+      cannot exist between the two, so they must be equal: <span
+      class="math display">\mathfrak{m}_p = \mathfrak{m}_A \otimes_k B +
+      A \otimes_k \mathfrak{m}_B.</span></p>
+      <p>Finally, it is known that <span class="math inline">C</span> is
+      a one-dimensional smooth curve, so its local rings <span
+      class="math inline">\mathcal{O}_{C,x}</span> and <span
+      class="math inline">\mathcal{O}_{C,y}</span> at <span
+      class="math inline">x</span> and <span
+      class="math inline">y</span> are both discrete valuation rings,
+      whose maximal ideals are generated by the corresponding local
+      parameters, denoted as <span class="math inline">\mathfrak{m}_x =
+      (t_x)</span> and <span class="math inline">\mathfrak{m}_y =
+      (t_y)</span>. In the local ring <span
+      class="math inline">\mathcal{O}_{S,p}</span> at the point <span
+      class="math inline">p</span>, the generators of the original
+      tensor product ideal are <span class="math inline">t_x \otimes
+      1</span> and <span class="math inline">1 \otimes t_y</span>. We
+      briefly denote them as <span class="math inline">(t_x,
+      t_y)</span>. Therefore, the maximal ideal of the local ring <span
+      class="math inline">\mathcal{O}_{S,p}</span> is generated
+      precisely by <span class="math inline">(t_x, t_y)</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Intersection Number of <span
+      class="math inline">l</span> and <span
+      class="math inline">m</span>). <em> On the product surface <span
+      class="math inline">S = C \times_k C</span>, the intersection
+      number of the divisors <span class="math inline">l</span> and
+      <span class="math inline">m</span> is <span class="math inline">(l
+      \cdot m) = 1</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> According to Lemma , <span
+      class="math inline">l</span> and <span
+      class="math inline">m</span> have exactly one unique intersection
+      point <span class="math inline">p = (x,y)</span> in the total
+      space. Therefore, the global intersection number is equal to the
+      local intersection multiplicity at that point: <span
+      class="math display">(l \cdot m) = (l \cdot m)_p.</span> We
+      compute this local multiplicity in the local ring <span
+      class="math inline">\mathcal{O}_{S,p}</span>. By Lemma , their
+      intersection is locally given by the sum of ideals <span
+      class="math inline">(t_x, t_y)</span>. The intersection
+      multiplicity is the length of the local ring quotiented by this
+      ideal, viewed as an <span
+      class="math inline">\mathcal{O}_{S,p}</span>-module: <span
+      class="math display">(l \cdot m)_p =
+      \operatorname{length}_{\mathcal{O}_{S,p}} \left(
+      \frac{\mathcal{O}_{S,p}}{(t_x, t_y)} \right).</span></p>
+      <p>According to Lemma , the ideal <span class="math inline">(t_x,
+      t_y)</span> is precisely equal to the maximal ideal <span
+      class="math inline">\mathfrak{m}_p</span> of the local ring. This
+      means that these two curves intersect transversely at the point
+      <span class="math inline">p</span>. Consequently, the local
+      intersection multiplicity is <span class="math inline">1</span>,
+      which implies that the global intersection number is <span
+      class="math inline">(l \cdot m) = 1</span>. ◻</p>
+      </div>
+      <p>We compute the self-intersection number of the diagonal <span
+      class="math inline">\Delta</span> on the product surface <span
+      class="math inline">S = C \times_k C</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Self-Intersection Number of
+      the Diagonal). <em> Let <span class="math inline">C</span> be a
+      smooth projective curve of genus <span
+      class="math inline">g</span> over the field <span
+      class="math inline">k</span>, and let <span class="math inline">S
+      = C \times_k C</span>. Then the self-intersection number of the
+      diagonal <span class="math inline">\Delta \subset S</span> is:
+      <span class="math display">\Delta^2 = 2 - 2g.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The diagonal <span
+      class="math inline">\Delta</span> is the image of the diagonal
+      morphism <span class="math inline">\delta: C \to S</span>. Since
+      <span class="math inline">C</span> is separated over <span
+      class="math inline">k</span>, the diagonal morphism <span
+      class="math inline">\delta</span> is a closed immersion, and we
+      clearly have a scheme isomorphism <span class="math inline">\Delta
+      \cong C</span>. Consistent with the previous Lemma , the
+      self-intersection number of a curve is equal to the degree of its
+      normal sheaf on itself: <span class="math display">\Delta^2 =
+      \deg_\Delta(\mathcal{N}_{\Delta/S}).</span></p>
+      <p>Let <span class="math inline">\mathcal{I}_\Delta</span> be the
+      ideal sheaf defining the closed subscheme <span
+      class="math inline">\Delta \subset S</span>. For any <span
+      class="math inline">k</span>-scheme <span
+      class="math inline">C</span>, the conormal sheaf <span
+      class="math inline">\mathcal{I}_\Delta/\mathcal{I}_\Delta^2</span>
+      of its diagonal immersion is canonically isomorphic to the sheaf
+      of relative Kähler differentials <span
+      class="math inline">\Omega_{C/k}</span> of <span
+      class="math inline">C</span> over <span
+      class="math inline">k</span>: <span
+      class="math display">\mathcal{I}_\Delta/\mathcal{I}_\Delta^2 \cong
+      \Omega_{C/k}.</span> Since <span class="math inline">C</span> is a
+      smooth curve, <span class="math inline">\Omega_{C/k}</span> is a
+      locally free sheaf of rank 1, which is the canonical invertible
+      sheaf <span class="math inline">\omega_C</span>. According to the
+      Riemann-Roch theorem for one-dimensional curves, the degree of the
+      canonical sheaf <span class="math inline">\omega_C =
+      \Omega_{C/k}</span> is strictly equal to <span
+      class="math inline">2g - 2</span>. Therefore, substituting this
+      gives: <span class="math display">\Delta^2 = -(2g - 2) = 2 -
+      2g.</span> The proof is complete. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Intersection Numbers of
+      Horizontal/Vertical Fibers with the Diagonal). <em> On the product
+      surface <span class="math inline">S = C \times_k C</span>, the
+      intersection number of the horizontal fiber <span
+      class="math inline">l = C \times_k \{y\}</span> and the diagonal
+      <span class="math inline">\Delta</span> is <span
+      class="math inline">(l \cdot \Delta) = 1</span>. Similarly, by
+      symmetry, the intersection number of the vertical fiber <span
+      class="math inline">m = \{x\} \times_k C</span> and the diagonal
+      is also <span class="math inline">(m \cdot \Delta) =
+      1</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We take the calculation of <span
+      class="math inline">(l \cdot \Delta)</span> as an example.
+      According to Lemma , the intersection number of the divisors <span
+      class="math inline">l</span> and <span
+      class="math inline">\Delta</span> is equivalent to the degree of
+      the invertible sheaf <span
+      class="math inline">\mathcal{O}_S(l)</span> restricted to the
+      closed subscheme <span class="math inline">\Delta</span>: <span
+      class="math display">(l \cdot \Delta) =
+      \deg_\Delta(\mathcal{O}_S(l)|_\Delta).</span></p>
+      <p>We know that the invertible sheaf defining the divisor <span
+      class="math inline">l</span> can be obtained by pulling back via
+      the projection: <span class="math display">\mathcal{O}_S(l) \cong
+      p_2^*(\mathcal{O}_C(y)).</span></p>
+      <p>The diagonal <span class="math inline">\Delta</span> is the
+      image of the closed immersion defined by the diagonal morphism
+      <span class="math inline">\delta: C \to S</span>. Following the
+      definition of the restriction of an invertible sheaf to a closed
+      subscheme, we have: <span
+      class="math display">\mathcal{O}_S(l)|_\Delta \cong
+      \delta^*(\mathcal{O}_S(l)) \cong \delta^*(p_2^*(\mathcal{O}_C(y)))
+      \cong (p_2 \circ \delta)^* (\mathcal{O}_C(y)) \cong
+      (\operatorname{id}_C)^*(\mathcal{O}_C(y)) \cong
+      \mathcal{O}_C(y).</span></p>
+      <p>Since we are working over an algebraically closed field, the
+      degree of an effective divisor defined by a single closed point
+      <span class="math inline">y</span> on the smooth curve <span
+      class="math inline">C</span> is obviously <span
+      class="math inline">1</span>. Therefore: <span
+      class="math display">(l \cdot \Delta) = \deg_C(\mathcal{O}_C(y)) =
+      1.</span></p>
+      <p>Similarly, if we calculate the intersection number of <span
+      class="math inline">m</span> and <span
+      class="math inline">\Delta</span>, we only need to write the
+      pullback as <span
+      class="math inline">p_1^*(\mathcal{O}_C(x))</span> and use <span
+      class="math inline">p_1 \circ \delta = \operatorname{id}_C</span>,
+      which yields <span class="math inline">(m \cdot \Delta) =
+      1</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Intersection Numbers of Graph
+      Divisors with Horizontal/Vertical Fibers). <em> On the product
+      surface <span class="math inline">S = C \times_k C</span>, let
+      <span class="math inline">\varphi: C \to C</span> be a finite
+      surjective morphism of degree <span class="math inline">d</span>,
+      and let <span class="math inline">\Gamma_\varphi \subset S</span>
+      be its graph divisor. Let <span class="math inline">l = C \times_k
+      \{y\}</span> be a horizontal fiber and <span class="math inline">m
+      = \{x\} \times_k C</span> be a vertical fiber. Then their
+      intersection numbers with the graph divisor are respectively:
+      <span class="math display">(l \cdot \Gamma_\varphi) = d, \quad (m
+      \cdot \Gamma_\varphi) = 1.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The graph divisor <span
+      class="math inline">\Gamma_\varphi</span> is the image of the
+      closed immersion defined by the graph morphism <span
+      class="math inline">\gamma = (\operatorname{id}_C, \varphi): C \to
+      S</span>. Clearly, <span class="math inline">\Gamma_\varphi \cong
+      C</span>. According to the algebraic definition of intersection
+      numbers, the intersection number is equivalent to the degree of
+      the corresponding invertible sheaf restricted to the subscheme:
+      <span class="math display">(l \cdot \Gamma_\varphi) =
+      \deg_{\Gamma_\varphi}(\mathcal{O}_S(l)|_{\Gamma_\varphi}).</span>
+      <span class="math display">(m \cdot \Gamma_\varphi) =
+      \deg_{\Gamma_\varphi}(\mathcal{O}_S(m)|_{\Gamma_\varphi}).</span></p>
+      <p><strong>Part 1: Computing <span class="math inline">(l \cdot
+      \Gamma_\varphi)</span></strong></p>
+      <p>Since <span class="math inline">l = p_2^{-1}(y)</span>, where
+      <span class="math inline">p_2: S \to C</span> is the second
+      projection, we have <span class="math inline">\mathcal{O}_S(l)
+      \cong p_2^*(\mathcal{O}_C(y))</span>. Restricting this invertible
+      sheaf to <span class="math inline">\Gamma_\varphi</span> is
+      equivalent to pulling back via the morphism <span
+      class="math inline">\gamma</span>: <span
+      class="math display">\mathcal{O}_S(l)|_{\Gamma_\varphi} \cong
+      \gamma^*(p_2^*(\mathcal{O}_C(y))) \cong (p_2 \circ
+      \gamma)^*(\mathcal{O}_C(y)) \cong
+      \varphi^*(\mathcal{O}_C(y)).</span></p>
+      <p>Now we need to calculate the degree of this pulled-back
+      invertible sheaf. According to the fundamental property regarding
+      the degree of the pullback of a divisor under a finite surjective
+      morphism: <span class="math display">\deg_C(\varphi^* D) =
+      \deg(\varphi) \cdot \deg_C(D).</span> Here, <span
+      class="math inline">\varphi</span> is a finite surjective morphism
+      of degree <span class="math inline">d</span>, and the degree of
+      the effective divisor defined by the single point <span
+      class="math inline">y</span> on the curve <span
+      class="math inline">C</span> is clearly <span
+      class="math inline">1</span>. Therefore: <span
+      class="math display">(l \cdot \Gamma_\varphi) =
+      \deg_C(\varphi^*(\mathcal{O}_C(y))) = \deg(\varphi) \cdot
+      \deg_C(\mathcal{O}_C(y)) = d \cdot 1 = d.</span></p>
+      <p><strong>Part 2: Computing <span class="math inline">(m \cdot
+      \Gamma_\varphi)</span></strong></p>
+      <p>Since the vertical fiber is <span class="math inline">m =
+      p_1^{-1}(x)</span>, where <span class="math inline">p_1: S \to
+      C</span> is the first projection, we have <span
+      class="math inline">\mathcal{O}_S(m) \cong
+      p_1^*(\mathcal{O}_C(x))</span>. Similarly, restricting it to <span
+      class="math inline">\Gamma_\varphi</span> yields: <span
+      class="math display">\mathcal{O}_S(m)|_{\Gamma_\varphi} \cong
+      \gamma^*(p_1^*(\mathcal{O}_C(x))) \cong (p_1 \circ
+      \gamma)^*(\mathcal{O}_C(x)) \cong
+      \operatorname{id}_C^*(\mathcal{O}_C(x)) \cong
+      \mathcal{O}_C(x).</span></p>
+      <p>This degenerates to computing the degree of the single-point
+      divisor <span class="math inline">x</span> on the original curve
+      <span class="math inline">C</span>. Obviously, we have: <span
+      class="math display">(m \cdot \Gamma_\varphi) =
+      \deg_C(\mathcal{O}_C(x)) = 1.</span> The proposition is
+      proved. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Self-Intersection Number of a
+      Graph Divisor). <em> On the smooth projective surface <span
+      class="math inline">X = C \times_k C</span>, let <span
+      class="math inline">\varphi: C \to C</span> be a finite surjective
+      morphism of degree <span class="math inline">d</span>, and let
+      <span class="math inline">\Gamma_\varphi \subset X</span> be its
+      graph divisor. Then the self-intersection number of the graph
+      divisor is: <span class="math display">\Gamma_\varphi^2 = d(2 -
+      2g).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the adjunction formula, for any irreducible
+      closed curve <span class="math inline">D</span> on a smooth
+      projective surface <span class="math inline">X</span>, we have:
+      <span class="math display">2p_a(D) - 2 = D^2 + (D \cdot
+      K_X).</span> We apply this formula to the graph divisor <span
+      class="math inline">\Gamma_\varphi</span>.</p>
+      <p>Since <span class="math inline">\Gamma_\varphi</span> is a
+      closed subscheme given by the graph morphism <span
+      class="math inline">\gamma = (\operatorname{id}_C, \varphi): C \to
+      X</span>, it is isomorphic to the original curve <span
+      class="math inline">C</span>. Since <span
+      class="math inline">\Gamma_\varphi \cong C</span>, its arithmetic
+      genus is naturally the genus of <span
+      class="math inline">C</span>: <span
+      class="math display">p_a(\Gamma_\varphi) = g.</span> Substituting
+      this into the left-hand side of the adjunction formula yields
+      <span class="math inline">2g - 2</span>.</p>
+      <p>For the product surface <span class="math inline">X = C
+      \times_k C</span>, its relative differential sheaf (and thus the
+      canonical sheaf) is the tensor product of the pullbacks of the
+      canonical sheaves of the two factors: <span
+      class="math display">\omega_X \cong p_1^*\omega_C \otimes
+      p_2^*\omega_C.</span></p>
+      <p>Because the degree of the canonical sheaf <span
+      class="math inline">\omega_C</span> on the one-dimensional curve
+      <span class="math inline">C</span> is <span class="math inline">2g
+      - 2</span>, it is numerically equivalent to a formal sum of <span
+      class="math inline">2g - 2</span> points on <span
+      class="math inline">C</span>. Therefore, pulling back to the total
+      space <span class="math inline">X</span> via the first and second
+      projections corresponds to multiples of the vertical fiber <span
+      class="math inline">m</span> and horizontal fiber <span
+      class="math inline">l</span>, respectively. That is: <span
+      class="math display">K_X \sim p_1^*(K_C) + p_2^*(K_C) \equiv (2g -
+      2)m + (2g - 2)l.</span></p>
+      <p>Using the bilinear property of the intersection pairing, we
+      substitute <span class="math inline">K_X</span> from the previous
+      step: <span class="math display">(\Gamma_\varphi \cdot K_X) =
+      (\Gamma_\varphi \cdot ((2g - 2)m + (2g - 2)l)).</span> <span
+      class="math display">(\Gamma_\varphi \cdot K_X) = (2g -
+      2)(\Gamma_\varphi \cdot m) + (2g - 2)(\Gamma_\varphi \cdot
+      l).</span> According to the results we already computed in the
+      previous Proposition , the intersection number with the vertical
+      fiber is <span class="math inline">(\Gamma_\varphi \cdot m) =
+      1</span>, and the intersection number with the horizontal fiber is
+      <span class="math inline">(\Gamma_\varphi \cdot l) = \deg(\varphi)
+      = d</span>. Substituting these into the equation yields: <span
+      class="math display">(\Gamma_\varphi \cdot K_X) = (2g - 2)(1) +
+      (2g - 2)(d) = (2g - 2)(1 + d).</span></p>
+      <p>Substituting all the computed components back into the
+      adjunction formula gives: <span class="math display">2g - 2 =
+      \Gamma_\varphi^2 + (2g - 2)(1 + d).</span> Solving for the
+      self-intersection number <span
+      class="math inline">\Gamma_\varphi^2</span>: <span
+      class="math display">\begin{align*}
+      \Gamma_\varphi^2 &amp;= (2g - 2) - (2g - 2)(1 + d) \\
+      &amp;= (2g - 2)(1 - 1 - d) \\
+      &amp;= -d(2g - 2) \\
+      &amp;= d(2 - 2g)
+      \end{align*}</span> The proposition is proved. ◻</p>
+      </div>
+      <p>Applying the Hodge Index Theorem proven earlier to the product
+      surface allows us to derive a fundamental inequality concerning
+      intersection numbers, which is in fact equivalent to the final
+      part of the Weil Conjectures.</p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Castelnuovo Inequality). <em> Let
+      <span class="math inline">D</span> be any divisor on the surface
+      <span class="math inline">S = C \times_k C</span>. Define its
+      intersection numbers with the horizontal and vertical fibers as:
+      <span class="math display">d_1(D) = (D \cdot l), \quad d_2(D) = (D
+      \cdot m).</span> Then the self-intersection number of <span
+      class="math inline">D</span> satisfies the following inequality:
+      <span class="math display">D^2 \le 2 d_1(D)
+      d_2(D).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">V</span> be the
+      3-dimensional vector space over the field of rational numbers
+      <span class="math inline">\mathbb{Q}</span> spanned by the three
+      divisor classes <span class="math inline">l, m</span>, and <span
+      class="math inline">D</span>. The intersection pairing defines a
+      quadratic form on <span class="math inline">V</span>. According to
+      the previous Propositions , we have already computed the
+      intersection numbers among the basis elements: <span
+      class="math inline">l^2 = 0</span>, <span class="math inline">m^2
+      = 0</span>, and <span class="math inline">(l \cdot m) = 1</span>.
+      Therefore, the matrix <span class="math inline">M</span> of this
+      quadratic form with respect to the basis <span
+      class="math inline">\{l, m, D\}</span> is: <span
+      class="math display">M = \begin{pmatrix}
+      0 &amp; 1 &amp; d_1(D) \\
+      1 &amp; 0 &amp; d_2(D) \\
+      d_1(D) &amp; d_2(D) &amp; D^2
+      \end{pmatrix}</span> Computing the determinant of this matrix:
+      <span class="math display">\det M = 0 - 1 \cdot (1 \cdot D^2 -
+      d_1(D) d_2(D)) + d_1(D) \cdot (\operatorname{d}_2(D) - 0) =
+      2d_1(D)d_2(D) - D^2.</span></p>
+      <p>We assert that <span class="math inline">\det M \ge 0</span>.
+      Suppose that <span class="math inline">\det M &lt; 0</span>. We
+      select an orthogonal basis <span class="math inline">E_1, E_2,
+      E_3</span> in <span class="math inline">V</span> with respect to
+      this quadratic form. Let their corresponding diagonal entries of
+      the quadratic form be <span class="math inline">a_i = (E_i \cdot
+      E_i)</span>. The sign of the determinant is invariant under a
+      change of basis, so <span class="math inline">a_1 a_2 a_3 &lt;
+      0</span>. On the other hand, since the top-left <span
+      class="math inline">2 \times 2</span> submatrix of <span
+      class="math inline">M</span> is <span
+      class="math inline">\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0
+      \end{pmatrix}</span>, its eigenvalues are <span
+      class="math inline">1</span> and <span
+      class="math inline">-1</span>, which indicates that the quadratic
+      form on <span class="math inline">V</span> is indefinite and it is
+      impossible for all eigenvalues to be negative. Since the three
+      eigenvalues cannot all be negative and their product is negative,
+      the only possibility is that there are two positive eigenvalues
+      and one negative eigenvalue (i.e., the signature is <span
+      class="math inline">(+, +, -)</span>). Without loss of generality,
+      assume <span class="math inline">a_1 &gt; 0</span> and <span
+      class="math inline">a_2 &gt; 0</span>. This implies that there
+      exists a 2-dimensional positive definite subspace <span
+      class="math inline">\operatorname{span}(E_1, E_2)</span> in <span
+      class="math inline">V</span>.</p>
+      <p>Let <span class="math inline">H = l + m</span>. Since <span
+      class="math inline">\operatorname{H}^2 = 2 &gt; 0</span>, and the
+      intersection numbers of <span class="math inline">H</span> with
+      both the horizontal and vertical fibers on <span
+      class="math inline">S</span> are strictly positive, <span
+      class="math inline">H</span> is an ample divisor on the surface
+      <span class="math inline">S</span> according to the
+      Nakai-Moishezon criterion.</p>
+      <p>Let <span class="math inline">W \subset \operatorname{Num}(S)
+      \otimes \mathbb{Q}</span> be the 2-dimensional rational vector
+      space spanned by <span class="math inline">E_1</span> and <span
+      class="math inline">E_2</span>. On <span
+      class="math inline">W</span>, the intersection quadratic form is
+      strictly positive definite. Now consider the linear intersection
+      map induced by the ample divisor <span
+      class="math inline">H</span>: <span class="math display">W \to
+      \mathbb{Q}, \quad E \mapsto (E \cdot H).</span> Since the target
+      space is 1-dimensional and the domain <span
+      class="math inline">W</span> is 2-dimensional, according to the
+      Rank-Nullity Theorem in linear algebra, the dimension of the
+      kernel of this map is at least <span class="math inline">\dim W -
+      1 = 1</span>. This means that in the positive definite subspace
+      <span class="math inline">W</span>, there must exist a non-zero
+      rational vector <span class="math inline">E_{\mathbb{Q}}</span>
+      satisfying the orthogonality condition <span
+      class="math inline">(E_{\mathbb{Q}} \cdot H) = 0</span>.</p>
+      <p>We multiply <span class="math inline">E_{\mathbb{Q}}</span> by
+      a suitable scalar to clear the denominators, thereby obtaining an
+      integral divisor class <span class="math inline">E</span>. Since
+      scalar multiplication does not alter the orthogonality or the sign
+      of the quadratic form, this divisor <span
+      class="math inline">E</span> still satisfies:</p>
+      <ol>
+      <li><p><span class="math inline">E</span> is a numerically
+      non-trivial integral divisor (<span class="math inline">E
+      \not\equiv 0</span>);</p></li>
+      <li><p><span class="math inline">E</span> is orthogonal to the
+      ample divisor, i.e., <span class="math inline">(E \cdot H) =
+      0</span>.</p></li>
+      </ol>
+      <p>At this point, we observe the self-intersection number of <span
+      class="math inline">E</span>. On one hand, because <span
+      class="math inline">E</span> is a non-zero element in the positive
+      definite subspace <span class="math inline">W</span>, its
+      self-intersection number must be strictly positive: <span
+      class="math display">E^2 &gt; 0.</span> On the other hand, because
+      <span class="math inline">H</span> is an ample divisor and the
+      divisor <span class="math inline">E \not\equiv 0</span> satisfies
+      <span class="math inline">(E \cdot H) = 0</span>, its
+      self-intersection number must be strictly negative according to
+      the Hodge Index Theorem: <span class="math display">E^2 &lt;
+      0.</span> This yields a contradiction.</p>
+      <p>Therefore, the initial assumption <span
+      class="math inline">\det M &lt; 0</span> is false, and we must
+      have <span class="math inline">\det M \ge 0</span>. Substituting
+      the explicit expression for the determinant gives: <span
+      class="math display">2d_1(D)d_2(D) - D^2 \ge 0 \implies D^2 \le
+      2d_1(D)d_2(D).</span> The lemma is proved. ◻</p>
+      </div>
+      <p>Based on the aforementioned Castelnuovo-Severi inequality, we
+      define a symmetric bilinear form on the product surface <span
+      class="math inline">S = C \times_k C</span>. For any two divisors
+      <span class="math inline">D, E</span> on <span
+      class="math inline">S</span>, we define: <span
+      class="math display">[D, E] = d_1(D)d_2(E) + d_1(E)d_2(D) - (D
+      \cdot E).</span> According to Lemma (Castelnuovo Inequality), we
+      have <span class="math inline">[D, D] = 2d_1(D)d_2(D) - D^2 \ge
+      0</span>. Therefore, this bilinear form is positive semi-definite
+      on <span class="math inline">\operatorname{Num}(S) \otimes
+      \mathbb{Q}</span>. By the Cauchy-Schwarz inequality for positive
+      semi-definite bilinear forms, we must have: <span
+      class="math display">|[D, E]| \le \sqrt{[D, D] \cdot [E, E]} \quad
+      \text{--- (Eq. 1)}.</span></p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Intersection Inequality for Graph
+      of Morphisms). <em> Let <span class="math inline">\varphi: C \to
+      C</span> be any finite morphism on <span
+      class="math inline">C</span> with degree <span
+      class="math inline">d = \deg(\varphi)</span>. Let <span
+      class="math inline">\Gamma_\varphi</span> be its graph divisor and
+      <span class="math inline">\Delta</span> be the diagonal divisor.
+      Then: <span class="math display">|(\Gamma_\varphi \cdot \Delta) -
+      1 - d| \le 2g \sqrt{d}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We substitute <span class="math inline">D =
+      \Gamma_\varphi</span> and <span class="math inline">E =
+      \Delta</span> into Eq. 1. We need to compute each value under this
+      bilinear form.</p>
+      <p>By Proposition , the diagonal intersects both the horizontal
+      fiber <span class="math inline">l</span> and the vertical fiber
+      <span class="math inline">m</span> transversely at a single point,
+      so <span class="math inline">d_1(\Delta) = 1</span> and <span
+      class="math inline">d_2(\Delta) = 1</span>. According to
+      Proposition , <span class="math inline">\Delta^2 = 2 - 2g</span>.
+      Therefore: <span class="math display">[\Delta, \Delta] = 2(1)(1) -
+      (2 - 2g) = 2g.</span></p>
+      <p>The graph divisor <span
+      class="math inline">\Gamma_\varphi</span> is the closure of the
+      point set <span class="math inline">\{(x, \varphi(x))\}</span>. By
+      Proposition , its intersection with the vertical fiber <span
+      class="math inline">m = \{x\} \times C</span> occurs at exactly
+      one place, namely <span class="math inline">(x,
+      \varphi(x))</span>, so <span
+      class="math inline">d_2(\Gamma_\varphi) = 1</span>. Its
+      intersection with the horizontal fiber <span class="math inline">l
+      = C \times \{y\}</span> corresponds to the number of solutions to
+      the equation <span class="math inline">\varphi(x) = y</span>,
+      which means <span class="math inline">d_1(\Gamma_\varphi) =
+      \deg(\varphi) = d</span>.</p>
+      <p>Combining this with the result of Proposition , we can
+      calculate the semi-positive norm of <span
+      class="math inline">\Gamma_\varphi</span>: <span
+      class="math display">[\Gamma_\varphi, \Gamma_\varphi] = 2
+      d_1(\Gamma_\varphi) d_2(\Gamma_\varphi) - \Gamma_\varphi^2 =
+      2(d)(1) - d(2 - 2g) = 2dg.</span></p>
+      <p>Computing the cross term of the bilinear form: <span
+      class="math display">[\Gamma_\varphi, \Delta] =
+      d_1(\Gamma_\varphi)d_2(\Delta) + d_1(\Delta)d_2(\Gamma_\varphi) -
+      (\Gamma_\varphi \cdot \Delta) = d(1) + 1(1) - (\Gamma_\varphi
+      \cdot \Delta).</span> Substituting all the above results into the
+      Cauchy-Schwarz inequality <span
+      class="math inline">|[\Gamma_\varphi, \Delta]| \le
+      \sqrt{[\Gamma_\varphi, \Gamma_\varphi] \cdot [\Delta,
+      \Delta]}</span>: <span class="math display">|d + 1 -
+      (\Gamma_\varphi \cdot \Delta)| \le \sqrt{(2dg) \cdot (2g)} = 2g
+      \sqrt{d}.</span> Rearranging the signs inside the absolute value
+      slightly yields the desiUniBlue result: <span
+      class="math display">|(\Gamma_\varphi \cdot \Delta) - 1 - d| \le
+      2g \sqrt{d}.</span> ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Weil Conjectures: Riemann
+      Hypothesis for Curves). <em> For a smooth projective curve <span
+      class="math inline">C</span> of genus <span
+      class="math inline">g</span> defined over <span
+      class="math inline">\mathbb{F}_q</span>, the number <span
+      class="math inline">N_s</span> of its <span
+      class="math inline">\mathbb{F}_{q^s}</span>-rational points
+      satisfies the celebrated Hasse-Weil bound: <span
+      class="math display">|N_s - q^s - 1| \le 2g
+      q^{s/2}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We take the morphism <span
+      class="math inline">\varphi</span> to be the <span
+      class="math inline">s</span>-th iterate of the absolute Frobenius
+      morphism, i.e., <span class="math inline">\varphi = F^s: C \to
+      C</span>. In local coordinates, <span
+      class="math inline">F^s</span> is given by the ring homomorphism
+      <span class="math inline">a \mapsto a^{q^s}</span>. Since <span
+      class="math inline">C</span> is a smooth one-dimensional curve,
+      the degree of the field extension of function fields <span
+      class="math inline">[K(C) : F^{s*} K(C)]</span> is clearly <span
+      class="math inline">q^s</span>. This implies that the degree of
+      the morphism <span class="math inline">F^s</span> is: <span
+      class="math display">d = \deg(F^s) = q^s.</span> On the other
+      hand, according to our conclusion preceding Proposition , the
+      Frobenius graph <span class="math inline">\Gamma_{F^s}</span> and
+      the diagonal <span class="math inline">\Delta</span> intersect
+      transversely, and the intersection number is exactly identical to
+      the number of rational points: <span
+      class="math display">(\Gamma_{F^s} \cdot \Delta) = N_s.</span>
+      Directly substituting <span class="math inline">d = q^s</span> and
+      <span class="math inline">(\Gamma_{F^s} \cdot \Delta) = N_s</span>
+      into the inequality of Theorem , we arrive at the magnificent
+      inequality: <span class="math display">|N_s - q^s - 1| \le 2g
+      \sqrt{q^s} = 2g q^{s/2}.</span> According to the equivalence
+      proven in our earlier lemmas, this is equivalent to stating that
+      the absolute values of all roots <span
+      class="math inline">\alpha_i</span> of the numerator polynomial
+      <span class="math inline">\prod_{i=1}^{2g}(1-\alpha_i t)</span> of
+      its Zeta function strictly satisfy <span
+      class="math inline">|\alpha_i| = \sqrt{q}</span>.</p>
+      <p>The Weil Conjectures for curves are now completely
+      proved. ◻</p>
+      </div>
+      <h3 data-number="5.3.4"
+      id="non-geometrically-irreducible-case">Non-geometrically
+      irreducible case</h3>
+      <p>Any irreducible curve defined over <span
+      class="math inline">\mathbb{F}_q</span> is essentially a
+      geometrically irreducible curve over some larger finite field
+      <span class="math inline">\mathbb{F}_{q^d}</span>. We call the
+      field <span class="math inline">k&#39;</span> the <strong>field of
+      global sections</strong> of the curve <span
+      class="math inline">X</span>. Through this perspective, we can
+      directly lift the base field of the Zeta function to <span
+      class="math inline">k&#39;</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Global Sections). <em> Let
+      <span class="math inline">k</span> be a field. Let <span
+      class="math inline">X</span> be an irreducible, smooth, and
+      projective curve (1-dimensional scheme) over <span
+      class="math inline">k</span>. Let <span class="math inline">k&#39;
+      = \Gamma(X, \mathcal{O}_X)</span> be the ring of global regular
+      functions on <span class="math inline">X</span>. Then:</em></p>
+      <ol>
+      <li><p><em> <span class="math inline">k&#39;</span> is a finite
+      field extension of <span
+      class="math inline">k</span>.</em></p></li>
+      <li><p><em> The structure morphism <span class="math inline">X \to
+      \operatorname{Spec}k</span> naturally factors as <span
+      class="math inline">X \to \operatorname{Spec}k&#39; \to
+      \operatorname{Spec}k</span>, and <span
+      class="math inline">X</span>, when viewed as a scheme defined over
+      <span class="math inline">k&#39;</span>, is geometrically
+      irreducible.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> (1) Because <span class="math inline">X</span>
+      is a projective scheme over <span class="math inline">k</span>, it
+      is proper over <span class="math inline">k</span>. According to
+      the finiteness theorem for coherent sheaf cohomology on proper
+      schemes, the ring of global sections <span
+      class="math inline">k&#39; = \Gamma(X, \mathcal{O}_X)</span> is a
+      finite-dimensional <span class="math inline">k</span>-vector
+      space, making it a finite <span
+      class="math inline">k</span>-algebra. Furthermore, because <span
+      class="math inline">X</span> is irreducible and smooth over <span
+      class="math inline">k</span>, it is an integral scheme. The ring
+      of global regular functions on an integral scheme contains no zero
+      divisors, so <span class="math inline">k&#39;</span> is an
+      integral domain. A finite-dimensional integral domain over a field
+      is necessarily a field. Therefore, <span
+      class="math inline">k&#39;</span> is a finite field extension of
+      <span class="math inline">k</span>.</p>
+      <p>(2) Since <span class="math inline">k&#39; = \Gamma(X,
+      \mathcal{O}_X)</span>, the structure sheaf <span
+      class="math inline">\mathcal{O}_X</span> is naturally equipped
+      with the structure of a sheaf of <span
+      class="math inline">k&#39;</span>-algebras. This is categorically
+      equivalent to providing a natural morphism of schemes <span
+      class="math inline">X \to \operatorname{Spec}k&#39;</span>, which
+      endows <span class="math inline">X</span> with the structure of a
+      <span class="math inline">k&#39;</span>-scheme. The composition of
+      this morphism with the canonical projection <span
+      class="math inline">\operatorname{Spec}k&#39; \to
+      \operatorname{Spec}k</span> recovers the original structure
+      morphism <span class="math inline">X \to
+      \operatorname{Spec}k</span>.</p>
+      <p>Now, we consider <span class="math inline">X</span> as a scheme
+      defined over the new base field <span
+      class="math inline">k&#39;</span>. By construction, its ring of
+      global functions over this new base field is exactly <span
+      class="math inline">k&#39;</span> itself; that is, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) =
+      k&#39;</span>. Because <span class="math inline">X</span> is
+      smooth over <span class="math inline">k</span>, it is
+      geometrically regular over <span class="math inline">k</span>.
+      Consequently, <span class="math inline">X \otimes_k
+      \overline{k}</span> is a regular scheme. Since the algebraic
+      closure <span class="math inline">\overline{k&#39;}</span> is
+      isomorphic to <span class="math inline">\overline{k}</span>, the
+      base change <span class="math inline">X \otimes_{k&#39;}
+      \overline{k&#39;}</span> is also a regular scheme. This implies
+      that <span class="math inline">X</span> is geometrically regular,
+      and thus geometrically normal, over <span
+      class="math inline">k&#39;</span>.</p>
+      <p>By Lemma , for a proper geometrically normal scheme over a
+      field, the condition <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) =
+      k&#39;</span> is strictly equivalent to the scheme being
+      geometrically irreducible. Therefore, <span
+      class="math inline">X</span> as a curve defined over <span
+      class="math inline">k&#39;</span> is geometrically
+      irreducible. ◻</p>
+      </div>
+      <p>Since <span class="math inline">X</span>, viewed as a scheme
+      over <span class="math inline">k&#39;</span>, is geometrically
+      irreducible, we next establish the connection between the Zeta
+      function of <span class="math inline">X</span> over the base field
+      <span class="math inline">k = \mathbb{F}_q</span> and its Zeta
+      function over the field of global sections <span
+      class="math inline">k&#39; = \mathbb{F}_{q^d}</span>.</p>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Base Field Lifting of the
+      Zeta Function). <em> Let <span class="math inline">X</span> be an
+      irreducible smooth projective curve defined over <span
+      class="math inline">k = \mathbb{F}_q</span>, whose field of global
+      sections is <span class="math inline">k&#39; =
+      \mathbb{F}_{q^d}</span>. Then its local Zeta functions over the
+      two different base fields satisfy the following identity: <span
+      class="math display">Z(X/k, t) = Z(X/k&#39;, t^d).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We will prove this using the Euler product
+      formula of the Zeta function. Recall the product definition of the
+      Zeta function: <span class="math display">Z(X/k, t) = \prod_{x \in
+      |X|} (1 - t^{\deg_k(x)})^{-1}.</span> where <span
+      class="math inline">|X|</span> is the topological space of closed
+      points of <span class="math inline">X</span>, and <span
+      class="math inline">\deg_k(x) = [\kappa(x) : k]</span> is the
+      degree of the closed point <span class="math inline">x</span> over
+      the base field <span class="math inline">k</span>.</p>
+      <p>As mentioned previously, the structure morphism can be
+      factoUniBlue as <span class="math inline">X \to
+      \operatorname{Spec}k&#39; \to \operatorname{Spec}k</span>.
+      Therefore, for any closed point <span class="math inline">x \in
+      |XBase|</span>, its residue field <span
+      class="math inline">\kappa(x)</span> must contain the field of
+      global sections <span class="math inline">k&#39;</span>. According
+      to the tower formula for field extensions: <span
+      class="math display">[\kappa(x) : k] = [\kappa(x) : k&#39;] \cdot
+      [k&#39; : k].</span> which means <span
+      class="math inline">\deg_k(x) = d \cdot
+      \deg_{k&#39;}(x)</span>.</p>
+      <p>Substituting this degree relation into the Euler product
+      formula for <span class="math inline">X/k</span> yields: <span
+      class="math display">\begin{align*}
+      Z(X/k, t) &amp;= \prod_{x \in |X|} (1 - t^{d \cdot
+      \deg_{k&#39;}(x)})^{-1} \\
+      &amp;= \prod_{x \in |X|} (1 - (t^d)^{\deg_{k&#39;}(x)})^{-1}
+      \end{align*}</span> Observing the right-hand side of the equation,
+      this is precisely the Euler product formula for <span
+      class="math inline">X</span> as a <span
+      class="math inline">k&#39;</span>-scheme, with the formal variable
+      replaced by <span class="math inline">t^d</span>. Therefore, we
+      obtain the equality: <span class="math display">Z(X/k, t) =
+      Z(X/k&#39;, t^d).</span> The proposition is proved. ◻</p>
+      </div>
+      <p>By virtue of the above proposition, and since <span
+      class="math inline">X</span> is strictly geometrically irreducible
+      over <span class="math inline">k&#39;</span>, we can apply the
+      previously established conclusions to naturally deduce the Weil
+      Conjectures for any irreducible curve.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Weil Conjectures for Any
+      Irreducible Curve). <em> Let <span class="math inline">X</span> be
+      an irreducible smooth projective curve over a finite field <span
+      class="math inline">k = \mathbb{F}_q</span> with genus <span
+      class="math inline">g</span> and the field of global sections
+      <span class="math inline">k&#39; = \mathbb{F}_{q^d}</span>. Then
+      the Zeta function of <span class="math inline">X/k</span>
+      satisfies:</em></p>
+      <ol>
+      <li><p><em><strong>Rationality:</strong> <span
+      class="math inline">Z(X/k, t)</span> can be written as: <span
+      class="math display">Z(X/k, t) =
+      \frac{P(t^d)}{(1-t^d)(1-(qt)^d)}.</span> where <span
+      class="math inline">P(u) \in \mathbb{Z}[u]</span> and <span
+      class="math inline">\deg_u P = 2g</span> (the degree of the
+      polynomial expanded in terms of <span class="math inline">t</span>
+      is <span class="math inline">2dg</span>).</em></p></li>
+      <li><p><em><strong>Functional Equation:</strong> <span
+      class="math display">Z\left(X/k, \frac{1}{qt}\right) = q^{d(1-g)}
+      t^{2d(1-g)} Z(X/k, t).</span></em></p></li>
+      <li><p><em><strong>Riemann Hypothesis:</strong> After expanding
+      the numerator polynomial into a product of linear factors in terms
+      of <span class="math inline">t</span> as <span
+      class="math inline">\prod (1 - \alpha t)</span>, all reciprocal
+      roots <span class="math inline">\alpha</span> satisfy the complex
+      absolute value condition: <span class="math display">|\alpha| =
+      \sqrt{q}.</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By Proposition , it is known that <span
+      class="math inline">Z(X/k, t) = Z(X/k&#39;, u)</span>, where we
+      use the substitution <span class="math inline">u = t^d</span>.
+      Since <span class="math inline">X</span> is a geometrically
+      irreducible curve of genus <span class="math inline">g</span> over
+      <span class="math inline">k&#39;</span>, and the cardinality of
+      <span class="math inline">k&#39;</span> is <span
+      class="math inline">q&#39; = q^d</span>, we can directly apply the
+      conclusions of the Weil Conjectures for geometrically irreducible
+      curves to <span class="math inline">Z(X/k&#39;, u)</span>.</p>
+      <p>(1) <strong>Rationality</strong>: According to the prior
+      rationality conclusion, <span class="math inline">Z(X/k&#39;,
+      u)</span> can be expressed as: <span
+      class="math display">Z(X/k&#39;, u) =
+      \frac{P(u)}{(1-u)(1-q&#39;u)}.</span> where <span
+      class="math inline">P(u)</span> is a polynomial with integral
+      coefficients and <span class="math inline">\deg_u P = 2g</span>.
+      Substituting <span class="math inline">u = t^d</span> and <span
+      class="math inline">q&#39; = q^d</span> into the equation, we
+      immediately obtain: <span class="math display">Z(X/k, t) =
+      \frac{P(t^d)}{(1-t^d)(1-q^dt^d)} =
+      \frac{P(t^d)}{(1-t^d)(1-(qt)^d)}.</span> Rationality is
+      proved.</p>
+      <p>(2) <strong>Functional Equation</strong>: According to the
+      functional equation in the geometrically irreducible case,
+      substituting the variable <span class="math inline">u</span> and
+      the cardinality <span class="math inline">q&#39;</span> gives:
+      <span class="math display">Z\left(X/k&#39;,
+      \frac{1}{q&#39;u}\right) = (q&#39;)^{1-g} u^{2-2g} Z(X/k&#39;,
+      u).</span> Now we calculate the term to be verified, <span
+      class="math inline">Z\left(X/k, \frac{1}{qt}\right)</span>.
+      Utilizing Proposition : <span class="math display">Z\left(X/k,
+      \frac{1}{qt}\right) = Z\left(X/k&#39;,
+      \left(\frac{1}{qt}\right)^d\right) = Z\left(X/k&#39;,
+      \frac{1}{q^dt^d}\right) = Z\left(X/k&#39;,
+      \frac{1}{q&#39;u}\right).</span> Substituting the functional
+      equation of <span class="math inline">X/k&#39;</span> above and
+      restoring <span class="math inline">u</span> back to <span
+      class="math inline">t^d</span>: <span
+      class="math display">\begin{align*}
+      Z\left(X/k, \frac{1}{qt}\right) &amp;= (q^d)^{1-g} (t^d)^{2-2g}
+      Z(X/k&#39;, t^d) \\
+      &amp;= q^{d(1-g)} t^{2d(1-g)} Z(X/k, t)
+      \end{align*}</span> The functional equation is proved.</p>
+      <p>(3) <strong>Riemann Hypothesis</strong>: According to the
+      Riemann Hypothesis in the geometrically irreducible case, the
+      polynomial <span class="math inline">P(u)</span> can be
+      factoUniBlue into <span class="math inline">\prod_{i=1}^{2g} (1 -
+      \gamma_i u)</span>, and the absolute values of the roots
+      corresponding to the Frobenius action satisfy: <span
+      class="math display">|\gamma_i| = \sqrt{q&#39;} = q^{d/2}.</span>
+      Now we examine the expanded polynomial in terms of <span
+      class="math inline">t</span>, <span class="math inline">P(t^d) =
+      \prod_{i=1}^{2g} (1 - \gamma_i t^d)</span>. For each factor <span
+      class="math inline">1 - \gamma_i t^d</span>, it can be further
+      decomposed over the complex field into a product of <span
+      class="math inline">d</span> linear terms: <span
+      class="math display">1 - \gamma_i t^d = \prod_{j=1}^d (1 -
+      \alpha_{ij} t).</span> where <span
+      class="math inline">\alpha_{ij}</span> is clearly a <span
+      class="math inline">d</span>-th root of <span
+      class="math inline">\gamma_i</span>, satisfying <span
+      class="math inline">\alpha_{ij}^d = \gamma_i</span>. Taking the
+      complex absolute value on both sides of this equation: <span
+      class="math display">|\alpha_{ij}|^d = |\gamma_i| =
+      q^{d/2}.</span> Since the absolute value is a positive real
+      number, taking the <span class="math inline">d</span>-th root on
+      both sides immediately yields the absolute value of all roots
+      <span class="math inline">\alpha_{ij}</span> in the new numerator:
+      <span class="math display">|\alpha_{ij}| = q^{1/2} =
+      \sqrt{q}.</span> This matches the assertion of the Riemann
+      Hypothesis. The Weil Conjectures for any irreducible curve are
+      thus completely proved. ◻</p>
+      </div>
+      <h3 data-number="5.3.5" id="the-case-with-singularities">The case
+      with singularities</h3>
+      <p>We now extend our investigation of Zeta functions to algebraic
+      curves that are permitted to have singularities. Let <span
+      class="math inline">X</span> be an irreducible, projective
+      algebraic curve defined over the finite field <span
+      class="math inline">\mathbb{F}_q</span>.</p>
+      <p>To study the geometric properties of a singular curve, the
+      standard algebraic technique is to relate it to its normalization.
+      We denote by <span class="math inline">\tilde{X}</span> the
+      normalization of <span class="math inline">X</span>.
+      Geometrically, <span class="math inline">\tilde{X}</span> is a
+      smooth projective curve, and there is a natural normalization map:
+      <span class="math display">\nu \colon \tilde{X} \to X.</span> This
+      map is a birational, surjective, finite morphism. For any closed
+      point <span class="math inline">P \in X</span>, its degree over
+      the base field <span class="math inline">\mathbb{F}_q</span> is
+      given by the degree of the field extension of its residue field:
+      <span class="math inline">d_P = [\mathbb{F}_q(P) :
+      \mathbb{F}_q]</span>.</p>
+      <div class="theorem">
+      <p><strong>Theorem 3.1</strong> (Zeta Function of a Singular
+      Curve). <em> Let <span class="math inline">S</span> be the finite
+      set of singular points of <span class="math inline">X</span>. The
+      Zeta function of <span class="math inline">X</span> is a rational
+      function of the form: <span class="math display">Z_X(T) =
+      \frac{P_X(T)}{(1 - T)(1 - qT)}.</span> where the numerator
+      polynomial <span class="math inline">P_X(T)</span> is explicitly
+      related to the numerator polynomial <span
+      class="math inline">P_{\tilde{X}}(T)</span> of the normalized
+      smooth curve <span class="math inline">\tilde{X}</span> by the
+      formula: <span class="math display">P_X(T) = P_{\tilde{X}}(T)
+      \prod_{P \in S} \left( \frac{\prod_{Q \in \nu^{-1}(P)} (1 -
+      T^{d_Q})}{1 - T^{d_P}} \right).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By definition, the Zeta function is constructed
+      from the number of rational points over finite extensions. We
+      analyze the quotient of the Zeta functions of <span
+      class="math inline">X</span> and <span
+      class="math inline">\tilde{X}</span> by expressing them via their
+      exponential generating functions: <span
+      class="math display">\begin{align*}
+      \frac{Z_X(T)}{Z_{\tilde{X}}(T)} &amp;= \exp\left(
+      \sum_{n=1}^\infty \left( \#X(\mathbb{F}_{q^n}) -
+      \#\tilde{X}(\mathbb{F}_{q^n}) \right) \frac{T^n}{n} \right)
+      \end{align*}</span> The normalization map <span
+      class="math inline">\nu \colon \tilde{X} \to X</span> is an
+      isomorphism outside the singular locus <span
+      class="math inline">S</span>. Therefore, any discrepancy in the
+      point counts must originate exclusively from points lying over
+      <span class="math inline">S</span>.</p>
+      <p>Let <span class="math inline">\alpha_P(n)</span> denote the
+      number of points on <span class="math inline">\tilde{X}</span>
+      that lie over <span class="math inline">P</span> and are rational
+      over <span class="math inline">\mathbb{F}_{q^n}</span>. For the
+      base point <span class="math inline">P</span> itself, it
+      contributes to <span
+      class="math inline">\#X(\mathbb{F}_{q^n})</span> if and only if it
+      is rational over <span
+      class="math inline">\mathbb{F}_{q^n}</span>, which occurs
+      precisely when its degree <span class="math inline">d_P</span>
+      divides <span class="math inline">n</span>. We encode this using
+      an indicator function: let <span class="math inline">\delta_{m
+      \mid n} = 1</span> if <span class="math inline">m</span> divides
+      <span class="math inline">n</span>, and <span
+      class="math inline">0</span> otherwise. The difference in point
+      counts can then be localized to sums over the singular points
+      <span class="math inline">P \in S</span>: <span
+      class="math display">\frac{Z_X(T)}{Z_{\tilde{X}}(T)} = \prod_{P
+      \in S} \exp\left( -\sum_{n=1}^\infty (\alpha_P(n) -
+      d_P)\delta_{d_P \mid n} \frac{T^n}{n} \right).</span> We can
+      simplify the exponent by re-indexing the summation. Since non-zero
+      terms only occur when <span class="math inline">n</span> is a
+      multiple of <span class="math inline">d_P</span>, we substitute
+      <span class="math inline">n = m d_P</span>: <span
+      class="math display">\frac{Z_X(T)}{Z_{\tilde{X}}(T)} = \prod_{P
+      \in S} \exp\left( -\sum_{m=1}^\infty (\alpha_P(m d_P) - d_P)
+      \frac{T^{m d_P}}{m d_P} \right).</span></p>
+      <p>Now we must evaluate <span class="math inline">\alpha_P(m
+      d_P)</span>. The points on <span
+      class="math inline">\tilde{X}</span> lying over <span
+      class="math inline">P</span> are exactly the elements <span
+      class="math inline">Q \in \nu^{-1}(P)</span>. Similar to <span
+      class="math inline">P</span>, a point <span
+      class="math inline">Q</span> contributes to the rational point
+      count over <span class="math inline">\mathbb{F}_{q^{m d_P}}</span>
+      if and only if its degree <span class="math inline">d_Q</span>
+      divides the extension degree <span class="math inline">m
+      d_P</span>. Summing the contributions of these conjugate points
+      yields: <span class="math display">\alpha_P(m d_P) = \sum_{Q \in
+      \nu^{-1}(P)} d_Q \delta_{d_Q \mid m d_P}.</span> Substituting this
+      explicit sum back into the exponential expression, we get: <span
+      class="math display">\begin{align*}
+      \frac{Z_X(T)}{Z_{\tilde{X}}(T)} &amp;= \prod_{P \in S} \left(
+      \frac{\prod_{Q \in \nu^{-1}(P)} \exp\left( -\sum_{m=1}^\infty d_Q
+      \delta_{d_Q \mid m d_P} \frac{T^{m d_P}}{m d_P}
+      \right)}{\exp\left( -\sum_{m=1}^\infty d_P \frac{T^{m d_P}}{m d_P}
+      \right)} \right)
+      \end{align*}</span> The denominator in this product evaluates
+      cleanly using the Taylor series for the logarith: <span
+      class="math inline">\exp(-\sum_{m=1}^\infty \frac{(T^{d_P})^m}{m})
+      = \exp(\log(1 - T^{d_P})) = 1 - T^{d_P}</span>.</p>
+      <p>For the numerator, we evaluate the sum for each fixed <span
+      class="math inline">Q</span>. The non-zero terms occur when <span
+      class="math inline">d_Q \mid m d_P</span>, so we can substitute
+      the index <span class="math inline">\ell = m d_P / d_Q</span>:
+      <span class="math display">\begin{align*}
+      \exp\left( -\sum_{m=1}^\infty d_Q \delta_{d_Q \mid m d_P}
+      \frac{T^{m d_P}}{m d_P} \right) &amp;= \exp\left(
+      -\sum_{\ell=1}^\infty d_Q \frac{T^{\ell d_Q}}{\ell d_Q} \right) \\
+      &amp;= \exp\left( -\sum_{\ell=1}^\infty
+      \frac{(T^{d_Q})^\ell}{\ell} \right) \\
+      &amp;= 1 - T^{d_Q}
+      \end{align*}</span> Assembling these evaluated sums confirms the
+      theorem’s formula: <span
+      class="math display">\frac{Z_X(T)}{Z_{\tilde{X}}(T)} = \prod_{P
+      \in S} \left( \frac{\prod_{Q \in \nu^{-1}(P)} (1 - T^{d_Q})}{1 -
+      T^{d_P}} \right).</span> Because <span
+      class="math inline">Z_{\tilde{X}}(T) = P_{\tilde{X}}(T) /
+      ((1-T)(1-qT))</span>, we simply multiply both sides by <span
+      class="math inline">P_{\tilde{X}}(T)</span> to solve for <span
+      class="math inline">P_X(T)</span>. ◻</p>
+      </div>
+      <p>Theorem demonstrates that the Zeta function of a singular curve
+      <span class="math inline">X</span> is the product of the numerator
+      polynomial of its smooth normalization (which has degree <span
+      class="math inline">2g_{\tilde{X}}</span>) multiplied by a
+      correction polynomial. The degree of this correction polynomial is
+      precisely defined as: <span class="math display">\Delta_X =
+      \#\{\tilde{X}(\overline{\mathbb{F}}_q) \setminus
+      X(\overline{\mathbb{F}}_q)\}.</span> where <span
+      class="math inline">\overline{\mathbb{F}}_q</span> is an algebraic
+      closure of <span class="math inline">\mathbb{F}_q</span>. The
+      quantity <span class="math inline">\Delta_X</span> is well-defined
+      because the singular locus <span class="math inline">S</span> is a
+      finite subset of <span class="math inline">X</span>. In the
+      context of generalized Jacobians, <span
+      class="math inline">\Delta_X</span> represents the dimension of
+      the toric component of the generalized Jacobian of <span
+      class="math inline">X</span>.</p>
+      <p>To further understand the difference between a singular point
+      and its preimages on the normalization, we must analyze their
+      local rings. Let <span class="math inline">P \in
+      X(\mathbb{F}_q)</span> be an <span
+      class="math inline">\mathbb{F}_q</span>-rational singular point.
+      Following the notation of Theorem , let <span
+      class="math inline">\alpha_P(1) = \alpha</span> be the number of
+      <span class="math inline">\mathbb{F}_q</span>-rational points of
+      <span class="math inline">\tilde{X}</span> lying over <span
+      class="math inline">P</span>, and let <span
+      class="math inline">\alpha_P(\infty)</span> be the total number of
+      points on <span class="math inline">\tilde{X}</span> lying over
+      <span class="math inline">P</span> over the algebraic closure.</p>
+      <p>Let <span class="math inline">\mathcal{O}_P</span> be the local
+      ring of the point <span class="math inline">P</span> on <span
+      class="math inline">X</span>, and let <span
+      class="math inline">\overline{\mathcal{O}_P}</span> be its
+      integral closure within the function field <span
+      class="math inline">\mathbb{F}_q(X)</span>. Because the curve is a
+      one-dimensional Noetherian scheme, the quotient <span
+      class="math inline">\overline{\mathcal{O}_P} /
+      \mathcal{O}_P</span> is a finite-dimensional vector space over
+      <span class="math inline">\mathbb{F}_q</span>. We define its
+      dimension as the delta invariant of the singularity: <span
+      class="math display">\delta_P = \dim_{\mathbb{F}_q}
+      (\overline{\mathcal{O}_P} / \mathcal{O}_P).</span></p>
+      <div class="lemma">
+      <p><strong>Lemma 3.1</strong> (Lower Bound for the Delta
+      Invariant). <em> Let <span class="math inline">P</span> be an
+      <span class="math inline">\mathbb{F}_q</span>-rational singular
+      point of <span class="math inline">X</span>. Then the number of
+      rational branches over <span class="math inline">P</span> is
+      bounded by the delta invariant: <span
+      class="math display">\alpha_P(1) - 1 \le \delta_P.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">Q_1, \dots,
+      Q_{\alpha_P(\infty)}</span> be all the points of <span
+      class="math inline">\tilde{X}(\overline{\mathbb{F}}_q)</span>
+      lying over <span class="math inline">P</span>. By definition, the
+      first <span class="math inline">\alpha = \alpha_P(1)</span> points
+      are exactly the <span
+      class="math inline">\mathbb{F}_q</span>-rational ones.</p>
+      <p>The integral closure <span
+      class="math inline">\overline{\mathcal{O}_P}</span> consists of
+      all rational functions that are regular at every branch over <span
+      class="math inline">P</span>. That is, <span
+      class="math inline">\overline{\mathcal{O}_P} = \bigcap_{i}
+      \mathcal{O}_{Q_i}</span>. Evaluating these regular functions at
+      the rational branches defines a natural <span
+      class="math inline">\mathbb{F}_q</span>-linear evaluation map:
+      <span class="math display">\begin{align*}
+      \phi \colon \overline{\mathcal{O}_P} &amp;\to \mathbb{F}_q^\alpha
+      \\
+      f &amp;\mapsto (f(Q_1), \dots, f(Q_\alpha))
+      \end{align*}</span></p>
+      <p>We first prove that <span class="math inline">\phi</span> is
+      surjective. Let <span class="math inline">(x_1, \dots, x_\alpha)
+      \in \mathbb{F}_q^\alpha</span> be an arbitrary target vector.
+      Since <span class="math inline">\mathbb{F}_q \subset
+      \mathbb{F}_q(X)</span>, we can set constant functions <span
+      class="math inline">f_i = x_i</span> for <span
+      class="math inline">1 \le i \le \alpha</span>. For the
+      non-rational branches <span class="math inline">i \ge \alpha +
+      1</span>, we simply set <span class="math inline">f_i = 0</span>.
+      The points <span class="math inline">Q_i</span> are distinct
+      valuations on the function field. By the Weak Approximation
+      Theorem for valuations, there exists a rational function <span
+      class="math inline">g \in \mathbb{F}_q(X)</span> that
+      simultaneously approximates all these targets. Specifically, we
+      can find a <span class="math inline">g</span> such that the
+      valuation <span class="math inline">v_{Q_i}(g - f_i) \ge 1</span>
+      for all <span class="math inline">1 \le i \le
+      \alpha_P(\infty)</span>.</p>
+      <p>This condition immediately implies two things. First, because
+      <span class="math inline">f_i</span> are constants and <span
+      class="math inline">v_{Q_i}(g - f_i) \ge 1 \ge 0</span>, the
+      function <span class="math inline">g</span> must have no poles at
+      any <span class="math inline">Q_i</span>, meaning <span
+      class="math inline">g \in \bigcap \mathcal{O}_{Q_i} =
+      \overline{\mathcal{O}_P}</span>. Second, evaluating <span
+      class="math inline">g</span> at the rational branches gives
+      exactly <span class="math inline">g(Q_i) = f_i(Q_i) = x_i</span>
+      for all <span class="math inline">1 \le i \le \alpha</span>.
+      Therefore, <span class="math inline">\phi(g) = (x_1, \dots,
+      x_\alpha)</span>, proving that the linear map <span
+      class="math inline">\phi</span> is strictly surjective onto <span
+      class="math inline">\mathbb{F}_q^\alpha</span>.</p>
+      <p>Next, we analyze the restriction of <span
+      class="math inline">\phi</span> to the original local ring <span
+      class="math inline">\mathcal{O}_P</span>. If a function <span
+      class="math inline">f</span> actually belongs to <span
+      class="math inline">\mathcal{O}_P</span>, it is defined at the
+      singular point <span class="math inline">P</span> itself. Its
+      value at all branches lying over <span
+      class="math inline">P</span> must simply be the value of the
+      function evaluated at <span class="math inline">P</span>.
+      Therefore, for any <span class="math inline">f \in
+      \mathcal{O}_P</span>: <span class="math display">f(Q_1) = f(Q_2) =
+      \dots = f(Q_\alpha) = f(P).</span> This demonstrates that the
+      image of <span class="math inline">\mathcal{O}_P</span> under
+      <span class="math inline">\phi</span> is restricted entirely to
+      the one-dimensional diagonal subspace <span class="math inline">L
+      \subset \mathbb{F}_q^\alpha</span> defined by elements of the form
+      <span class="math inline">(x, x, \dots, x)</span>.</p>
+      <p>Because <span class="math inline">\phi(\mathcal{O}_P) \subseteq
+      L</span>, the surjective linear map <span
+      class="math inline">\phi</span> canonically factors through the
+      quotient space to induce a new surjective linear map: <span
+      class="math display">\tilde{\phi} \colon \overline{\mathcal{O}_P}
+      / \mathcal{O}_P \twoheadrightarrow \mathbb{F}_q^\alpha / L.</span>
+      Because <span class="math inline">\tilde{\phi}</span> is
+      surjective, the dimension of the domain must be greater than or
+      equal to the dimension of the target space. The dimension of the
+      domain is <span class="math inline">\delta_P</span>. The dimension
+      of <span class="math inline">\mathbb{F}_q^\alpha</span> is <span
+      class="math inline">\alpha</span>, and the dimension of the
+      diagonal line <span class="math inline">L</span> is <span
+      class="math inline">1</span>, so the quotient space has dimension
+      <span class="math inline">\alpha - 1</span>. This directly
+      establishes the inequality <span class="math inline">\delta_P \ge
+      \alpha - 1</span>, proving the lemma. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 3.1</strong> (Bound on the Discrepancy of
+      Rational Points). <em> Let <span class="math inline">X</span> be
+      an absolutely irreducible projective curve over <span
+      class="math inline">\mathbb{F}_q</span> with arithmetic genus
+      <span class="math inline">\pi</span>, and let <span
+      class="math inline">\tilde{X}</span> be its normalization with
+      geometric genus <span class="math inline">g</span>. The difference
+      between the number of rational points on the smooth normalization
+      and the singular curve is bounded by: <span
+      class="math display">|\#\tilde{X}(\mathbb{F}_q) -
+      \#X(\mathbb{F}_q)| \le \pi - g.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">P \in X</span> be
+      a closed point and <span class="math inline">Q \in
+      \tilde{X}</span> be a point lying over <span
+      class="math inline">P</span> under the normalization map <span
+      class="math inline">\nu \colon \tilde{X} \to X</span>. Because the
+      normalization map is defined over the base field <span
+      class="math inline">\mathbb{F}_q</span>, if <span
+      class="math inline">Q</span> is an <span
+      class="math inline">\mathbb{F}_q</span>-rational point, its image
+      <span class="math inline">P = \nu(Q)</span> must also be an <span
+      class="math inline">\mathbb{F}_q</span>-rational point. Therefore,
+      when counting rational points, we only need to compare the
+      rational points lying over the rational singular locus.</p>
+      <p>Using the notation established previously, the difference in
+      point counts is exactly the sum of the surplus branches over each
+      rational singular point: <span
+      class="math display">\#\tilde{X}(\mathbb{F}_q) - \#X(\mathbb{F}_q)
+      = \sum_{P \in \operatorname{Sing} X(\mathbb{F}_q)} (\alpha_P(1) -
+      1).</span> By Lemma , we know that for every rational singular
+      point, <span class="math inline">\alpha_P(1) - 1 \le
+      \delta_P</span>. A fundamental theorem of algebraic curves relates
+      the arithmetic genus <span class="math inline">\pi</span> and the
+      geometric genus <span class="math inline">g</span> via the sum of
+      the delta invariants over all singular points (over the algebraic
+      closure): <span class="math display">\pi - g = \sum_{P \in
+      \operatorname{Sing} X(\overline{\mathbb{F}}_q)} \delta_P.</span>
+      Since <span class="math inline">\delta_P \ge 0</span> for all
+      points, restricting the sum to strictly the <span
+      class="math inline">\mathbb{F}_q</span>-rational singular points
+      gives the upper bound: <span class="math display">\sum_{P \in
+      \operatorname{Sing} X(\mathbb{F}_q)} (\alpha_P(1) - 1) \le \sum_{P
+      \in \operatorname{Sing} X(\mathbb{F}_q)} \delta_P \le \pi -
+      g.</span></p>
+      <p>To establish the lower bound, we observe that the number of
+      rational branches <span class="math inline">\alpha_P(1)</span> is
+      inherently non-negative (<span class="math inline">\alpha_P(1) \ge
+      0</span>). Therefore, <span class="math inline">\alpha_P(1) - 1
+      \ge -1</span>. Summing this over the rational singular points
+      yields: <span class="math display">\sum_{P \in \operatorname{Sing}
+      X(\mathbb{F}_q)} (\alpha_P(1) - 1) \ge -\#\operatorname{Sing}
+      X(\mathbb{F}_q).</span> Furthermore, because every singular point
+      <span class="math inline">P</span> must have a strictly positive
+      delta invariant (<span class="math inline">\delta_P \ge 1</span>),
+      the total number of singular points over the algebraic closure is
+      bounded by the total sum of their delta invariants: <span
+      class="math display">-\#\operatorname{Sing} X(\mathbb{F}_q) \ge
+      -\#\operatorname{Sing} X(\overline{\mathbb{F}}_q) \ge -\sum_{P \in
+      \operatorname{Sing} X(\overline{\mathbb{F}}_q)} \delta_P = -(\pi -
+      g).</span> Combining the upper and lower bounds confirms the
+      absolute value inequality <span
+      class="math inline">|\#\tilde{X}(\mathbb{F}_q) -
+      \#X(\mathbb{F}_q)| \le \pi - g</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 3.1</strong> (Structure of the Numerator
+      Polynomial). <em> Theorem showed that the Zeta function <span
+      class="math inline">Z_X(T)</span> is formed by multiplying the
+      smooth Zeta function <span
+      class="math inline">Z_{\tilde{X}}(T)</span> by correction factors
+      of the form <span class="math inline">(1 - T^{d_Q}) / (1 -
+      T^{d_P})</span>. Because the roots of <span class="math inline">1
+      - T^k = 0</span> are exactly the <span
+      class="math inline">k</span>-th roots of unity, these correction
+      factors contribute polynomial terms whose inverse roots have a
+      modulus of exactly <span class="math inline">1</span>.</em></p>
+      <p><em>Thus, the numerator of the Zeta function of <span
+      class="math inline">X</span> is a polynomial <span
+      class="math inline">P_X(T)</span> with integer coefficients of
+      degree <span class="math inline">2g + \Delta_X</span>, where <span
+      class="math inline">\Delta_X =
+      \#\{\tilde{X}(\overline{\mathbb{F}}_q) \setminus
+      X(\overline{\mathbb{F}}_q)\}</span>. The total degree lies in the
+      range <span class="math inline">\{2g, \dots, \pi + g\}</span>. The
+      inverse roots of <span class="math inline">P_X(T)</span> fall
+      strictly into two categories:</em></p>
+      <ul>
+      <li><p><em><span class="math inline">2g</span> roots coming from
+      the smooth normalization, which have modulus <span
+      class="math inline">\sqrt{q}</span> (by the Riemann
+      Hypothesis).</em></p></li>
+      <li><p><em><span class="math inline">\Delta_X</span> cyclotomic
+      roots coming from the singularities, which have modulus <span
+      class="math inline">1</span>.</em></p></li>
+      </ul>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Hasse-Weil Bound for Singular
+      Curves). <em> Let <span class="math inline">\omega_1, \dots,
+      \omega_{2g}</span> be the inverse roots of <span
+      class="math inline">P_{\tilde{X}}(T)</span>, and let <span
+      class="math inline">\beta_1, \dots, \beta_{\Delta_X}</span> be the
+      inverse roots of the cyclotomic part of <span
+      class="math inline">P_X(T)</span>. Then, for all integers <span
+      class="math inline">n \ge 1</span>, the exact point count is:
+      <span class="math display">\#X(\mathbb{F}_{q^n}) = q^n + 1 -
+      \sum_{i=1}^{2g} \omega_i^n - \sum_{j=1}^{\Delta_X}
+      \beta_j^n.</span> In particular, applying the triangle inequality
+      yields the generalized bound for the base field (<span
+      class="math inline">n=1</span>): <span
+      class="math display">|\#X(\mathbb{F}_q) - (q + 1)| \le 2g\sqrt{q}
+      + \Delta_X \le 2g\sqrt{q} + \pi - g \le 2\pi\sqrt{q}.</span>
+      Furthermore, this implies that the dimension of the first
+      compactly supported étale cohomology group is: <span
+      class="math display">\dim_{\mathbb{Q}_\ell} H_c^1(X,
+      \mathbb{Q}_\ell) = 2g + \Delta_X.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The exact point counting formula follows
+      directly by taking the logarithmic derivative of the expanded Zeta
+      function, exactly as we did in the smooth case, but now accounting
+      for the extra <span class="math inline">\Delta_X</span> cyclotomic
+      roots.</p>
+      <p>To establish the inequality, we apply the triangle inequality
+      and substitute the known moduli (<span
+      class="math inline">|\omega_i| = \sqrt{q}</span> and <span
+      class="math inline">|\beta_j| = 1</span>): <span
+      class="math display">\left| \sum_{i=1}^{2g} \omega_i +
+      \sum_{j=1}^{\Delta_X} \beta_j \right| \le \sum_{i=1}^{2g} \sqrt{q}
+      + \sum_{j=1}^{\Delta_X} 1 = 2g\sqrt{q} + \Delta_X.</span> By
+      definition, <span class="math inline">\Delta_X \le \sum \delta_P =
+      \pi - g</span>, giving the second inequality. For the final step,
+      since <span class="math inline">q \ge 1</span> (it is a prime
+      power), we know <span class="math inline">\sqrt{q} \ge 1</span>.
+      We can therefore loosely bound the constants: <span
+      class="math display">2g\sqrt{q} + (\pi - g) \le 2g\sqrt{q} + (\pi
+      - g)\sqrt{q} = (\pi + g)\sqrt{q}.</span> Since the geometric genus
+      is always less than or equal to the arithmetic genus (<span
+      class="math inline">g \le \pi</span>), we have <span
+      class="math inline">(\pi + g)\sqrt{q} \le 2\pi\sqrt{q}</span>,
+      concluding the proof of the bounds. ◻</p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 3.1</strong> (Bound for Complete
+      Intersections). <em> If <span class="math inline">X</span> is an
+      absolutely irreducible curve which is a complete intersection in
+      <span class="math inline">\mathbb{P}^{n+1}</span> of <span
+      class="math inline">n</span> hypersurfaces of degrees <span
+      class="math inline">d_1, \dots, d_n</span>, and if we set <span
+      class="math inline">d = \prod_{i=1}^n d_i</span>, then: <span
+      class="math display">|\#X(\mathbb{F}_q) - (q + 1)| \le (d - 1)(d -
+      2)\sqrt{q}.</span> In particular, this precise inequality holds
+      for any absolutely irreducible plane curve of degree <span
+      class="math inline">d</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The arithmetic genus <span
+      class="math inline">\pi_X</span> of a complete intersection curve
+      in <span class="math inline">\mathbb{P}^{n+1}</span> defined by
+      hypersurfaces of degrees <span class="math inline">d_1, \dots,
+      d_n</span> is classically given by the formula: <span
+      class="math display">2\pi_X = d\left(\sum_{i=1}^n d_i - n -
+      2\right) + 2.</span> It is a purely algebraic exercise to verify
+      that for any sequence of degrees <span class="math inline">d_i \ge
+      1</span>, this quantity is bounded from above: <span
+      class="math inline">2\pi_X \le (d - 1)(d - 2)</span>. By Corollary
+      , the rational points are bounded by <span
+      class="math inline">2\pi_X\sqrt{q}</span>, which is immediately
+      bounded by <span class="math inline">(d - 1)(d -
+      2)\sqrt{q}</span>.</p>
+      <p>The second assertion concerns plane curves, which is the
+      specific case where <span class="math inline">n = 1</span>. A
+      plane curve is a complete intersection of a single hypersurface (a
+      curve in <span class="math inline">\mathbb{P}^2</span>) of degree
+      <span class="math inline">d_1 = d</span>. Substituting <span
+      class="math inline">n=1</span> and <span
+      class="math inline">d_1=d</span> into the arithmetic genus formula
+      gives: <span class="math display">2\pi_X = d(d - 1 - 2) + 2 = d^2
+      - 3d + 2 = (d - 1)(d - 2).</span> Thus, the arithmetic genus of a
+      plane curve of degree <span class="math inline">d</span> is
+      exactly <span class="math inline">\pi_X =
+      \frac{(d-1)(d-2)}{2}</span>. Applying the bound <span
+      class="math inline">2\pi_X\sqrt{q}</span> directly yields <span
+      class="math inline">(d-1)(d-2)\sqrt{q}</span>. ◻</p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="5.2-plane-geometry.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Plane Geometry</strong>
+        </a>
+                        <a class="turn-next" href="6-topology-and-sheaves-of-grothendieck.html" rel="next">
+          <span>NEXT</span><strong>Topology and Sheaves of Grothendieck →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

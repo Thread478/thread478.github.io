@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Grothendieck Topology · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Topology and Sheaves of Grothendieck</p>
+        <h1>Grothendieck Topology</h1>
+      </header>
+      <h2 data-number="6.1" id="grothendieck-topology">Grothendieck
+      Topology</h2>
+      <h3 data-number="6.1.1"
+      id="grothendieck-topology-and-sieves">Grothendieck Topology and
+      Sieves</h3>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Open Skeletons and Grothendieck
+      Topologies). <em> By taking the complement of the topological
+      skeletons <span class="math inline">F_d(X) = X_{\le d}</span>, we
+      obtain a descending filtration of open subschemes: <span
+      class="math display">X = U^{(-1)} \supset U^{(0)} \supset U^{(1)}
+      \supset \cdots \supset U^{(n)} = \emptyset,</span> where <span
+      class="math inline">U^{(d)} := X \setminus X_{\le d}</span> is the
+      open space obtained by "punching out" all points of dimension
+      <span class="math inline">d</span> and lower.</em></p>
+      <p><em>This naturally defines a filtration of subcategories within
+      the category of open subschemes. To formalize how these varying
+      open spaces can interact, pull back along morphisms, and "cover"
+      our variety, Grothendieck realized we must abstract the notion of
+      a topology itself. Intersection of open sets is generalized to the
+      fiber product of schemes, and open inclusions are generalized to
+      arbitrary covering morphisms.</em></p>
+      </div>
+      <p>In conventional topology, a topology is defined by specifying a
+      collection of subsets called open sets. Grothendieck realized that
+      one does not actually need a primitive notion of open sets; it
+      suffices to fix the data of coverings and how these coverings
+      interact with one another. This constitutes the core idea of
+      Grothendieck pretopologies.</p>
+      <div class="definition">
+      <p><strong>Definition 1.1</strong> (Grothendieck Pretopology on
+      Schemes). <em> Let <span
+      class="math inline">\mathsf{Sch}_{/k}</span> be the category of
+      schemes over a field <span class="math inline">k</span>. A
+      <strong>Grothendieck pretopology</strong> <span
+      class="math inline">\mathcal{P}</span> on <span
+      class="math inline">\mathsf{Sch}_{/k}</span> is given by assigning
+      to each scheme <span class="math inline">U \in
+      \mathsf{Sch}_{/k}</span> a collection of families of morphisms
+      <span class="math inline">\mathcal{U} = \{ \phi_i: U_i \to U \}_{i
+      \in I}</span>, called <strong>coverings</strong> of <span
+      class="math inline">U</span>, satisfying the following three
+      axioms:</em></p>
+      <ol>
+      <li><p><em><strong>(Isomorphisms):</strong> If <span
+      class="math inline">\phi: V \to U</span> is an isomorphism in
+      <span class="math inline">\mathsf{Sch}_{/k}</span>, then the
+      single-element family <span class="math inline">\{ V
+      \xrightarrow{\phi} U \}</span> is a covering.</em></p></li>
+      <li><p><em><strong>(Base Change / Stability):</strong> If <span
+      class="math inline">\mathcal{U} = \{ U_i \to U \}_{i \in I}</span>
+      is a covering of <span class="math inline">U</span>, and <span
+      class="math inline">V \to U</span> is any morphism in <span
+      class="math inline">\mathsf{Sch}_{/k}</span>, then the fiber
+      products <span class="math inline">U_i \times_U V</span> exist in
+      <span class="math inline">\mathsf{Sch}_{/k}</span>, and the family
+      of projection maps <span class="math inline">\{ U_i \times_U V \to
+      V \}_{i \in I}</span> is a covering of <span
+      class="math inline">V</span>.</em></p></li>
+      <li><p><em><strong>(Composition / Transitivity):</strong> If <span
+      class="math inline">\mathcal{U} = \{ U_i \to U \}_{i \in I}</span>
+      is a covering of <span class="math inline">U</span>, and for each
+      index <span class="math inline">i \in I</span>, there is a
+      covering <span class="math inline">\mathcal{V}_i = \{ V_{i,j} \to
+      U_i \}_{j \in J_i}</span> of <span class="math inline">U_i</span>,
+      then the composite family <span class="math inline">\{ V_{i,j} \to
+      U_i \to U \}_{i \in I, j \in J_i}</span> is a covering of <span
+      class="math inline">U</span>.</em></p></li>
+      </ol>
+      <p><em>A category equipped with a Grothendieck pretopology is
+      called a <strong>site</strong>.</em></p>
+      </div>
+      <p>The most standard example of a site is the Zariski site, namely
+      the category of schemes equipped with the Zariski topology.</p>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (The Zariski Site). <em> The
+      classical Zariski topology on a scheme can be recast exactly in
+      this categorical language. We define the <strong>Zariski
+      pretopology</strong> on <span
+      class="math inline">\mathsf{Sch}_{/k}</span> by declaring that a
+      family of morphisms <span class="math inline">\{ \phi_i: U_i \to U
+      \}_{i \in I}</span> is a Zariski covering if and only if:</em></p>
+      <ol>
+      <li><p><em>Each <span class="math inline">\phi_i: U_i \to U</span>
+      is an <strong>open immersion</strong>.</em></p></li>
+      <li><p><em>The family is <strong>jointly surjective</strong>,
+      meaning <span class="math inline">\bigcup_{i \in I} \phi_i(U_i) =
+      U</span> as topological spaces.</em></p></li>
+      </ol>
+      <p><em>It is straightforward to verify the axioms: an isomorphism
+      is trivially an open immersion; the fiber product of an open
+      immersion <span class="math inline">U_i \hookrightarrow U</span>
+      with any map <span class="math inline">V \to U</span> is just the
+      topological preimage <span
+      class="math inline">\phi^{-1}(U_i)</span> in <span
+      class="math inline">V</span> mapping via an open immersion to
+      <span class="math inline">V</span>; and the composition of open
+      immersions is an open immersion.</em></p>
+      </div>
+      <p>As in point-set topology, we also have the notion of refinement
+      for pretopologies. It is necessary to clarify a longstanding
+      source of confusion common to general topology and functional
+      analysis regarding the meaning of "finer" topologies. One
+      viewpoint holds that a finer topology distinguishes more points,
+      making the discrete topology the finest topology. Another
+      perspective argues that a finer topology imposes stricter
+      continuity conditions on functions defined over the space, which
+      treats the trivial topology as the finest. We adopt the latter
+      intuition throughout this text.</p>
+      <div class="definition">
+      <p><strong>Definition 1.2</strong> (Refinement of Coverings). <em>
+      Let <span class="math inline">\mathcal{C}</span> be a category and
+      <span class="math inline">\mathcal{U} = \{U_i \to U\}_{i \in
+      I}</span> a set of arrows over an object <span
+      class="math inline">U</span>. A <strong>refinement</strong> of
+      <span class="math inline">\mathcal{U}</span> is defined to be a
+      set of arrows <span class="math inline">\mathcal{V} = \{V_j \to
+      U\}_{j \in J}</span> such that for each <span
+      class="math inline">j \in J</span>, there exists an <span
+      class="math inline">i \in I</span> such that the morphism <span
+      class="math inline">V_j \to U</span> factorizes through <span
+      class="math inline">U_i \to U</span> (i.e., there exists <span
+      class="math inline">V_j \to U_i</span> making the triangle
+      commute).</em></p>
+      <p><em>The relation "<span class="math inline">\mathcal{V}</span>
+      is a refinement of <span class="math inline">\mathcal{U}</span>"
+      is clearly a pre-order on the families of maps over <span
+      class="math inline">U</span>: it is reflexive (<span
+      class="math inline">\mathcal{U}</span> trivially refines itself
+      via identity maps) and transitive.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.3</strong> (Equivalence of Pretopologies).
+      <em> Given a category <span class="math inline">\mathcal{C}</span>
+      and two Grothendieck pretopologies <span
+      class="math inline">\mathcal{P}_1</span> and <span
+      class="math inline">\mathcal{P}_2</span> on it, we write <span
+      class="math inline">\mathcal{P}_1 \le \mathcal{P}_2</span> (and
+      say <span class="math inline">\mathcal{P}_1</span> is
+      <strong>subordinate</strong> to <span
+      class="math inline">\mathcal{P}_2</span>) if any covering in <span
+      class="math inline">\mathcal{P}_1</span> has a refinement which is
+      also a covering in <span
+      class="math inline">\mathcal{P}_2</span>.</em></p>
+      <p><em>If <span class="math inline">\mathcal{P}_1 \le
+      \mathcal{P}_2</span> and <span class="math inline">\mathcal{P}_2
+      \le \mathcal{P}_1</span>, we say that the two pretopologies are
+      <strong>equivalent</strong> and write <span
+      class="math inline">\mathcal{P}_1 \equiv \mathcal{P}_2</span>.
+      This defines a genuine equivalence relation on the collection of
+      pretopologies on <span
+      class="math inline">\mathcal{C}</span>.</em></p>
+      </div>
+      <p>With the concept of refinement established, we may iteratively
+      refine a given pretopology, and this process eventually stabilizes
+      at a canonical pretopology known as its saturated pretopology.</p>
+      <div class="definition">
+      <p><strong>Definition 1.4</strong> (Saturated Pretopology). <em> A
+      pretopology <span class="math inline">\mathcal{P}</span> on <span
+      class="math inline">\mathcal{C}</span> is
+      <strong>saturated</strong> if any set of arrows <span
+      class="math inline">\mathcal{U} = \{U_i \to U\}</span> having a
+      refinement in <span class="math inline">\mathcal{P}</span> is
+      itself a covering in <span
+      class="math inline">\mathcal{P}</span>.</em></p>
+      <p><em>For any pretopology <span
+      class="math inline">\mathcal{P}</span>, we define its
+      <strong>saturation</strong>, denoted by <span
+      class="math inline">\overline{\mathcal{P}}</span>, as the
+      collection of all sets of arrows that possess a refinement in
+      <span class="math inline">\mathcal{P}</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Properties of the
+      Saturation). <em> Let <span class="math inline">\mathcal{P}</span>
+      be a pretopology on <span class="math inline">\mathcal{C}</span>.
+      The following properties hold:</em></p>
+      <ol>
+      <li><p><em>The saturation <span
+      class="math inline">\overline{\mathcal{P}}</span> is a saturated
+      pretopology;</em></p></li>
+      <li><p><em><span class="math inline">\mathcal{P} \subseteq
+      \overline{\mathcal{P}}</span>;</em></p></li>
+      <li><p><em><span class="math inline">\mathcal{P} \equiv
+      \overline{\mathcal{P}}</span>;</em></p></li>
+      <li><p><em><span class="math inline">\mathcal{P}</span> is
+      saturated if and only if <span class="math inline">\mathcal{P} =
+      \overline{\mathcal{P}}</span>;</em></p></li>
+      <li><p><em>Given another pretopology <span
+      class="math inline">\mathcal{P}&#39;</span> on <span
+      class="math inline">\mathcal{C}</span>, then <span
+      class="math inline">\mathcal{P}&#39; \le \mathcal{P} \iff
+      \overline{\mathcal{P}&#39;} \le \overline{\mathcal{P}}</span> (and
+      similarly <span class="math inline">\mathcal{P}&#39; \equiv
+      \mathcal{P} \iff \overline{\mathcal{P}&#39;} \equiv
+      \overline{\mathcal{P}}</span>);</em></p></li>
+      <li><p><em>A pretopology on <span
+      class="math inline">\mathcal{C}</span> is equivalent to exactly
+      one saturated pretopology.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> <strong>(1)</strong> We first verify that <span
+      class="math inline">\overline{\mathcal{P}}</span> satisfies the
+      three axioms of a pretopology.</p>
+      <p><em>PG1:</em> If <span class="math inline">V \to U</span> is an
+      isomorphism, <span class="math inline">\{V \to U\} \in
+      \mathcal{P}</span> (since <span
+      class="math inline">\mathcal{P}</span> is a pretopology), and
+      since it refines itself, it is in <span
+      class="math inline">\overline{\mathcal{P}}</span>.</p>
+      <p><em>PG2:</em> Let <span class="math inline">\mathcal{U} = \{U_i
+      \to U\} \in \overline{\mathcal{P}}</span> and <span
+      class="math inline">W \to U</span> be any morphism. By definition,
+      <span class="math inline">\mathcal{U}</span> has a refinement
+      <span class="math inline">\mathcal{V} = \{V_j \to U\} \in
+      \mathcal{P}</span>. Thus, <span class="math inline">V_j \to
+      U</span> factors through some <span class="math inline">U_{i(j)}
+      \to U</span>. By PG2 for <span
+      class="math inline">\mathcal{P}</span>, the pullback <span
+      class="math inline">\mathcal{V} \times_U W = \{V_j \times_U W \to
+      W\}</span> is in <span class="math inline">\mathcal{P}</span>.
+      Because factorizations are preserved under pullback, <span
+      class="math inline">V_j \times_U W \to W</span> factors through
+      <span class="math inline">U_{i(j)} \times_U W \to W</span>. Hence,
+      <span class="math inline">\mathcal{V} \times_U W \in
+      \mathcal{P}</span> refines <span class="math inline">\mathcal{U}
+      \times_U W</span>, which means <span
+      class="math inline">\mathcal{U} \times_U W \in
+      \overline{\mathcal{P}}</span>.</p>
+      <p><em>PG3:</em> If <span class="math inline">\mathcal{U} \in
+      \overline{\mathcal{P}}</span> and we have covers <span
+      class="math inline">\mathcal{W}_i \to U_i</span> in <span
+      class="math inline">\overline{\mathcal{P}}</span>, transitivity of
+      refinements allows us to pull back a refinement of <span
+      class="math inline">\mathcal{U}</span> in <span
+      class="math inline">\mathcal{P}</span> and compose it with
+      refinements of <span class="math inline">\mathcal{W}_i</span> in
+      <span class="math inline">\mathcal{P}</span>. Axiom PG3 for <span
+      class="math inline">\mathcal{P}</span> guarantees the composite of
+      these refinements is in <span
+      class="math inline">\mathcal{P}</span>, which naturally refines
+      the composite of the original families. Thus, <span
+      class="math inline">\overline{\mathcal{P}}</span> is a
+      pretopology.</p>
+      <p>To see <span class="math inline">\overline{\mathcal{P}}</span>
+      is <em>saturated</em>, let <span
+      class="math inline">\mathcal{W}</span> have a refinement <span
+      class="math inline">\mathcal{U} \in \overline{\mathcal{P}}</span>.
+      By definition, <span class="math inline">\mathcal{U}</span> has a
+      refinement <span class="math inline">\mathcal{V} \in
+      \mathcal{P}</span>. By transitivity, <span
+      class="math inline">\mathcal{V}</span> refines <span
+      class="math inline">\mathcal{W}</span>, so <span
+      class="math inline">\mathcal{W} \in
+      \overline{\mathcal{P}}</span>.</p>
+      <p><strong>(2)</strong> Trivial. Any covering <span
+      class="math inline">\mathcal{U} \in \mathcal{P}</span> refines
+      itself, hence <span class="math inline">\mathcal{U} \in
+      \overline{\mathcal{P}}</span>.</p>
+      <p><strong>(3)</strong> By (2), <span
+      class="math inline">\mathcal{P} \subseteq
+      \overline{\mathcal{P}}</span>, which immediately implies <span
+      class="math inline">\mathcal{P} \le \overline{\mathcal{P}}</span>
+      (every cover in <span class="math inline">\mathcal{P}</span> has a
+      refinement in <span
+      class="math inline">\overline{\mathcal{P}}</span>, namely itself).
+      Conversely, let <span class="math inline">\mathcal{U} \in
+      \overline{\mathcal{P}}</span>. By definition, <span
+      class="math inline">\mathcal{U}</span> has a refinement <span
+      class="math inline">\mathcal{V} \in \mathcal{P}</span>. This
+      exactly means <span class="math inline">\overline{\mathcal{P}} \le
+      \mathcal{P}</span>. Therefore, <span
+      class="math inline">\mathcal{P} \equiv
+      \overline{\mathcal{P}}</span>.</p>
+      <p><strong>(4)</strong> (<span
+      class="math inline">\Rightarrow</span>) If <span
+      class="math inline">\mathcal{P}</span> is saturated, then any
+      <span class="math inline">\mathcal{U} \in
+      \overline{\mathcal{P}}</span> has a refinement in <span
+      class="math inline">\mathcal{P}</span>, and thus must be in <span
+      class="math inline">\mathcal{P}</span> by the saturation property.
+      So <span class="math inline">\overline{\mathcal{P}} \subseteq
+      \mathcal{P}</span>. With (2), <span
+      class="math inline">\mathcal{P} = \overline{\mathcal{P}}</span>.
+      (<span class="math inline">\Leftarrow</span>) If <span
+      class="math inline">\mathcal{P} = \overline{\mathcal{P}}</span>,
+      then <span class="math inline">\mathcal{P}</span> is saturated
+      because <span class="math inline">\overline{\mathcal{P}}</span> is
+      saturated by (1).</p>
+      <p><strong>(5)</strong> (<span
+      class="math inline">\Rightarrow</span>) Assume <span
+      class="math inline">\mathcal{P}&#39; \le \mathcal{P}</span>. Let
+      <span class="math inline">\mathcal{U} \in
+      \overline{\mathcal{P}&#39;}</span>. It has a refinement <span
+      class="math inline">\mathcal{V} \in \mathcal{P}&#39;</span>. Since
+      <span class="math inline">\mathcal{P}&#39; \le \mathcal{P}</span>,
+      <span class="math inline">\mathcal{V}</span> has a refinement
+      <span class="math inline">\mathcal{W} \in \mathcal{P} \subseteq
+      \overline{\mathcal{P}}</span>. By transitivity, <span
+      class="math inline">\mathcal{W}</span> refines <span
+      class="math inline">\mathcal{U}</span>, so <span
+      class="math inline">\overline{\mathcal{P}&#39;} \le
+      \overline{\mathcal{P}}</span>. (<span
+      class="math inline">\Leftarrow</span>) Assume <span
+      class="math inline">\overline{\mathcal{P}&#39;} \le
+      \overline{\mathcal{P}}</span>. Since <span
+      class="math inline">\mathcal{P}&#39; \subseteq
+      \overline{\mathcal{P}&#39;}</span>, any <span
+      class="math inline">\mathcal{U} \in \mathcal{P}&#39;</span> is in
+      <span class="math inline">\overline{\mathcal{P}&#39;}</span>.
+      Thus, it has a refinement <span class="math inline">\mathcal{V}
+      \in \overline{\mathcal{P}}</span>. But <span
+      class="math inline">\mathcal{V}</span> has a refinement <span
+      class="math inline">\mathcal{W} \in \mathcal{P}</span>.
+      Transitivity implies <span class="math inline">\mathcal{W}</span>
+      refines <span class="math inline">\mathcal{U}</span>, meaning
+      <span class="math inline">\mathcal{P}&#39; \le \mathcal{P}</span>.
+      The equivalence case follows immediately by applying this in both
+      directions.</p>
+      <p><strong>(6)</strong> Let <span
+      class="math inline">\mathcal{P}</span> be an arbitrary
+      pretopology. By (1) and (3), <span
+      class="math inline">\overline{\mathcal{P}}</span> is a saturated
+      pretopology equivalent to <span
+      class="math inline">\mathcal{P}</span>. To show uniqueness,
+      suppose <span class="math inline">\mathcal{S}</span> is another
+      saturated pretopology such that <span
+      class="math inline">\mathcal{S} \equiv \mathcal{P}</span>. By (5),
+      <span class="math inline">\mathcal{S} \equiv \mathcal{P}</span>
+      implies <span class="math inline">\overline{\mathcal{S}} \equiv
+      \overline{\mathcal{P}}</span>. Since <span
+      class="math inline">\mathcal{S}</span> is saturated, (4) yields
+      <span class="math inline">\mathcal{S} =
+      \overline{\mathcal{S}}</span>, so <span
+      class="math inline">\mathcal{S} \equiv
+      \overline{\mathcal{P}}</span>. Notice that for any two
+      <em>saturated</em> pretopologies <span
+      class="math inline">\mathcal{A}</span> and <span
+      class="math inline">\mathcal{B}</span>, if <span
+      class="math inline">\mathcal{A} \le \mathcal{B}</span>, every
+      cover in <span class="math inline">\mathcal{A}</span> has a
+      refinement in <span class="math inline">\mathcal{B}</span>, and
+      since <span class="math inline">\mathcal{B}</span> is saturated,
+      the cover itself must be in <span
+      class="math inline">\mathcal{B}</span> (i.e., <span
+      class="math inline">\mathcal{A} \subseteq \mathcal{B}</span>).
+      Applying this to <span class="math inline">\mathcal{S} \equiv
+      \overline{\mathcal{P}}</span> gives <span
+      class="math inline">\mathcal{S} \subseteq
+      \overline{\mathcal{P}}</span> and <span
+      class="math inline">\overline{\mathcal{P}} \subseteq
+      \mathcal{S}</span>. Thus, <span class="math inline">\mathcal{S} =
+      \overline{\mathcal{P}}</span>, proving uniqueness. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (From Pretopologies to Sieves).
+      <em> While a pretopology relies on specific families of morphisms
+      <span class="math inline">\{U_i \to U\}</span> to act as
+      coverings, this approach is highly sensitive to the choice of the
+      family. To abstract the topological essence, Grothendieck
+      introduced the notion of a <em>sieve</em>.</em></p>
+      <p><em>A sieve acts as a "filter" that catches all morphisms
+      factoring through a covering. By shifting the definition of a
+      topology from "families of morphisms" to "sieves of morphisms," we
+      automatically saturate our coverings and eliminate the need to
+      constantly verify equivalence relations between different
+      refinements.</em></p>
+      </div>
+      <p>After introducing Grothendieck pretopologies, we possess an
+      alternative formalism for defining generalized topological spaces,
+      which we term Grothendieck topologies to distinguish them from
+      pretopologies. Though the two notions differ only by the prefix
+      "pre-", we will later see that they mutually determine one another
+      and stand in bijective correspondence.</p>
+      <p>The conceptual framework of Grothendieck topologies is somewhat
+      more involved than that of pretopologies. Roughly speaking,
+      instead of specifying which families of morphisms can cover an
+      ambient object, we prescribe admissible families of covering
+      morphisms for every object in the underlying category. Such a
+      covering family attached to an object is called a sieve, and
+      assigning a collection of admissible sieves to each object yields
+      a Grothendieck topology.</p>
+      <div class="definition">
+      <p><strong>Definition 1.5</strong> (Sieve on a Scheme). <em> Let
+      <span class="math inline">\mathsf{Sch}_{/k}</span> be the category
+      of schemes over a field <span class="math inline">k</span>. Given
+      a scheme <span class="math inline">U \in \mathsf{Sch}_{/k}</span>,
+      a <strong>sieve</strong> <span class="math inline">S</span> on
+      <span class="math inline">U</span> is defined as a subfunctor of
+      the Yoneda functor <span class="math inline">h_U =
+      \operatorname{Hom}_{\mathsf{Sch}_{/k}}(-, U)</span>.</em></p>
+      <p><em>Concretely, for any scheme <span class="math inline">W \in
+      \mathsf{Sch}_{/k}</span>, <span class="math inline">S(W)</span> is
+      a collection of morphisms <span class="math inline">W \to U</span>
+      such that it is closed under pre-composition: if <span
+      class="math inline">f: W \to U \in S(W)</span> and <span
+      class="math inline">g: V \to W</span> is any morphism of schemes,
+      then the composition <span class="math inline">f \circ g \in
+      S(V)</span>.</em></p>
+      <p><em>Given a specific covering family <span
+      class="math inline">\mathcal{U} = \{U_i \to U\}_{i \in I}</span>,
+      we can define the <strong>sieve generated by <span
+      class="math inline">\mathcal{U}</span></strong>, denoted <span
+      class="math inline">h_{\mathcal{U}} \subseteq h_U</span>, by
+      defining <span class="math inline">h_{\mathcal{U}}(W)</span> to be
+      the set of all morphisms <span class="math inline">W \to U</span>
+      that factorize through <span class="math inline">U_i \to U</span>
+      for some <span class="math inline">U_i \in
+      \mathcal{U}</span>.</em></p>
+      </div>
+      <p>Likewise, we have the notion of refinement for sieves.</p>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Refinement via Generated
+      Sieves). <em> Given two covering families <span
+      class="math inline">\mathcal{U}</span> and <span
+      class="math inline">\mathcal{V}</span> of a scheme <span
+      class="math inline">U</span>, <span
+      class="math inline">\mathcal{V}</span> is a refinement of <span
+      class="math inline">\mathcal{U}</span> if and only if there is an
+      inclusion of their generated sieves: <span
+      class="math display">h_{\mathcal{V}} \subseteq
+      h_{\mathcal{U}}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">\mathcal{U} =
+      \{U_i \to U\}_{i \in I}</span> and <span
+      class="math inline">\mathcal{V} = \{V_j \to U\}_{j \in J}</span>
+      be two <span class="math inline">U</span>-coverings. Recall that
+      the sieve <span class="math inline">h_{\mathcal{U}}</span>
+      generated by <span class="math inline">\mathcal{U}</span> consists
+      of all morphisms <span class="math inline">f \to U</span> that
+      factor through some morphism <span class="math inline">U_i \to
+      U</span> in <span class="math inline">\mathcal{U}</span>.</p>
+      <p> <span class="math inline">(\Longrightarrow)</span> Assume
+      <span class="math inline">\mathcal{V}</span> is a refinement of
+      <span class="math inline">\mathcal{U}</span>. By definition of a
+      refinement, for every morphism <span class="math inline">V_j \to
+      U</span> in <span class="math inline">\mathcal{V}</span>, there
+      exists some <span class="math inline">U_i \to U</span> in <span
+      class="math inline">\mathcal{U}</span> such that <span
+      class="math inline">V_j \to U</span> factors through <span
+      class="math inline">U_i \to U</span>.</p>
+      <p>Now, let <span class="math inline">f: X \to U</span> be an
+      arbitrary element in <span
+      class="math inline">h_{\mathcal{V}}</span>. By definition of the
+      generated sieve, <span class="math inline">f</span> factors
+      through some morphism <span class="math inline">V_j \to U</span>
+      in <span class="math inline">\mathcal{V}</span>. Since <span
+      class="math inline">V_j \to U</span> further factors through some
+      <span class="math inline">U_i \to U</span> in <span
+      class="math inline">\mathcal{U}</span>, by transitivity of
+      composition, <span class="math inline">f</span> factors through
+      <span class="math inline">U_i \to U</span>. Therefore, <span
+      class="math inline">f \in h_{\mathcal{U}}</span>, which implies
+      <span class="math inline">h_{\mathcal{V}} \subseteq
+      h_{\mathcal{U}}</span>.</p>
+      <p> <span class="math inline">(\Longleftarrow)</span> Conversely,
+      assume <span class="math inline">h_{\mathcal{V}} \subseteq
+      h_{\mathcal{U}}</span>. For each <span class="math inline">j \in
+      J</span>, the canonical morphism <span class="math inline">V_j \to
+      U</span> itself trivially factors through <span
+      class="math inline">V_j \to U</span>, so <span
+      class="math inline">V_j \to U</span> belongs to <span
+      class="math inline">h_{\mathcal{V}}</span>.</p>
+      <p>Since <span class="math inline">h_{\mathcal{V}} \subseteq
+      h_{\mathcal{U}}</span>, it follows that <span
+      class="math inline">V_j \to U \in h_{\mathcal{U}}</span> for every
+      <span class="math inline">j \in J</span>. By definition of <span
+      class="math inline">h_{\mathcal{U}}</span>, this means that each
+      morphism <span class="math inline">V_j \to U</span> must factor
+      through some morphism <span class="math inline">U_i \to U</span>
+      in <span class="math inline">\mathcal{U}</span>. This is precisely
+      the definition of <span class="math inline">\mathcal{V}</span>
+      being a refinement of <span
+      class="math inline">\mathcal{U}</span>. ◻</p>
+      </div>
+      <p>This allows us to formulate Grothendieck topologies in terms of
+      sieves. The definition of a Grothendieck topology may appear
+      abstract at first glance, yet it becomes far more intuitive when
+      viewed through the lens of point-set topology: we simply specify
+      what constitutes a "reasonable" covering by assigning a collection
+      of admissible coverings to every object.</p>
+      <div class="definition">
+      <p><strong>Definition 1.6</strong> (Grothendieck Topology (via
+      Sieves)). <em> A <strong>Grothendieck topology</strong> <span
+      class="math inline">\mathcal{T}</span> on <span
+      class="math inline">\mathsf{Sch}_{/k}</span> is given by assigning
+      to each scheme <span class="math inline">U \in
+      \mathsf{Sch}_{/k}</span> a collection <span
+      class="math inline">\mathcal{SC}ov_U</span> of sieves on <span
+      class="math inline">U</span>, called <strong>covering
+      sieves</strong>, which satisfy the following axioms:</em></p>
+      <ol>
+      <li><p><em><strong>(Maximality):</strong> The maximal sieve <span
+      class="math inline">h_U</span> belongs to <span
+      class="math inline">\mathcal{SC}ov_U</span>.</em></p></li>
+      <li><p><em><strong>(Superset / Stability):</strong> If <span
+      class="math inline">S_1 \subseteq S_2</span> are two sieves on
+      <span class="math inline">U</span>, and <span
+      class="math inline">S_1 \in \mathcal{SC}ov_U</span>, then <span
+      class="math inline">S_2 \in \mathcal{SC}ov_U</span>.</em></p></li>
+      <li><p><em><strong>(Base Change):</strong> Given a morphism <span
+      class="math inline">f: V \to U</span> in <span
+      class="math inline">\mathsf{Sch}_{/k}</span> and a covering sieve
+      <span class="math inline">S \in \mathcal{SC}ov_U</span>, the
+      pullback sieve <span class="math inline">S \times_U V</span> is a
+      covering sieve in <span
+      class="math inline">\mathcal{SC}ov_V</span>. The pullback sieve
+      evaluated on <span class="math inline">W</span> is explicitly
+      given by: <span class="math display">(S \times_U V)(W) = \{
+      \alpha: W \to V \mid f \circ \alpha \in S(W)
+      \}.</span></em></p></li>
+      <li><p><em><strong>(Local Character / Transitivity):</strong> If
+      <span class="math inline">S_1</span> and <span
+      class="math inline">S_2</span> are sieves on <span
+      class="math inline">U</span> with <span class="math inline">S_2
+      \in \mathcal{SC}ov_U</span>, and if for every scheme <span
+      class="math inline">V</span> and every morphism <span
+      class="math inline">f: V \to U \in S_2(V)</span>, the pullback
+      sieve <span class="math inline">S_1 \times_U V \in
+      \mathcal{SC}ov_V</span>, then <span class="math inline">S_1 \in
+      \mathcal{SC}ov_U</span>.</em></p></li>
+      </ol>
+      </div>
+      <p>We will next prove that axiom GT2 in the above list is
+      UniBlueundant, as it can be deduced from GT3 and GT4.</p>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (Pullback of a Sieve by its Own
+      Element). <em> Let <span class="math inline">\mathcal{T}</span> be
+      a Grothendieck topology on <span
+      class="math inline">\mathsf{Sch}_{/k}</span>. Given <span
+      class="math inline">S \in \mathcal{SC}ov_U</span> and a morphism
+      <span class="math inline">f: V \to U</span> such that <span
+      class="math inline">f \in S(V)</span>, then <span
+      class="math inline">S \times_U V = h_V</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> By the base change axiom <strong>GT3</strong>,
+      we already know that <span class="math inline">S \times_U V
+      \subseteq h_V</span> is a sieve on <span
+      class="math inline">V</span>. To show equality, it suffices to
+      prove that the identity morphism <span
+      class="math inline">\operatorname{id}_V \in (S \times_U
+      V)(V)</span>. Once <span
+      class="math inline">\operatorname{id}_V</span> is in the sieve,
+      the right-absorbing property of sieves ensures that for any <span
+      class="math inline">g: W \to V</span>, <span class="math inline">g
+      = \operatorname{id}_V \circ g</span> will also be in the sieve,
+      yielding the full representable functor <span
+      class="math inline">h_V</span>.</p>
+      <p>By the explicit definition of the pullback sieve: <span
+      class="math display">(S \times_U V)(V) = \{ \alpha: V \to V \mid f
+      \circ \alpha \in S(V) \}.</span> Setting <span
+      class="math inline">\alpha = \operatorname{id}_V</span>, we
+      evaluate <span class="math inline">f \circ \operatorname{id}_V =
+      f</span>. By our hypothesis, <span class="math inline">f \in
+      S(V)</span>. Therefore, <span
+      class="math inline">\operatorname{id}_V \in (S \times_U
+      V)(V)</span>, which immediately implies <span
+      class="math inline">S \times_U V = h_V</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Redundancy of the Superset
+      Axiom). <em> The axiom <strong>GT2</strong> is formally
+      UniBlueundant, as it descends from <strong>GT3</strong> and
+      <strong>GT4</strong>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let <span class="math inline">R, S</span> be
+      two sieves on <span class="math inline">U</span> such that <span
+      class="math inline">S \subseteq R</span> and <span
+      class="math inline">S \in \mathcal{SC}ov_U</span>. We must prove
+      that <span class="math inline">R \in \mathcal{SC}ov_U</span>.</p>
+      <p>For each morphism <span class="math inline">f: V \to U \in
+      S(V)</span>, the base change axiom <strong>GT3</strong> dictates
+      that <span class="math inline">S \times_U V \in
+      \mathcal{SC}ov_V</span>. By Lemma , since <span
+      class="math inline">f \in S(V)</span>, we have <span
+      class="math inline">S \times_U V = h_V</span>.</p>
+      <p>Because <span class="math inline">S \subseteq R</span>, the
+      pullbacks preserve the inclusion: <span class="math inline">h_V =
+      S \times_U V \subseteq R \times_U V \subseteq h_V</span>. This
+      forces <span class="math inline">R \times_U V = h_V</span>. By
+      <strong>GT1</strong>, <span class="math inline">h_V \in
+      \mathcal{SC}ov_V</span>, so <span class="math inline">R \times_U V
+      \in \mathcal{SC}ov_V</span> for every <span class="math inline">f
+      \in S(V)</span>.</p>
+      <p>Applying the local character axiom <strong>GT4</strong> (with
+      <span class="math inline">S_2 = S</span> and <span
+      class="math inline">S_1 = R</span>), we conclude that <span
+      class="math inline">R \in \mathcal{SC}ov_U</span>. ◻</p>
+      </div>
+      <p>We then establish a profound result: Grothendieck pretopologies
+      and Grothendieck topologies are essentially equivalent. One can be
+      constructed canonically from the other, and this correspondence is
+      bijective in a suitable sense. Furthermore, attentive readers will
+      immediately detect an analogy with the correspondences central to
+      Galois theory in number theory, and this resemblance is no
+      coincidence. In category theory, such a reciprocal relationship is
+      known as a Galois connection.</p>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (Pullback of Generated Sieves). <em>
+      Let <span class="math inline">\mathcal{U} = \{U_i \to U\}</span>
+      be a covering family of <span class="math inline">U</span> in
+      <span class="math inline">\mathsf{Sch}_{/k}</span>, and let <span
+      class="math inline">f: V \to U</span> be any morphism. Assuming
+      the fiber products <span class="math inline">U_i \times_U V</span>
+      exist in <span class="math inline">\mathsf{Sch}_{/k}</span>, we
+      have the equality of generated sieves: <span
+      class="math display">h_{\mathcal{U}} \times_U V = h_{\mathcal{U}
+      \times_U V}.</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Using the definition of the fibeUniBlue product
+      of sieves from <strong>GT3</strong>, we have for any scheme <span
+      class="math inline">W</span>: <span
+      class="math display">(h_{\mathcal{U}} \times_U V)(W) = \{ \alpha:
+      W \to V \mid f \circ \alpha = \phi \in h_{\mathcal{U}}(W)
+      \}.</span> By definition of <span
+      class="math inline">h_{\mathcal{U}}</span>, the morphism <span
+      class="math inline">\phi = f \circ \alpha: W \to U</span>
+      factorizes through some <span class="math inline">\beta_i: U_i \to
+      U</span> in <span class="math inline">\mathcal{U}</span>. This
+      gives us the following commutative diagram:</p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/75a5d3a794b60937200ac6cd294f5af2a53342f7.svg" target="_blank" rel="noopener"><img src="assets/diagrams/75a5d3a794b60937200ac6cd294f5af2a53342f7.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p>Because <span class="math inline">\mathsf{Sch}_{/k}</span>
+      admits fiber products, the commutativity of the outer square
+      (<span class="math inline">f \circ \alpha = \beta_i \circ
+      g</span>) invokes the universal property of the pullback scheme
+      <span class="math inline">V \times_U U_i</span>. This guarantees
+      the existence of a unique induced morphism <span
+      class="math inline">W \dashrightarrow V \times_U U_i</span> that
+      makes the entire diagram commute:</p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/8670a0d12594914cfff415c53aa8bff0da5c0f8d.svg" target="_blank" rel="noopener"><img src="assets/diagrams/8670a0d12594914cfff415c53aa8bff0da5c0f8d.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p>This diagram demonstrates that <span
+      class="math inline">\alpha: W \to V</span> factorizes through the
+      projection <span class="math inline">p_1: V \times_U U_i \to
+      V</span>. Since the family <span class="math inline">\{V \times_U
+      U_i \to V\}</span> is exactly <span
+      class="math inline">\mathcal{U} \times_U V</span>, this means
+      <span class="math inline">\alpha \in h_{\mathcal{U} \times_U
+      V}(W)</span>. Thus, <span class="math inline">h_{\mathcal{U}}
+      \times_U V \subseteq h_{\mathcal{U} \times_U V}</span>.</p>
+      <p>The converse inclusion is evident from reversing the
+      diagrammatic logic: any map factoring through the fiber product
+      naturally provides a commuting square, ensuring its composition
+      with <span class="math inline">f</span> factors through <span
+      class="math inline">U_i</span>. Hence, <span
+      class="math inline">h_{\mathcal{U}} \times_U V = h_{\mathcal{U}
+      \times_U V}</span>. ◻</p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Correspondence between
+      Pretopologies and Topologies). <em> Let <span
+      class="math inline">\mathsf{Sch}_{/k}</span> be the category of
+      schemes over <span class="math inline">k</span> (which inherently
+      admits fiber products). There is a fundamental correspondence
+      between Grothendieck pretopologies and Grothendieck topologies on
+      <span class="math inline">\mathsf{Sch}_{/k}</span>, established by
+      the following maps:</em></p>
+      <ol>
+      <li><p><em><strong>From Pretopology to Topology:</strong> Given a
+      Grothendieck pretopology <span
+      class="math inline">\mathcal{P}</span>, we define a Grothendieck
+      topology <span
+      class="math inline">\mathcal{T}_{\mathcal{P}}</span> by declaring
+      the covering sieves on <span class="math inline">U</span> to be:
+      <span class="math display">\mathcal{SC}ov_U := \{ S \subseteq h_U
+      \mid \exists \mathcal{U} \text{ a } U\text{-covering in }
+      \mathcal{P} \text{ such that } h_{\mathcal{U}} \subseteq S
+      \}.</span> Equivalent pretopologies (<span
+      class="math inline">\mathcal{P}_1 \equiv \mathcal{P}_2</span>)
+      generate the exact same topology.</em></p></li>
+      <li><p><em><strong>From Topology to Pretopology:</strong>
+      Conversely, given a Grothendieck topology <span
+      class="math inline">\mathcal{T}</span>, we can associate to it a
+      saturated Grothendieck pretopology <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span> by declaring
+      a family of morphisms <span class="math inline">\mathcal{U} =
+      \{U_i \to U\}</span> to be a covering if and only if its generated
+      sieve is a covering sieve in <span
+      class="math inline">\mathcal{T}</span>: <span
+      class="math display">\mathcal{U} \in \mathcal{P}_{\mathcal{T}}
+      \iff h_{\mathcal{U}} \in \mathcal{SC}ov_U \text{ (in }
+      \mathcal{T}).</span></em></p></li>
+      <li><p><em><strong>The Bijection:</strong> Applying these two
+      mappings sequentially yields the following structural
+      recovery:</em></p>
+      <ul>
+      <li><p><em>Starting from a pretopology <span
+      class="math inline">\mathcal{P}</span>, the sequence <span
+      class="math inline">\mathcal{P} \mapsto \mathcal{T}_{\mathcal{P}}
+      \mapsto \mathcal{P}_{\mathcal{T}_{\mathcal{P}}}</span> yields the
+      saturation <span
+      class="math inline">\overline{\mathcal{P}}</span>.</em></p></li>
+      <li><p><em>Starting from a topology <span
+      class="math inline">\mathcal{T}</span>, the sequence <span
+      class="math inline">\mathcal{T} \mapsto \mathcal{P}_{\mathcal{T}}
+      \mapsto \mathcal{T}_{\mathcal{P}_{\mathcal{T}}}</span> recovers
+      exactly <span
+      class="math inline">\mathcal{T}</span>.</em></p></li>
+      </ul>
+      <p><em>Consequently, there is a canonical bijection between the
+      set of saturated Grothendieck pretopologies on <span
+      class="math inline">\mathsf{Sch}_{/k}</span> and the set of
+      Grothendieck topologies on <span
+      class="math inline">\mathsf{Sch}_{/k}</span>.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (The Dictionary of Coverings). <em>
+      This theorem provides a powerful dictionary. Working with sieves
+      (topologies) is logically pristine and avoids the messy
+      equivalence relations of refinements. However, sieves are
+      enormous, abstract entities, they contain <em>every</em> morphism
+      that factors through a cover.</em></p>
+      <p><em>In practice, when we want to prove something (like descent
+      of a property or computing cohomology), we cannot work with a
+      sieve directly. Instead, we work with a <em>pretopology</em>, a
+      specific, manageable family of maps <span
+      class="math inline">\{U_i \to U\}</span> (like a finite affine
+      open cover).</em></p>
+      <p><em>The theorem guarantees that we lose no information by doing
+      this. We can freely define our geometric concepts using manageable
+      pretopologies, knowing that they rigorously generate a unique,
+      well-behaved topological framework via sieves.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 1.1</strong> (Recovering the Zariski Topology).
+      <em> Consider the Zariski topology on an algebraic variety <span
+      class="math inline">X</span>.</em></p>
+      <p><em>In the <strong>Pretopology</strong> perspective, a covering
+      of an open set <span class="math inline">U \subseteq X</span> is a
+      specific collection of open immersions <span
+      class="math inline">\{U_i \hookrightarrow U\}</span> such that
+      <span class="math inline">\bigcup U_i = U</span>. This is the
+      standard, intuitive definition.</em></p>
+      <p><em>If we pass to the <strong>Topology</strong> perspective
+      using map (1), a covering sieve <span class="math inline">S \in
+      \mathcal{SC}ov_U</span> is any subfunctor of <span
+      class="math inline">h_U</span> that <em>contains</em> the sieve
+      <span class="math inline">h_{\mathcal{U}}</span> generated by some
+      joint-surjective family of open immersions. This means <span
+      class="math inline">S</span> contains not only the open immersions
+      <span class="math inline">U_i \hookrightarrow U</span>, but also
+      every composition <span class="math inline">V \to U_i
+      \hookrightarrow U</span>.</em></p>
+      <p><em>If we try to return to the pretopology using map (2), we
+      look at all families <span class="math inline">\mathcal{W} = \{W_j
+      \to U\}</span> whose generated sieve <span
+      class="math inline">h_{\mathcal{W}}</span> is in <span
+      class="math inline">\mathcal{SC}ov_U</span>. This forces <span
+      class="math inline">h_{\mathcal{W}}</span> to contain some <span
+      class="math inline">h_{\mathcal{U}}</span> (where <span
+      class="math inline">\mathcal{U}</span> is a standard open cover).
+      By Proposition 1.7, this means <span
+      class="math inline">\mathcal{W}</span> is a refinement of a
+      standard open cover <span
+      class="math inline">\mathcal{U}</span>.</em></p>
+      <p><em>Therefore, the saturated pretopology <span
+      class="math inline">\overline{\mathcal{P}_{\text{Zar}}}</span>
+      consists of <em>all</em> families of morphisms into <span
+      class="math inline">U</span> that factor through some
+      jointly-surjective open cover. This includes not just open
+      immersions, but completely bizarre maps, for instance, an infinite
+      disjoint union of tiny affine opens mapping UniBlueundantly into
+      <span class="math inline">U</span>. The theorem tells us that
+      while <span
+      class="math inline">\overline{\mathcal{P}_{\text{Zar}}}</span> is
+      mathematically vast, it is topologically identical to the simple,
+      minimal open covers we started with.</em></p>
+      </div>
+      <h3 data-number="6.1.2"
+      id="sheaves-on-grothendieck-topologies">Sheaves on Grothendieck
+      Topologies</h3>
+      <p>Now that we have introduced this new generalized notion of
+      topology, it is natural to define presheaves and sheaves over such
+      structures. This perspective unlocks an extremely broad framework,
+      yet unfortunately we will not make substantive use of it until
+      much later in the text. Until we explicitly switch to
+      Grothendieck’s sheaf-theoretic formalism, we shall exclusively
+      work with presheaves and sheaves defined with respect to the
+      classical Zariski topology.</p>
+      <div class="definition">
+      <p><strong>Definition 1.7</strong> (Presheaves and Sheaves on a
+      Site). <em> Let <span class="math inline">\mathcal{C}</span> be a
+      site (a category endowed with a Grothendieck pretopology, such as
+      <span class="math inline">\mathsf{Sch}_{/k}</span> with the
+      Zariski or étale topology). A <strong>presheaf</strong> (of sets)
+      on <span class="math inline">\mathcal{C}</span> is a contravariant
+      functor <span class="math inline">F: \mathcal{C}^{\mathrm{op}}
+      \longrightarrow \mathsf{Set}</span>.</em></p>
+      <p><em>We say that a presheaf <span class="math inline">F</span>
+      is a <strong>sheaf</strong> if it respects the following gluing
+      conditions for any object <span class="math inline">U \in
+      \mathcal{C}</span> and any covering <span
+      class="math inline">\mathcal{U} = \{U_i \xrightarrow{\alpha_i}
+      U\}_{i \in I}</span> in the pretopology:</em></p>
+      <ol>
+      <li><p><em>If <span class="math inline">\mathcal{C}</span> has an
+      initial object <span
+      class="math inline">\emptyset_\mathcal{C}</span>, then <span
+      class="math inline">F(\emptyset_\mathcal{C}) =
+      \{\text{pt}\}</span> is a singleton. (This means <span
+      class="math inline">F</span> preserves the terminal object in
+      <span
+      class="math inline">\mathcal{C}^{\mathrm{op}}</span>).</em></p></li>
+      <li><p><em><strong>(Separability):</strong> Given two sections
+      <span class="math inline">s, t \in F(U)</span>, if their
+      restrictions match on the cover, i.e., <span
+      class="math inline">s|_{U_i} = t|_{U_i}</span> for all <span
+      class="math inline">i</span> (where the restriction is defined by
+      <span class="math inline">F(\alpha_i)</span>), then <span
+      class="math inline">s = t</span>.</em></p></li>
+      <li><p><em><strong>(Gluing):</strong> Given a family of sections
+      <span class="math inline">\{s_i \in F(U_i)\}</span> that agree on
+      overlaps, meaning <span class="math inline">s_i|_{U_i \times_U
+      U_j} = s_j|_{U_i \times_U U_j}</span> for all <span
+      class="math inline">i, j</span>, there exists a (unique, by S1)
+      section <span class="math inline">s \in F(U)</span> such that
+      <span class="math inline">s|_{U_i} = s_i</span> for all <span
+      class="math inline">i</span>.</em></p></li>
+      </ol>
+      <p><em>We denote the category of presheaves on <span
+      class="math inline">\mathcal{C}</span> by <span
+      class="math inline">\mathbf{Psh}(\mathcal{C}) :=
+      \operatorname{Funct}(\mathcal{C}^{\mathrm{op}},
+      \mathsf{Set})</span>, where morphisms are natural transformations.
+      The full subcategory of sheaves is denoted by <span
+      class="math inline">\mathsf{Sh}(\mathcal{C})</span>. The category
+      of sheaves on a site is often called a
+      <strong>topos</strong>.</em></p>
+      </div>
+      <p>We may recapitulate the entire sequence of constructions
+      originally used to define presheaves and sheaves, including the
+      equivalent characterizations of sheaves.</p>
+      <div class="definition">
+      <p><strong>Definition 1.8</strong> (The Equalizer Definition of a
+      Sheaf). <em> The conditions <strong>S1</strong> and
+      <strong>S2</strong> can be elegantly reformulated using
+      categorical limits. Given a covering <span
+      class="math inline">\mathcal{U} = \{U_i \to U\}</span> and a
+      presheaf <span class="math inline">F \in
+      \mathbf{Psh}(\mathcal{C})</span>, we define <span
+      class="math inline">F(\mathcal{U})</span> as the
+      <strong>equalizer</strong> of the following diagram in <span
+      class="math inline">\mathsf{Set}</span>:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/9040d7eb63ebf248a9b627322e0d11090dd9a13b.svg" target="_blank" rel="noopener"><img src="assets/diagrams/9040d7eb63ebf248a9b627322e0d11090dd9a13b.svg" alt="交换图" loading="lazy" /></a></span>
+      where <span class="math inline">p_1^*</span> and <span
+      class="math inline">p_2^*</span> are the restriction maps induced
+      by the natural projections <span class="math inline">p_1: U_i
+      \times_U U_j \to U_i</span> and <span class="math inline">p_2: U_i
+      \times_U U_j \to U_j</span>.</em></p>
+      <p><em>Concretely, <span class="math inline">F(\mathcal{U})</span>
+      is exactly the set of all "compatible families of local sections".
+      The canonical restriction maps <span class="math inline">F(U) \to
+      F(U_i)</span> induce a natural map <span class="math inline">F(U)
+      \longrightarrow F(\mathcal{U})</span>.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Sheaf Condition via
+      Equalizers). <em> A presheaf <span class="math inline">F:
+      \mathcal{C}^{\mathrm{op}} \longrightarrow \mathsf{Set}</span> is a
+      sheaf (for the Grothendieck pretopology <span
+      class="math inline">\mathcal{P}</span>) if and only if, for every
+      covering <span class="math inline">\mathcal{U} = \{U_i \to
+      U\}</span>, the induced canonical map <span
+      class="math display">\psi: F(U) \longrightarrow
+      F(\mathcal{U})</span> is an isomorphism (i.e., a bijection of
+      sets).</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let us explicitly construct the induced map
+      <span class="math inline">\psi: F(U) \to F(\mathcal{U})</span>.
+      For any global section <span class="math inline">s \in
+      F(U)</span>, its restrictions <span class="math inline">s_i =
+      s|_{U_i} \in F(U_i)</span> naturally form a tuple <span
+      class="math inline">(s_i)_{i \in I} \in \prod_i F(U_i)</span>.
+      Because the restriction maps are strictly functorial, we have:
+      <span class="math display">p_1^*(s_i) = s|_{U_i \times_U U_j} =
+      p_2^*(s_j).</span> Thus, the tuple <span
+      class="math inline">(s_i)_{i \in I}</span> equalizes <span
+      class="math inline">p_1^*</span> and <span
+      class="math inline">p_2^*</span>, meaning it lands precisely
+      inside the equalizer <span
+      class="math inline">F(\mathcal{U})</span>. This defines <span
+      class="math inline">\psi(s) = (s|_{U_i})_{i \in I}</span>.</p>
+      <p><strong>(<span class="math inline">\Rightarrow</span>)</strong>
+      Assume <span class="math inline">F</span> is a sheaf.
+      <em>Injectivity:</em> Suppose <span class="math inline">\psi(s) =
+      \psi(t)</span> for two sections <span class="math inline">s, t \in
+      F(U)</span>. This means <span class="math inline">s|_{U_i} =
+      t|_{U_i}</span> for all <span class="math inline">i</span>. By the
+      Separability axiom (<strong>S1</strong>), we must have <span
+      class="math inline">s = t</span>. Thus, <span
+      class="math inline">\psi</span> is injective.
+      <em>Surjectivity:</em> Let <span class="math inline">(s_i)_{i \in
+      I} \in F(\mathcal{U})</span> be an arbitrary element. By the
+      definition of the equalizer, this is a family of sections such
+      that <span class="math inline">s_i|_{U_i \times_U U_j} = s_j|_{U_i
+      \times_U U_j}</span> for all <span class="math inline">i,
+      j</span>. By the Gluing axiom (<strong>S2</strong>), there exists
+      a section <span class="math inline">s \in F(U)</span> such that
+      <span class="math inline">s|_{U_i} = s_i</span> for all <span
+      class="math inline">i</span>. This exactly means <span
+      class="math inline">\psi(s) = (s_i)_{i \in I}</span>. Thus, <span
+      class="math inline">\psi</span> is surjective. Being both
+      injective and surjective, <span class="math inline">\psi</span> is
+      a bijection (isomorphism in <span
+      class="math inline">\mathsf{Set}</span>).</p>
+      <p><strong>(<span class="math inline">\Leftarrow</span>)</strong>
+      Assume <span class="math inline">\psi: F(U) \to
+      F(\mathcal{U})</span> is a bijection for every cover. If <span
+      class="math inline">s|_{U_i} = t|_{U_i}</span> for all <span
+      class="math inline">i</span>, then <span
+      class="math inline">\psi(s) = \psi(t)</span>. Since <span
+      class="math inline">\psi</span> is a bijection, it is injective,
+      so <span class="math inline">s = t</span>. This proves
+      <strong>S1</strong>. Given any compatible family <span
+      class="math inline">\{s_i \in F(U_i)\}</span> agreeing on
+      overlaps, it defines an element in the equalizer <span
+      class="math inline">F(\mathcal{U})</span>. Since <span
+      class="math inline">\psi</span> is surjective, there is a preimage
+      <span class="math inline">s \in F(U)</span> such that <span
+      class="math inline">\psi(s) = (s_i)</span>, meaning <span
+      class="math inline">s|_{U_i} = s_i</span>. This proves
+      <strong>S2</strong>. Therefore, <span class="math inline">F</span>
+      is a sheaf. ◻</p>
+      </div>
+      <p>Furthermore, it is possible to generalize Yoneda’s lemma to
+      arbitrary sites. The proof, however, is quite lengthy, so we omit
+      it and invite readers to grasp the underlying intuition
+      instead.</p>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Generalized Yoneda Lemma for
+      Sites). <em> Let <span class="math inline">\mathcal{C}</span> be a
+      site, <span class="math inline">F \in
+      \mathbf{Psh}(\mathcal{C})</span> be a presheaf, and fix a covering
+      <span class="math inline">\mathcal{U} = \{U_i \to U\}</span>. Then
+      there exists a canonical bijection in <span
+      class="math inline">\mathsf{Set}</span>: <span
+      class="math display">R:
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_{\mathcal{U}}, F)
+      \stackrel{\cong}{\longrightarrow} F(\mathcal{U}).</span> In
+      particular, we have the following commutative diagram linking the
+      standard Yoneda Lemma with this generalized version for sieves:
+      <span class="commutative-diagram-inline"><a href="assets/diagrams/ae9cc4fb580fef4409cba8cb34685132702d7ce3.svg" target="_blank" rel="noopener"><img src="assets/diagrams/ae9cc4fb580fef4409cba8cb34685132702d7ce3.svg" alt="交换图" loading="lazy" /></a></span>
+      where the left vertical arrow is the natural restriction map
+      induced by the inclusion of the sieve <span
+      class="math inline">h_{\mathcal{U}} \subseteq h_U</span>, and the
+      right vertical arrow is the canonical map into the
+      equalizer.</em></p>
+      </div>
+      <div class="corollary">
+      <p><strong>Corollary 1.1</strong> (Sheaf Condition via Hom Sets).
+      <em> Let <span class="math inline">\mathcal{C}</span> be a site. A
+      presheaf <span class="math inline">F \in
+      \mathbf{Psh}(\mathcal{C})</span> is a sheaf if and only if for
+      each covering <span class="math inline">\mathcal{U} = \{U_i \to
+      U\}</span>, the induced map <span
+      class="math display">\operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_U,
+      F) \longrightarrow
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_{\mathcal{U}},
+      F)</span> is bijective.</em></p>
+      </div>
+      <p>We next introduce an intermediate concept, strictly stronger
+      than presheaves but weaker than sheaves, known as separated
+      presheaves. This notion yields an additional equivalent
+      characterization for a presheaf to be a sheaf.</p>
+      <div class="definition">
+      <p><strong>Definition 1.9</strong> (Separated Presheaves and
+      Sheaves for a Topology). <em> A presheaf <span
+      class="math inline">F \in \mathbf{Psh}(\mathcal{C})</span> is a
+      <strong>separated presheaf</strong> (i.e., satisfying the
+      separability axiom <strong>S1</strong>) for the Grothendieck
+      topology <span class="math inline">\mathcal{T}</span> if for every
+      object <span class="math inline">U \in \mathcal{C}</span> and
+      every covering sieve <span class="math inline">S \in
+      \mathcal{SC}ov_U</span>, the induced map <span
+      class="math display">\operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_U,
+      F) \longrightarrow
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(S, F)</span> is
+      injective.</em></p>
+      <p><em><span class="math inline">F</span> is a
+      <strong>sheaf</strong> for the Grothendieck topology <span
+      class="math inline">\mathcal{T}</span> if and only if the above
+      induced map is bijective.</em></p>
+      </div>
+      <div class="lemma">
+      <p><strong>Lemma 1.1</strong> (Injectivity for Separated
+      Presheaves). <em> If <span class="math inline">F</span> is a
+      separated presheaf for the pretopology <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span> (associated
+      to the Grothendieck topology <span
+      class="math inline">\mathcal{T}</span>), and <span
+      class="math inline">h_{\mathcal{U}} \subseteq S \subseteq
+      h_U</span>, then the induced map <span
+      class="math display">\operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(S,
+      F) \longrightarrow
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_{\mathcal{U}},
+      F)</span> is injective.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let us consider two natural transformations
+      <span class="math inline">\Phi, \Psi: S \to F</span> having the
+      same image in <span
+      class="math inline">\operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_{\mathcal{U}},
+      F)</span>. Fix an arbitrary morphism <span class="math inline">T
+      \to U \in S(T)</span>.</p>
+      <p>Let <span class="math inline">\mathcal{U} = \{U_i \to
+      U\}</span> and consider the fibeUniBlue products <span
+      class="math inline">T \times_U U_i</span>, with <span
+      class="math inline">p_i</span> being the projections onto <span
+      class="math inline">T</span>. The canonical map <span
+      class="math inline">T \times_U U_i \to U</span> is an element of
+      <span class="math inline">h_{\mathcal{U}}(T \times_U U_i)</span>
+      since it factorizes as <span class="math inline">T \times_U U_i
+      \xrightarrow{p_i} U_i \to U</span>. By the naturality of <span
+      class="math inline">\Phi</span> and <span
+      class="math inline">\Psi</span>, we have: <span
+      class="math display">F(p_i)\Phi(T \to U) = \Phi(T \times_U U_i \to
+      U) = \Psi(T \times_U U_i \to U) = F(p_i)\Psi(T \to U).</span>
+      Since the family <span class="math inline">\{p_i: T \times_U U_i
+      \to T\}_i</span> is a <span class="math inline">T</span>-covering
+      by the base change axiom <strong>PG2</strong>, and <span
+      class="math inline">F</span> is a separated presheaf, the
+      agreement of the restrictions implies that the global sections
+      must be equal: <span class="math inline">\Phi(T \to U) = \Psi(T
+      \to U)</span>. Because this holds for all <span
+      class="math inline">T</span> and all morphisms in <span
+      class="math inline">S(T)</span>, we conclude that <span
+      class="math inline">\Phi = \Psi</span>, and hence the map is
+      injective. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Equivalence of Sheaf
+      Definitions). <em> A functor <span class="math inline">F:
+      \mathcal{C}^{\mathrm{op}} \to \mathsf{Set}</span> is a sheaf for
+      the topology <span class="math inline">\mathcal{T}</span> if and
+      only if <span class="math inline">F</span> is a sheaf for the
+      associated pretopology <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Suppose <span class="math inline">F</span> is a
+      sheaf for the topology <span
+      class="math inline">\mathcal{T}</span>. By definition, <span
+      class="math inline">\operatorname{Hom}(h_U, F) \cong
+      \operatorname{Hom}(S, F)</span> for each covering sieve <span
+      class="math inline">S \in \mathcal{SC}ov_U</span>. Considering
+      specifically the generated sieves of the form <span
+      class="math inline">h_{\mathcal{U}} \in \mathcal{SC}ov_U</span>,
+      we can immediately conclude that <span
+      class="math inline">F</span> is a sheaf for <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span> using
+      Corollary .</p>
+      <p>Suppose instead <span class="math inline">F</span> is a sheaf
+      for the pretopology <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span>. Fix a
+      covering sieve <span class="math inline">S \in
+      \mathcal{SC}ov_U</span> and choose a <span
+      class="math inline">U</span>-covering <span
+      class="math inline">\mathcal{U}</span> in <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span> such that
+      <span class="math inline">h_{\mathcal{U}} \subseteq S \subseteq
+      h_U</span>. We can consider the composition: <span
+      class="math display">\operatorname{Hom}(h_U, F) \longrightarrow
+      \operatorname{Hom}(S, F) \longrightarrow
+      \operatorname{Hom}(h_{\mathcal{U}}, F).</span> The total
+      composition is a bijection (by functoriality) due to Corollary
+      (since <span class="math inline">F</span> is a sheaf for <span
+      class="math inline">\mathcal{P}_{\mathcal{T}}</span>). Using Lemma
+      , we know that the second map <span
+      class="math inline">\operatorname{Hom}(S, F) \to
+      \operatorname{Hom}(h_{\mathcal{U}}, F)</span> is injective. Since
+      the composition is bijective and the second map is injective, the
+      first map <span class="math inline">\operatorname{Hom}(h_U, F) \to
+      \operatorname{Hom}(S, F)</span> must also be surjective, forcing
+      it to be a bijection. Hence, <span class="math inline">F</span> is
+      a sheaf for the topology <span
+      class="math inline">\mathcal{T}</span>. ◻</p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (Equivalent Pretopologies
+      Yield Identical Sheaves). <em> Given two Grothendieck
+      pretopologies <span class="math inline">\mathcal{P}_1,
+      \mathcal{P}_2</span> on <span
+      class="math inline">\mathcal{C}</span>, if <span
+      class="math inline">\mathcal{P}_1 \le \mathcal{P}_2</span>, then
+      every sheaf for <span class="math inline">\mathcal{P}_2</span> is
+      also a sheaf for <span class="math inline">\mathcal{P}_1</span>.
+      In particular, equivalent pretopologies have exactly the same
+      category of sheaves.</em></p>
+      </div>
+      <p>We conclude this section by defining the canonical topology,
+      which is the finest Grothendieck topology for which all
+      representable functors are sheaves. The subsequent proposition
+      provides an explicit constructive definition of this topology,
+      though its proof is again highly involved.</p>
+      <div class="theorem">
+      <p><strong>Theorem 1.1</strong> (Existence of the Sheafification
+      Functor). <em> Let <span class="math inline">\mathcal{C}</span> be
+      a category endowed with a Grothendieck topology <span
+      class="math inline">\mathcal{T}</span>. There exists a canonical
+      functor, the <strong>sheafification functor</strong>: <span
+      class="math display">\mathcal{F}: \mathbf{Psh}(\mathcal{C})
+      \longrightarrow \mathsf{Sh}(\mathcal{C}), \quad F \longmapsto
+      (F^+)^+</span> which is the left adjoint to the forgetful
+      inclusion functor <span class="math inline">\iota:
+      \mathsf{Sh}(\mathcal{C}) \hookrightarrow
+      \mathbf{Psh}(\mathcal{C})</span>.</em></p>
+      <p><em>This means it sends every presheaf <span
+      class="math inline">F</span> to a sheaf <span
+      class="math inline">\mathcal{F}(F)</span>, such that for any
+      morphism of presheaves <span class="math inline">\phi: F \to
+      G</span> where <span class="math inline">G</span> is a sheaf,
+      there exists a unique morphism of sheaves <span
+      class="math inline">\psi: \mathcal{F}(F) \to G</span> making the
+      following diagram commutative:</em></p>
+      <div class="center">
+      <figure class="commutative-diagram"><a href="assets/diagrams/58bcd4d15910b77ecf0d23218e45895c7b09384e.svg" target="_blank" rel="noopener"><img src="assets/diagrams/58bcd4d15910b77ecf0d23218e45895c7b09384e.svg" alt="交换图" loading="lazy" /></a></figure>
+      </div>
+      <p><em><strong>Construction Sketch:</strong> The idea is that
+      given a presheaf <span class="math inline">F</span>, we can build
+      a separated presheaf <span class="math inline">F^+</span>, and
+      repeating the construction again yields <span
+      class="math inline">(F^+)^+</span>, which will be a fully-fledged
+      sheaf. The functor <span class="math inline">^+:
+      \mathbf{Psh}(\mathcal{C}) \to \mathbf{Psh}(\mathcal{C})</span> is
+      defined by setting: <span class="math display">F^+(U) =
+      \varinjlim_{S \in \mathcal{SC}ov_U}
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(S, F).</span> Thus,
+      an element of <span class="math inline">F^+(U)</span> is an
+      equivalence class of natural transformations, where two natural
+      transformations <span class="math inline">\tau: S \to F</span> and
+      <span class="math inline">\rho: R \to F</span> (with <span
+      class="math inline">S, R \in \mathcal{SC}ov_U</span>) are
+      consideUniBlue equivalent if there exists a smaller covering sieve
+      <span class="math inline">T \subseteq S \cap R</span> such that
+      their restrictions agree: <span class="math inline">\tau|_T =
+      \rho|_T</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Reversing the Perspective). <em>
+      Until now, we have fixed a topology <span
+      class="math inline">\mathcal{T}</span> and asked whether a given
+      presheaf <span class="math inline">F</span> satisfies the descent
+      (sheaf) conditions. Now, we reverse the perspective: given a
+      family of presheaves, what is the "best" topology we can equip our
+      category with such that these presheaves are actually sheaves?
+      Specifically, we want the <em>finest</em> topology among all such
+      possibilities.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.10</strong> (Finer and Coarser
+      Topologies). <em> Let <span
+      class="math inline">\mathcal{T}_1</span> and <span
+      class="math inline">\mathcal{T}_2</span> be two Grothendieck
+      topologies on a category <span
+      class="math inline">\mathcal{C}</span>. We say that <span
+      class="math inline">\mathcal{T}_1</span> is <strong>finer</strong>
+      than <span class="math inline">\mathcal{T}_2</span> (or
+      equivalently, <span class="math inline">\mathcal{T}_2</span> is
+      <strong>coarser</strong> than <span
+      class="math inline">\mathcal{T}_1</span>) if every covering sieve
+      in <span class="math inline">\mathcal{T}_2</span> is also a
+      covering sieve in <span
+      class="math inline">\mathcal{T}_1</span>.</em></p>
+      <p><em>In symbols, for every object <span class="math inline">U
+      \in \mathcal{C}</span>, we have the inclusion: <span
+      class="math display">\mathcal{SC}ov_U(\mathcal{T}_2) \subseteq
+      \mathcal{SC}ov_U(\mathcal{T}_1).</span> <em>(Geometrically, a
+      finer topology has "more" coverings, meaning it imposes strictly
+      more gluing conditions on presheaves. Thus, it is "harder" to be a
+      sheaf in a finer topology.)</em></em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 1.1</strong> (The Finest Topology for a
+      Family of Presheaves). <em> Let <span
+      class="math inline">\mathcal{C}</span> be a category, and let
+      <span class="math inline">\mathcal{F} = \{F_i:
+      \mathcal{C}^{\mathrm{op}} \to \mathsf{Set}\}_{i \in I}</span> be a
+      family of presheaves such that, if the initial object <span
+      class="math inline">\emptyset_{\mathcal{C}}</span> exists in <span
+      class="math inline">\mathcal{C}</span>, then <span
+      class="math inline">F_i(\emptyset_{\mathcal{C}}) =
+      \{\text{pt}\}</span> for all <span class="math inline">i \in
+      I</span>.</em></p>
+      <p><em>For every object <span class="math inline">U \in
+      \mathcal{C}</span>, define <span
+      class="math inline">\mathcal{F}\mathcal{SC}ov_U</span> to be the
+      family of all sieves <span class="math inline">S \subseteq
+      h_U</span> that satisfy the following property: for any morphism
+      <span class="math inline">f: V \to U</span> and for all <span
+      class="math inline">i \in I</span>, the natural map induced by the
+      sieve inclusion <span class="math inline">S \times_U V
+      \hookrightarrow h_V</span>, <span
+      class="math display">\operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(h_V,
+      F_i) \stackrel{\sim}{\longrightarrow}
+      \operatorname{Hom}_{\mathbf{Psh}(\mathcal{C})}(S \times_U V,
+      F_i)</span> is a bijection. Then the following profound facts
+      hold:</em></p>
+      <ol>
+      <li><p><em>The datum <span
+      class="math inline">\{\mathcal{F}\mathcal{SC}ov_U\}_{U \in
+      \operatorname{Ob}(\mathcal{C})}</span> forms a valid Grothendieck
+      topology <span
+      class="math inline">\mathcal{T}_{\mathcal{F}}</span> on <span
+      class="math inline">\mathcal{C}</span>.</em></p></li>
+      <li><p><em>All the presheaves <span class="math inline">F_i</span>
+      in the family <span class="math inline">\mathcal{F}</span> are
+      sheaves for this topology <span
+      class="math inline">\mathcal{T}_{\mathcal{F}}</span>.</em></p></li>
+      <li><p><em><span
+      class="math inline">\mathcal{T}_{\mathcal{F}}</span> is the
+      <strong>finest</strong> topology on <span
+      class="math inline">\mathcal{C}</span> such that all the <span
+      class="math inline">F_i</span>’s are sheaves.</em></p></li>
+      </ol>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Omission of Proof). <em> The proof
+      of Proposition 3.2 is a lengthy, brute-force verification of the
+      Grothendieck topology axioms (<strong>GT1</strong> through
+      <strong>GT4</strong>) for the constructed sieves. While
+      algebraically rigorous, it offers little geometric insight and is
+      thus omitted here. The reader should focus on the existence and
+      universal property (finest nature) of <span
+      class="math inline">\mathcal{T}_{\mathcal{F}}</span>.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 1.11</strong> (The Canonical Topology). <em>
+      Let <span class="math inline">\mathcal{C}</span> be a category.
+      The <strong>canonical topology</strong> on <span
+      class="math inline">\mathcal{C}</span> is the finest Grothendieck
+      topology such that all representable functors are
+      sheaves.</em></p>
+      <p><em>Using the machinery of the previous proposition, it is
+      exactly the topology <span
+      class="math inline">\mathcal{T}_{\mathcal{F}}</span> generated by
+      setting the family of presheaves to be <span
+      class="math inline">\mathcal{F} = \{h_U\}_{U \in
+      \mathcal{C}}</span>.</em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 1.1</strong> (Significance of the Canonical
+      Topology). <em> The canonical topology serves as the absolute
+      "speed limit" for geometric topologies. When we study schemes,
+      representable functors <span class="math inline">h_U =
+      \operatorname{Hom}(-, U)</span> represent the fundamental building
+      blocks (the schemes themselves acting as test objects). For
+      geometry to make sense, a scheme <span
+      class="math inline">U</span> must behave locally like a sheaf, if
+      we specify morphisms into <span class="math inline">U</span> on a
+      cover that agree on overlaps, they must glue into a unique global
+      morphism into <span class="math inline">U</span>.</em></p>
+      <p><em>Therefore, any Grothendieck topology we invent for
+      geometric purposes (like the Zariski, étale, fppf, or fpqc
+      topologies) <strong>must</strong> be coarser than or equal to the
+      canonical topology. If a topology is strictly finer than the
+      canonical topology, our representable functors would fail to be
+      sheaves, breaking Yoneda’s Lemma for sheaves and destroying the
+      basic fabric of scheme theory.</em></p>
+      </div>
+      <div id="refs" class="references csl-bib-body hanging-indent"
+      role="list">
+      <div id="ref-freyd1964abelian" class="csl-entry" role="listitem">
+      Freyd, Peter. 1964. <em>Abelian Categories: An Introduction to the
+      Theory of Functors</em>. Harper &amp; Row.
+      </div>
+      <div id="ref-FuLei2011" class="csl-entry" role="listitem">
+      Fu, Lei. 2011. <em>Étale Cohomology Theory</em>. Vol. 13. Nankai
+      Tracts in Mathematics. World Scientific.
+      </div>
+      <div id="ref-FuLei2015" class="csl-entry" role="listitem">
+      Fu, Lei. 2015. <em>Algebraic Geometry</em>. Vol. 166. Graduate
+      Studies in Mathematics. American Mathematical Society.
+      </div>
+      <div id="ref-Gortz2010" class="csl-entry" role="listitem">
+      Görtz, Ulrich, and Torsten Wedhorn. 2010. <em>Algebraic Geometry
+      i: Schemes</em>. Vieweg + Teubner Verlag.
+      </div>
+      <div id="ref-Hartshorne1977" class="csl-entry" role="listitem">
+      Hartshorne, Robin. 1977. <em>Algebraic Geometry</em>. Vol. 52.
+      Graduate Texts in Mathematics. Springer-Verlag.
+      </div>
+      <div id="ref-maclane1998categories" class="csl-entry"
+      role="listitem">
+      Mac Lane, Saunders. 1998. <em>Categories for the Working
+      Mathematician</em>. 2nd ed. Vol. 5. Graduate Texts in Mathematics.
+      Springer-Verlag.
+      </div>
+      <div id="ref-Spaltenstein1988" class="csl-entry" role="listitem">
+      Spaltenstein, Nicolas. 1988. <span>“Resolutions of Unbounded
+      Complexes.”</span> <em>Compositio Mathematica</em> 65 (2): 121–54.
+      <a
+      href="http://www.numdam.org/item/CM_1988__65_2_121_0/">http://www.numdam.org/item/CM_1988__65_2_121_0/</a>.
+      </div>
+      <div id="ref-StacksProject" class="csl-entry" role="listitem">
+      The Stacks Project Authors. 2024. <em>The <span>Stacks
+      Project</span></em>. <a
+      href="https://stacks.math.columbia.edu">https://stacks.math.columbia.edu</a>.
+      </div>
+      <div id="ref-Vakil_TheRisingSea" class="csl-entry"
+      role="listitem">
+      Vakil, Ravi. 2025. <em>The Rising Sea: Foundations of Algebraic
+      Geometry</em>. Princeton University Press. <a
+      href="https://math.stanford.edu/~vakil/216blog/">https://math.stanford.edu/~vakil/216blog/</a>.
+      </div>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="6-topology-and-sheaves-of-grothendieck.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Topology and Sheaves of Grothendieck</strong>
+        </a>
+                      </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>

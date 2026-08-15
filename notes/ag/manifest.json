@@ -1,0 +1,238 @@
+{
+  "title": "代数几何札记",
+  "subtitle": "从范畴、概形到上同调与经典几何",
+  "parts": [
+    {
+      "number": "I",
+      "title": "Preliminary",
+      "zh": "预备知识",
+      "chapters": [
+        {
+          "title": "Category Theory",
+          "source": "chapters/Part_I/Category_Theory.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Derived Category",
+          "source": "chapters/Part_I/Derived_Category.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Presheaves and Sheaves",
+          "source": "chapters/Part_I/Presheaves_and_Sheaves.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Homological Algebra",
+          "source": "chapters/Part_I/Homological_Algebra.tex",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": "II",
+      "title": "Scheme Theory",
+      "zh": "概形理论",
+      "chapters": [
+        {
+          "title": "Affine Schemes",
+          "source": "chapters/Part_II/Affine_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "General Schemes",
+          "source": "chapters/Part_II/General_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Standard Schemes",
+          "source": "chapters/Part_II/Standard_Schemes.tex",
+          "status": "published",
+          "href": null
+        }
+      ]
+    },
+    {
+      "number": "III",
+      "title": "Morphisms of Schemes",
+      "zh": "概形态射",
+      "chapters": [
+        {
+          "title": "Global Properties of Morphisms of Schemes",
+          "source": "chapters/Part_III/Global_Properties_of_Morphisms_of_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Flat Morphism",
+          "source": "chapters/Part_III/Flat_Morphism.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Differential Geometry of Standard Schemes",
+          "source": "chapters/Part_III/Differential_Geometry_of_Standard_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Cycles and Divisors",
+          "source": "chapters/Part_III/Cycles_and_Divisors.tex",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": "IV",
+      "title": "Cohomology of Proper and Projective Schemes",
+      "zh": "恰当与射影概形的上同调",
+      "chapters": [
+        {
+          "title": "Projective Schemes",
+          "source": "chapters/Part_IV/Projective_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Cohomology of Projective Schemes",
+          "source": "chapters/Part_IV/Cohomology_of_Projective_Schemes.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Intersection Theory over Smooth Varieties",
+          "source": "chapters/Part_IV/Intersection_Theory_over_Smooth_Varieties.tex",
+          "status": "published",
+          "href": null
+        }
+      ]
+    },
+    {
+      "number": "V",
+      "title": "Classical Geometry",
+      "zh": "经典几何",
+      "chapters": [
+        {
+          "title": "The Concept and Basic Theory of Curves and Surfaces",
+          "source": "chapters/Part_V/The_Concept_and_Basic_Theory_of_Curves_and_Surfaces.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Classification of Low-Genus Curves",
+          "source": "chapters/Part_V/Classification_of_Low-Genus_Curves.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Plane Geometry",
+          "source": "chapters/Part_V/Plane Geometry.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Weil Conjectures on Curves",
+          "source": "chapters/Part_V/Weil_Conjectures_on_Curves.tex",
+          "status": "published",
+          "href": null
+        }
+      ]
+    },
+    {
+      "number": "VI",
+      "title": "Algebraic Intersection Theory",
+      "zh": "代数相交理论",
+      "chapters": [
+        {
+          "title": "Chern Classes and Segre Classes",
+          "source": "chapters/Part_VI/Chern_Classes_and_Segre_Classes.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Intersection Product",
+          "source": "chapters/Part_VI/Intersection_Product.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Riemann–Roch Theorem",
+          "source": "chapters/Part_VI/Riemann-Roch_Theorem.tex",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": "VII",
+      "title": "Topology and Sheaves of Grothendieck",
+      "zh": "Grothendieck 拓扑与层",
+      "chapters": [
+        {
+          "title": "Grothendieck Topology",
+          "source": "chapters/Part_VII/Grothendieck_Topology.tex",
+          "status": "published",
+          "href": null
+        },
+        {
+          "title": "Sheaves of Grothendieck Topology",
+          "source": "chapters/Part_VII/Sheaves_of_Grothendieck_Topology.tex",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": "VIII",
+      "title": "Étale Cohomology Theory",
+      "zh": "Étale 上同调",
+      "chapters": [
+        {
+          "title": "Étale Fundamental Groups",
+          "source": "chapters/Part_VIII/Etale_Fundamental_Groups.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Cohomology Theory",
+          "source": "chapters/Part_VIII/Cohomology_Theory.tex",
+          "status": "planned"
+        },
+        {
+          "title": "ℓ-adic Cohomology",
+          "source": "chapters/Part_VIII/ell_adic_Cohomology.tex",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": "IX",
+      "title": "Applications and Glimpse",
+      "zh": "应用与远眺",
+      "chapters": [
+        {
+          "title": "Weil Conjecture",
+          "source": "chapters/Part_IX/Weil_Conjecture.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Algebraic Groups",
+          "source": "chapters/Part_IX/Algebraic_Groups.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Perverse Sheaves",
+          "source": "chapters/Part_IX/Perverse_Sheaves.tex",
+          "status": "planned"
+        },
+        {
+          "title": "Stacks and Algebraic Spaces",
+          "source": "chapters/Part_IX/Stacks_and_Algebraic_Spaces.tex",
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "generated": "2026-08-15T08:15:16+00:00",
+  "published_count": 16,
+  "planned_count": 14
+}

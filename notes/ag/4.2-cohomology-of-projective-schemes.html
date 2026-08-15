@@ -1,0 +1,2007 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Pandoc + Thread478 notes builder" />
+  <meta name="description" content="Thread478 的代数几何网页札记" />
+  <title>Cohomology of Projective Schemes · 代数几何札记</title>
+  <link rel="stylesheet" href="assets/notes.css" />
+  <script defer="" src="assets/vendor/katex/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+</script>
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css" />
+  <script defer src="assets/notes.js"></script>
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+  <div class="dream-orbit dream-orbit-a" aria-hidden="true"></div>
+  <div class="dream-orbit dream-orbit-b" aria-hidden="true"></div>
+  <div class="dream-caption dream-caption-a" aria-hidden="true">NO MAP IS THE TERRITORY</div>
+  <div class="dream-caption dream-caption-b" aria-hidden="true">醒 时 拓 扑 / 04:78</div>
+
+  <header class="reader-topbar">
+    <a class="reader-brand" href="index.html" aria-label="代数几何札记首页">
+      <span class="brand-mark">线</span>
+      <span><strong>代数几何札记</strong><small>ALGEBRAIC GEOMETRY ARCHIVE</small></span>
+    </a>
+    <nav class="reader-actions" aria-label="站点工具">
+      <a href="../../math-resources.html">数学札记</a>
+      <button type="button" data-search-open><span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd></button>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换明暗主题">◐</button>
+    </nav>
+  </header>
+
+    <div class="reader-layout">
+    <aside class="reader-rail" aria-label="章节轮廓">
+      <div class="rail-kicker">ON THIS PAGE</div>
+      <nav data-outline><p class="rail-empty">本页目录正在展开。</p></nav>
+      <a class="rail-home" href="index.html">← 返回总目录</a>
+    </aside>
+
+    <main class="note-page" id="main-content">
+      <header class="chapter-heading">
+        <div class="chapter-signal"><span></span> OPEN FILE</div>
+        <p class="chapter-parent">Cohomology of Proper and Projective Schemes</p>
+        <h1>Cohomology of Projective Schemes</h1>
+      </header>
+      <h2 data-number="4.2"
+      id="cohomology-of-projective-schemes">Cohomology of Projective
+      Schemes</h2>
+      <h3 data-number="4.2.1"
+      id="cohomology-of-projective-space">Cohomology of Projective
+      Space</h3>
+      <h4 data-number="4.2.1.1"
+      id="serres-finiteness-and-vanishing">Serre’s Finiteness and
+      Vanishing</h4>
+      <p>The second theorem concerns the cohomology of coherent sheaves
+      on projective spaces, known as ’Serre’s Finiteness Theorem’ and
+      ’Serre’s Vanishing Theorem’ (to be distinguished from the affine
+      case). Finiteness states that the cohomology of a coherent sheaf
+      is finitely generated; Vanishing indicates that after a coherent
+      sheaf is sufficiently twisted, its higher cohomology groups
+      disappear.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Serre’s Finiteness and
+      Vanishing). <em> Let <span class="math inline">A</span> be a
+      Noetherian ring, and let <span class="math inline">X</span> be a
+      projective scheme over <span class="math inline">A</span>. Let
+      <span class="math inline">\mathcal{O}_X(1)</span> be a very ample
+      invertible sheaf on <span class="math inline">X</span>. Let <span
+      class="math inline">\mathcal{F}</span> be a
+      <strong>coherent</strong> sheaf on <span
+      class="math inline">X</span>. Then:</em></p>
+      <ol>
+      <li><p><em><strong>Finiteness:</strong> For each <span
+      class="math inline">i \ge 0</span>, the cohomology group <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F})</span> is a
+      <strong>finitely generated</strong> <span
+      class="math inline">A</span>-module.</em></p></li>
+      <li><p><em><strong>Vanishing:</strong> There exists an integer
+      <span class="math inline">n_0</span> (depending on <span
+      class="math inline">\mathcal{F}</span>) such that for all <span
+      class="math inline">n \ge n_0</span> and all <span
+      class="math inline">i &gt; 0</span>: <span
+      class="math display">\operatorname{H}^i(X, \mathcal{F}(n)) =
+      0.</span></em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> <strong>Step 1: Reduction to Projective Space
+      <span class="math inline">\mathbb{P}^r_A</span>.</strong> Since
+      <span class="math inline">X</span> is projective over <span
+      class="math inline">A</span> and <span
+      class="math inline">\mathcal{O}_X(1)</span> is very ample, there
+      exists a closed immersion <span class="math inline">\iota: X
+      \hookrightarrow P = \mathbb{P}^r_A</span> such that <span
+      class="math inline">\mathcal{O}_X(1) \cong \iota^*
+      \mathcal{O}_P(1)</span>. Let <span class="math inline">\mathcal{G}
+      = \iota_* \mathcal{F}</span> be the direct image sheaf on <span
+      class="math inline">P</span>.</p>
+      <ul>
+      <li><p>Since <span class="math inline">\iota</span> is a closed
+      immersion (a finite morphism) and <span
+      class="math inline">\mathcal{F}</span> is coherent, <span
+      class="math inline">\mathcal{G}</span> is a
+      <strong>coherent</strong> sheaf on <span
+      class="math inline">P</span>.</p></li>
+      <li><p>By the property of cohomology on closed subspaces, we have
+      isomorphisms: <span class="math display">\operatorname{H}^i(X,
+      \mathcal{F}(n)) \cong \operatorname{H}^i(P,
+      \mathcal{G}(n)).</span></p></li>
+      </ul>
+      <p>Thus, it suffices to prove the theorem for the coherent sheaf
+      <span class="math inline">\mathcal{G}</span> on the ambient space
+      <span class="math inline">P = \mathbb{P}^r_A</span>. From now on,
+      we assume <span class="math inline">X = \mathbb{P}^r_A</span>.</p>
+      <p><strong>Step 2: Verification for Line Bundles (The Base
+      Case).</strong> We first check if the theorem holds for sheaves of
+      the form <span class="math inline">\mathcal{E} = \bigoplus_{j=1}^m
+      \mathcal{O}_X(q_j)</span>, a finite direct sum of twisted line
+      bundles. By <strong>Theorem (Serre’s Calculation)</strong>, we
+      know the explicit structure of <span
+      class="math inline">\operatorname{H}^i(\mathbb{P}^r,
+      \mathcal{O}(q))</span>:</p>
+      <ul>
+      <li><p>For <span class="math inline">i=0</span>, it is the degree
+      <span class="math inline">q</span> part of the polynomial ring
+      <span class="math inline">S</span>, which is a finite free <span
+      class="math inline">A</span>-module.</p></li>
+      <li><p>For <span class="math inline">0 &lt; i &lt; r</span>, it is
+      zero.</p></li>
+      <li><p>For <span class="math inline">i=r</span>, it is dual to the
+      degree <span class="math inline">-q-r-1</span> part of <span
+      class="math inline">S</span>, which is a finite free <span
+      class="math inline">A</span>-module.</p></li>
+      <li><p>For <span class="math inline">i &gt; r</span>, it is
+      zero.</p></li>
+      </ul>
+      <p><strong>(a) Finiteness:</strong> Since cohomology commutes with
+      finite direct sums, <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{E})</span> is a
+      direct sum of finitely generated free <span
+      class="math inline">A</span>-modules, hence finitely
+      generated.</p>
+      <p><strong>(b) Vanishing:</strong> For any fixed <span
+      class="math inline">q_j</span>, <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{O}(q_j+n)) =
+      0</span> for <span class="math inline">i &gt; 0</span> as long as
+      the degree shift moves us out of the non-zero range of <span
+      class="math inline">\operatorname{H}^r</span> (i.e., <span
+      class="math inline">q_j + n &gt; -r-1</span>). Since there are
+      finitely many <span class="math inline">q_j</span>, we can choose
+      <span class="math inline">n_0</span> large enough such that this
+      holds for all summands. Thus, the theorem holds for <span
+      class="math inline">\mathcal{E}</span>.</p>
+      <p><strong>Step 3: Descending Induction on <span
+      class="math inline">i</span>.</strong> We proceed by descending
+      induction on the cohomological degree <span
+      class="math inline">i</span>.</p>
+      <ul>
+      <li><p><strong>Base Case (<span class="math inline">i &gt;
+      r</span>):</strong> By Grothendieck’s Vanishing Theorem (since
+      <span class="math inline">\dim \mathbb{P}^r = r</span>), <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}) = 0</span>
+      for all <span class="math inline">i &gt; r</span>. The zero module
+      is finitely generated, and vanishing is trivial.</p></li>
+      </ul>
+      <p><strong>Inductive Step:</strong> Assume the statements (a) and
+      (b) hold for degree <span class="math inline">i+1</span>. We prove
+      them for degree <span class="math inline">i</span> (where <span
+      class="math inline">i &gt; 0</span>). Since <span
+      class="math inline">\mathcal{F}</span> is coherent on <span
+      class="math inline">\mathbb{P}^r</span>, a fundamental property of
+      coherent sheaves on projective space (Serre’s Theorem A) states
+      that <span class="math inline">\mathcal{F}</span> can be written
+      as a quotient of a finite sum of line bundles. That is, there
+      exists a surjective morphism <span class="math inline">\mathcal{E}
+      \to \mathcal{F} \to 0</span>, where <span
+      class="math inline">\mathcal{E} = \bigoplus
+      \mathcal{O}(q_j)</span>. Let <span
+      class="math inline">\mathcal{R}</span> be the kernel. Since the
+      category of coherent sheaves is abelian, <span
+      class="math inline">\mathcal{R}</span> is also
+      <strong>coherent</strong>. We have a short exact sequence: <span
+      class="math display">0 \longrightarrow \mathcal{R} \longrightarrow
+      \mathcal{E} \longrightarrow \mathcal{F} \longrightarrow
+      0.</span></p>
+      <p><strong>Proof of (a) Finiteness for <span
+      class="math inline">\operatorname{H}^i(X,
+      \mathcal{F})</span>:</strong> Consider the long exact sequence of
+      cohomology: <span class="math display">\dots \longrightarrow
+      \operatorname{H}^i(X, \mathcal{E}) \longrightarrow
+      \operatorname{H}^i(X, \mathcal{F}) \longrightarrow
+      \operatorname{H}^{i+1}(X, \mathcal{R}) \longrightarrow
+      \dots</span></p>
+      <ol>
+      <li><p><span class="math inline">\operatorname{H}^i(X,
+      \mathcal{E})</span> is a finitely generated <span
+      class="math inline">A</span>-module (by Step 2).</p></li>
+      <li><p><span class="math inline">\operatorname{H}^{i+1}(X,
+      \mathcal{R})</span> is a finitely generated <span
+      class="math inline">A</span>-module (by the inductive hypothesis
+      on degree <span class="math inline">i+1</span>, applied to the
+      coherent sheaf <span
+      class="math inline">\mathcal{R}</span>).</p></li>
+      </ol>
+      <p>The module <span class="math inline">\operatorname{H}^i(X,
+      \mathcal{F})</span> is "sandwiched" between these two.
+      Specifically: Let <span class="math inline">M =
+      \operatorname{H}^i(X, \mathcal{F})</span>. It is an <span
+      class="math inline">A</span>-module. The image of <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{E})</span> in
+      <span class="math inline">M</span> is a quotient of a finitely
+      generated module, hence finitely generated. The quotient <span
+      class="math inline">M /
+      \operatorname{im}(\operatorname{H}^i(\mathcal{E}))</span> is
+      isomorphic to a submodule of <span
+      class="math inline">\operatorname{H}^{i+1}(X, \mathcal{R})</span>.
+      Since <span class="math inline">A</span> is
+      <strong>Noetherian</strong>, any submodule of a finitely generated
+      module is finitely generated. Since <span
+      class="math inline">M</span> is an extension of a f.g. module by a
+      f.g. module, <span class="math inline">M</span> itself is finitely
+      generated. This proves (a).</p>
+      <p><strong>Proof of (b) Vanishing for <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}(n))</span>
+      (<span class="math inline">i &gt; 0</span>):</strong> Twist the
+      short exact sequence by <span class="math inline">n</span>
+      (flatness of twisting): <span class="math display">0
+      \longrightarrow \mathcal{R}(n) \longrightarrow \mathcal{E}(n)
+      \longrightarrow \mathcal{F}(n) \longrightarrow 0.</span> Consider
+      the relevant segment of the cohomology sequence: <span
+      class="math display">\dots \longrightarrow \operatorname{H}^i(X,
+      \mathcal{E}(n)) \longrightarrow \operatorname{H}^i(X,
+      \mathcal{F}(n)) \longrightarrow \operatorname{H}^{i+1}(X,
+      \mathcal{R}(n)) \longrightarrow \dots</span> We need to show the
+      middle term vanishes for <span class="math inline">n \gg
+      0</span>.</p>
+      <ol>
+      <li><p>By Step 2, <span class="math inline">\operatorname{H}^i(X,
+      \mathcal{E}(n)) = 0</span> for <span class="math inline">n \ge
+      n_1</span> (since <span class="math inline">i &gt;
+      0</span>).</p></li>
+      <li><p>By the inductive hypothesis on degree <span
+      class="math inline">i+1</span>, applied to <span
+      class="math inline">\mathcal{R}</span>, there exists <span
+      class="math inline">n_2</span> such that <span
+      class="math inline">\operatorname{H}^{i+1}(X, \mathcal{R}(n)) =
+      0</span> for <span class="math inline">n \ge n_2</span>.</p></li>
+      </ol>
+      <p>Let <span class="math inline">n_0 = \max(n_1, n_2)</span>. For
+      all <span class="math inline">n \ge n_0</span>, the outer terms in
+      the sequence are zero: <span class="math display">0
+      \longrightarrow \operatorname{H}^i(X, \mathcal{F}(n))
+      \longrightarrow 0.</span> Therefore, <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}(n)) =
+      0</span>. This proves (b).</p>
+      <p><strong>Conclusion:</strong> By induction, the finiteness holds
+      for all <span class="math inline">i \ge 0</span>. The vanishing
+      holds for all <span class="math inline">i &gt; 0</span>. ◻</p>
+      </div>
+      <h3 data-number="4.2.2"
+      id="euler-characteristic-and-arithmetic-genus">Euler
+      Characteristic and Arithmetic Genus</h3>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Euler Characteristic and
+      Arithmetic Genus). <em> In this section, we turn our attention to
+      some more intriguing topics. The Euler characteristic is a
+      fundamental concept in both homological algebra and differential
+      manifolds; here, we define it in the context of sheaves. Given
+      that a ’bundle’ on a differential manifold is essentially a
+      special case of a (locally free) sheaf, this definition serves as
+      a natural generalization of the classical Euler characteristic.
+      Furthermore, we will define the Hilbert polynomial and the
+      arithmetic genus. While these concepts originated in classical
+      algebraic geometry, we shall define them using modern language. As
+      the reader will discover, these modern definitions remain
+      perfectly compatible with the classical cases.</em></p>
+      </div>
+      <div class="definition">
+      <p><strong>Definition 2.1</strong> (Euler Characteristic). <em>
+      Let <span class="math inline">X</span> be a projective scheme over
+      a field <span class="math inline">k</span>, and let <span
+      class="math inline">\mathcal{F}</span> be a coherent sheaf on
+      <span class="math inline">X</span>. The <strong>Euler
+      characteristic</strong> of <span
+      class="math inline">\mathcal{F}</span> is defined as: <span
+      class="math display">\chi(\mathcal{F}) = \sum_{i \ge 0} (-1)^i
+      \dim_k \operatorname{H}^i(X, \mathcal{F}).</span> <em>Note:</em>
+      By Serre’s Finiteness Theorem, each <span
+      class="math inline">\dim_k \operatorname{H}^i(X,
+      \mathcal{F})</span> is finite, and by Grothendieck’s Vanishing
+      Theorem, <span class="math inline">\operatorname{H}^i = 0</span>
+      for <span class="math inline">i &gt; \dim X</span>. Thus, this sum
+      is well-defined and finite.</em></p>
+      </div>
+      <p>The reader will observe that our definition of the Euler
+      characteristic for sheaves is essentially consistent with the
+      conventional one. Moreover, it satisfies additivity, a fundamental
+      result in homological algebra. It is the Serre Finiteness Theorem
+      established earlier that ensures this concept is well-defined, by
+      guaranteeing that the dimensions of all cohomology groups involved
+      are finite.</p>
+      <div class="lemma">
+      <p><strong>Lemma 2.1</strong> (Additivity of Euler
+      Characteristic). <em> The Euler characteristic is additive on
+      short exact sequences. That is, if <span class="math display">0
+      \longrightarrow \mathcal{F}&#39; \longrightarrow \mathcal{F}
+      \longrightarrow \mathcal{F}&#39;&#39; \longrightarrow 0</span> is
+      a short exact sequence of coherent sheaves on <span
+      class="math inline">X</span>, then: <span
+      class="math display">\chi(\mathcal{F}) = \chi(\mathcal{F}&#39;) +
+      \chi(\mathcal{F}&#39;&#39;).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Consider the long exact sequence of cohomology
+      derived from the short exact sequence: <span
+      class="math display">0 \to \operatorname{H}^0(\mathcal{F}&#39;)
+      \to \operatorname{H}^0(\mathcal{F}) \to
+      \operatorname{H}^0(\mathcal{F}&#39;&#39;) \to
+      \operatorname{H}^1(\mathcal{F}&#39;) \to
+      \operatorname{H}^1(\mathcal{F}) \to \dots</span> Let <span
+      class="math inline">h^i(\cdot) = \dim_k \operatorname{H}^i(X,
+      \cdot)</span>. A standard result from linear algebra states that
+      for any exact sequence of finite-dimensional vector spaces, the
+      alternating sum of their dimensions is zero. Thus, taking the
+      alternating sum over the entire long exact sequence: <span
+      class="math display">\sum_{i \ge 0} (-1)^i \left(
+      h^i(\mathcal{F}&#39;) - h^i(\mathcal{F}) +
+      h^i(\mathcal{F}&#39;&#39;) \right) = 0.</span> Rearranging the
+      terms (which is valid since the sum is finite), we get: <span
+      class="math display">\sum (-1)^i h^i(\mathcal{F}) = \sum (-1)^i
+      h^i(\mathcal{F}&#39;) + \sum (-1)^i
+      h^i(\mathcal{F}&#39;&#39;).</span> By definition, this is <span
+      class="math inline">\chi(\mathcal{F}) = \chi(\mathcal{F}&#39;) +
+      \chi(\mathcal{F}&#39;&#39;)</span>. ◻</p>
+      </div>
+      <p>We now introduce the definition of the Hilbert polynomial. Its
+      central premise is that for a coherent sheaf on a projective
+      scheme, the Euler characteristic of its twists, <span
+      class="math inline">\chi(X, \mathcal{F}(n))</span>, behaves as a
+      polynomial function in <span class="math inline">n</span>. The
+      proof proceeds by induction on the dimension of the support. The
+      most formidable challenge lies in defining a suitable map <span
+      class="math inline">\mathcal{F}(n-1) \to \mathcal{F}(n)</span>,
+      [typically achieved by selecting a hyperplane section that does
+      not contain the associated primes of the support].</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Existence of the Hilbert
+      Polynomial). <em> Let <span class="math inline">X</span> be a
+      projective scheme over a field <span class="math inline">k</span>,
+      <span class="math inline">\mathcal{O}_X(1)</span> a very ample
+      invertible sheaf, and <span class="math inline">\mathcal{F}</span>
+      a coherent sheaf. Then there exists a polynomial <span
+      class="math inline">P(z) \in \mathbb{Q}[z]</span> such that for
+      all <span class="math inline">n</span> sufficiently large: <span
+      class="math display">\chi(\mathcal{F}(n)) = P(n).</span> This
+      polynomial is called the <strong>Hilbert Polynomial</strong> of
+      <span class="math inline">\mathcal{F}</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We proceed by induction on <span
+      class="math inline">d = \dim(\operatorname{Supp}
+      \mathcal{F})</span>.</p>
+      <p><strong>Base Case (<span
+      class="math inline">d=0</span>):</strong> If the support of <span
+      class="math inline">\mathcal{F}</span> has dimension 0, it
+      consists of a finite set of closed points. In this case, <span
+      class="math inline">\mathcal{F}</span> is a skyscraper sheaf
+      (technically, an Artinian module over the local rings). Tensoring
+      with <span class="math inline">\mathcal{O}_X(n)</span> does not
+      change the dimension of the global sections because <span
+      class="math inline">\mathcal{O}_X(n)</span> is locally trivial and
+      the support is discrete (algebraically, <span
+      class="math inline">M \otimes_A A(n) \cong M</span> if <span
+      class="math inline">M</span> has finite length and support at the
+      maximal ideal?). More simply, <span
+      class="math inline">\operatorname{H}^i(\mathcal{F}(n)) = 0</span>
+      for <span class="math inline">i &gt; 0</span>, and <span
+      class="math inline">\operatorname{H}^0(\mathcal{F}(n)) \cong
+      \operatorname{H}^0(\mathcal{F})</span> (non-canonically,
+      dimension-wise). Thus, <span
+      class="math inline">\chi(\mathcal{F}(n))</span> is a constant,
+      which is a polynomial of degree 0.</p>
+      <p><strong>Inductive Step (<span class="math inline">d &gt;
+      0</span>):</strong> Assume the theorem holds for all sheaves with
+      support dimension <span class="math inline">&lt; d</span>. Let
+      <span class="math inline">X = \mathbb{P}^N_k</span> (embedding via
+      <span class="math inline">\mathcal{O}(1)</span>). Let <span
+      class="math inline">x \in \operatorname{H}^0(X,
+      \mathcal{O}(1))</span> be a linear form defining a hyperplane
+      <span class="math inline">H</span>. Consider the multiplication
+      map <span class="math inline">\mathcal{F}(-1) \xrightarrow{\cdot
+      x} \mathcal{F}</span>. Let <span
+      class="math inline">\mathcal{K}</span> be the kernel and <span
+      class="math inline">\mathcal{Q}</span> be the cokernel. We have an
+      exact sequence: <span class="math display">0 \longrightarrow
+      \mathcal{K} \longrightarrow \mathcal{F}(-1) \xrightarrow{\cdot x}
+      \mathcal{F} \longrightarrow \mathcal{Q} \longrightarrow 0.</span>
+      Twisting this sequence by <span class="math inline">n</span>
+      (which is exact as <span class="math inline">\mathcal{O}(n)</span>
+      is flat/locally free): <span class="math display">0
+      \longrightarrow \mathcal{K}(n) \longrightarrow \mathcal{F}(n-1)
+      \longrightarrow \mathcal{F}(n) \longrightarrow \mathcal{Q}(n)
+      \longrightarrow 0.</span> By the additivity of Euler
+      characteristic (splitting the 4-term sequence into two short exact
+      sequences): <span class="math display">\chi(\mathcal{F}(n)) -
+      \chi(\mathcal{F}(n-1)) = \chi(\mathcal{Q}(n)) -
+      \chi(\mathcal{K}(n)).</span></p>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Dimension Drops). <em> How do we
+      ensure the dimension drops? The support of the cokernel <span
+      class="math inline">\mathcal{Q}</span> is exactly <span
+      class="math inline">\operatorname{Supp}(\mathcal{F}) \cap
+      H</span>. The support of the kernel <span
+      class="math inline">\mathcal{K}</span> consists of points where
+      <span class="math inline">x</span> is a zero-divisor on <span
+      class="math inline">\mathcal{F}</span>.</em></p>
+      <p><em>To apply induction, we need <span class="math inline">\dim
+      \operatorname{Supp} \mathcal{K} &lt; d</span> and <span
+      class="math inline">\dim \operatorname{Supp} \mathcal{Q} &lt;
+      d</span>. Since <span class="math inline">\mathcal{O}(1)</span> is
+      very ample, we can choose a hyperplane <span
+      class="math inline">H</span> (defined by <span
+      class="math inline">x</span>) such that <span
+      class="math inline">H</span> <strong>does not contain any
+      irreducible component</strong> of <span
+      class="math inline">\operatorname{Supp}(\mathcal{F})</span>. (If
+      the field <span class="math inline">k</span> is infinite, this is
+      easy by prime avoidance. If <span class="math inline">k</span> is
+      finite, we might strictly need to replace <span
+      class="math inline">\mathcal{O}(1)</span> by a higher power, or
+      extend scalars, but the polynomial result remains valid).</em></p>
+      <p><em>With such a choice:</em></p>
+      <p><em>1. <span class="math inline">x</span> is not identically
+      zero on any component of <span
+      class="math inline">\operatorname{Supp}(\mathcal{F})</span>, so
+      <span class="math inline">\dim(\operatorname{Supp}(\mathcal{F})
+      \cap H) &lt; d</span>. Thus <span class="math inline">\dim
+      \operatorname{Supp} \mathcal{Q} &lt; d</span>.</em></p>
+      <p><em>2. Since <span class="math inline">x</span> is not a zero
+      divisor on the generic points of <span
+      class="math inline">\mathcal{F}</span>, the kernel <span
+      class="math inline">\mathcal{K}</span> is supported on a proper
+      closed subset, so <span class="math inline">\dim
+      \operatorname{Supp} \mathcal{K} &lt; d</span>.</em></p>
+      </div>
+      <p>By the induction hypothesis, <span
+      class="math inline">\chi(\mathcal{Q}(n))</span> is a polynomial
+      <span class="math inline">P_Q(n)</span> and <span
+      class="math inline">\chi(\mathcal{K}(n))</span> is a polynomial
+      <span class="math inline">P_K(n)</span> for large <span
+      class="math inline">n</span>. Let <span class="math inline">R(n) =
+      P_Q(n) - P_K(n)</span>. We have the relation: <span
+      class="math display">\chi(\mathcal{F}(n)) - \chi(\mathcal{F}(n-1))
+      = R(n) \quad \text{for } n \gg 0.</span> A fundamental lemma in
+      numerical polynomials states that if <span
+      class="math inline">f(n) - f(n-1)</span> is a polynomial in <span
+      class="math inline">n</span>, then <span
+      class="math inline">f(n)</span> is a polynomial in <span
+      class="math inline">n</span> (of degree one higher, roughly).
+      Thus, <span class="math inline">\chi(\mathcal{F}(n))</span> is a
+      polynomial for large <span class="math inline">n</span>. ◻</p>
+      </div>
+      <p>Finally, we introduce the concept of the arithmetic genus of a
+      projective scheme, which is likewise defined in terms of the Euler
+      characteristic. It is worth noting that when <span
+      class="math inline">X</span> is an integral scheme over an
+      algebraically closed field (corresponding to a classical algebraic
+      variety, even without the finite type assumption), the arithmetic
+      genus can be expressed directly through the dimensions of the
+      cohomology groups. In particular, when <span
+      class="math inline">X</span> is a curve (dimension 1), the
+      arithmetic genus coincides with the dimension of the first
+      cohomology group.</p>
+      <div class="definition">
+      <p><strong>Definition 2.2</strong> (Arithmetic Genus). <em> Let
+      <span class="math inline">X</span> be a projective scheme of
+      dimension <span class="math inline">r</span> over a field <span
+      class="math inline">k</span>. The <strong>arithmetic
+      genus</strong> <span class="math inline">p_a(X)</span> is defined
+      by: <span class="math display">p_a(X) = (-1)^r
+      (\chi(\mathcal{O}_X) - 1).</span> Note: This depends only on the
+      intrinsic structure of <span class="math inline">X</span>, not on
+      the projective embedding.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Genus of Integral Schemes).
+      <em> If <span class="math inline">X</span> is an
+      <strong>integral</strong> projective scheme over an
+      <strong>algebraically closed</strong> field <span
+      class="math inline">k</span>, then <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) \cong
+      k</span>. Consequently: <span class="math display">p_a(X) =
+      \sum_{i=0}^{r-1} (-1)^i \dim_k \operatorname{H}^{r-i}(X,
+      \mathcal{O}_X).</span> In particular, if <span
+      class="math inline">X</span> is a curve (<span
+      class="math inline">r=1</span>), then <span
+      class="math inline">p_a(X) = \dim_k \operatorname{H}^1(X,
+      \mathcal{O}_X)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> <strong>1. Global Sections are
+      Constants:</strong> Since <span class="math inline">X</span> is
+      proper over <span class="math inline">k</span>, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X)</span> is
+      a finite-dimensional <span class="math inline">k</span>-algebra.
+      Since <span class="math inline">X</span> is integral, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X)</span> is
+      an integral domain. A finite-dimensional domain over a field is a
+      field (multiplication is injective implies surjective). Thus <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X)</span> is
+      a finite field extension of <span class="math inline">k</span>.
+      Since <span class="math inline">k</span> is algebraically closed,
+      there are no non-trivial finite extensions. Thus <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) \cong
+      k</span>, and <span class="math inline">\dim_k
+      \operatorname{H}^0(X, \mathcal{O}_X) = 1</span>.</p>
+      <p><strong>2. The Formula:</strong> Substitute <span
+      class="math inline">\chi(\mathcal{O}_X) = \sum_{j=0}^r (-1)^j
+      h^j(\mathcal{O}_X)</span> into the definition: <span
+      class="math display">p_a(X) = (-1)^r \left( [h^0 - h^1 + \dots +
+      (-1)^r h^r] - 1 \right).</span> Using <span
+      class="math inline">h^0 = 1</span>, the first term cancels the
+      <span class="math inline">-1</span>: <span
+      class="math display">p_a(X) = (-1)^r \sum_{j=1}^r (-1)^j
+      h^j(\mathcal{O}_X) = \sum_{j=1}^r (-1)^{r+j}
+      h^j(\mathcal{O}_X).</span> Let <span class="math inline">i =
+      r-j</span>. As <span class="math inline">j</span> goes from <span
+      class="math inline">1</span> to <span
+      class="math inline">r</span>, <span class="math inline">i</span>
+      goes from <span class="math inline">r-1</span> to <span
+      class="math inline">0</span>. The exponent becomes <span
+      class="math inline">r + (r-i) = 2r - i \equiv -i \pmod 2</span>.
+      Thus, <span class="math display">p_a(X) = \sum_{i=0}^{r-1} (-1)^i
+      h^{r-i}(X, \mathcal{O}_X).</span></p>
+      <p><strong>3. The Curve Case (<span
+      class="math inline">r=1</span>):</strong> The sum runs from <span
+      class="math inline">i=0</span> to <span
+      class="math inline">0</span>. <span class="math display">p_a(X) =
+      (-1)^0 h^{1-0}(\mathcal{O}_X) = h^1(\mathcal{O}_X).</span> ◻</p>
+      </div>
+      <h4 data-number="4.2.2.1"
+      id="cohomology-of-single-twist-sheaf">Cohomology of Single Twist
+      Sheaf</h4>
+      <p>The first theorem concerns the cohomology of twisting sheaves
+      on projective space, famously known as ’Serre’s Calculation’.
+      Although the proof may appear lengthy and cumbersome, the core
+      task within the Čech cohomology process is essentially the
+      manipulation of polynomials. It could aptly be described as ’a
+      linear algebra exercise masquerading as algebraic geometry.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Cohomology of <span
+      class="math inline">\mathbb{P}^n_A</span>). <em> Let <span
+      class="math inline">A</span> be a Noetherian ring, let <span
+      class="math inline">S = A[x_0, \dots, x_n]</span> be the
+      polynomial ring with standard grading, and let <span
+      class="math inline">X = \mathbb{P}^n_A = \operatorname{Proj}
+      S</span>. We consider the cohomology of the twisting sheaves <span
+      class="math inline">\mathcal{O}_X(k)</span>. It is convenient to
+      compute the direct sum of all twists simultaneously: <span
+      class="math display">\Gamma_*(\mathcal{O}_X) := \bigoplus_{k \in
+      \mathbb{Z}} \operatorname{H}^0(X, \mathcal{O}_X(k)) \quad
+      \text{and generally} \quad M^i := \bigoplus_{k \in \mathbb{Z}}
+      \operatorname{H}^i(X, \mathcal{O}_X(k)).</span> Then:</em></p>
+      <ol>
+      <li><p><em>The natural map <span class="math inline">S \to
+      \Gamma_*(\mathcal{O}_X)</span> is an isomorphism of graded <span
+      class="math inline">S</span>-modules.</em></p></li>
+      <li><p><em>For intermediate degrees <span class="math inline">0
+      &lt; i &lt; n</span>, <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{O}_X(k)) =
+      0</span> for all <span class="math inline">k</span>.</em></p></li>
+      <li><p><em><span class="math inline">\operatorname{H}^n(X,
+      \mathcal{O}_X(-n-1)) \cong A</span>, and generally <span
+      class="math inline">M^n \cong \bigoplus_{k} \operatorname{H}^n(X,
+      \mathcal{O}_X(k))</span> is a free <span
+      class="math inline">A</span>-module generated by monomials with
+      strictly negative exponents (<span
+      class="math inline">x_0^{-1}\dots x_n^{-1}</span>
+      etc.).</em></p></li>
+      <li><p><em><strong>Serre Duality (Perfect Pairing):</strong> The
+      natural map <span class="math display">\operatorname{H}^0(X,
+      \mathcal{O}_X(k)) \times \operatorname{H}^n(X,
+      \mathcal{O}_X(-k-n-1)) \longrightarrow \operatorname{H}^n(X,
+      \mathcal{O}_X(-n-1)) \cong A</span> is a perfect pairing of
+      finitely generated free <span
+      class="math inline">A</span>-modules.</em></p></li>
+      </ol>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> <strong>Step 0: The Strategy (Geometry to
+      Algebra Translation)</strong> Since <span class="math inline">X =
+      \mathbb{P}^n_A</span> is a separated Noetherian scheme, and <span
+      class="math inline">\mathcal{O}_X(k)</span> is quasi-coherent, we
+      can compute its cohomology using the <strong>Čech complex</strong>
+      associated to any affine open cover.</p>
+      <p>We choose the standard affine cover <span
+      class="math inline">\mathcal{U} = \{U_0, \dots, U_n\}</span>,
+      where <span class="math inline">U_i = D_+(x_i) =
+      \operatorname{Spec}(S_{(x_i)})</span>. Instead of computing one
+      sheaf at a time, we define the graded sheaf <span
+      class="math inline">\mathcal{F} = \bigoplus_{k \in \mathbb{Z}}
+      \mathcal{O}_X(k)</span>.</p>
+      <p>Crucially, the restriction of this graded sheaf to an
+      intersection <span class="math inline">U_{i_0 \dots i_p}</span>
+      corresponds exactly to the localization of the graded ring <span
+      class="math inline">S</span>: <span
+      class="math display">\mathcal{F}(U_{i_0 \dots i_p}) = \bigoplus_{k
+      \in \mathbb{Z}} \Gamma(D_+(x_{i_0}\dots x_{i_p}), \mathcal{O}(k))
+      \cong S_{x_{i_0} \dots x_{i_p}}.</span> This isomorphism preserves
+      the grading. Thus, the Čech complex <span
+      class="math inline">C^\bullet(\mathcal{U}, \mathcal{F})</span>
+      becomes a complex of <strong>graded <span
+      class="math inline">S</span>-modules</strong>: <span
+      class="math display">C^\bullet: \quad 0 \longrightarrow \prod_{i}
+      S_{x_i} \xrightarrow{\operatorname{d}^0} \prod_{i&lt;j} S_{x_i
+      x_j} \xrightarrow{\operatorname{d}^1} \dots
+      \xrightarrow{\operatorname{d}^{n-1}} S_{x_0 \dots x_n}
+      \longrightarrow 0.</span> <em>From this point on, the proof is
+      purely about analyzing monomials in localized polynomial
+      rings.</em></p>
+      <p><strong>Step 1: Calculating <span
+      class="math inline">\operatorname{H}^0</span> (Part a)</strong>
+      <span class="math inline">\operatorname{H}^0(X,
+      \mathcal{F})</span> is the kernel of <span
+      class="math inline">\operatorname{d}^0</span>. An element <span
+      class="math inline">\alpha \in \prod S_{x_i}</span> is a tuple
+      <span class="math inline">(\alpha_0, \dots, \alpha_n)</span> where
+      <span class="math inline">\alpha_i \in S_{x_i}</span>. The
+      condition <span class="math inline">\operatorname{d}^0(\alpha) =
+      0</span> means <span class="math inline">\alpha_i =
+      \alpha_j</span> inside <span class="math inline">S_{x_i
+      x_j}</span> for all <span class="math inline">i, j</span>.</p>
+      <p>Algebraically, <span class="math inline">S</span> is a UFD. If
+      a rational function <span class="math inline">f</span> can be
+      written with only <span class="math inline">x_i</span> in the
+      denominator, and also with only <span
+      class="math inline">x_j</span> in the denominator, and this holds
+      for all <span class="math inline">i, j</span>, then <span
+      class="math inline">f</span> must be a polynomial (it has no
+      denominators). Thus, <span
+      class="math inline">\operatorname{Ker}(\operatorname{d}^0) =
+      S</span>. Matching the grading, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}(k)) =
+      S_k</span> (homogeneous polynomials of degree <span
+      class="math inline">k</span>).</p>
+      <p><strong>Step 2: Calculating <span
+      class="math inline">\operatorname{H}^n</span> (Part c)</strong>
+      <span class="math inline">\operatorname{H}^n(X,
+      \mathcal{F})</span> is the cokernel of the last map <span
+      class="math inline">\operatorname{d}^{n-1}</span>. <span
+      class="math display">\bigoplus_{k=0}^n S_{x_0 \dots \hat{x}_k
+      \dots x_n} \xrightarrow{\operatorname{d}^{n-1}} S_{x_0 \dots x_n}
+      \longrightarrow \operatorname{H}^n \longrightarrow 0.</span> Let’s
+      analyze the monomials. <span class="math inline">S_{x_0 \dots
+      x_n}</span> is the free <span class="math inline">A</span>-module
+      generated by all monomials of the form <span
+      class="math inline">x_0^{l_0} \dots x_n^{l_n}</span> where <span
+      class="math inline">l_i \in \mathbb{Z}</span>. The image of <span
+      class="math inline">\operatorname{d}^{n-1}</span> comes from
+      localizations where at least one variable, say <span
+      class="math inline">x_k</span>, is <em>not</em> inverted. This
+      means the image consists of all Laurent monomials <span
+      class="math inline">x_0^{l_0} \dots x_n^{l_n}</span> where
+      <strong>at least one exponent <span class="math inline">l_k \ge
+      0</span></strong>.</p>
+      <p>Therefore, the quotient group (the cokernel) is isomorphic to
+      the free <span class="math inline">A</span>-module generated by
+      the "leftover" monomials: those where <strong>every exponent is
+      strictly negative</strong>. <span
+      class="math display">\operatorname{H}^n(X, \mathcal{F}) \cong
+      \bigoplus_{l_0, \dots, l_n &lt; 0} A \cdot x_0^{l_0} \dots
+      x_n^{l_n}.</span></p>
+      <p>Let’s look at the grading (total degree <span
+      class="math inline">k = \sum l_i</span>). The "largest" monomial
+      in <span class="math inline">\operatorname{H}^n</span> corresponds
+      to <span class="math inline">l_0 = \dots = l_n = -1</span>. The
+      degree is <span class="math inline">(-1) + \dots + (-1) =
+      -n-1</span>. Thus, <span class="math inline">\operatorname{H}^n(X,
+      \mathcal{O}(k)) = 0</span> for <span class="math inline">k &gt;
+      -n-1</span>. For <span class="math inline">k = -n-1</span>, the
+      cohomology is generated by the single basis element <span
+      class="math inline">x_0^{-1} \dots x_n^{-1}</span>. Thus <span
+      class="math inline">\operatorname{H}^n(X, \mathcal{O}(-n-1)) \cong
+      A</span>.</p>
+      <p><strong>Step 3: Serre Duality (Part d)</strong> We
+      established:</p>
+      <ul>
+      <li><p><span class="math inline">\operatorname{H}^0(X,
+      \mathcal{O}(k))</span> has basis <span class="math inline">\{
+      x_0^{a_0} \dots x_n^{a_n} \mid a_i \ge 0, \sum a_i = k
+      \}</span>.</p></li>
+      <li><p><span class="math inline">\operatorname{H}^n(X,
+      \mathcal{O}(-k-n-1))</span> has basis <span class="math inline">\{
+      x_0^{b_0} \dots x_n^{b_n} \mid b_i &lt; 0, \sum b_i = -k-n-1
+      \}</span>.</p></li>
+      </ul>
+      <p>The pairing into <span
+      class="math inline">\operatorname{H}^n(X, \mathcal{O}(-n-1)) \cong
+      A \cdot (x_0^{-1}\dots x_n^{-1})</span> is given by multiplication
+      of monomials. <span class="math display">(x^\mathsf{a}) \cdot
+      (x^\mathsf{b}) = x^{\mathsf{a}+\mathsf{b}}.</span> Since <span
+      class="math inline">b_i &lt; 0</span> and <span
+      class="math inline">a_i \ge 0</span>, for the product to be <span
+      class="math inline">x_0^{-1} \dots x_n^{-1}</span>, we must have
+      <span class="math inline">a_i + b_i = -1</span>, or <span
+      class="math inline">b_i = -1 - a_i</span>. This correspondence
+      <span class="math inline">b_i \leftrightarrow -1-a_i</span> sets
+      up a perfect bijection between the basis of <span
+      class="math inline">\operatorname{H}^0</span> and the basis of
+      <span class="math inline">\operatorname{H}^n</span>. Since the
+      bases are dual, the pairing is perfect (determinant is <span
+      class="math inline">\pm 1</span>).</p>
+      <p><strong>Step 4: Vanishing of Intermediate Cohomology (Part
+      b)</strong> We prove <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}) = 0</span>
+      for <span class="math inline">0 &lt; i &lt; n</span> by induction
+      on the dimension <span class="math inline">n</span>.</p>
+      <p><em>Base Case (<span class="math inline">n=1</span>):</em>
+      There are no integers <span class="math inline">i</span> such that
+      <span class="math inline">0 &lt; i &lt; 1</span>. The statement is
+      vacuously true.</p>
+      <p><em>Inductive Step:</em> Assume the theorem holds for <span
+      class="math inline">\mathbb{P}^{n-1}</span>. Consider <span
+      class="math inline">x_n</span> as an element of degree 1 in <span
+      class="math inline">S</span>. Multiplication by <span
+      class="math inline">x_n</span> gives an exact sequence of graded
+      <span class="math inline">S</span>-modules: <span
+      class="math display">0 \longrightarrow S(-1) \xrightarrow{\cdot
+      x_n} S \longrightarrow S/(x_n) \longrightarrow 0.</span>
+      Geometrically, this corresponds to the sequence of sheaves on
+      <span class="math inline">X = \mathbb{P}^n</span>: <span
+      class="math display">0 \longrightarrow \mathcal{F}(-1)
+      \longrightarrow \mathcal{F} \longrightarrow \mathcal{F}_H
+      \longrightarrow 0,</span> where <span class="math inline">H \cong
+      \mathbb{P}^{n-1}</span> is the hyperplane defined by <span
+      class="math inline">x_n=0</span>. Consider the long exact sequence
+      of cohomology. For any <span class="math inline">i</span>, we
+      have: <span class="math display">\dots \to \operatorname{H}^i(X,
+      \mathcal{F}(-1)) \xrightarrow{\cdot x_n} \operatorname{H}^i(X,
+      \mathcal{F}) \to \operatorname{H}^i(H, \mathcal{F}_H) \to
+      \dots</span> Note that <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}(-1))</span>
+      is just the graded module <span class="math inline">M^i</span>
+      shifted by 1. So the map is simply the multiplication map <span
+      class="math inline">M^i \xrightarrow{\cdot x_n} M^i</span>.</p>
+      <p>For <span class="math inline">0 &lt; i &lt; n</span>:</p>
+      <ul>
+      <li><p>If <span class="math inline">i &lt; n-1</span>: By
+      induction, <span class="math inline">\operatorname{H}^i(H,
+      \mathcal{F}_H) = 0</span>. The exact sequence becomes <span
+      class="math inline">M^i(-1) \xrightarrow{\cdot x_n} M^i</span> is
+      surjective.</p></li>
+      <li><p>If <span class="math inline">i = n-1</span> (and <span
+      class="math inline">n &gt; 1</span>): We look at <span
+      class="math inline">\operatorname{H}^{n-1}(H, \mathcal{F}_H) \to
+      \operatorname{H}^n(X, \mathcal{F}(-1))</span>. Let’s look at the
+      algebra instead of the long sequence directly.</p></li>
+      </ul>
+      <p><em>The Localization Argument (The Power Move):</em> Let <span
+      class="math inline">M = \operatorname{H}^i(X, \mathcal{F})</span>.
+      Since this is computed via the Čech complex of <span
+      class="math inline">S</span>-modules, <span
+      class="math inline">M</span> is a graded <span
+      class="math inline">S</span>-module. What happens if we localize
+      <span class="math inline">M</span> at <span
+      class="math inline">x_n</span>? Localization is exact. <span
+      class="math inline">M_{x_n} =
+      \operatorname{H}^i(C^\bullet_{x_n})</span>. The complex <span
+      class="math inline">(C^\bullet)_{x_n}</span> is the Čech complex
+      for the cover of <span class="math inline">X</span> intersected
+      with <span class="math inline">D_+(x_n)</span>. But <span
+      class="math inline">D_+(x_n)</span> is affine! The cohomology of a
+      quasi-coherent sheaf on an affine scheme vanishes for <span
+      class="math inline">i &gt; 0</span>. Thus, <span
+      class="math inline">M_{x_n} = 0</span>.</p>
+      <p>Algebraically, this means for every element <span
+      class="math inline">m \in M</span>, there is some power <span
+      class="math inline">k</span> such that <span
+      class="math inline">x_n^k \cdot m = 0</span>.</p>
+      <p>Now combine this with the exact sequence from the hyperplane.
+      For <span class="math inline">0 &lt; i &lt; n-1</span>, <span
+      class="math inline">\operatorname{H}^i(\mathbb{P}^{n-1}) =
+      0</span>, so the map <span class="math inline">x_n: M^i \to
+      M^i</span> is bijective. If an operator is bijective but locally
+      nilpotent (annihilated by power), the module must be zero. (If
+      <span class="math inline">x m = 0</span> and <span
+      class="math inline">x</span> is injective, <span
+      class="math inline">m=0</span>). Thus <span
+      class="math inline">\operatorname{H}^i = 0</span> for <span
+      class="math inline">0 &lt; i &lt; n-1</span>.</p>
+      <p>The boundary case <span class="math inline">i = n-1</span>
+      requires checking the map <span
+      class="math inline">\operatorname{H}^{n-1}(\mathcal{F}_H) \to
+      \operatorname{H}^n(\mathcal{F}(-1))</span>. Using the explicit
+      calculation of <span
+      class="math inline">\operatorname{H}^{n-1}</span> (negative
+      monomials in <span class="math inline">x_0, \dots, x_{n-1}</span>)
+      and <span class="math inline">\operatorname{H}^n</span> (negative
+      monomials in <span class="math inline">x_0, \dots, x_n</span>),
+      one can check injectivity/exactness directly to show <span
+      class="math inline">\operatorname{H}^{n-1}(\mathbb{P}^n) =
+      0</span>. ◻</p>
+      </div>
+      <p>We present the calculated results of this theorem in the table
+      below. It is evident that non-trivial values occur only at the two
+      ’diagonal’ positions.</p>
+      <table>
+      <caption>Cohomology Groups <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{O}_X(n))</span>
+      for <span class="math inline">X = \mathbb{P}^r_A</span></caption>
+      <thead>
+      <tr>
+      <th style="text-align: left;"><strong>Order</strong> <span
+      class="math inline">i</span></th>
+      <th style="text-align: center;"><span class="math inline">n \ge
+      0</span></th>
+      <th style="text-align: center;"><span class="math inline">-r &lt;
+      n &lt; 0</span></th>
+      <th style="text-align: center;"><span class="math inline">n \le
+      -r-1</span></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td style="text-align: left;"><span class="math inline">i =
+      0</span></td>
+      <td style="text-align: center;">Rank <span
+      class="math inline">\binom{n+r}{r}</span></td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><span class="math inline">0 &lt; i
+      &lt; r</span></td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      </tr>
+      <tr>
+      <td style="text-align: left;"><span class="math inline">i =
+      r</span></td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">0</td>
+      <td style="text-align: center;">Rank <span
+      class="math inline">\binom{-n-1}{-n-r-1}</span></td>
+      </tr>
+      <tr>
+      <td colspan="4" style="text-align: left;"><strong>Special
+      Case:</strong> <span class="math inline">\operatorname{H}^r(X,
+      \mathcal{O}_X(-r-1)) \cong A</span></td>
+      </tr>
+      </tbody>
+      </table>
+      <h4 data-number="4.2.2.2"
+      id="derived-serre-duality-on-projective-space">Derived Serre
+      Duality on Projective Space</h4>
+      <p>The explicit Čech cohomology computations for the isolated
+      twisting sheaves <span class="math inline">\mathcal{O}_X(k)</span>
+      in Theorem provide the critical foundation for understanding the
+      cohomology of arbitrary bounded complexes of coherent sheaves on
+      <span class="math inline">\mathbb{P}^n_A</span>. By leveraging the
+      triangulated structure of the derived category, we can elevate the
+      classical Serre Duality pairing to its ultimate, functorial
+      form.</p>
+      <div class="definition">
+      <p><strong>Definition 2.3</strong> (Dualizing Complex of <span
+      class="math inline">\mathbb{P}^n</span>). <em> Let <span
+      class="math inline">X = \mathbb{P}^n_A</span> over a Noetherian
+      ring <span class="math inline">A</span>. We define the
+      <strong>dualizing complex</strong> of <span
+      class="math inline">X</span> as the shifted invertible sheaf:
+      <span class="math display">\omega_X^\circ :=
+      \mathcal{O}_X(-n-1)[n]</span></em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Derived Serre Duality). <em> Let
+      <span class="math inline">A</span> be a Noetherian ring and <span
+      class="math inline">X = \mathbb{P}^n_A</span>. For any bounded
+      complex of coherent sheaves <span
+      class="math inline">\mathcal{F}^\bullet \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>, there is a canonical
+      isomorphism in the derived category of <span
+      class="math inline">A</span>-modules <span
+      class="math inline">\mathbf{D}^b(A)</span>: <span
+      class="math display">\mathbf{R}\Gamma\left(X,
+      \mathbf{R}\mathcal{H}om_{\mathcal{O}_X}(\mathcal{F}^\bullet,
+      \omega_X^\circ)\right) \cong
+      \mathbf{R}\operatorname{Hom}_A\left(\mathbf{R}\Gamma(X,
+      \mathcal{F}^\bullet), A\right)</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> As with the Projection Formula, the heavy
+      lifting has already been accomplished by our base calculations,
+      and the proof reduces to a straightforward application of the
+      Way-out Lemma.</p>
+      <p><strong>Step 1: Functor Setup and Reduction</strong> We define
+      two contravariant functors from <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span> to <span
+      class="math inline">\mathbf{D}^b(A)</span>: <span
+      class="math display">\begin{align*}
+          L(\mathcal{F}^\bullet) &amp;:= \mathbf{R}\Gamma\left(X,
+      \mathbf{R}\mathcal{H}om_{\mathcal{O}_X}(\mathcal{F}^\bullet,
+      \omega_X^\circ)\right) \\
+          R(\mathcal{F}^\bullet) &amp;:=
+      \mathbf{R}\operatorname{Hom}_A\left(\mathbf{R}\Gamma(X,
+      \mathcal{F}^\bullet), A\right)
+      \end{align*}</span> Because <span
+      class="math inline">\mathbf{R}\Gamma</span>, <span
+      class="math inline">\mathbf{R}\mathcal{H}om</span>, and <span
+      class="math inline">\mathbf{R}\operatorname{Hom}</span> are all
+      exact functors of triangulated categories, both <span
+      class="math inline">L</span> and <span
+      class="math inline">R</span> are exact functors. The derived
+      adjunctions provide a natural transformation <span
+      class="math inline">\eta: L \to R</span>.</p>
+      <p>By a classical theorem of Serre, any coherent sheaf on <span
+      class="math inline">\mathbb{P}^n_A</span> admits a finite
+      resolution by finite direct sums of twisting sheaves <span
+      class="math inline">\mathcal{O}_X(k)</span>. Therefore, the thick
+      triangulated subcategory generated by the set of twists <span
+      class="math inline">\{\mathcal{O}_X(k)\}_{k \in \mathbb{Z}}</span>
+      is precisely the entire bounded derived category <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>.</p>
+      <p>Consequently, by the Way-out Lemma (Theorem ), to prove that
+      <span class="math inline">\eta</span> is an isomorphism for all
+      bounded complexes <span
+      class="math inline">\mathcal{F}^\bullet</span>, it is completely
+      sufficient to verify that it is an isomorphism for the isolated
+      twisting sheaves <span class="math inline">\mathcal{F}^\bullet =
+      \mathcal{O}_X(k)</span> concentrated in degree 0.</p>
+      <p><strong>Step 2: Verification of the Base Case</strong> Let
+      <span class="math inline">\mathcal{F}^\bullet =
+      \mathcal{O}_X(k)</span>. We evaluate both exact functors on this
+      isolated sheaf.</p>
+      <p>For the left-hand side, since <span
+      class="math inline">\mathcal{O}_X(k)</span> is locally free, the
+      derived <span class="math inline">\mathcal{H}om</span> simplifies
+      to the classical dual tensor product: <span
+      class="math display">L(\mathcal{O}_X(k)) = \mathbf{R}\Gamma(X,
+      \mathcal{O}_X(-k) \otimes \mathcal{O}_X(-n-1)[n]) =
+      \mathbf{R}\Gamma(X, \mathcal{O}_X(-k-n-1))[n]</span> Taking the
+      <span class="math inline">i</span>-th cohomology of this complex
+      shifts the index, yielding <span
+      class="math inline">\operatorname{H}^{i+n}(X,
+      \mathcal{O}_X(-k-n-1))</span>.</p>
+      <p>For the right-hand side, since <span
+      class="math inline">A</span> is a ring, evaluating the derived Hom
+      into <span class="math inline">A</span> corresponds to taking the
+      standard <span class="math inline">A</span>-module dual of the
+      cohomology groups: <span class="math display">R(\mathcal{O}_X(k))
+      = \mathbf{R}\operatorname{Hom}_A(\mathbf{R}\Gamma(X,
+      \mathcal{O}_X(k)), A)</span> Taking the <span
+      class="math inline">i</span>-th cohomology yields <span
+      class="math inline">\operatorname{Hom}_A(\operatorname{H}^{-i}(X,
+      \mathcal{O}_X(k)), A)</span>.</p>
+      <p>We now compare the cohomology of <span
+      class="math inline">L(\mathcal{O}_X(k))</span> and <span
+      class="math inline">R(\mathcal{O}_X(k))</span> degree by
+      degree:</p>
+      <ul>
+      <li><p>When <span class="math inline">i = -n</span>, the LHS is
+      <span class="math inline">\operatorname{H}^0(X,
+      \mathcal{O}_X(-k-n-1))</span> and the RHS is <span
+      class="math inline">\operatorname{Hom}_A(\operatorname{H}^n(X,
+      \mathcal{O}_X(k)), A)</span>.</p></li>
+      <li><p>When <span class="math inline">i = 0</span>, the LHS is
+      <span class="math inline">\operatorname{H}^n(X,
+      \mathcal{O}_X(-k-n-1))</span> and the RHS is <span
+      class="math inline">\operatorname{Hom}_A(\operatorname{H}^0(X,
+      \mathcal{O}_X(k)), A)</span>.</p></li>
+      <li><p>For all other degrees, Theorem (b) dictates that the
+      intermediate cohomology groups vanish identically, so both sides
+      are trivially zero.</p></li>
+      </ul>
+      <p>By Theorem (d) (Serre Duality for isolated twists), the natural
+      pairing perfectly identifies these non-vanishing top and bottom
+      cohomology groups as dual free <span
+      class="math inline">A</span>-modules. Thus, <span
+      class="math inline">\eta_{\mathcal{O}_X(k)}</span> induces an
+      isomorphism on all cohomology groups, proving it is a
+      quasi-isomorphism (an isomorphism in <span
+      class="math inline">\mathbf{D}^b(A)</span>).</p>
+      <p>Since the base case holds for all <span class="math inline">k
+      \in \mathbb{Z}</span>, the Way-out Lemma guarantees the theorem
+      holds for all bounded complexes in <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Hypercohomology Amplitude). <em>
+      An immediate consequence of this derived approach (and Theorem
+      (b)) is that if a complex <span
+      class="math inline">\mathcal{E}^\bullet \in \mathbf{D}^b(X)</span>
+      can be represented by a bounded complex of direct sums of twisting
+      sheaves <span class="math inline">\mathcal{O}_X(k)</span> where
+      <span class="math inline">k &gt; -n-1</span>, its hypercohomology
+      is strictly bounded. The vanishing of the intermediate cohomology
+      of the isolated sheaves strictly limits how far the “ghosts” of
+      the differentials can propagate through the hypercohomology
+      spectral sequence.</em></p>
+      </div>
+      <h4 data-number="4.2.2.3"
+      id="beilinsons-theorem-and-exceptional-collections">Beilinson’s
+      Theorem and Exceptional Collections</h4>
+      <p>While Derived Serre Duality brilliantly generalizes part (d) of
+      Theorem to arbitrary complexes, one might naturally ask: what is
+      the derived-category analogue of parts (a), (b), and (c)?</p>
+      <p>Unlike Serre Duality, which is a universal formula, parts (a),
+      (b), and (c) explicitly compute the exact values and vanishing of
+      the cohomology for the specific sheaves <span
+      class="math inline">\mathcal{O}_X(k)</span>. When generalized to
+      the derived category, these isolated calculations do not simply
+      yield a generic formula for an arbitrary complex <span
+      class="math inline">\mathcal{F}^\bullet</span>. Instead, they
+      reveal the <strong>structural skeleton</strong> of the entire
+      bounded derived category <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(\mathbb{P}^n_A)</span>.</p>
+      <p>The vanishing of intermediate cohomology (Theorem (b))
+      translates directly into the vanishing of higher <span
+      class="math inline">\operatorname{Ext}</span> groups between
+      twisting sheaves, which leads to the powerful concept of an
+      exceptional collection.</p>
+      <div class="definition">
+      <p><strong>Definition 2.4</strong> (Strongly Exceptional
+      Collection). <em> An object <span class="math inline">E \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span> is called
+      <strong>exceptional</strong> if <span
+      class="math inline">\operatorname{Hom}(E, E) = A</span> and <span
+      class="math inline">\operatorname{Ext}^i(E, E) = 0</span> for all
+      <span class="math inline">i \ne 0</span>.</em></p>
+      <p><em>An ordeUniBlue sequence of exceptional objects <span
+      class="math inline">(E_0, E_1, \dots, E_m)</span> is called a
+      <strong>strongly exceptional collection</strong> if for all <span
+      class="math inline">j &gt; i</span> and all <span
+      class="math inline">k \ne 0</span>: <span
+      class="math display">\operatorname{Ext}^k(E_i, E_j) = 0</span> and
+      for all <span class="math inline">j &lt; i</span> and all <span
+      class="math inline">k \in \mathbb{Z}</span>: <span
+      class="math display">\operatorname{Ext}^k(E_i, E_j) =
+      0</span></em></p>
+      </div>
+      <p>Using our base calculations from Theorem , we can prove one of
+      the most celebrated theorems in derived algebraic geometry.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Beilinson’s Exceptional
+      Collection for <span class="math inline">\mathbb{P}^n</span>).
+      <em> Let <span class="math inline">X = \mathbb{P}^n_A</span> over
+      a field (or Noetherian ring) <span class="math inline">A</span>.
+      The sequence of twisting sheaves of length <span
+      class="math inline">n+1</span>: <span class="math display">\left(
+      \mathcal{O}_X, \mathcal{O}_X(1), \dots, \mathcal{O}_X(n)
+      \right)</span> forms a full strongly exceptional collection for
+      <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(\mathbb{P}^n_A)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Let us verify the definition by evaluating the
+      derived Hom spaces, which are equivalent to Ext groups: <span
+      class="math inline">\operatorname{Ext}^k(\mathcal{O}_X(i),
+      \mathcal{O}_X(j)) \cong \operatorname{H}^k(X,
+      \mathcal{O}_X(j-i))</span>. We check the three conditions
+      requiUniBlue for a strongly exceptional collection based entirely
+      on Theorem (a, b, c):</p>
+      <p><strong>1. Exceptional Objects (Self-Hom):</strong> For any
+      <span class="math inline">i</span>, <span
+      class="math inline">\operatorname{H}^k(X, \mathcal{O}_X(i-i)) =
+      \operatorname{H}^k(X, \mathcal{O}_X)</span>. By Theorem (a), <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) = S_0 =
+      A</span>. By Theorem (b, c), <span
+      class="math inline">\operatorname{H}^k(X, \mathcal{O}_X) =
+      0</span> for all <span class="math inline">k &gt; 0</span>. Thus,
+      each <span class="math inline">\mathcal{O}_X(i)</span> is an
+      exceptional object.</p>
+      <p><strong>2. Forward Homomorphisms (<span class="math inline">j
+      &gt; i</span>):</strong> For <span class="math inline">j &gt;
+      i</span>, we have <span class="math inline">0 &lt; j-i \le
+      n</span>. The higher extensions are <span
+      class="math inline">\operatorname{Ext}^k(\mathcal{O}_X(i),
+      \mathcal{O}_X(j)) \cong \operatorname{H}^k(X,
+      \mathcal{O}_X(j-i))</span>. By Theorem (b), the intermediate
+      cohomology groups exactly in this range strictly vanish: <span
+      class="math inline">\operatorname{H}^k(X, \mathcal{O}_X(j-i)) =
+      0</span> for <span class="math inline">k &gt; 0</span>. Therefore,
+      there are no higher extensions mapping forward. (Note: the
+      degree-0 morphisms are given by polynomials of degree <span
+      class="math inline">j-i</span> according to Theorem (a)).</p>
+      <p><strong>3. Backward Homomorphisms (<span class="math inline">j
+      &lt; i</span>):</strong> For <span class="math inline">j &lt;
+      i</span>, we have <span class="math inline">-n \le j-i &lt;
+      0</span>. We must check <span
+      class="math inline">\operatorname{Ext}^k(\mathcal{O}_X(i),
+      \mathcal{O}_X(j)) \cong \operatorname{H}^k(X,
+      \mathcal{O}_X(j-i))</span> for all <span
+      class="math inline">k</span>. For <span class="math inline">k =
+      0</span>, there are no polynomials of negative degree, so <span
+      class="math inline">\operatorname{H}^0 = 0</span> (Theorem (a)).
+      For <span class="math inline">0 &lt; k &lt; n</span>, the
+      cohomology vanishes by Theorem (b). For <span
+      class="math inline">k = n</span>, since the twist <span
+      class="math inline">j-i</span> is bounded strictly between <span
+      class="math inline">0</span> and <span
+      class="math inline">-n-1</span> (i.e., <span
+      class="math inline">-n \le j-i \le -1</span>), it avoids the
+      threshold for non-zero top cohomology requiUniBlue by Theorem (c).
+      Thus, <span class="math inline">\operatorname{H}^n = 0</span>.
+      Consequently, all backward morphisms and extensions completely
+      vanish. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Beilinson’s Equivalence). <em> The
+      term <strong>"full"</strong> implies that this sequence generates
+      the entire derived category. Any bounded complex in <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(\mathbb{P}^n_A)</span>
+      can be constructed via finite exact triangles involving only these
+      <span class="math inline">n+1</span> line bundles. This is the
+      profound legacy of Theorem (a, b, c): it completely reduces the
+      derived category of projective space to the quiver representations
+      of a finite-dimensional algebra.</em></p>
+      </div>
+      <h4 data-number="4.2.2.4"
+      id="derived-euler-characteristic-and-triangulated-additivity">Derived
+      Euler Characteristic and Triangulated Additivity</h4>
+      <p>In <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>, the
+      isolated sheaves are replaced by bounded complexes, the standard
+      cohomology groups are replaced by hypercohomology, and short exact
+      sequences are subsumed by exact triangles.</p>
+      <div class="definition">
+      <p><strong>Definition 2.5</strong> (Derived Euler Characteristic).
+      <em> Let <span class="math inline">X</span> be a projective scheme
+      over a field <span class="math inline">k</span>. For any bounded
+      complex of coherent sheaves <span
+      class="math inline">\mathcal{F}^\bullet \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>, its <strong>Euler
+      characteristic</strong> is defined as the alternating sum of the
+      dimensions of its hypercohomology groups: <span
+      class="math display">\chi(\mathcal{F}^\bullet) := \sum_{i \in
+      \mathbb{Z}} (-1)^i \dim_k \mathbb{H}^i(X, \mathcal{F}^\bullet) =
+      \sum_{i \in \mathbb{Z}} (-1)^i \dim_k
+      \operatorname{H}^i(\mathbf{R}\Gamma(X,
+      \mathcal{F}^\bullet)).</span> Since <span
+      class="math inline">\mathcal{F}^\bullet</span> is bounded and
+      <span class="math inline">X</span> is projective, <span
+      class="math inline">\mathbf{R}\Gamma(X,
+      \mathcal{F}^\bullet)</span> has only finitely many non-zero
+      cohomology groups, each of which is finite-dimensional. Thus, the
+      sum is well-defined and finite.</em></p>
+      </div>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Additivity on Exact Triangles).
+      <em> Let <span class="math inline">X</span> be a projective scheme
+      over a field <span class="math inline">k</span>. If <span
+      class="math display">\mathcal{A}^\bullet \longrightarrow
+      \mathcal{B}^\bullet \longrightarrow \mathcal{C}^\bullet
+      \xrightarrow{+1}</span> is an exact triangle in <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>, then
+      the Euler characteristic is additive: <span
+      class="math display">\chi(\mathcal{B}^\bullet) =
+      \chi(\mathcal{A}^\bullet) +
+      \chi(\mathcal{C}^\bullet).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Because the derived global section functor
+      <span class="math inline">\mathbf{R}\Gamma(X, -)</span> is an
+      exact functor of triangulated categories, applying it to our exact
+      triangle yields an exact triangle in the derived category of <span
+      class="math inline">k</span>-vector spaces <span
+      class="math inline">\mathbf{D}^b(k\text{-Vect})</span>: <span
+      class="math display">\mathbf{R}\Gamma(X, \mathcal{A}^\bullet)
+      \longrightarrow \mathbf{R}\Gamma(X, \mathcal{B}^\bullet)
+      \longrightarrow \mathbf{R}\Gamma(X, \mathcal{C}^\bullet)
+      \xrightarrow{+1}</span> Taking the cohomology of this exact
+      triangle produces the standard long exact sequence of
+      hypercohomology groups: <span class="math display">\cdots
+      \longrightarrow \mathbb{H}^i(X, \mathcal{A}^\bullet)
+      \longrightarrow \mathbb{H}^i(X, \mathcal{B}^\bullet)
+      \longrightarrow \mathbb{H}^i(X, \mathcal{C}^\bullet)
+      \longrightarrow \mathbb{H}^{i+1}(X, \mathcal{A}^\bullet)
+      \longrightarrow \cdots</span> By the Rank-Nullity Theorem in
+      linear algebra, the alternating sum of the dimensions of the
+      vector spaces in any bounded exact sequence is equal to zero.
+      Therefore: <span class="math display">\sum_{i \in \mathbb{Z}}
+      (-1)^i \dim_k \mathbb{H}^i(X, \mathcal{A}^\bullet) - \sum_{i \in
+      \mathbb{Z}} (-1)^i \dim_k \mathbb{H}^i(X, \mathcal{B}^\bullet) +
+      \sum_{i \in \mathbb{Z}} (-1)^i \dim_k \mathbb{H}^i(X,
+      \mathcal{C}^\bullet) = 0.</span> Rearranging this equation gives
+      precisely <span class="math inline">\chi(\mathcal{A}^\bullet) -
+      \chi(\mathcal{B}^\bullet) + \chi(\mathcal{C}^\bullet) = 0</span>,
+      which completes the proof. ◻</p>
+      </div>
+      <p>This triangulated additivity yields a remarkably practical
+      corollary for actually computing the Euler characteristic of a
+      complex without needing to compute its hypercohomology or spectral
+      sequences.</p>
+      <div class="corollary">
+      <p><strong>Corollary 2.1</strong> (Euler Characteristic via
+      Components and Cohomology Sheaves). <em> For any bounded complex
+      <span class="math inline">\mathcal{F}^\bullet \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>, its Euler characteristic
+      can be computed by taking the alternating sum of the classical
+      Euler characteristics of its individual component sheaves, or
+      alternatively, of its cohomology sheaves: <span
+      class="math display">\chi(\mathcal{F}^\bullet) = \sum_{p \in
+      \mathbb{Z}} (-1)^p \chi(\mathcal{F}^p) = \sum_{p \in \mathbb{Z}}
+      (-1)^p \chi(\mathcal{H}^p(\mathcal{F}^\bullet)).</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Any bounded complex <span
+      class="math inline">\mathcal{F}^\bullet</span> can be
+      systematically filtered by "stupid truncations" <span
+      class="math inline">\sigma_{\ge p}\mathcal{F}^\bullet</span>,
+      which generate exact triangles of the form: <span
+      class="math display">\mathcal{F}^p[-p] \longrightarrow \sigma_{\ge
+      p}\mathcal{F}^\bullet \longrightarrow \sigma_{\ge
+      p+1}\mathcal{F}^\bullet \xrightarrow{+1}</span> Applying Theorem
+      inductively (or simply using the Way-out Lemma), the Euler
+      characteristic of the entire complex decomposes into the sum of
+      the Euler characteristics of its individual terms <span
+      class="math inline">\mathcal{F}^p[-p]</span>. Since shifting a
+      complex by <span class="math inline">[-p]</span> shifts its
+      hypercohomology degrees by <span class="math inline">p</span>, we
+      have <span class="math inline">\chi(\mathcal{G}^\bullet[-p]) =
+      (-1)^p \chi(\mathcal{G}^\bullet)</span>. Treating each <span
+      class="math inline">\mathcal{F}^p</span> as a complex concentrated
+      in degree 0, we obtain <span
+      class="math inline">\chi(\mathcal{F}^\bullet) = \sum (-1)^p
+      \chi(\mathcal{F}^p)</span>. The identical logic applied to
+      "canonical truncations" <span class="math inline">\tau_{\le
+      p}\mathcal{F}^\bullet</span> (which isolate the cohomology
+      sheaves) yields the second equality <span
+      class="math inline">\chi(\mathcal{F}^\bullet) = \sum (-1)^p
+      \chi(\mathcal{H}^p(\mathcal{F}^\bullet))</span>. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (The Grothendieck Group <span
+      class="math inline">K_0(X)</span>). <em> Theorem indicates that
+      the Euler characteristic <span class="math inline">\chi:
+      \operatorname{Ob}(\mathbf{D}^b_{\mathrm{coh}}(X)) \to
+      \mathbb{Z}</span> is a "universal additive invariant". It formally
+      factors through the <strong>Grothendieck group</strong> <span
+      class="math inline">K_0(\mathbf{D}^b_{\mathrm{coh}}(X))</span>,
+      which is defined as the free Abelian group generated by the
+      objects of <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>, modulo
+      the relation <span class="math inline">[\mathcal{B}^\bullet] =
+      [\mathcal{A}^\bullet] + [\mathcal{C}^\bullet]</span> for every
+      exact triangle. In modern algebraic geometry, <span
+      class="math inline">K_0(X)</span> completely abstracts this
+      additive behavior.</em></p>
+      </div>
+      <h4 data-number="4.2.2.5"
+      id="the-hilbert-polynomial-in-the-derived-category">The Hilbert
+      Polynomial in the Derived Category</h4>
+      <p>The additivity of the Euler characteristic provides a powerful
+      mechanism to study the asymptotic behavior of a coherent sheaf
+      under twisting. We first establish the foundational existence
+      theorem for an isolated coherent sheaf using a classical geometric
+      argument, and then elegantly elevate it to the derived category
+      using our triangulated tools.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Existence of the Hilbert
+      Polynomial). <em> Let <span class="math inline">X</span> be a
+      projective scheme over a field <span class="math inline">k</span>,
+      <span class="math inline">\mathcal{O}_X(1)</span> a very ample
+      invertible sheaf, and <span class="math inline">\mathcal{F}</span>
+      a coherent sheaf. Then there exists a polynomial <span
+      class="math inline">P(z) \in \mathbb{Q}[z]</span> such that for
+      all <span class="math inline">n</span> sufficiently large: <span
+      class="math display">\chi(\mathcal{F}(n)) = P(n).</span> This
+      polynomial is called the <strong>Hilbert Polynomial</strong> of
+      <span class="math inline">\mathcal{F}</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We proceed by induction on <span
+      class="math inline">d = \dim(\operatorname{Supp}
+      \mathcal{F})</span>.</p>
+      <p><strong>Base Case (<span class="math inline">d =
+      0</span>):</strong> If the support of <span
+      class="math inline">\mathcal{F}</span> has dimension 0, it
+      consists of a finite set of closed points. In this case, <span
+      class="math inline">\mathcal{F}</span> is a skyscraper sheaf (an
+      Artinian module over the local rings). Tensoring with <span
+      class="math inline">\mathcal{O}_X(n)</span> does not change the
+      dimension of the global sections because <span
+      class="math inline">\mathcal{O}_X(n)</span> is locally trivial and
+      the support is discrete. Consequently, <span
+      class="math inline">\operatorname{H}^i(X, \mathcal{F}(n)) =
+      0</span> for <span class="math inline">i &gt; 0</span>, and <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{F}(n)) \cong
+      \operatorname{H}^0(X, \mathcal{F})</span>. Thus, <span
+      class="math inline">\chi(\mathcal{F}(n))</span> is a constant,
+      which is a polynomial of degree 0.</p>
+      <p><strong>Inductive Step (<span class="math inline">d &gt;
+      0</span>):</strong> Assume the theorem holds for all sheaves with
+      support dimension <span class="math inline">&lt; d</span>. Let
+      <span class="math inline">X \hookrightarrow \mathbb{P}^N_k</span>
+      be the embedding via <span
+      class="math inline">\mathcal{O}_X(1)</span>. Let <span
+      class="math inline">x \in \operatorname{H}^0(X,
+      \mathcal{O}_X(1))</span> be a linear form defining a hyperplane
+      <span class="math inline">H</span>. Consider the multiplication
+      map <span class="math inline">\mathcal{F}(-1) \xrightarrow{x}
+      \mathcal{F}</span>. Let <span
+      class="math inline">\mathcal{K}</span> be the kernel and <span
+      class="math inline">\mathcal{Q}</span> be the cokernel. We have an
+      exact sequence: <span class="math display">0 \longrightarrow
+      \mathcal{K} \longrightarrow \mathcal{F}(-1) \xrightarrow{x}
+      \mathcal{F} \longrightarrow \mathcal{Q} \longrightarrow 0.</span>
+      Twisting this sequence by <span class="math inline">n</span>
+      (which preserves exactness since <span
+      class="math inline">\mathcal{O}_X(n)</span> is locally free):
+      <span class="math display">0 \longrightarrow \mathcal{K}(n)
+      \longrightarrow \mathcal{F}(n-1) \longrightarrow \mathcal{F}(n)
+      \longrightarrow \mathcal{Q}(n) \longrightarrow 0.</span> By the
+      additivity of the Euler characteristic (splitting the 4-term
+      sequence into two short exact sequences), we obtain: <span
+      class="math display">\chi(\mathcal{F}(n)) - \chi(\mathcal{F}(n-1))
+      = \chi(\mathcal{Q}(n)) - \chi(\mathcal{K}(n)).</span></p>
+      <p>To apply the induction hypothesis, we must ensure the
+      dimensions drop. The support of <span
+      class="math inline">\mathcal{Q}</span> is exactly <span
+      class="math inline">\operatorname{Supp}(\mathcal{F}) \cap
+      H</span>. Since <span class="math inline">\mathcal{O}_X(1)</span>
+      is very ample, we can choose a hyperplane <span
+      class="math inline">H</span> (defined by <span
+      class="math inline">x</span>) such that <span
+      class="math inline">H</span> does not contain any irreducible
+      component of <span
+      class="math inline">\operatorname{Supp}(\mathcal{F})</span>. With
+      such a choice: 1. <span class="math inline">x</span> is not
+      identically zero on any component of <span
+      class="math inline">\operatorname{Supp}(\mathcal{F})</span>, so
+      <span class="math inline">\dim \operatorname{Supp} \mathcal{Q}
+      &lt; d</span>. 2. Since <span class="math inline">x</span> is not
+      a zero-divisor on the generic points of <span
+      class="math inline">\mathcal{F}</span>, the kernel <span
+      class="math inline">\mathcal{K}</span> is supported strictly on a
+      proper closed subset, so <span class="math inline">\dim
+      \operatorname{Supp} \mathcal{K} &lt; d</span>.</p>
+      <p>By the induction hypothesis, <span
+      class="math inline">\chi(\mathcal{Q}(n))</span> is a polynomial
+      <span class="math inline">P_Q(n)</span> and <span
+      class="math inline">\chi(\mathcal{K}(n))</span> is a polynomial
+      <span class="math inline">P_K(n)</span> for large <span
+      class="math inline">n</span>. Letting <span
+      class="math inline">R(n) = P_Q(n) - P_K(n)</span>, we have the
+      relation: <span class="math display">\chi(\mathcal{F}(n)) -
+      \chi(\mathcal{F}(n-1)) = R(n) \quad \text{for } n \gg 0.</span> A
+      fundamental lemma in numerical polynomials states that if <span
+      class="math inline">f(n) - f(n-1)</span> is a polynomial in <span
+      class="math inline">n</span>, then <span
+      class="math inline">f(n)</span> is itself a polynomial in <span
+      class="math inline">n</span> (of degree one higher) for large
+      <span class="math inline">n</span>. Thus, <span
+      class="math inline">\chi(\mathcal{F}(n))</span> is a polynomial
+      for large <span class="math inline">n</span>. ◻</p>
+      </div>
+      <p>With the classical theorem established, the triangulated
+      additivity from the previous section allows us to bypass any
+      complex geometric hyperplane constructions for bounded
+      complexes.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Derived Hilbert Polynomial). <em>
+      Let <span class="math inline">X</span> be a projective scheme over
+      a field <span class="math inline">k</span> with a very ample
+      invertible sheaf <span
+      class="math inline">\mathcal{O}_X(1)</span>. For any bounded
+      complex of coherent sheaves <span
+      class="math inline">\mathcal{F}^\bullet \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>, the Euler characteristic
+      <span class="math inline">\chi(\mathcal{F}^\bullet(n))</span>
+      agrees with a polynomial <span
+      class="math inline">P_{\mathcal{F}^\bullet}(n) \in
+      \mathbb{Q}[z]</span> for all <span class="math inline">n</span>
+      sufficiently large.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> Recall that the twist of a complex is defined
+      via the derived tensor product <span
+      class="math inline">\mathcal{F}^\bullet(n) := \mathcal{F}^\bullet
+      \otimes^{\mathbf{L}}_{\mathcal{O}_X} \mathcal{O}_X(n)</span>.
+      Since <span class="math inline">\mathcal{O}_X(n)</span> is locally
+      free (and hence flat), the derived tensor product coincides with
+      the standard term-wise tensor product, and it is an exact functor.
+      Therefore, it commutes with taking cohomology sheaves: <span
+      class="math display">\mathcal{H}^i(\mathcal{F}^\bullet(n)) \cong
+      \mathcal{H}^i(\mathcal{F}^\bullet) \otimes_{\mathcal{O}_X}
+      \mathcal{O}_X(n) = \mathcal{H}^i(\mathcal{F}^\bullet)(n).</span>
+      By Corollary  (Euler Characteristic via Cohomology Sheaves), the
+      Euler characteristic of the complex is the alternating sum of the
+      Euler characteristics of its cohomology sheaves: <span
+      class="math display">\chi(\mathcal{F}^\bullet(n)) = \sum_{i \in
+      \mathbb{Z}} (-1)^i
+      \chi\left(\mathcal{H}^i(\mathcal{F}^\bullet(n))\right) = \sum_{i
+      \in \mathbb{Z}} (-1)^i
+      \chi\left(\mathcal{H}^i(\mathcal{F}^\bullet)(n)\right).</span>
+      Since <span class="math inline">\mathcal{F}^\bullet \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>, it has only finitely many
+      non-zero cohomology sheaves, and each <span
+      class="math inline">\mathcal{H}^i(\mathcal{F}^\bullet)</span> is a
+      coherent sheaf. By Theorem , each <span
+      class="math inline">\chi\left(\mathcal{H}^i(\mathcal{F}^\bullet)(n)\right)</span>
+      is a polynomial <span class="math inline">P_i(n)</span> for <span
+      class="math inline">n \gg 0</span>. Consequently, <span
+      class="math inline">\chi(\mathcal{F}^\bullet(n))</span> is simply
+      a finite alternating sum of polynomials, which is inherently a
+      polynomial. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Invariants in the Derived
+      Category). <em> The derived Hilbert polynomial naturally inherits
+      the additivity on exact triangles. It demonstrates that vital
+      numerical invariants of a complex, such as its rank, degree, and
+      the geometric dimension of its support, can be fully extracted
+      from its cohomology sheaves without losing any information to the
+      differentials.</em></p>
+      </div>
+      <h4 data-number="4.2.2.6" id="arithmetic-genus">Arithmetic
+      Genus</h4>
+      <p>Finally, we introduce the concept of the arithmetic genus of a
+      projective scheme, which is likewise defined in terms of the Euler
+      characteristic. It is worth noting that when <span
+      class="math inline">X</span> is an integral scheme over an
+      algebraically closed field (corresponding to a classical algebraic
+      variety, even without the finite type assumption), the arithmetic
+      genus can be expressed directly through the dimensions of the
+      cohomology groups. In particular, when <span
+      class="math inline">X</span> is a curve (dimension 1), the
+      arithmetic genus coincides with the dimension of the first
+      cohomology group.</p>
+      <div class="definition">
+      <p><strong>Definition 2.6</strong> (Arithmetic Genus). <em> Let
+      <span class="math inline">X</span> be a projective scheme of
+      dimension <span class="math inline">r</span> over a field <span
+      class="math inline">k</span>. The <strong>arithmetic
+      genus</strong> <span class="math inline">p_a(X)</span> is defined
+      by: <span class="math display">p_a(X) = (-1)^r(\chi(\mathcal{O}_X)
+      - 1).</span></em></p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Intrinsic Nature). <em> This
+      definition depends only on the intrinsic structure of <span
+      class="math inline">X</span> (specifically, its structure sheaf
+      <span class="math inline">\mathcal{O}_X</span>), and is completely
+      independent of the choice of projective embedding.</em></p>
+      </div>
+      <div class="proposition">
+      <p><strong>Proposition 2.1</strong> (Genus of Integral Schemes).
+      <em> If <span class="math inline">X</span> is an
+      <strong>integral</strong> projective scheme over an
+      <strong>algebraically closed</strong> field <span
+      class="math inline">k</span>, then <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) \cong
+      k</span>. Consequently: <span class="math display">p_a(X) =
+      \sum_{i=0}^{r-1} (-1)^i \dim_k \operatorname{H}^{r-i}(X,
+      \mathcal{O}_X).</span> In particular, if <span
+      class="math inline">X</span> is a curve (<span
+      class="math inline">r = 1</span>), then <span
+      class="math inline">p_a(X) = \dim_k \operatorname{H}^1(X,
+      \mathcal{O}_X)</span>.</em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> We divide the proof into three logical
+      steps.</p>
+      <p><strong>1. Global Sections are Constants:</strong> Since <span
+      class="math inline">X</span> is proper over <span
+      class="math inline">k</span>, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X)</span> is
+      a finite-dimensional <span class="math inline">k</span>-algebra.
+      Since <span class="math inline">X</span> is integral, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X)</span> is
+      an integral domain. A finite-dimensional domain over a field is
+      necessarily a field (since multiplication by any non-zero element
+      is an injective linear map, which must be surjective by dimension
+      counting). Thus, <span class="math inline">\operatorname{H}^0(X,
+      \mathcal{O}_X)</span> is a finite field extension of <span
+      class="math inline">k</span>. Since <span
+      class="math inline">k</span> is algebraically closed, it admits no
+      non-trivial finite extensions. Therefore, <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}_X) \cong
+      k</span>, which implies <span class="math inline">\dim_k
+      \operatorname{H}^0(X, \mathcal{O}_X) = 1</span>.</p>
+      <p><strong>2. The Formula:</strong> We substitute the expanded
+      Euler characteristic <span class="math inline">\chi(\mathcal{O}_X)
+      = \sum_{j=0}^r (-1)^j h^j(\mathcal{O}_X)</span> into the
+      definition of the arithmetic genus: <span
+      class="math display">p_a(X) = (-1)^r \left( [h^0 - h^1 + \cdots +
+      (-1)^r h^r] - 1 \right).</span> Using <span
+      class="math inline">h^0 = 1</span> from Step 1, the first term
+      cancels the <span class="math inline">-1</span>: <span
+      class="math display">p_a(X) = (-1)^r \sum_{j=1}^r (-1)^j
+      h^j(\mathcal{O}_X) = \sum_{j=1}^r (-1)^{r+j}
+      h^j(\mathcal{O}_X).</span> Let <span class="math inline">i = r -
+      j</span>. As <span class="math inline">j</span> ranges from <span
+      class="math inline">1</span> to <span
+      class="math inline">r</span>, the new index <span
+      class="math inline">i</span> ranges from <span
+      class="math inline">r-1</span> down to <span
+      class="math inline">0</span>. The exponent becomes <span
+      class="math inline">r + (r-i) = 2r - i</span>. Since <span
+      class="math inline">2r</span> is even, <span
+      class="math inline">(-1)^{2r-i} = (-1)^{-i} = (-1)^i</span>. Thus,
+      we obtain: <span class="math display">p_a(X) = \sum_{i=0}^{r-1}
+      (-1)^i h^{r-i}(X, \mathcal{O}_X).</span></p>
+      <p><strong>3. The Curve Case (<span
+      class="math inline">r=1</span>):</strong> If the dimension is
+      <span class="math inline">r=1</span>, the sum runs solely from
+      <span class="math inline">i=0</span> to <span
+      class="math inline">0</span>: <span class="math display">p_a(X) =
+      (-1)^0 h^{1-0}(\mathcal{O}_X) = h^1(\mathcal{O}_X).</span> This
+      completes the proof. ◻</p>
+      </div>
+      <div class="remark">
+      <p><strong>Remark 2.1</strong> (Derived Category Perspective).
+      <em> In the context of the derived category <span
+      class="math inline">\mathbf{D}^b_{\mathrm{coh}}(X)</span>, the
+      structure sheaf <span class="math inline">\mathcal{O}_X</span>
+      acts as the identity object for the derived tensor product <span
+      class="math inline">\otimes^{\mathbf{L}}</span>. The arithmetic
+      genus can therefore be viewed as a normalized measure of the
+      hypercohomology of the monoidal unit object <span
+      class="math inline">\mathcal{O}_X \in
+      \mathbf{D}^b_{\mathrm{coh}}(X)</span>. Because it is built from
+      the Euler characteristic, it is a strictly additive invariant on
+      exact triangles.</em></p>
+      </div>
+      <h4 data-number="4.2.2.7"
+      id="examples-of-projective-schemes">Examples of Projective
+      Schemes</h4>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (Euler Characteristic and Genus of
+      <span class="math inline">\mathbb{P}^k</span>). <em> Let <span
+      class="math inline">X = \mathbb{P}^k_A</span> over a Noetherian
+      ring <span class="math inline">A</span>. We compute the invariants
+      for the twisted structure sheaves <span
+      class="math inline">\mathcal{O}_X(n)</span>.</em></p>
+      <p><em><strong>1. Euler Characteristic <span
+      class="math inline">\chi(\mathcal{O}_X(n))</span>:</strong> By
+      <strong>Serre’s Calculation</strong>, the cohomology of <span
+      class="math inline">\mathbb{P}^k</span> is concentrated in degrees
+      <span class="math inline">0</span> and <span
+      class="math inline">k</span>.</em></p>
+      <ul>
+      <li><p><em>For <span class="math inline">n \ge 0</span>: <span
+      class="math inline">\operatorname{H}^0(X, \mathcal{O}(n))</span>
+      is the free <span class="math inline">A</span>-module of
+      homogeneous polynomials of degree <span
+      class="math inline">n</span> in <span
+      class="math inline">k+1</span> variables. Its rank is the
+      combinatorial number <span
+      class="math inline">\binom{n+k}{k}</span>. All higher cohomology
+      vanishes. <span class="math display">\chi(\mathcal{O}_X(n)) = h^0
+      - h^1 + \dots = \binom{n+k}{k}.</span></em></p></li>
+      <li><p><em>For <span class="math inline">n &lt; 0</span>: The
+      formula still holds as a polynomial. Specifically, for <span
+      class="math inline">n \ll 0</span>, only <span
+      class="math inline">\operatorname{H}^k</span> is non-zero. By
+      Serre Duality, <span
+      class="math inline">\operatorname{H}^k(\mathcal{O}(n)) \cong
+      \operatorname{H}^0(\mathcal{O}(-n-k-1))^\vee</span>. The rank is
+      <span class="math inline">\binom{(-n-k-1)+k}{k} =
+      \binom{-n-1}{k}</span>. Combinatorially, <span
+      class="math inline">\binom{n+k}{k} = (-1)^k \binom{-n-1}{k}</span>
+      is a standard identity.</em></p></li>
+      </ul>
+      <p><em>Thus, the Hilbert polynomial of <span
+      class="math inline">\mathbb{P}^k</span> is: <span
+      class="math display">P_{\mathbb{P}^k}(z) = \binom{z+k}{k} =
+      \frac{(z+k)(z+k-1)\dots(z+1)}{k!}.</span></em></p>
+      <p><em><strong>2. Arithmetic Genus:</strong> Using the definition
+      <span class="math inline">p_a(X) = (-1)^k (\chi(\mathcal{O}_X) -
+      1)</span>: <span class="math display">\chi(\mathcal{O}_X) =
+      P_{\mathbb{P}^k}(0) = \binom{k}{k} = 1.</span> Therefore: <span
+      class="math display">p_a(\mathbb{P}^k) = (-1)^k (1 - 1) =
+      0.</span> This confirms that projective spaces are "genus zero"
+      objects.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (Degree and Genus of a Plane
+      Curve). <em> Let <span class="math inline">X</span> be a curve in
+      <span class="math inline">\mathbb{P}^2_k</span> defined by a
+      single homogeneous polynomial <span class="math inline">f \in S =
+      k[x_0, x_1, x_2]</span> of degree <span
+      class="math inline">d</span>. We view <span
+      class="math inline">X</span> as the closed subscheme <span
+      class="math inline">\operatorname{Proj}(S/(f))</span>.</em></p>
+      <p><em><strong>1. The Fundamental Exact Sequence:</strong> We
+      start with the sequence of graded <span
+      class="math inline">S</span>-modules: <span class="math display">0
+      \longrightarrow S(-d) \xrightarrow{\cdot f} S \longrightarrow
+      S/(f) \longrightarrow 0.</span> <em>Why is this
+      exact?</em></em></p>
+      <ul>
+      <li><p><em>The map <span class="math inline">S \to S/(f)</span> is
+      the canonical projection, so it is surjective
+      (cokernel).</em></p></li>
+      <li><p><em>The map <span class="math inline">S(-d)
+      \xrightarrow{\cdot f} S</span> is multiplication by <span
+      class="math inline">f</span>. Since <span class="math inline">S =
+      k[x_0, x_1, x_2]</span> is an <strong>integral domain</strong> and
+      <span class="math inline">f \neq 0</span>, this multiplication map
+      is <strong>injective</strong> (no zero divisors).</em></p></li>
+      <li><p><em>The shift <span class="math inline">(-d)</span> ensures
+      the map preserves degree: an element of degree <span
+      class="math inline">n</span> in <span
+      class="math inline">S(-d)</span> (which is degree <span
+      class="math inline">n-d</span> in <span
+      class="math inline">S</span>) maps to degree <span
+      class="math inline">(n-d)+d = n</span>.</em></p></li>
+      </ul>
+      <p><em>Applying the sheafification functor (which is exact), we
+      obtain the short exact sequence of sheaves on <span
+      class="math inline">\mathbb{P}^2</span>: <span
+      class="math display">0 \longrightarrow
+      \mathcal{O}_{\mathbb{P}^2}(-d) \longrightarrow
+      \mathcal{O}_{\mathbb{P}^2} \longrightarrow \iota_* \mathcal{O}_X
+      \longrightarrow 0,</span> where <span class="math inline">\iota: X
+      \hookrightarrow \mathbb{P}^2</span> is the inclusion. We will
+      denote <span class="math inline">\iota_* \mathcal{O}_X</span>
+      simply as <span class="math inline">\mathcal{O}_X</span>.</em></p>
+      <p><em><strong>2. The Hilbert Polynomial:</strong> We twist the
+      sequence by <span class="math inline">\mathcal{O}(n)</span>
+      (preserving exactness): <span class="math display">0
+      \longrightarrow \mathcal{O}_{\mathbb{P}^2}(n-d) \longrightarrow
+      \mathcal{O}_{\mathbb{P}^2}(n) \longrightarrow \mathcal{O}_X(n)
+      \longrightarrow 0.</span> Using the additivity of the Euler
+      characteristic: <span class="math display">\chi(\mathcal{O}_X(n))
+      = \chi(\mathcal{O}_{\mathbb{P}^2}(n)) -
+      \chi(\mathcal{O}_{\mathbb{P}^2}(n-d)).</span> Substituting the
+      formula from Example 1 (with <span
+      class="math inline">k=2</span>): <span class="math display">P_X(n)
+      = \binom{n+2}{2} - \binom{(n-d)+2}{2} = \frac{(n+2)(n+1)}{2} -
+      \frac{(n-d+2)(n-d+1)}{2}.</span> Expanding the terms: <span
+      class="math display">\begin{align*}
+              P_X(n) &amp;= \frac{1}{2} \left[ (n^2+3n+2) - ((n-d)^2 +
+      3(n-d) + 2) \right] \\
+              &amp;= \frac{1}{2} \left[ n^2+3n+2 - (n^2 - 2dn +
+      \operatorname{d}^2 + 3n - 3d + 2) \right] \\
+              &amp;= \frac{1}{2} \left[ 2dn - \operatorname{d}^2 + 3d
+      \right] \\
+              &amp;= d \cdot n + \frac{3d - \operatorname{d}^2}{2}.
+      \end{align*}</span></em></p>
+      <p><em><strong>Interpretation:</strong></em></p>
+      <ul>
+      <li><p><em><strong>Degree:</strong> The leading coefficient is
+      <span class="math inline">d</span>, which matches the degree of
+      the curve (intersection number with a line).</em></p></li>
+      <li><p><em><strong>Constant Term:</strong> The constant term is
+      <span class="math inline">\frac{3d -
+      \operatorname{d}^2}{2}</span>.</em></p></li>
+      </ul>
+      <p><em><strong>3. The Genus Formula:</strong> Since <span
+      class="math inline">X</span> is a curve (dimension 1), its
+      arithmetic genus is defined as: <span class="math display">p_a(X)
+      = 1 - \chi(\mathcal{O}_X).</span> We calculate <span
+      class="math inline">\chi(\mathcal{O}_X) = P_X(0)</span>: <span
+      class="math display">\chi(\mathcal{O}_X) = \frac{3d -
+      \operatorname{d}^2}{2}.</span> Therefore: <span
+      class="math display">p_a(X) = 1 - \frac{3d -
+      \operatorname{d}^2}{2} = \frac{2 - 3d + \operatorname{d}^2}{2} =
+      \frac{(d-1)(d-2)}{2}.</span> This recovers the famous
+      <strong>Degree-Genus Formula</strong> for plane curves. (e.g.,
+      line <span class="math inline">d=1 \implies p_a=0</span>; cubic
+      <span class="math inline">d=3 \implies p_a=1</span>).</em></p>
+      </div>
+      <p>Let <span class="math inline">X \subset \mathbb{P}^N</span> be
+      a hypersurface defined by a homogeneous polynomial of degree <span
+      class="math inline">d</span>. The structure sheaf fits into the
+      short exact sequence: <span class="math display">0 \longrightarrow
+      \mathcal{O}_{\mathbb{P}^N}(-d) \longrightarrow
+      \mathcal{O}_{\mathbb{P}^N} \longrightarrow \mathcal{O}_X
+      \longrightarrow 0.</span></p>
+      <p><strong>1. Hilbert Polynomial:</strong> Using the additivity of
+      the Euler characteristic and the known formula for projective
+      space <span
+      class="math inline">\chi(\mathcal{O}_{\mathbb{P}^N}(k)) =
+      \binom{k+N}{N}</span>: <span class="math display">P_X(n) =
+      \binom{n+N}{N} - \binom{n-d+N}{N}.</span></p>
+      <p><strong>2. Arithmetic Genus:</strong> The arithmetic genus is
+      defined as <span class="math inline">p_a(X) = (-1)^{\dim X}
+      (\chi(\mathcal{O}_X) - 1)</span>. Note that <span
+      class="math inline">\dim X = N-1</span>. Calculating <span
+      class="math inline">\chi(\mathcal{O}_X) = P_X(0)</span>: <span
+      class="math display">\chi(\mathcal{O}_X) = \binom{N}{N} -
+      \binom{N-d}{N} = 1 - \binom{N-d}{N}.</span> Using the
+      combinatorial identity <span class="math inline">\binom{-k}{r} =
+      (-1)^r \binom{k+r-1}{r}</span>, we treat <span
+      class="math inline">\binom{N-d}{N}</span> as <span
+      class="math inline">\binom{-(d-N)}{N}</span>: <span
+      class="math display">\binom{N-d}{N} = (-1)^N \binom{(d-N)+N-1}{N}
+      = (-1)^N \binom{d-1}{N}.</span> Substituting back into the genus
+      formula: <span class="math display">\begin{align*}
+              p_a(X) &amp;= (-1)^{N-1} \left( [1 - (-1)^N
+      \binom{d-1}{N}] - 1 \right) \\
+              &amp;= (-1)^{N-1} \left( - (-1)^N \binom{d-1}{N} \right)
+      \\
+              &amp;= (-1)^{2N-1} (-1) \binom{d-1}{N} \\
+              &amp;= \binom{d-1}{N}.
+      \end{align*}</span> For example, a plane curve (<span
+      class="math inline">N=2</span>) has <span class="math inline">p_a
+      = \binom{d-1}{2}</span>, consistent with the previous section.</p>
+      <div class="theorem">
+      <p><strong>Theorem 2.1</strong> (Invariants of Complete
+      Intersections). <em> Let <span class="math inline">X \subset
+      \mathbb{P}^N</span> be a <strong>complete intersection</strong>
+      defined by <span class="math inline">m</span> homogeneous
+      polynomials <span class="math inline">f_1, \dots, f_m</span> of
+      degrees <span class="math inline">d_1, \dots, d_m</span>. The
+      structure sheaf <span class="math inline">\mathcal{O}_X</span> is
+      resolved by the <strong>Koszul Complex</strong> <span
+      class="math inline">\mathcal{K}_\bullet(f_1, \dots, f_m)</span>:
+      <span class="math display">0 \to \mathcal{L}_m \to \dots \to
+      \mathcal{L}_2 \to \mathcal{L}_1 \to \mathcal{O}_{\mathbb{P}^N} \to
+      \mathcal{O}_X \to 0.</span> The term <span
+      class="math inline">\mathcal{L}_k</span> corresponds to the <span
+      class="math inline">k</span>-th exterior power of the direct sum
+      of line bundles corresponding to the equations. Explicitly: <span
+      class="math display">\mathcal{L}_k = \bigwedge^k \left(
+      \bigoplus_{i=1}^m \mathcal{O}(-d_i) \right) \cong \bigoplus_{1 \le
+      i_1 &lt; \dots &lt; i_k \le m} \mathcal{O}_{\mathbb{P}^N}\left(
+      -\sum_{j=1}^k d_{i_j} \right).</span></em></p>
+      <p><em><strong>1. Euler Characteristic via
+      Inclusion-Exclusion:</strong> By the additivity of Euler
+      characteristic on long exact sequences, <span
+      class="math inline">\chi(\mathcal{O}_X)</span> is the alternating
+      sum of the characteristics of the resolution terms: <span
+      class="math display">\chi(\mathcal{O}_X(n)) = \sum_{k=0}^m (-1)^k
+      \chi(\mathcal{L}_k(n)).</span> Substituting the binomial formula
+      for each summand: <span
+      class="math display">\chi(\mathcal{O}_X(n)) = \sum_{k=0}^{m}
+      (-1)^k \sum_{1 \le i_1 &lt; \dots &lt; i_k \le m} \binom{n -
+      (\operatorname{d}_{i_1} + \dots + d_{i_k}) + N}{N}.</span> (Note:
+      The <span class="math inline">k=0</span> term is <span
+      class="math inline">\binom{n+N}{N}</span>, corresponding to <span
+      class="math inline">\mathcal{O}_{\mathbb{P}^N}(n)</span>).</em></p>
+      <p><em><strong>2. Arithmetic Genus:</strong> Setting <span
+      class="math inline">n=0</span> to find <span
+      class="math inline">\chi(\mathcal{O}_X)</span>, and using <span
+      class="math inline">p_a(X) = (-1)^{\dim X}(\chi(\mathcal{O}_X) -
+      1)</span> where <span class="math inline">\dim X = N-m</span>:
+      <span class="math display">p_a(X) = (-1)^{N-m} \left[ \left(
+      \sum_{k=0}^m (-1)^k \sum_{1 \le i_1 &lt; \dots &lt; i_k \le m}
+      \binom{N - \sum d_{i_j}}{N} \right) - 1 \right].</span></em></p>
+      </div>
+      <div class="proof">
+      <p><em>Proof.</em> The proof consists of three main steps:
+      constructing the algebraic Koszul complex, establishing its
+      exactness via the Regular Sequence property, and computing the
+      Euler characteristic via sheafification.</p>
+      <p><strong>Step 1: Construction of the Algebraic Koszul
+      Complex</strong> Let <span class="math inline">S = k[x_0, \dots,
+      x_N]</span> be the graded polynomial ring. Let <span
+      class="math inline">M</span> be a graded <span
+      class="math inline">S</span>-module. For a single homogeneous
+      element <span class="math inline">f \in S</span> of degree <span
+      class="math inline">d</span>, we define the elementary complex
+      <span class="math inline">K_\bullet(f)</span> as: <span
+      class="math display">0 \longrightarrow S(-d) \xrightarrow{\cdot f}
+      S \longrightarrow 0,</span> concentrated in homological degrees 1
+      and 0. For the sequence of polynomials <span
+      class="math inline">\mathsf{f} = (f_1, \dots, f_m)</span>, the
+      <strong>Koszul complex</strong> <span
+      class="math inline">K_\bullet(\mathsf{f})</span> is defined as the
+      tensor product of these elementary complexes over <span
+      class="math inline">S</span>: <span
+      class="math display">K_\bullet(\mathsf{f}) := K_\bullet(f_1)
+      \otimes_S K_\bullet(f_2) \otimes_S \dots \otimes_S
+      K_\bullet(f_m).</span> The terms of this complex are exterior
+      powers of the free module <span class="math inline">E =
+      \bigoplus_{i=1}^m S(-d_i)</span>. Specifically, the term in degree
+      <span class="math inline">k</span> is: <span
+      class="math display">K_k \cong \bigwedge^k E = \bigwedge^k \left(
+      \bigoplus_{i=1}^m S(-d_i) \right) \cong \bigoplus_{1 \le i_1 &lt;
+      \dots &lt; i_k \le m} S\left( -\sum_{j=1}^k d_{i_j}
+      \right).</span> The boundary maps are given by the standard
+      differential of the exterior algebra contraction with the vector
+      <span class="math inline">(f_1, \dots, f_m)</span>.</p>
+      <p><strong>Step 2: Exactness of the Complex (The Geometric
+      Input)</strong> The homology of the Koszul complex <span
+      class="math inline">H_k(\mathsf{f})</span> measures the relations
+      between the generators.</p>
+      <ul>
+      <li><p><span class="math inline">H_0(\mathsf{f}) \cong S/(f_1,
+      \dots, f_m)</span>.</p></li>
+      <li><p><span class="math inline">H_k(\mathsf{f}) = 0</span> for
+      all <span class="math inline">k &gt; 0</span> <strong>if and only
+      if</strong> <span class="math inline">f_1, \dots, f_m</span> form
+      a <strong>regular sequence</strong>.</p></li>
+      </ul>
+      <p><em>Geometric justification:</em> Since <span
+      class="math inline">X</span> is a <strong>complete
+      intersection</strong> in <span
+      class="math inline">\mathbb{P}^N</span>, the codimension of <span
+      class="math inline">X</span> is exactly <span
+      class="math inline">m</span>. This implies that locally on the
+      affine charts, the equations <span class="math inline">f_1, \dots,
+      f_m</span> cut down the dimension by 1 at each step. Thus, <span
+      class="math inline">f_1, \dots, f_m</span> form a regular sequence
+      in the local rings <span
+      class="math inline">\mathcal{O}_{\mathbb{P}^N, x}</span>. While
+      they might not be a regular sequence globally in <span
+      class="math inline">S</span> (due to the irrelevant ideal <span
+      class="math inline">(x_0, \dots, x_N)</span>), the failure of
+      exactness is confined to modules of finite length (supported at
+      the vertex of the affine cone). However, when we pass to sheaves,
+      "finite length modules" become zero. Thus, the sheafified Koszul
+      complex is <strong>exact</strong>.</p>
+      <p><strong>Step 3: The Sheaf Resolution</strong> Applying the
+      sheafification functor <span class="math inline">\sim</span>
+      (which is exact) to the complex <span
+      class="math inline">K_\bullet(\mathsf{f})</span>, we obtain a
+      locally free resolution of the structure sheaf <span
+      class="math inline">\mathcal{O}_X</span>: <span
+      class="math display">0 \longrightarrow \mathcal{L}_m
+      \longrightarrow \mathcal{L}_{m-1} \longrightarrow \dots
+      \longrightarrow \mathcal{L}_1 \longrightarrow
+      \mathcal{O}_{\mathbb{P}^N} \longrightarrow \mathcal{O}_X
+      \longrightarrow 0.</span> Here <span
+      class="math inline">\mathcal{L}_k = \widetilde{K_k}</span>. Using
+      the explicit form from Step 1: <span
+      class="math display">\mathcal{L}_k = \bigoplus_{|I|=k}
+      \mathcal{O}_{\mathbb{P}^N}\left( -d_I \right), \quad \text{where }
+      d_I = \sum_{i \in I} d_i.</span></p>
+      <p><strong>Step 4: Calculation of Euler Characteristic</strong> We
+      twist the entire resolution by <span
+      class="math inline">\mathcal{O}(n)</span>. The sequence remains
+      exact. By the additivity of the Euler characteristic
+      (<strong>Lemma 5.3</strong>): <span
+      class="math display">\chi(\mathcal{O}_X(n)) = \sum_{k=0}^m (-1)^k
+      \chi(\mathcal{L}_k(n)).</span> Note that the term <span
+      class="math inline">\mathcal{O}_{\mathbb{P}^N}(n)</span>
+      corresponds to <span class="math inline">k=0</span> (empty sum of
+      degrees is 0). Substituting the decomposition of <span
+      class="math inline">\mathcal{L}_k</span>: <span
+      class="math display">\chi(\mathcal{L}_k(n)) = \sum_{|I|=k}
+      \chi\left( \mathcal{O}_{\mathbb{P}^N}(n - d_I) \right).</span> We
+      know for projective space that <span
+      class="math inline">\chi(\mathcal{O}_{\mathbb{P}^N}(d)) =
+      \binom{d+N}{N}</span>. Therefore: <span
+      class="math display">\chi(\mathcal{O}_X(n)) = \sum_{k=0}^m (-1)^k
+      \sum_{1 \le i_1 &lt; \dots &lt; i_k \le m} \binom{n -
+      (\operatorname{d}_{i_1} + \dots + d_{i_k}) + N}{N}.</span> This
+      proves the formula for the Hilbert Polynomial.</p>
+      <p><strong>Step 5: Calculation of Arithmetic Genus</strong> Recall
+      the definition of arithmetic genus for a scheme of dimension <span
+      class="math inline">r</span>: <span class="math display">p_a(X) =
+      (-1)^r (\chi(\mathcal{O}_X) - 1).</span> For a complete
+      intersection defined by <span class="math inline">m</span>
+      equations in <span class="math inline">\mathbb{P}^N</span>, the
+      dimension is <span class="math inline">r = N - m</span>. We
+      calculate <span class="math inline">\chi(\mathcal{O}_X)</span> by
+      setting <span class="math inline">n=0</span> in the Hilbert
+      polynomial derived in Step 4: <span
+      class="math display">\chi(\mathcal{O}_X) = \sum_{k=0}^m (-1)^k
+      \sum_{|I|=k} \binom{N - d_I}{N}.</span> Substituting this into the
+      genus formula: <span class="math display">p_a(X) = (-1)^{N-m}
+      \left[ \left( \sum_{k=0}^m (-1)^k \sum_{|I|=k} \binom{N - d_I}{N}
+      \right) - 1 \right].</span> This completes the proof. ◻</p>
+      </div>
+      <p>We apply the above machinery to some famous surfaces in
+      algebraic geometry.</p>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (The Segre Surface (Quadric in
+      <span class="math inline">\mathbb{P}^3</span>)). <em> Consider the
+      surface <span class="math inline">Q \subset \mathbb{P}^3</span>
+      defined by the quadratic equation <span class="math inline">xy -
+      zw = 0</span> (so <span class="math inline">N=3,
+      d=2</span>).</em></p>
+      <p><em><strong>1. Invariants:</strong> Using the hypersurface
+      formula: <span class="math display">p_a(Q) = \binom{2-1}{3} =
+      \binom{1}{3} = 0.</span> A surface with arithmetic genus 0 is
+      often rational.</em></p>
+      <p><em><strong>2. Geometry (<span class="math inline">\mathbb{P}^1
+      \times \mathbb{P}^1</span>):</strong> This surface is isomorphic
+      to <span class="math inline">\mathbb{P}^1 \times
+      \mathbb{P}^1</span>. Consider the <strong>Segre embedding</strong>
+      <span class="math inline">\sigma: \mathbb{P}^1 \times \mathbb{P}^1
+      \to \mathbb{P}^3</span> defined by: <span
+      class="math display">([u_0:u_1], [v_0:v_1]) \longmapsto [u_0v_0 :
+      u_0v_1 : u_1v_0 : u_1v_1].</span> Let the coordinates of <span
+      class="math inline">\mathbb{P}^3</span> be <span
+      class="math inline">Z_{00}, Z_{01}, Z_{10}, Z_{11}</span>. Notice
+      that <span class="math inline">Z_{00}Z_{11} - Z_{01}Z_{10} =
+      (u_0v_0)(u_1v_1) - (u_0v_1)(u_1v_0) = 0</span>. Thus the image
+      lies in <span class="math inline">Q</span>. One can construct an
+      inverse map using coordinate ratios on the open sets where
+      coordinates are non-zero (e.g., <span class="math inline">u_0/u_1
+      = Z_{00}/Z_{10} = Z_{01}/Z_{11}</span>), proving isomorphism. This
+      explains why <span class="math inline">Q</span> contains two
+      families of lines (rulings), corresponding to <span
+      class="math inline">\{p\} \times \mathbb{P}^1</span> and <span
+      class="math inline">\mathbb{P}^1 \times \{p\}</span>.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (Fermat Cubic Surface). <em>
+      Consider <span class="math inline">X \subset \mathbb{P}^3</span>
+      defined by <span class="math inline">x^3 + y^3 + z^3 + w^3 =
+      0</span> (<span class="math inline">N=3, d=3</span>).</em></p>
+      <p><em><strong>1. Invariants:</strong> <span
+      class="math display">p_a(X) = \binom{3-1}{3} = \binom{2}{3} =
+      0.</span> Thus, cubic surfaces are also rational surfaces
+      (rationality is a deep result, not immediate from <span
+      class="math inline">p_a=0</span>, but <span
+      class="math inline">p_a=0</span> is necessary).</em></p>
+      <p><em><strong>2. The 27 Lines:</strong> A famous geometric fact
+      is that every smooth cubic surface in <span
+      class="math inline">\mathbb{P}^3</span> contains exactly 27 lines
+      (over an algebraically closed field). For the Fermat cubic, these
+      can be written down explicitly (e.g., lines like <span
+      class="math inline">x = \lambda y, z = \mu w</span> where <span
+      class="math inline">\lambda^3 = -1, \mu^3 = -1</span>).</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (K3 Surface). <em> Consider a
+      smooth hypersurface <span class="math inline">X \subset
+      \mathbb{P}^3</span> of degree <span class="math inline">d=4</span>
+      (e.g., <span
+      class="math inline">x^4+y^4+z^4+w^4=0</span>).</em></p>
+      <p><em><strong>1. Invariants:</strong> <span
+      class="math display">p_a(X) = \binom{4-1}{3} = \binom{3}{3} =
+      1.</span> Surfaces with trivial canonical bundle and <span
+      class="math inline">\operatorname{H}^1(X, \mathcal{O}_X)=0</span>
+      (which implies <span class="math inline">p_a=1</span>) are called
+      <strong>K3 surfaces</strong> (named after Kummer, Kähler, and
+      Kodaira). They occupy a central place in the classification of
+      surfaces, analogous to elliptic curves in dimension 1.</em></p>
+      </div>
+      <div class="example">
+      <p><strong>Example 2.1</strong> (Veronese Surface in <span
+      class="math inline">\mathbb{P}^5</span>). <em> The Veronese
+      surface <span class="math inline">V \subset \mathbb{P}^5</span> is
+      the image of the 2-Veronese embedding <span
+      class="math inline">\nu_2: \mathbb{P}^2 \to
+      \mathbb{P}^5</span>.</em></p>
+      <p><em><strong>1. Determinantal Definition:</strong> If we label
+      coordinates of <span class="math inline">\mathbb{P}^5</span> as
+      <span class="math inline">z_{ij}</span> corresponding to basis
+      monomials <span class="math inline">x_i x_j</span>, the condition
+      that a point comes from <span
+      class="math inline">\mathbb{P}^2</span> is that the matrix of
+      coordinates is rank 1: <span
+      class="math display">\operatorname{rank} \begin{pmatrix} z_{00}
+      &amp; z_{01} &amp; z_{02} \\ z_{01} &amp; z_{11} &amp; z_{12} \\
+      z_{02} &amp; z_{12} &amp; z_{22} \end{pmatrix} \le 1.</span> The
+      vanishing of the <span class="math inline">2 \times 2</span>
+      minors of this symmetric matrix gives the quadratic equations
+      defining <span class="math inline">V</span>.</em></p>
+      <p><em><strong>2. Not a Complete Intersection:</strong> These
+      minors generate the ideal, but there are too many of them for the
+      codimension. <span class="math inline">V</span> has dimension 2 in
+      <span class="math inline">\mathbb{P}^5</span> (codimension 3), but
+      requires 6 minors to define it. It is a standard example of a
+      variety that is <em>not</em> a complete intersection.</em></p>
+      <p><em><strong>3. Invariants:</strong> Since <span
+      class="math inline">V \cong \mathbb{P}^2</span>, its invariants
+      are those of the projective plane: <span
+      class="math display">p_a(V) = p_a(\mathbb{P}^2) = 0.</span> Its
+      degree in <span class="math inline">\mathbb{P}^5</span> is <span
+      class="math inline">2^2 = 4</span>.</em></p>
+      </div>
+
+      <nav class="chapter-turn" aria-label="章节翻页">
+                <a class="turn-prev" href="4.1-projective-scheme.html" rel="prev">
+          <span>PREVIOUS</span><strong>← Projective Scheme</strong>
+        </a>
+                        <a class="turn-next" href="4.3-intersection-theory-over-smooth-varieties.html" rel="next">
+          <span>NEXT</span><strong>Intersection Theory over Smooth Varieties →</strong>
+        </a>
+              </nav>
+    </main>
+  </div>
+  
+  <dialog class="search-dialog" data-search-dialog>
+    <form method="dialog" class="search-panel">
+      <header>
+        <label for="notes-search-input">穿过所有章节</label>
+        <button value="close" aria-label="关闭搜索">×</button>
+      </header>
+      <div class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="notes-search-input" data-search-input type="search" autocomplete="off" placeholder="搜索定义、定理、概念……" />
+        <kbd>ESC</kbd>
+      </div>
+      <p class="search-hint" data-search-hint>输入两个以上字符开始搜索。</p>
+      <div class="search-results" data-search-results aria-live="polite"></div>
+    </form>
+  </dialog>
+
+  <footer class="reader-footer">
+    <span>线，从来 · Thread478</span>
+    <span>网页札记 / 可检索 / 可勘误 / 可持续更新</span>
+  </footer>
+</body>
+</html>
